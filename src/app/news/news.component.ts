@@ -7,7 +7,10 @@ import APP_CONFIG from '../app.config';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent implements OnInit {
-
+  // date = null;
+  // onChange(result: Date): void {
+  //   console.log('onChange: ', result);
+  // }
   constructor() {
   }
 

@@ -24,6 +24,7 @@ import { NewsComponent } from './news/news.component';
 import { ResearchComponent } from './research/research.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { TeachingComponent } from './teaching/teaching.component';
+import { Str2urlPipe } from './str2url.pipe';
 
 
 const icons: IconDefinition[] = [ ShareAltOutline, BookOutline, DownloadOutline, ReadOutline, LaptopOutline ];
@@ -44,7 +45,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     NewsComponent,
-    // Str2urlPipe,
+    Str2urlPipe,
     ResearchComponent,
     PublicationsComponent,
     TeachingComponent,
