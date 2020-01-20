@@ -7,7 +7,7 @@
 }
 
 .layout {
-  width: 900px;
+  width: 970px;
   background: #ffffff;
   margin: 0 auto;
 }
@@ -29,9 +29,9 @@
 #logo-title {
     display: block;
     max-width: 500px;
-    font-size: 22px !important;
-    /*font-family: "Open Sans" !important;*/
-    text-transform: uppercase !important;
+    font-size: 28px !important;
+    font-family: "Source Serif Pro", Serif;
+    /*text-transform: uppercase !important;*/
     vertical-align: top !important;
     float: left;
     margin-top: 10px;
@@ -39,12 +39,12 @@
     margin-bottom: 5px;
     letter-spacing: .04em;
     line-height: normal;
-    font-weight: 700;
+    font-weight: 600;
     color: #37373a;
 }
 
 #vitae {
-    font-size: 16px !important;
+    font-size: 18px !important;
     font-family: "Monotype Corsiva" !important;
     vertical-align: top !important;
     float: left;

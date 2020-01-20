@@ -8,7 +8,7 @@
 h2 {
     color: #026f4a;
     font-family: "enigmaticregular", palatino, georgia, verdana, arial, sans-serif;
-    font-size: 16px;
+    font-size: 17px;
     text-align: left;
     font-weight: bold;
     text-transform: uppercase;
@@ -23,13 +23,13 @@ ul {
 }
 
 li {
-    font-size: 14px;
+    font-size: 15px;
     list-style-type: decimal;
     margin: 8px 0 0 0;
 }
 
 li.indent {
-    font-size: 12px;
+    font-size: 15px;
     margin: 0 0 0 20px;
     list-style-type: circle;
 }

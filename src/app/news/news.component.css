@@ -54,7 +54,7 @@ nz-divider {
 }
 
 li {
-    font-size: 14px;
+    font-size: 15px;
     list-style-type: none;
     margin: 4px 0 0 0;
     text-align: justify;
@@ -62,7 +62,7 @@ li {
 }
 
 li.indent {
-    font-size: 14px;
+    font-size: 15px;
     margin: 0 0 0 20px;
     list-style-type: circle;
 }
