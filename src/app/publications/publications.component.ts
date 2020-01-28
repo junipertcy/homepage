@@ -14,6 +14,7 @@ export class PublicationsComponent implements OnInit {
   S1876619611000672 = false;
   acm2809931 = false;
   urbcomp2015 = false;
+  sub1 = false;
 
 
   constructor() { }

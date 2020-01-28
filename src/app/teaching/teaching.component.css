@@ -1,35 +1,42 @@
 #teaching {
-    /*border-style: solid;*/
-    border-width: thin;
-    border-color: #000000;
-    overflow: hidden;
+  /*border-style: solid;*/
+  border-width: thin;
+  border-color: #000000;
+  overflow: hidden;
 }
 
 h2 {
-    color: #026f4a;
-    font-family: "enigmaticregular", palatino, georgia, verdana, arial, sans-serif;
-    font-size: 17px;
-    text-align: left;
-    font-weight: bold;
-    text-transform: uppercase;
+  color: #026f4a;
+  font-family: "enigmaticregular", palatino, georgia, verdana, arial, sans-serif;
+  font-size: 17px;
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
 
-    margin-bottom: 10px;
-    margin-top: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+h4 {
+  margin-bottom: 0px;
 }
 
 ul {
-    margin: 0 0 0 0;
-    padding: 0 10px 0 20px;
+  margin: 0 0 0 0;
+  padding: 0 10px 0 20px;
 }
 
 li {
-    font-size: 15px;
-    list-style-type: decimal;
-    margin: 8px 0 0 0;
+  font-size: 15px;
+  list-style-type: none;
+  margin: 4px 0 0 0;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 li.indent {
-    font-size: 15px;
-    margin: 0 0 0 20px;
-    list-style-type: circle;
+  font-size: 15px;
+  margin: 0 0 0 20px;
+  list-style-type: circle;
 }
+

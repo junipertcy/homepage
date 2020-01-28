@@ -6,30 +6,30 @@
 }
 
 h2 {
-    color: #026f4a;
-    font-family: "enigmaticregular", palatino, georgia, verdana, arial, sans-serif;
-    font-size: 17px;
-    text-align: left;
-    font-weight: bold;
-    text-transform: uppercase;
+  color: #026f4a;
+  font-family: "enigmaticregular", palatino, georgia, verdana, arial, sans-serif;
+  font-size: 17px;
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
 
-    margin-bottom: 10px;
-    margin-top: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 ul {
-    margin: 0 0 0 0;
-    padding: 0 10px 0 20px;
+  margin: 0 0 0 0;
+  padding: 0 10px 0 20px;
 }
 
 li {
-    font-size: 15px;
-    list-style-type: decimal;
-    margin: 8px 0 0 0;
+  font-size: 15px;
+  list-style-type: decimal;
+  margin: 8px 0 0 0;
 }
 
 li.indent {
-    font-size: 15px;
-    margin: 0 0 0 20px;
-    list-style-type: circle;
+  font-size: 15px;
+  margin: 0 0 0 20px;
+  list-style-type: circle;
 }

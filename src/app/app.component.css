@@ -7,7 +7,7 @@
 }
 
 .layout {
-  width: 970px;
+  width: 900px;
   background: #ffffff;
   margin: 0 auto;
 }
@@ -57,4 +57,20 @@
 
 #vitae a {
     color: #fa541c;
+}
+
+#wiki {
+    font-size: 18px !important;
+    font-family: "Monotype Corsiva" !important;
+    vertical-align: top !important;
+    float: left;
+    margin-top: 10px;
+    margin-left: 0;
+    margin-bottom: 5px;
+    letter-spacing: .04em;
+    line-height: normal;
+}
+
+#wiki a {
+    color: #13c2c2;
 }
