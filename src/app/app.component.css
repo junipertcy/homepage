@@ -14,7 +14,7 @@
 
 /*!* make menu items closer *!*/
 .ant-menu-item, .ant-menu-submenu-title {
-    padding: 0 10px;
+  padding: 0 10px;
 }
 
 /*.navigator {*/
@@ -27,50 +27,58 @@
 /*}*/
 
 #logo-title {
-    display: block;
-    max-width: 500px;
-    font-size: 28px !important;
-    font-family: "Source Serif Pro", Serif;
-    /*text-transform: uppercase !important;*/
-    vertical-align: top !important;
-    float: left;
-    margin-top: 10px;
-    margin-left: 0;
-    margin-bottom: 5px;
-    letter-spacing: .04em;
-    line-height: normal;
-    font-weight: 600;
-    color: #37373a;
+  display: block;
+  max-width: 500px;
+  font-size: 28px !important;
+  font-family: "Source Serif Pro", Serif;
+  /*text-transform: uppercase !important;*/
+  vertical-align: top !important;
+  float: left;
+  margin-top: 10px;
+  margin-left: 0;
+  margin-bottom: 5px;
+  letter-spacing: .04em;
+  line-height: normal;
+  font-weight: 600;
+  color: #37373a;
 }
 
 #vitae {
-    font-size: 18px !important;
-    font-family: "Monotype Corsiva" !important;
-    vertical-align: top !important;
-    float: left;
-    margin-top: 10px;
-    margin-left: 0;
-    margin-bottom: 5px;
-    letter-spacing: .04em;
-    line-height: normal;
+  font-size: 18px !important;
+  font-family: "Monotype Corsiva" !important;
+  vertical-align: top !important;
+  float: left;
+  margin-top: 10px;
+  margin-left: 0;
+  margin-bottom: 5px;
+  letter-spacing: .04em;
+  line-height: normal;
 }
 
 #vitae a {
-    color: #fa541c;
+  color: #fa541c;
 }
 
 #wiki {
-    font-size: 18px !important;
-    font-family: "Monotype Corsiva" !important;
-    vertical-align: top !important;
-    float: left;
-    margin-top: 10px;
-    margin-left: 0;
-    margin-bottom: 5px;
-    letter-spacing: .04em;
-    line-height: normal;
+  font-size: 18px !important;
+  font-family: "Monotype Corsiva" !important;
+  vertical-align: top !important;
+  float: left;
+  margin-top: 10px;
+  margin-left: 0;
+  margin-bottom: 5px;
+  letter-spacing: .04em;
+  line-height: normal;
 }
 
 #wiki a {
-    color: #13c2c2;
+  color: #13c2c2;
+}
+
+#footer {
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  clear: both;
 }
