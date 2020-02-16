@@ -45,7 +45,7 @@ export class AppComponent {
   // https://stackoverflow.com/questions/39888768
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
-    this.screenHeight = window.innerHeight - 555 - 64 - 70;
+    this.screenHeight = window.innerHeight - 10 - 64 - 70;
     // this.screenWidth = window.innerWidth;
     // console.log(this.screenHeight, this.screenWidth);
   }

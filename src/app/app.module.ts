@@ -25,6 +25,8 @@ import { ResearchComponent } from './research/research.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { TeachingComponent } from './teaching/teaching.component';
 import { Str2urlPipe } from './str2url.pipe';
+import { TalksComponent } from './talks/talks.component';
+import { ActivitiesComponent } from './activities/activities.component';
 
 
 const icons: IconDefinition[] = [ ShareAltOutline, BookOutline, DownloadOutline, ReadOutline, LaptopOutline ];
@@ -36,6 +38,8 @@ const icons: IconDefinition[] = [ ShareAltOutline, BookOutline, DownloadOutline,
 
 const appRoutes: Routes = [
   { path: '', component: NewsComponent },
+  { path: 'talks', component: TalksComponent },
+  { path: 'activities', component: ActivitiesComponent },
   { path: 'publications', component: PublicationsComponent },
   { path: 'research', component: ResearchComponent },
   { path: 'teaching', component: TeachingComponent },
@@ -49,6 +53,8 @@ const appRoutes: Routes = [
     ResearchComponent,
     PublicationsComponent,
     TeachingComponent,
+    TalksComponent,
+    ActivitiesComponent,
   ],
   imports: [
     RouterModule.forRoot(
