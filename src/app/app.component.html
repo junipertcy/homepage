@@ -1,5 +1,4 @@
-<nz-layout class="layout">
-  <div nz-row nzType="flex" nzJustify="center">
+<nz-layout class="layout" nz-row nzType="flex" nzJustify="center">
     <div nz-col nzSpan="24">
       <nz-row nzType="flex" nzJustify="space-between">
         <nz-header nz-col nzSpan="8"><a href="/"><h1 id="logo-title">Tzu-Chi Yen</h1></a></nz-header>
@@ -47,10 +46,9 @@
         </ul>
       </nz-sider>
     </div>
-    <div nz-col nzSpan="20">
+    <div nz-col nzSpan="20" [style.min-height.px]="screenHeight">
       <router-outlet></router-outlet>
     </div>
-<!--    <div nz-col nzSpan="24" [style.min-height.px]="screenHeight"></div>-->
     <div nz-col nzSpan="24">
       <nz-footer nz-col nzSpan="24" id="footer">
         © Since 2016 Tzu-Chi Yen | Last update: Jan. 20, 2020 |
@@ -63,7 +61,6 @@
       </nz-footer>
     </div>
 
-  </div>
 
 </nz-layout>
 <ng-template #zeroTrigger>
