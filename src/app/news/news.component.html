@@ -39,32 +39,35 @@
   </div>
   <div style="height: 20px;"></div>
   <!-- News section -->
-  <div nz-row nzType="flex" nzJustify="start">
+  <div nz-row nzType="flex" nzJustify="start" style="min-height: 350px;">
     <div nz-col class="gutter-row" nzSpan="2">
       <h2>News</h2>
-      <!--      <nz-year-picker nzSize="small" [(ngModel)]="date" (ngModelChange)="onChange($event)"-->
-      <!--                      nzPlaceHolder=""></nz-year-picker>-->
+      <nz-radio-group [(ngModel)]="thisYear">
+        <label nz-radio nzValue="2020">20</label>
+        <label nz-radio nzValue="2019">19</label>
+        <label nz-radio nzValue="2018">18</label>
+      </nz-radio-group>
     </div>
     <div nz-col nzSpan="22">
-      <ul>
+      <ul *ngIf="thisYear === '2020'">
         <li style="color: #DDDDDD;">
-          <strong>Jun. 14 – Jul. 10, 2020</strong>
+          <strong>Jun. 14 – Jul. 10</strong>
           – [Canceled due to COVID-19 concerns] I will attend the
           <a href="https://www.santafe.edu/engage/learn/schools/sfi-complex-systems-summer-school"
              style="color: #DDDDDD; text-decoration: underline">Complex
             Systems Summer School</a> in Santa Fe, NM.
         </li>
         <li>
-          <strong>Jul. 5-10, 2020</strong>
+          <strong>Jul. 5-10</strong>
           – I will attend the <a href="http://act2020.mit.edu/">Applied Category Theory</a> remote conference.
         </li>
         <li>
-          <strong>Jun. 8-12, 2020</strong>
+          <strong>Jun. 8-12</strong>
           – I will attend the <a href="https://tgda.osu.edu/atmcs2020/">ATMCS</a> (Algebraic Topology: Methods,
           Computation, and Science) at Ohio State University.
         </li>
         <li>
-          <strong>May 5, 2020</strong>
+          <strong>May 5</strong>
           – I will attend the <a href="https://twitter.com/masonporter/status/1251594612549906432">online
           minisymposium</a> "Topological Data Analysis and Data-Driven Modeling in Complex Systems" from the SIAM
           Conference on Mathematics of Data Science. See titles & abstracts: <a
@@ -72,26 +75,28 @@
           href="https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=67932">Part II</a>.
         </li>
         <li>
-          <strong>April 25, 2020</strong>
+          <strong>April 25</strong>
           – I am attending the "Graduate Online Anything Topology Series" (<a href="https://dzackgarza.com/GOATS_2020/">GOATS
           2020</a>), organized by <a href="https://dzackgarza.com/">D. Zack Garza</a>, <a
           href="https://seblackwell.wordpress.com/">Sarah Blackwell</a>, and <a
           href="https://sites.google.com/view/terrinwarren/home">Terrin Warren</a>.
         </li>
         <li>
-          <strong>Thursdays in April, 2020</strong>
+          <strong>Thursdays in April</strong>
           – I will attend the <a href="https://www.santafe.edu/engage/learn/schools/sfi-complex-systems-summer-school">
           Network Epidemiology Online Workshop Series</a> by the Univ. of Maryland’s <a
           href="http://www.combine.umd.edu/" target="_blank">COMBINE</a> program and
           Vermont’s <a href="https://vermontcomplexsystems.org/" target="_blank">Complex Systems Center</a> on Zoom.
         </li>
         <li>
-          <strong>Jan. 15–18, 2020</strong>
+          <strong>Jan. 15–18</strong>
           – I am attending the <a href="http://jointmathematicsmeetings.org/meetings/national/jmm2020/2245_intro">Joint
           Math Meetings</a> in Denver, CO.
         </li>
+      </ul>
+      <ul *ngIf="thisYear === '2019'">
         <li>
-          <strong>July 8–14, 2019</strong>
+          <strong>July 8–14</strong>
           – I will attend the <a href="https://www.scipy2019.scipy.org">SciPy2019</a> in
           Austin, Texas.
         </li>
@@ -100,12 +105,12 @@
           expenses for the conference.
         </li>
         <li>
-          <strong>June 4 & 5, 2019</strong>
+          <strong>June 4 & 5</strong>
           – Giving a guest lecture at <a href="http://web.ncku.edu.tw/bin/home.php?Lang=en"
                                          target="_blank">NCKU</a>, Taiwan.
         </li>
         <li>
-          <strong>May 27–31, 2019</strong>
+          <strong>May 27–31</strong>
           – I will attend the <a href="http://vermontcomplexsystems.org/events/netsci/">NetSci2019</a> in
           Burlington, Vermont.
         </li>
@@ -131,19 +136,21 @@
           and <a href="https://twitter.com/Shugars">Sarah</a>.
         </li>
         <li>
-          <strong>March 2019</strong>
+          <strong>March</strong>
           - I am in the Program Committee for <a href="https://www.scipy2019.scipy.org/" target="_blank">SciPy
           2019</a> (Austin, Texas July 8-14). I review talk/poster and tutorial submissions.
         </li>
+      </ul>
+      <ul  *ngIf="thisYear === '2018'">
         <li>
-          <strong>Aug. 13–17, 2018</strong>
+          <strong>Aug. 13–17</strong>
           – Attending CU's <a href="https://compsocialscience.github.io/summer-institute/2018/boulder/">Summer
           Institute in Computational Social Science</a>. Organized by <a
           href="https://allisonmorgan.github.io/">Allie
           Morgan</a> and <a href="http://www.brianckeegan.com/">Brian Keegan</a>.
         </li>
         <li>
-          <strong>Jul. 5, 2018</strong>
+          <strong>Jul. 5</strong>
           – I was selected to be the recipient of the Strauch Family Graduate Fellowship in the College of
           Engineering and Applied Science at CU Boulder!
         </li>
