@@ -1,21 +1,22 @@
 <nz-layout class="layout" nz-row nzType="flex" nzJustify="center">
-    <div nz-col nzSpan="24">
-      <nz-row nzType="flex" nzJustify="space-between">
-        <nz-header nz-col nzSpan="8"><a href="/"><h1 id="logo-title">Tzu-Chi Yen</h1></a></nz-header>
-        <div nz-col nzSpan="3">
-          <div nz-row nzType="flex" nzJustify="center">
-            <div nz-col nzSpan="12">
-              <nz-tag [nzColor]="'cyan'" id="wiki"><a
-                href="https://wiki.junipertcy.info" target="_blank">Wiki</a></nz-tag>
-            </div>
-            <div  nz-col nzSpan="12">
-              <nz-tag [nzColor]="'volcano'" id="vitae"><a
-                href="https://wiki.junipertcy.info/images/3/3f/Vitae-tzuchiyen.pdf" target="_blank">Vitae</a></nz-tag>
-            </div>
+  <div nz-col nzSpan="24">
+    <nz-row nzType="flex" nzJustify="space-between">
+      <nz-header nz-col nzSpan="8"><a href="/"><h1 id="logo-title">Tzu-Chi Yen</h1></a></nz-header>
+      <div nz-col nzSpan="3">
+        <div nz-row nzType="flex" nzJustify="center">
+          <div nz-col nzSpan="12">
+            <nz-tag [nzColor]="'cyan'" id="wiki"><a
+              href="https://wiki.junipertcy.info" target="_blank">Wiki</a></nz-tag>
+          </div>
+          <div nz-col nzSpan="12">
+            <nz-tag [nzColor]="'volcano'" id="vitae"><a
+              href="https://wiki.junipertcy.info/images/3/3f/Vitae-tzuchiyen.pdf" target="_blank">Vitae</a></nz-tag>
           </div>
         </div>
-      </nz-row>
-    </div>
+      </div>
+    </nz-row>
+  </div>
+  <div nz-row>
     <div nz-col nzSpan="4">
       <nz-sider
         nzCollapsible
@@ -34,9 +35,9 @@
           <li nz-menu-item routerLink="/talks">
             <span>Talks</span>
           </li>
-<!--          <li nz-menu-item routerLink="/research">-->
-<!--            <span>Research</span>-->
-<!--          </li>-->
+          <!--          <li nz-menu-item routerLink="/research">-->
+          <!--            <span>Research</span>-->
+          <!--          </li>-->
           <li nz-menu-item routerLink="/teaching">
             <span>Teaching</span>
           </li>
@@ -49,19 +50,18 @@
     <div nz-col nzSpan="20" [style.min-height.px]="screenHeight">
       <router-outlet></router-outlet>
     </div>
-    <div nz-col nzSpan="24">
-      <nz-footer nz-col nzSpan="24" id="footer">
-        © Since 2016 Tzu-Chi Yen | Last update: Sep. 25, 2020 |
-        <a href="https://github.com/junipertcy/homepage" target="_blank" style="color: rgba(0,0,0,.65);">
-          <i nz-icon nzType="code" nzTheme="outline"></i>
-        </a>
-        | Powered by <a
-        href="https://angular.io/" target="_blank" style="color: rgba(0,0,0,.65);">Angular</a> and <a
-        href="https://ng.ant.design/" target="_blank" style="color: rgba(0,0,0,.65);">NG-ZORRO</a>.
-      </nz-footer>
-    </div>
-
-
+  </div>
+  <div nz-col nzSpan="24">
+    <nz-footer nz-col nzSpan="24" id="footer">
+      © Since 2016 Tzu-Chi Yen | Last update: Sep. 25, 2020 |
+      <a href="https://github.com/junipertcy/homepage" target="_blank" style="color: rgba(0,0,0,.65);">
+        <i nz-icon nzType="code" nzTheme="outline"></i>
+      </a>
+      | Powered by <a
+      href="https://angular.io/" target="_blank" style="color: rgba(0,0,0,.65);">Angular</a> and <a
+      href="https://ng.ant.design/" target="_blank" style="color: rgba(0,0,0,.65);">NG-ZORRO</a>.
+    </nz-footer>
+  </div>
 </nz-layout>
 <ng-template #zeroTrigger>
   <i nz-icon nzType="menu-fold" nzTheme="outline"></i>
