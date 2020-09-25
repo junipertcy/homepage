@@ -2,8 +2,22 @@
   <div nz-row nzType="flex" nzJustify="space-between">
   </div>
   <div nz-row nzType="flex" nzJustify="space-between">
+    <!--    <div nz-col nzSpan="8">-->
+    <!--      <h2>Preprints</h2>-->
+    <!--    </div>-->
+    <!--    <div nz-col nzSpan="12">-->
+    <!--      <p style="text-align: right;">-->
+    <!--        Favorites: <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>;-->
+    <!--        Loglines: <i nz-icon nzType="edit" nzTheme="fill"></i>-->
+    <!--      </p>-->
+    <!--    </div>-->
+    <!--    <ol>-->
+    <!--      <li>(insert new items here)</li>-->
+    <!--    </ol>-->
+    <!--    <div nz-col nzSpan="24" style="height: 20px;"></div>-->
     <div nz-col nzSpan="8">
-      <h2>Preprints</h2>
+      <!-- To add a Preprints section, change 8 to 24, and then move the nzSpan="12" section above. -->
+      <h2>Journal Articles</h2>
     </div>
     <div nz-col nzSpan="12">
       <p style="text-align: right;">
@@ -21,22 +35,21 @@
         </h4>
         Tzu-Chi Yen and Daniel B. Larremore
         <br>
+        DOI: <a href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.102.032309">10.1103/PhysRevE.102.032309</a>
+        <br>
         arXiv: <a href="https://arxiv.org/abs/2001.11818">2001.11818</a>
         <br>
-        <nz-tag><a href="https://arxiv.org/pdf/2001.11818.pdf">Paper PDF</a>
+        <nz-tag><a href="https://wiki.junipertcy.info/images/b/be/Research-paper-2020-PRE.pdf">Paper PDF</a>
         </nz-tag>
         <nz-tag><a href="https://docs.netscied.tw/bipartiteSBM/index.html">Code</a>
+        </nz-tag>
+        <nz-tag><a href="https://twitter.com/DanLarremore/status/1224439980031787009"><i nz-icon nzType="twitter"
+                                                                                         nzTheme="outline"></i></a>
         </nz-tag>
         <div class='abstract' *ngIf="sub1 == true">We solve the community detection problem for bipartite networks using
           a nonparametric Bayesian stochastic blockmodel which is specifically customized for bipartite networks.
         </div>
       </li>
-    </ol>
-    <div nz-col nzSpan="24" style="height: 20px;"></div>
-    <div nz-col nzSpan="24">
-      <h2>Journal Articles</h2>
-    </div>
-    <ol>
       <li value="5">
         <h4>Nanoscopic substructures of raft-mimetic
           liquid-ordered membrane domains revealed by high-speed single-particle tracking
