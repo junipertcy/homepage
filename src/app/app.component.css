@@ -19,9 +19,9 @@
 
 #logo-title {
   display: block;
-  max-width: 500px;
+  min-width: 200px;
   font-size: 28px !important;
-  font-family: "Source Serif Pro", Serif;
+  font-family: 'Source Serif Pro', serif;
   /*text-transform: uppercase !important;*/
   vertical-align: top !important;
   float: left;
@@ -36,7 +36,7 @@
 
 #vitae {
   font-size: 18px !important;
-  font-family: "Monotype Corsiva" !important;
+  font-family: 'Cookie', cursive;
   vertical-align: top !important;
   float: left;
   margin-top: 10px;
@@ -52,9 +52,9 @@
 
 #wiki {
   font-size: 18px !important;
-  font-family: "Monotype Corsiva" !important;
+  font-family: 'Cookie', cursive;
   vertical-align: top !important;
-  float: left;
+  float: right;
   margin-top: 10px;
   margin-left: 0;
   margin-bottom: 5px;

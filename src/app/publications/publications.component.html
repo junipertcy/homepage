@@ -15,25 +15,34 @@
     <!--      <li>(insert new items here)</li>-->
     <!--    </ol>-->
     <!--    <div nz-col nzSpan="24" style="height: 20px;"></div>-->
+<div nz-col nzSpan="24">
+  <div nz-row nzType="flex" nzJustify="space-between">
     <div nz-col nzSpan="8">
       <!-- To add a Preprints section, change 8 to 24, and then move the nzSpan="12" section above. -->
       <h2>Journal Articles</h2>
+<!--    <div nz-col nzSpan="12">-->
+
+<!--    </div>-->
     </div>
     <div nz-col nzSpan="12">
-      <p style="text-align: right;">
+      <p style="text-align: right; margin-bottom: 0">
         Favorites: <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>;
         Loglines: <i nz-icon nzType="edit" nzTheme="fill"></i>
       </p>
     </div>
+  </div>
+</div>
     <ol>
       <li value="6">
         <h4>Community detection in bipartite networks with stochastic block models
           <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="sub1 = !sub1">
+          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="sub1 = !sub1" style="cursor: pointer;">
             <i nz-icon nzType="edit" nzTheme="fill"></i>
           </nz-tag>
         </h4>
         Tzu-Chi Yen and Daniel B. Larremore
+        <br>
+        Phys. Rev. E 102, 032309 (2020)
         <br>
         DOI: <a href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.102.032309">10.1103/PhysRevE.102.032309</a>
         <br>
@@ -55,7 +64,7 @@
       <li value="5">
         <h4>Nanoscopic substructures of raft-mimetic
           liquid-ordered membrane domains revealed by high-speed single-particle tracking
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="srep20542 = !srep20542">
+          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="srep20542 = !srep20542" style="cursor: pointer;">
             <i nz-icon nzType="edit" nzTheme="fill"></i>
           </nz-tag>
         </h4>
@@ -78,7 +87,7 @@
       <li value="4">
         <h4>A Rhizavidin Monomer with Nearly Multimeric
           Avidin-Like Binding Stability Against Biotin Conjugates
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="anie201510885 = !anie201510885">
+          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="anie201510885 = !anie201510885" style="cursor: pointer;">
             <i nz-icon nzType="edit" nzTheme="fill"></i>
           </nz-tag>
         </h4>
@@ -100,7 +109,7 @@
       <li value="3">
         <h4>Clustered Geometries Exploiting Quantum Coherence Effects for Efficient Energy Transfer in Light Harvesting
           <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="jz4011477 = !jz4011477">
+          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="jz4011477 = !jz4011477" style="cursor: pointer;">
             <i nz-icon nzType="edit" nzTheme="fill"></i>
           </nz-tag>
         </h4>
@@ -129,7 +138,7 @@
     <ol>
       <li value="2">
         <h4>What Makes New York So Noisy? Reasoning Noise Pollution by Mining Multimodal Geo-Social Big Data
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="acm2809931 = !acm2809931">
+          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="acm2809931 = !acm2809931" style="cursor: pointer;">
             <i nz-icon nzType="edit" nzTheme="fill"></i>
           </nz-tag>
         </h4>
@@ -156,7 +165,7 @@
       </li>
       <li value="1">
         <h4>Electronic Coherence Effects in Photosynthetic Light Harvesting
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="S1876619611000672 = !S1876619611000672">
+          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="S1876619611000672 = !S1876619611000672" style="cursor: pointer;">
             <i nz-icon nzType="edit" nzTheme="fill"></i>
           </nz-tag>
         </h4>
@@ -189,7 +198,7 @@
       <li>
         <h4>An Interactive Visualization System to Analyze and Predict Urban Construction Dynamics
           <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="urbcomp2015 = !urbcomp2015">
+          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="urbcomp2015 = !urbcomp2015" style="cursor: pointer;">
             <i nz-icon nzType="edit" nzTheme="fill"></i>
           </nz-tag>
         </h4>

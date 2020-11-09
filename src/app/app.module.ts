@@ -34,6 +34,7 @@ const icons: IconDefinition[] = [ ShareAltOutline, BookOutline, DownloadOutline,
 /** angular i18n **/
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 registerLocaleData(en);
 
 const appRoutes: Routes = [
@@ -68,7 +69,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     NgZorroAntdModule,
-    NgbModule,  // ng-bootstrap
+    NgbModule,
+    FontAwesomeModule,  // ng-bootstrap
   ],
   providers: [
     Title,

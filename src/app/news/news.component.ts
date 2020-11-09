@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import APP_CONFIG from '../app.config';
+import {faMastodon} from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-news',
@@ -12,7 +12,9 @@ export class NewsComponent {
   // onChange(result: Date): void {
   //   console.log('onChange: ', result);
   // }
-  thisYear = "2020";
+  thisYear = '2020';
+  faMastodon = faMastodon;
+
   constructor() {
   }
 }
