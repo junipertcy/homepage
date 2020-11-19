@@ -22,7 +22,6 @@ import {
 
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { NewsComponent } from './news/news.component';
-import { ResearchComponent } from './research/research.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { TeachingComponent } from './teaching/teaching.component';
 import { Str2urlPipe } from './str2url.pipe';
@@ -42,7 +41,6 @@ const appRoutes: Routes = [
   { path: 'talks', component: TalksComponent },
   { path: 'activities', component: ActivitiesComponent },
   { path: 'publications', component: PublicationsComponent },
-  { path: 'research', component: ResearchComponent },
   { path: 'teaching', component: TeachingComponent },
 ];
 
@@ -51,7 +49,6 @@ const appRoutes: Routes = [
     AppComponent,
     NewsComponent,
     Str2urlPipe,
-    ResearchComponent,
     PublicationsComponent,
     TeachingComponent,
     TalksComponent,

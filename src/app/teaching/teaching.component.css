@@ -8,35 +8,30 @@
 h2 {
   color: rgba(0, 0, 0, 0.85);
   font-family: "enigmaticregular", palatino, georgia, verdana, arial, sans-serif;
-  font-size: 20px;
   text-align: left;
   font-weight: bold;
-  /*text-transform: uppercase;*/
-
   margin-bottom: 10px;
   margin-top: 10px;
 }
 
 h4 {
-  margin-bottom: 0px;
+  margin-bottom: 4px;
 }
 
-ul {
-  margin: 0 0 0 0;
+ol {
   padding: 0 10px 0 20px;
 }
 
 li {
-  font-size: 15px;
-  list-style-type: none;
-  margin: 4px 0 0 0;
-  text-align: justify;
-  text-justify: inter-word;
+  list-style-type: decimal;
+  margin: 0px 0 0 0;
+  padding-bottom: 1em;
+
 }
 
-li.indent {
-  font-size: 15px;
-  margin: 0 0 0 20px;
+ol.nocount li {
   list-style-type: circle;
-}
+  margin: 0px 0 0 0;
+  padding-bottom: 1em;
 
+}

@@ -8,7 +8,6 @@
 h2 {
   color: rgba(0, 0, 0, 0.85);
   font-family: "enigmaticregular", palatino, georgia, verdana, arial, sans-serif;
-  font-size: 20px;
   text-align: left;
   font-weight: bold;
   margin-bottom: 10px;
@@ -16,33 +15,29 @@ h2 {
 }
 
 h4 {
-  margin-bottom: 0px;
+  margin-bottom: 4px;
 }
 
 ol {
-  margin: 0 0 0 0;
   padding: 0 10px 0 20px;
 }
 
 li {
-  font-size: 15px;
   list-style-type: decimal;
-  margin: 0px 0 0 0;
+  margin: 0 0 0 0;
   padding-bottom: 1em;
 
 }
 
 ol.nocount li {
-  font-size: 15px;
   list-style-type: circle;
-  margin: 0px 0 0 0;
+  margin: 0 0 0 0;
   padding-bottom: 1em;
 
 }
 
 li.indent {
-  font-size: 15px;
-  margin: 0 0 0 0px;
+  margin: 0 0 0 0;
   list-style-type: circle;
 }
 
