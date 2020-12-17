@@ -44,7 +44,7 @@
   <div nz-row nzType="flex" nzJustify="start">
     <ul id="network-icon">
       <li>
-        <a href="https://scholar.google.com/citations?user=ZUxl-r0AAAAJ&hl=en" target="_blank" rel="noopener">
+        <a href="https://scholar.google.com/citations?user=ZUxl-r0AAAAJ&hl=en&sortby=pubdate" target="_blank" rel="noopener">
           <i class="ai ai-google-scholar big-icon"></i>
         </a>
       </li>
@@ -73,24 +73,31 @@
   <div style="height: 20px;">
   </div>
   <!-- News section -->
-  <div nz-row nzType="flex" nzJustify="start" style="min-height: 350px;">
+  <div nz-row nzType="flex" nzJustify="start" style="min-height: 350px;" id="news">
     <div nz-col class="gutter-row" nzSpan="2">
       <h2>News</h2>
       <nz-radio-group [(ngModel)]="thisYear">
+        <label nz-radio nzValue="2021">21</label>
         <label nz-radio nzValue="2020">20</label>
         <label nz-radio nzValue="2019">19</label>
         <label nz-radio nzValue="2018">18</label>
       </nz-radio-group>
     </div>
     <div nz-col nzSpan="22">
+      <ul *ngIf="thisYear === '2021'">
+        <li>
+          <strong>March 31-April 2</strong>
+          – I will attend the <a href="https://nerccs2021.github.io/">Northeast Regional Conference on Complex
+          Systems</a> virtually.
+        </li>
+        <li>
+          <strong>January 6–9</strong>
+          – I will attend the <a href="https://www.jointmathematicsmeetings.org/meetings/national/jmm2021/2247_intro">Joint
+          Math Meetings</a> virtually.
+        </li>
+      </ul>
       <ul *ngIf="thisYear === '2020'">
-        <!--        <li style="color: #DDDDDD;">-->
-        <!--          <strong>June 14 – July 10</strong>-->
-        <!--          – [Canceled in response to COVID-19 pandemic] I will attend the-->
-        <!--          <a href="https://www.santafe.edu/engage/learn/schools/sfi-complex-systems-summer-school"-->
-        <!--             style="color: #DDDDDD; text-decoration: underline">Complex-->
-        <!--            Systems Summer School</a> in Santa Fe, NM.-->
-        <!--        </li>-->
+
         <!--        <li style="color: #DDDDDD;">-->
         <!--          <strong>June 8–12</strong>-->
         <!--          – [Canceled in response to COVID-19 pandemic] I will attend the <a href="https://tgda.osu.edu/atmcs2020/"-->
@@ -148,6 +155,13 @@
           <strong>January 15–18</strong>
           – I am attending the <a href="http://jointmathematicsmeetings.org/meetings/national/jmm2020/2245_intro">Joint
           Math Meetings</a> in Denver, CO.
+        </li>
+        <li style="color: #AAAAAA;">
+          <strong>June 14 – July 10</strong>
+          – [Canceled in response to COVID-19 pandemic] I will attend the
+          <a href="https://www.santafe.edu/engage/learn/schools/sfi-complex-systems-summer-school"
+             style="color: #AAAAAA; text-decoration: underline">Complex
+            Systems Summer School</a> in Santa Fe, NM.
         </li>
       </ul>
       <ul *ngIf="thisYear === '2019'">
@@ -211,16 +225,6 @@
           Engineering and Applied Science at CU Boulder!
         </li>
       </ul>
-    </div>
-  </div>
-  <div style="height: 20px;">
-  </div>
-  <!-- Banner section -->
-  <div nz-row nzType="flex" nzJustify="start">
-    <div nz-col nzSpan="24">
-      <a href="https://my.fsf.org/join?referrer=2272401">
-        <img src="https://static.fsf.org/nosvn/associate/crm/2272401.png" height="40pt">
-      </a>
     </div>
   </div>
 </div>

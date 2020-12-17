@@ -48,9 +48,26 @@
       <router-outlet></router-outlet>
     </div>
   </div>
+
   <div nz-col nzSpan="24">
+    <!-- Banner section -->
+    <div nz-row nzType="flex" nzJustify="start" style="height: 40px">
+      <div *ngIf="isDonationBannerShown" nz-col nzSpan="4">
+      </div>
+      <div *ngIf="isDonationBannerShown" nz-col nzSpan="4" style="margin-top: -15px;">
+        <h5>Proudly support</h5>
+        <a href="https://freedom.press/">
+          <img src="../assets/img/fpf-logo.png" height="23pt" alt="fpf">
+        </a>
+      </div>
+      <div *ngIf="isDonationBannerShown" nz-col nzSpan="4">
+        <a href="https://my.fsf.org/join?referrer=2272401">
+          <img src="https://static.fsf.org/nosvn/associate/crm/2272401.png" height="40pt" alt="fsf">
+        </a>
+      </div>
+    </div>
     <nz-footer nz-col nzSpan="24" id="footer">
-      © Since 2016 Tzu-Chi Yen | Last update: Nov. 18, 2020 |
+      © Since 2016 Tzu-Chi Yen | Last update: Dec. 16, 2020 |
       <a href="https://github.com/junipertcy/homepage" target="_blank" style="color: rgba(0,0,0,.65);">
         <i nz-icon nzType="code" nzTheme="outline"></i>
       </a>

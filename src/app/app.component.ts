@@ -13,6 +13,7 @@ export class AppComponent {
   title = 'app';
   isCollapsed = false;
   screenHeight: number;
+  isDonationBannerShown = true;
   // screenWidth: number;
 
   logoClick = function () {
@@ -37,7 +38,9 @@ export class AppComponent {
   constructor(private router: Router, private titleService: Title) {
     this.getScreenSize();
     router.events.subscribe((event) => {  // fires on every URL change
-      console.log(router);
+      if (router.url !== '/') {
+        this.isDonationBannerShown = false;
+      }
       this.setTitle(this.getTitleFromRouter(router));
     });
   }
@@ -45,7 +48,8 @@ export class AppComponent {
   // https://stackoverflow.com/questions/39888768
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
-    this.screenHeight = window.innerHeight - 64 - 70;  // 64px: header height; 70px: footer height
+    // 64px: header height; 70px: footer height; 40px: banner row;
+    this.screenHeight = window.innerHeight - 64 - 70 - 40;
     // this.screenWidth = window.innerWidth;
     // console.log(this.screenHeight, this.screenWidth);
   }

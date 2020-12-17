@@ -12,7 +12,7 @@ export class NewsComponent {
   // onChange(result: Date): void {
   //   console.log('onChange: ', result);
   // }
-  thisYear = '2020';
+  thisYear = '2021';
   faMastodon = faMastodon;
   faGithub = faGithub;
   faTwitter = faTwitter;
