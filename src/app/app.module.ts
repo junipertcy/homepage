@@ -58,8 +58,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       {
-        enableTracing: true,  // <-- debugging purposes only
-        useHash: false}
+    enableTracing: true,
+    useHash: false,
+    relativeLinkResolution: 'legacy'
+}
     ),
     BrowserModule,
     FormsModule,
