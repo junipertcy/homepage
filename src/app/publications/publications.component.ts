@@ -7,6 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class PublicationsComponent implements OnInit {
   // all the papers...
+  arXiv_2106_00185 = false;
   srep20542 = false;
   anie201510885 = false;
   jz4011477 = false;
