@@ -58,10 +58,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       {
-    enableTracing: true,
-    useHash: false,
-    relativeLinkResolution: 'legacy'
-}
+        enableTracing: true,
+        useHash: false,
+        relativeLinkResolution: 'legacy'
+      }
     ),
     BrowserModule,
     FormsModule,
@@ -69,7 +69,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     NgZorroAntdModule,
     NgbModule,
-    FontAwesomeModule,  // ng-bootstrap
+    FontAwesomeModule,
+    // ng-bootstrap
   ],
   providers: [
     Title,

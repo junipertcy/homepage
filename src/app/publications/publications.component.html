@@ -2,20 +2,6 @@
   <div nz-row nzJustify="space-between">
   </div>
   <div nz-row nzJustify="space-between">
-    <!--    <div nz-col nzSpan="8">-->
-    <!--      <h2>Preprints</h2>-->
-    <!--    </div>-->
-    <!--    <div nz-col nzSpan="12">-->
-    <!--      <p style="text-align: right;">-->
-    <!--        Favorites: <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>;-->
-    <!--        Loglines: <i nz-icon nzType="edit" nzTheme="fill"></i>-->
-    <!--      </p>-->
-    <!--    </div>-->
-    <!--    <ol>-->
-    <!--      <li>(insert new items here)</li>-->
-    <!--    </ol>-->
-    <!--    <div nz-col nzSpan="24" style="height: 20px;"></div>-->
-
     <div nz-col nzSpan="24">
       <div nz-row nzJustify="space-between">
         <div nz-col nzSpan="8">
@@ -24,148 +10,52 @@
         <div nz-col nzSpan="12">
           <p style="text-align: right; margin-bottom: 0">
             Favorites: <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>;
-            Loglines: <i nz-icon nzType="edit" nzTheme="fill"></i>
+            Short summary: <i nz-icon nzType="edit" nzTheme="fill"></i>
           </p>
         </div>
         <ol>
-          <li value="1">
-            <h4>Construction of Simplicial Complexes with Prescribed Degree-Size Sequences
-              <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
-              <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="arXiv_2106_00185 = !arXiv_2106_00185"
-                      style="cursor: pointer;">
+          <li *ngFor="let article of preprints; let i = index;" [attr.value]="preprints.length - i">
+            <h4>{{article.title}}
+              <i *ngIf="article.favorite" nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
+              <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
                 <i nz-icon nzType="edit" nzTheme="fill"></i>
               </nz-tag>
             </h4>
-            Tzu-Chi Yen
-            <br>
-            arXiv: <a href="https://arxiv.org/abs/2106.00185">2106.00185</a> [cs.SI, cs.DS, math.AT, math.CO,
-            physics.soc-ph]
-            <br>
-            <nz-tag><a href="https://wiki.junipertcy.info/images/0/03/2106.00185.pdf">Preprint PDF</a>
-            </nz-tag>
-            <nz-tag><a href="https://github.com/junipertcy/simplicial-test">Code</a>
-            </nz-tag>
-            <nz-tag><a href="https://docs.netscied.tw/simplicial-test/index.html">Docs</a>
-            </nz-tag>
-            <div class='abstract' *ngIf="arXiv_2106_00185 == true">Simpliciality testing, an in general NP-complete
-              problem, asks
-              whether a given pair of integer sequences can realize a simplicial complex. In this Preprint we make
-              essential steps towards solving this problem, demonstrating that on most instances simpliciality can be
-              decided in polynomial time. Coupling our algorithmic output to existing techniques, we can efficiently
-              sample simplicial ensembles from arbitrary node degree and facet size distributions. This opens an avenue
-              for the quantitative study of higher-order network phenomena in terms of local structural attributes.
+            <span>{{article.authors}}<br></span>
+            <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
+            <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
+            <nz-tag *ngIf="article.preprint_pdf"><a href="{{article.preprint_pdf}}">Preprint PDF</a></nz-tag>
+            <nz-tag *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
+            <nz-tag *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
+            <nz-tag *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+            <div class='abstract' *ngIf="article.toggle == true">{{article.summary}}
             </div>
-
           </li>
         </ol>
-        <div nz-col nzSpan="24" style="height: 20px;"></div>
-        <div nz-col nzSpan="8">
-          <!-- To add a Preprints section, change 8 to 24, and then move the nzSpan="12" section above. -->
-          <h2>Journal Articles</h2>
-          <!--    <div nz-col nzSpan="12">-->
-          <!--    </div>-->
-        </div>
       </div>
     </div>
+    <div nz-col nzSpan="24" style="height: 20px;"></div>
+    <div nz-col nzSpan="24">
+      <h2>Journal Articles</h2>
+    </div>
     <ol>
-      <li value="6">
-        <h4>Community detection in bipartite networks with stochastic block models
-          <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="sub1 = !sub1" style="cursor: pointer;">
+      <li *ngFor="let article of articles; let i = index;" [attr.value]="articles.length - i">
+        <h4>{{article.title}}
+          <i *ngIf="article.favorite" nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
+          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
             <i nz-icon nzType="edit" nzTheme="fill"></i>
           </nz-tag>
         </h4>
-        Tzu-Chi Yen and Daniel B. Larremore
-        <br>
-        Phys. Rev. E 102, 032309 (2020)
-        <br>
-        DOI: <a href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.102.032309">10.1103/PhysRevE.102.032309</a>
-        <br>
-        arXiv: <a href="https://arxiv.org/abs/2001.11818">2001.11818</a>
-        <br>
-        <nz-tag><a href="https://wiki.junipertcy.info/images/b/be/Research-paper-2020-PRE.pdf">Paper PDF</a>
-        </nz-tag>
-        <nz-tag><a href="https://github.com/junipertcy/bipartiteSBM">Code</a>
-        </nz-tag>
-        <nz-tag><a href="https://docs.netscied.tw/bipartiteSBM/index.html">Docs</a>
-        </nz-tag>
-        <nz-tag><a href="https://twitter.com/DanLarremore/status/1224439980031787009"><i nz-icon nzType="twitter"
-                                                                                         nzTheme="outline"></i></a>
-        </nz-tag>
-        <div class='abstract' *ngIf="sub1 == true">We solve the community detection problem for bipartite networks using
-          a nonparametric Bayesian stochastic blockmodel which is specifically customized for bipartite networks.
-        </div>
-      </li>
-      <li value="5">
-        <h4>Nanoscopic substructures of raft-mimetic
-          liquid-ordered membrane domains revealed by high-speed single-particle tracking
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="srep20542 = !srep20542"
-                  style="cursor: pointer;">
-            <i nz-icon nzType="edit" nzTheme="fill"></i>
-          </nz-tag>
-        </h4>
-        Hsiao-Mei Wu, Ying-Hsiu Lin, Tzu-Chi Yen, and Chia-Lung Hsieh
-        <br>
-        <i>Scientific Reports</i>, <b>6</b> (20542), 2016.
-        <br>
-        DOI: <a href="https://www.nature.com/articles/srep20542">10.1038/srep20542</a>
-        <br>
-        <nz-tag><a
-          href="https://wiki.junipertcy.info/images/6/64/Research-paper-2016-ScientificReports.pdf">Paper PDF</a>
-        </nz-tag>
-        <div class='abstract' *ngIf="srep20542 == true">We use high-speed interferometric scattering (iSCAT) optical
-          microscopy and small gold nanoparticles as labels, recording the motions of single lipids via
-          single-particle tracking (SPT), which provides the first experimental evidence of non-uniform
-          molecular organization of the lipid phase, giving a new view of how rafts recruit and confine
-          molecules in cell membranes.
-        </div>
-      </li>
-      <li value="4">
-        <h4>A Rhizavidin Monomer with Nearly Multimeric
-          Avidin-Like Binding Stability Against Biotin Conjugates
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="anie201510885 = !anie201510885"
-                  style="cursor: pointer;">
-            <i nz-icon nzType="edit" nzTheme="fill"></i>
-          </nz-tag>
-        </h4>
-        Jeong Min Lee, Jung A Kim, Tzu-Chi Yen, In Hwan Lee, Byungjun Ahn, Younghoon Lee, Chia-Lung Hsieh, Ho
-        Min Kim, and Yongwon Jung
-        <br>
-        <i>Angewandte Chemie</i>, <b>128</b> (10), 2016, Pages 3454-3458.
-        <br>
-        DOI: <a href="http://dx.doi.org/10.1002/anie.201510885">10.1002/anie.201510885</a>
-        <br>
-        <nz-tag>
-          <a href="https://wiki.junipertcy.info/images/0/05/Research-paper-2016-AngewandteChemie.pdf">Paper PDF</a>
-        </nz-tag>
-        <div class='abstract' *ngIf="anie201510885 == true">We provide experimental
-          chracterization for a monomeric avidin-like protein, with off-rates almost
-          comparable to those of multimeric avidin proteins against various biotin conjugates.
-        </div>
-      </li>
-      <li value="3">
-        <h4>Clustered Geometries Exploiting Quantum Coherence Effects for Efficient Energy Transfer in Light Harvesting
-          <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="jz4011477 = !jz4011477"
-                  style="cursor: pointer;">
-            <i nz-icon nzType="edit" nzTheme="fill"></i>
-          </nz-tag>
-        </h4>
-        Qing Ai, Tzu-Chi Yen, Bih-Yaw Jin, and Yuan-Chung Cheng
-        <br>
-        <i>J. Phys. Chem. Lett.</i>, <b>4</b> (15), 2013, Pages 2577–2584.
-        <br>
-        DOI: <a href="https://pubs.acs.org/doi/abs/10.1021/jz4011477">10.1021/jz4011477</a>
-        <br>
-        arXiv: <a href="https://arxiv.org/abs/1307.5590">1307.5590</a>
-        <br>
-        <nz-tag><a href="https://wiki.junipertcy.info/images/b/bc/Research-paper-2013-JPCL.pdf">Paper
-          PDF</a>
-        </nz-tag>
-        <div class='abstract' *ngIf="jz4011477 == true">We study energy transfer in a linear
-          light-harvesting model to reveal that dimerized geometries with strong electronic coherences within
-          donor and acceptor pairs exhibit significantly improved efficiency, which is in marked contrast to
-          predictions of the classical Förster theory.
+        <span>{{article.authors}}<br></span>
+        <span [innerHTML]="article.venue"></span>
+        <span>DOI: <a href="{{article.doi}}">{{article.doi_str}}</a><br></span>
+        <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
+        <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
+        <nz-tag *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
+        <nz-tag *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
+        <nz-tag *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
+        <nz-tag *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+        <div class='abstract' *ngIf="article.toggle == true">{{article.summary}}
         </div>
       </li>
     </ol>
@@ -174,59 +64,23 @@
       <h2>Conference Proceedings</h2>
     </div>
     <ol>
-      <li value="2">
-        <h4>What Makes New York So Noisy? Reasoning Noise Pollution by Mining Multimodal Geo-Social Big Data
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="acm2809931 = !acm2809931"
-                  style="cursor: pointer;">
+      <li *ngFor="let article of proceedings; let i = index;" [attr.value]="proceedings.length - i">
+        <h4>{{article.title}}
+          <i *ngIf="article.favorite" nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
+          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
             <i nz-icon nzType="edit" nzTheme="fill"></i>
           </nz-tag>
         </h4>
-        Hsun-Ping Hsieh, Tzu-Chi Yen, and Cheng-Te Li
-        <br>
-        <i>ACM International Conference on Multimedia</i>, Brisbane, Australia, Oct. 2015.
-        <br>
-        DOI: <a href="https://dl.acm.org/doi/10.1145/2733373.2809931">10.1145/2733373.2809931</a>
-        <br>
-        IBM Grand Challenge (<a href="http://wiki.junipertcy.info/images/a/ae/ACMMM15-Grand_Challenge-Proposal.pdf"
-                                download="ACMMM15-Grand_Challenge-Proposal.pdf">New York City 360 ̊ </a>) finalist.
-        <br>
-        <nz-tag><a href="https://wiki.junipertcy.info/images/7/78/Research-paper-2015-acmmm.pdf">Paper
-          PDF</a>
-        </nz-tag>
-        <nz-tag><a href="http://wiki.junipertcy.info/images/c/c7/Research-talk-151028-acmmm.pptx">Slides</a>
-        </nz-tag>
-        <nz-tag><a href="https://github.com/junipertcy/uwalk">Code</a></nz-tag>
-        <div class='abstract' *ngIf="acm2809931 == true">Using NYC 311 noise complaint records as the
-          approximation of noise pollution for validation, we develop a joint inference and visualization
-          system that integrates multimodal features, including geographical, mobility, visual, and social,
-          with a graph-based learning model to infer the noise compositions of regions.
-        </div>
-      </li>
-      <li value="1">
-        <h4>Electronic Coherence Effects in Photosynthetic Light Harvesting
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="S1876619611000672 = !S1876619611000672"
-                  style="cursor: pointer;">
-            <i nz-icon nzType="edit" nzTheme="fill"></i>
-          </nz-tag>
-        </h4>
-        Tzu-Chi Yen and Yuan-Chung Cheng
-        <br>
-        The 22<sup>nd</sup> Solvay Conference on Chemistry at Brussels, <i>Procedia Chemistry</i>, <b>3</b> (1), 2011,
-        Pages 211-221.
-        <br>
-        DOI: <a
-        href="http://www.sciencedirect.com/science/article/pii/S1876619611000672">10.1016/j.proche.2011.08.028</a>
-        <br>
-        The Solvay Conference is famous for its <a href="https://en.wikipedia.org/wiki/Solvay_Conference">fifth
-        one</a> in October 1927 on Electrons and Photons.
-        <br>
-        <nz-tag><a
-          href="https://wiki.junipertcy.info/images/4/4a/Research-paper-2011-ProcediaChemistry.pdf">Paper PDF</a>
-        </nz-tag>
-        <div class='abstract' *ngIf="S1876619611000672 == true">We review studies on quantum coherence
-          effects in the LH2 antenna complex from purple bacteria to demonstrate how quantum mechanical rules
-          play important roles in the speedup of excitation energy transfer, the stabilization of electronic
-          excitations, and the robustness of light harvesting in photosynthesis.
+        <span>{{article.authors}}<br></span>
+        <span [innerHTML]="article.venue"></span>
+        <span>DOI: <a href="{{article.doi}}">{{article.doi_str}}</a><br></span>
+        <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
+        <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
+        <nz-tag *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
+        <nz-tag *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
+        <nz-tag *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
+        <nz-tag *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+        <div class='abstract' *ngIf="article.toggle == true">{{article.summary}}
         </div>
       </li>
     </ol>
@@ -235,25 +89,22 @@
       <h2>Other Articles</h2>
     </div>
     <ol class="nocount">
-      <li>
-        <h4>An Interactive Visualization System to Analyze and Predict Urban Construction Dynamics
-          <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="urbcomp2015 = !urbcomp2015"
-                  style="cursor: pointer;">
+      <li *ngFor="let article of other_articles;">
+        <h4>{{article.title}}
+          <i *ngIf="article.favorite" nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
+          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
             <i nz-icon nzType="edit" nzTheme="fill"></i>
           </nz-tag>
         </h4>
-        Tzu-Chi Yen, Tzu-Yun Lin, Ching-Yuan Yeh, Hsun-Ping Hsieh, and Cheng-Te Li
-        <br>
-        <i>ACM SIGKDD International Workshop on Urban Computing</i>, Sydney, Australia, Aug. 2015.
-        <br>
-        <nz-tag><a href="https://wiki.junipertcy.info/images/a/a5/Research-paper-2015-urbcomp.pdf">Paper PDF</a>
-        </nz-tag>
-        <nz-tag><a href="http://wiki.junipertcy.info/images/d/d1/Research-talk-150810-urbcomp.pdf">Slides</a></nz-tag>
-        <nz-tag><a href="https://github.com/junipertcy/uConstruction">Code</a></nz-tag>
-        <div class='abstract' *ngIf="urbcomp2015 == true">We develop an analytic and visualization
-          system for citizens and government agencies to understand, track, and predict the construction
-          dynamics in an urban area.
+        <span>{{article.authors}}<br></span>
+        <span [innerHTML]="article.venue"></span>
+        <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
+        <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
+        <nz-tag *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
+        <nz-tag *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
+        <nz-tag *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
+        <nz-tag *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+        <div class='abstract' *ngIf="article.toggle == true">{{article.summary}}
         </div>
       </li>
     </ol>
@@ -262,28 +113,19 @@
       <h2>Translations</h2>
     </div>
     <ol class="nocount">
-      <li>
-        <h4>Complexity Explained</h4>
-        Chia-Hung Yang and Tzu-Chi Yen
-        <br>
-        We provide the translation in Traditional Chinese (Mandarin) to support the <a
-        href="https://complexityexplained.github.io/">#ComplexityExplained</a> project.
-        <br>
-        <nz-tag><a href="https://complexityexplained.github.io/ComplexityExplained[Chinese].pdf">Booklet PDF</a>
-        </nz-tag>
-      </li>
-      <li>
-        <h4>Network Literacy: Essential Concepts and Core Ideas</h4>
-        Tzu-Chi Yen and Cheng-Te Li
-        <br>
-        We provide the translation in Traditional Chinese (Mandarin) as a joint work with the <a
-        href="https://netscied.tw/">Network Science Education (NetSciEd) in Taiwan</a> project.
-        <br>
-        <nz-tag><a
-          href="http://wiki.junipertcy.info/images/c/ce/Network_Literacy_tw_Mandarin.pdf">Booklet PDF</a>
-        </nz-tag>
-        <nz-tag><a href="http://wiki.junipertcy.info/images/f/fb/NetSci2016_notes_korean.pdf">NetSci2016
-          참가기</a></nz-tag>
+      <li *ngFor="let article of translations;">
+        <h4>{{article.title}}</h4>
+        <span>{{article.authors}}<br></span>
+        <span [innerHTML]="article.venue"></span>
+        <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
+        <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
+        <nz-tag *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
+        <nz-tag *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
+        <nz-tag *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
+        <nz-tag *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+        <nz-tag *ngFor="let link of article.links"><a href="{{link.url}}">{{link.title}}</a></nz-tag>
+        <div class='abstract' *ngIf="article.toggle == true">{{article.summary}}
+        </div>
       </li>
     </ol>
   </div>
