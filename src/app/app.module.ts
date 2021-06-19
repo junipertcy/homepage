@@ -27,6 +27,7 @@ import { TeachingComponent } from './teaching/teaching.component';
 import { Str2urlPipe } from './str2url.pipe';
 import { TalksComponent } from './talks/talks.component';
 import { ActivitiesComponent } from './activities/activities.component';
+import { CllinComponent } from './cllin/cllin.component';
 
 const icons: IconDefinition[] = [ ShareAltOutline, BookOutline, DownloadOutline, ReadOutline, LaptopOutline ];
 
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
   { path: 'activities', component: ActivitiesComponent },
   { path: 'publications', component: PublicationsComponent },
   { path: 'teaching', component: TeachingComponent },
+  { path: 'cllin', component: CllinComponent },
 ];
 
 @NgModule({
@@ -53,6 +55,7 @@ const appRoutes: Routes = [
     TeachingComponent,
     TalksComponent,
     ActivitiesComponent,
+    CllinComponent,
   ],
   imports: [
     RouterModule.forRoot(

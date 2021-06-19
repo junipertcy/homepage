@@ -64,17 +64,17 @@
           <fa-icon [icon]="faTwitter"></fa-icon>
         </a>
       </li>
-      <li>
-        <a href="https://social.skewed.de/@tzuchi" target="_blank" rel="me">
-          <fa-icon [icon]="faMastodon"></fa-icon>
-        </a>
-      </li>
+<!--      <li>-->
+<!--        <a href="https://social.skewed.de/@tzuchi" target="_blank" rel="me">-->
+<!--          <fa-icon [icon]="faMastodon"></fa-icon>-->
+<!--        </a>-->
+<!--      </li>-->
     </ul>
   </div>
   <div style="height: 20px; ">
   </div>
   <!-- News section -->
-  <div nz-row nzJustify="start" style="min-height: 350px; " id="news">
+  <div nz-row nzJustify="start" style="height: 350px;" id="news">
     <div nz-col class="gutter-row" nzSpan="2">
       <h2>News</h2>
       <nz-radio-group [(ngModel)]="thisYear">
@@ -84,7 +84,7 @@
         <label nz-radio nzValue="2018">18</label>
       </nz-radio-group>
     </div>
-    <div nz-col nzSpan="22">
+    <div nz-col nzSpan="22" style="overflow: auto; height: 100%; ">
       <ul *ngIf="thisYear === '2021'">
         <li>
           <strong>June 21-July 10</strong>
@@ -230,6 +230,19 @@
           Engineering and Applied Science at CU Boulder!
         </li>
       </ul>
+    </div>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row nzJustify="start" style="min-height: 350px; ">
+    <div nz-col class="gutter-row" nzSpan="2">
+      <h3>Links</h3>
+    </div>
+    <div nz-col nzSpan="22">
+      <ol class="nocount">
+        <li style="list-style-type: circle; margin: 0px 0 0 0; padding-bottom: 1em; cursor: pointer" routerLink="/cllin">
+          <p>A tribute to Ching-Liang Lin</p>
+        </li>
+      </ol>
     </div>
   </div>
 </div>

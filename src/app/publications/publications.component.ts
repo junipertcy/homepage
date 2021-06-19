@@ -7,9 +7,7 @@ import {Article, ArXiv} from './paper';
   styleUrls: ['./publications.component.css']
 })
 
-
 export class PublicationsComponent implements OnInit {
-  urbcomp2015 = false;
   // Preprints
   p1 = new ArXiv('2106.00185');
   preprints = [this.p1];
@@ -64,7 +62,7 @@ export class PublicationsComponent implements OnInit {
 
     this.j2.title = 'A Rhizavidin Monomer with Nearly Multimeric Avidin-Like Binding Stability Against Biotin Conjugates';
     this.j2.authors = 'Jeong Min Lee, Jung A Kim, Tzu-Chi Yen, In Hwan Lee, Byungjun Ahn, Younghoon Lee, Chia-Lung Hsieh, Ho Min Kim, and Yongwon Jung';
-    this.j2.venue = 'Angewandte Chemie 128, 3454 (2016)<br>';
+    this.j2.venue = 'Angewandte Chemie 55, 3393 (2016)<br>';
     this.j2.paper_pdf = 'https://d.junipertcy.info/images/0/05/Research-paper-2016-AngewandteChemie.pdf';
     this.j2.summary = 'We provide experimental chracterization for a monomeric avidin-like protein, with off-rates almost comparable to those of multimeric avidin proteins against various biotin conjugates.';
 

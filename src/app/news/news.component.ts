@@ -4,7 +4,7 @@ import {faMastodon, faGithub, faTwitter} from '@fortawesome/free-brands-svg-icon
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css', '../../../node_modules/academicons/css/academicons.min.css']
+  styleUrls: ['./news.component.css', '../../../node_modules/academicons/css/academicons.min.css'],
 })
 
 export class NewsComponent {
