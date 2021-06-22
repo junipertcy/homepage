@@ -13,13 +13,13 @@
         <h3>Scientific interests</h3>
         <div nz-row nzJustify="start">
           <div nz-col nzSpan="22">
-            <a href="https://en.wikipedia.org/wiki/Statistical_inference">Statistical Inference</a>
+            <a href="{{wiki_stat_inf}}">Statistical Inference</a>
             &amp;
-            <a href="https://en.wikipedia.org/wiki/Topological_data_analysis">Applied Topology</a>
+            <a href="{{wiki_tda}}">Applied Topology</a>
             <br>
-            <a href="https://en.wikipedia.org/wiki/Complex_system">Complex Systems</a>
+            <a href="{{wiki_comp_sys}}">Complex Systems</a>
             &amp;
-            <a href="https://en.wikipedia.org/wiki/Computational_social_science">Computational Social Science</a>
+            <a href="{{wiki_css}}">Computational Social Science</a>
           </div>
         </div>
       </div>
@@ -36,6 +36,8 @@
             <i nz-icon nzType="lock" nzTheme="outline" class="pgp-key"></i>
             <a href="https://keys.openpgp.org/search?q=tzuchi.yen%40colorado.edu"
                target="_blanks">49B1556E</a>
+            &nbsp;<a href="{{ssd_eff}}" target="_blank" style="font-size: x-small">(why?)</a>
+
           </div>
         </div>
       </div>
@@ -64,11 +66,11 @@
           <fa-icon [icon]="faTwitter"></fa-icon>
         </a>
       </li>
-<!--      <li>-->
-<!--        <a href="https://social.skewed.de/@tzuchi" target="_blank" rel="me">-->
-<!--          <fa-icon [icon]="faMastodon"></fa-icon>-->
-<!--        </a>-->
-<!--      </li>-->
+      <!--      <li>-->
+      <!--        <a href="https://social.skewed.de/@tzuchi" target="_blank" rel="me">-->
+      <!--          <fa-icon [icon]="faMastodon"></fa-icon>-->
+      <!--        </a>-->
+      <!--      </li>-->
     </ul>
   </div>
   <div style="height: 20px; ">
@@ -87,18 +89,45 @@
     <div nz-col nzSpan="22" style="overflow: auto; height: 100%; ">
       <ul *ngIf="thisYear === '2021'">
         <li>
+          <strong>July 19-21</strong>
+          - Attending the SIAM <a href="{{acda21}}" target="_blank">Conference on Applied and Computational Discrete
+          Algorithms</a>.
+        </li>
+        <li>
+          <strong>July 12-20</strong>
+          - Attending the IEEE <a href="{{isit21}}" target="_blank">International Symposium on
+          Information Theory</a>.
+        </li>
+        <li class="indent">
+          Check out the annual <a href="http://conferences.ece.ubc.ca/nasit2021/index.html" target="_blank">North
+          American School of Information Theory.</a>
+        </li>
+        <li>
           <strong>June 21-July 10</strong>
-          – I am attending <a href="https://networks2021.net/">Networks 2021</a> virtually.
+          – I am attending <a href="{{networks21}}">Networks 2021</a> virtually.
+        </li>
+        <li class="indent">
+          The Society of Young Network Scientists has a pre-conference event, themed "Alternative forms of science
+          communication". Check out this <a href="https://twitter.com/official_SYNS/status/1406013557808959493"
+                                            target="_blank">tweet</a>.
+        </li>
+        <li class="indent">
+          Highlight these satellites:
+          <a href="https://sinm.network/" target="_blank">SINM</a>,
+          <a href="https://hons-web.github.io/online/" target="_blank">HONS</a>,
+          <a href="https://sites.google.com/view/toponets2021/home-page" target="_blank">TopoNets</a>, and
+          <a href="https://sites.google.com/view/netscied-2021/home-page" target="_blank">NetSciEd</a>;
+          for a full list, see <a href="https://networks2021.net/satellites" target="_blank">this page</a>.
         </li>
         <li>
           <strong>March 31-April 2</strong>
-          – I will attend the <a href="https://nerccs2021.github.io/">Northeast Regional Conference on Complex
-          Systems</a> virtually.
+          – Attending the <a href="https://nerccs2021.github.io/">Northeast Regional Conference on Complex
+          Systems</a>.
         </li>
         <li>
           <strong>January 6–9</strong>
-          – I will attend the <a href="https://www.jointmathematicsmeetings.org/meetings/national/jmm2021/2247_intro">Joint
-          Math Meetings</a> virtually.
+          – Attending the <a href="https://www.jointmathematicsmeetings.org/meetings/national/jmm2021/2247_intro">Joint
+          Math Meetings</a>.
         </li>
       </ul>
       <ul *ngIf="thisYear === '2020'">
@@ -239,7 +268,8 @@
     </div>
     <div nz-col nzSpan="22">
       <ol class="nocount">
-        <li style="list-style-type: circle; margin: 0px 0 0 0; padding-bottom: 1em; cursor: pointer" routerLink="/cllin">
+        <li style="list-style-type: circle; margin: 0px 0 0 0; padding-bottom: 1em; cursor: pointer"
+            routerLink="/cllin">
           <p>A tribute to Ching-Liang Lin</p>
         </li>
       </ol>
