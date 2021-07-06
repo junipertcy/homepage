@@ -27,7 +27,6 @@ import { TeachingComponent } from './teaching/teaching.component';
 import { Str2urlPipe } from './str2url.pipe';
 import { TalksComponent } from './talks/talks.component';
 import { ActivitiesComponent } from './activities/activities.component';
-import { CllinComponent } from './cllin/cllin.component';
 
 const icons: IconDefinition[] = [ ShareAltOutline, BookOutline, DownloadOutline, ReadOutline, LaptopOutline ];
 
@@ -35,6 +34,9 @@ const icons: IconDefinition[] = [ ShareAltOutline, BookOutline, DownloadOutline,
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CllinComponent } from './cllin/cllin.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { ResourcesComponent } from './resources/resources.component';
 registerLocaleData(en);
 
 const appRoutes: Routes = [
@@ -44,6 +46,8 @@ const appRoutes: Routes = [
   { path: 'publications', component: PublicationsComponent },
   { path: 'teaching', component: TeachingComponent },
   { path: 'cllin', component: CllinComponent },
+  { path: 'privacy', component: PrivacyComponent },
+  { path: 'resources', component: ResourcesComponent },
 ];
 
 @NgModule({
@@ -56,6 +60,8 @@ const appRoutes: Routes = [
     TalksComponent,
     ActivitiesComponent,
     CllinComponent,
+    PrivacyComponent,
+    ResourcesComponent,
   ],
   imports: [
     RouterModule.forRoot(

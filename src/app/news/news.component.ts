@@ -24,8 +24,6 @@ export class NewsComponent {
   wiki_comp_sys = 'https://en.wikipedia.org/wiki/Complex_system';
   wiki_css = 'https://en.wikipedia.org/wiki/Computational_social_science';
 
-  ssd_eff = 'https://ssd.eff.org/en/module/communicating-others';
-
   acda21 = 'https://www.siam.org/conferences/cm/conference/acda21';
   isit21 = 'https://2021.ieee-isit.org/';
   networks21 = 'https://networks2021.net/';

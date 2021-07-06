@@ -45,6 +45,14 @@ export class Str2urlPipe implements PipeTransform {
         return 'http://danlarremore.com/';
       case 'Vincent Traag':
         return 'http://www.traag.net/';
+      case 'Joseph Rotman':
+        return 'https://math.illinois.edu/resources/department-history/faculty-memoriam/joseph-rotman';
+      case 'Charles Weibel':
+        return 'https://sites.math.rutgers.edu/~weibel/';
+      case 'Emily Riehl':
+        return 'https://math.jhu.edu/~eriehl/';
+      case 'Tom Leinster':
+        return 'https://www.maths.ed.ac.uk/~tl/';
       //  Tools
       case 'Graph-tool':
         return 'https://graph-tool.skewed.de/';

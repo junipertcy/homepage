@@ -1,0 +1,32 @@
+<p style="color: red;">
+  This page is under construction (as of Jul 5, 2021).
+  The URL is not exposed, though you may reach here via search engines.
+</p>
+<p>
+  Here are some resources I find useful for my research.
+</p>
+<div style="text-align: justify; text-justify: inter-word;">
+  <h3>
+    Homological algebra
+  </h3>
+  <ul>
+    <li *ngFor="let book of homological_algebra;">
+      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+    </li>
+  </ul>
+  <p>
+    Thanks to Lee Lady's <a class="name" href="{{lee_lady_blurbs}}">blurbs</a>, I also like Jans, <i>Rings and
+    Homology</i> (1964) and Sharpe and Vamos, <i>Injective Modules</i> (1975), which are out of print.
+  </p>
+  <h3>
+    Category theory
+  </h3>
+  <ul>
+    <li *ngFor="let book of category_theory;">
+      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+    </li>
+  </ul>
+</div>
+
