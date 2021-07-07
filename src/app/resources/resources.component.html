@@ -6,6 +6,20 @@
   Here are some resources I find useful for my research.
 </p>
 <div style="text-align: justify; text-justify: inter-word;">
+  <h3>Algebraic topology</h3>
+  <ul>
+    <li *ngFor="let book of at;">
+      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+    </li>
+  </ul>
+  <h3>Computational algebraic topology</h3>
+  <ul>
+    <li *ngFor="let book of cat;">
+      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+    </li>
+  </ul>
   <h3>
     Homological algebra
   </h3>
@@ -28,5 +42,32 @@
       <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
     </li>
   </ul>
+  <h3>
+    Theory of computing
+  </h3>
+  <ul>
+    <li *ngFor="let book of toc;">
+      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+    </li>
+  </ul>
+  <h3>
+    Math of data science
+  </h3>
+  <ul>
+    <li *ngFor="let book of mod;">
+      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+    </li>
+  </ul>
+  <h3>
+    Parametrized complexity
+  </h3>
+  <h3>
+    Information theory
+  </h3>
+  <h3>
+    Bayesian inference
+  </h3>
 </div>
 

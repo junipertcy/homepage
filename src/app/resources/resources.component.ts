@@ -8,6 +8,37 @@ import { Component, OnInit } from '@angular/core';
 export class ResourcesComponent implements OnInit {
 
   lee_lady_blurbs = 'http://www.math.hawaii.edu/~lee/homolog/books-homolog.html';
+
+  at = [
+    {
+      author: 'Allen Hatcher',
+      title: 'Algebraic Topology',
+      title_url: 'https://pi.math.cornell.edu/~hatcher/AT/ATpage.html',
+      year: '2002'
+    },
+    {
+      author: 'Michael Starbird and Francis Su',
+      title: 'Topology Through Inquiry',
+      title_url: 'https://math.hmc.edu/su/topology-through-inquiry/',
+      year: '2019'
+    }
+  ];
+
+  cat = [
+    {
+      author: 'Tamal Dey and Yusu Wang',
+      title: 'Computational Topology for Data Analysis',
+      title_url: 'https://www.cs.purdue.edu/homes/tamaldey/book/CTDAbook/CTDAbook.html',
+      year: '2021'
+    },
+    {
+      author: 'Steve Oudot',
+      title: 'Persistence Theory: From Quiver Representations to Data Analysis',
+      title_url: 'https://geometrica.saclay.inria.fr/team/Steve.Oudot/books/o-pt-fqrtda-15/surv-209.pdf',
+      year: '2015'
+    },
+  ];
+
   homological_algebra = [
     {
       author: 'Joseph Rotman',
@@ -23,12 +54,12 @@ export class ResourcesComponent implements OnInit {
     },
   ];
 
-  theory_of_computing = [
+  toc = [
     {
-      author: 'Joseph Rotman',
-      title: 'An Introduction to Homological Algebra',
-      title_url: 'https://link.springer.com/book/10.1007/b98977',
-      year: '2009'
+      author: 'Avi Wigderson',
+      title: 'Math and Computation',
+      title_url: 'https://www.math.ias.edu/avi/book',
+      year: '2019'
     },
     {
       author: 'Cris Moore and Stephan Mertens',
@@ -50,6 +81,30 @@ export class ResourcesComponent implements OnInit {
       title: 'Basic Category Theory',
       title_url: 'https://www.maths.ed.ac.uk/~tl/bct/',
       year: '2014'
+    },
+  ];
+
+  mod = [
+    {
+      author: 'Roman Vershynin',
+      title: 'High-Dimensional Probability',
+      title_url: 'https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.html',
+      year: '2018'
+    },
+    {
+      author: 'Avrim Blum, John Hopcroft, and Ravi Kannan',
+      title: 'Foundations of Data Science',
+      title_url: 'https://home.ttic.edu/~avrim/book.pdf',
+      year: '2020'
+    },
+  ];
+
+  parametrized_complexity = [
+    {
+      author: 'Rod Downey and Mike Fellows',
+      title: 'Fundamentals of Parameterized Complexity',
+      title_url: 'https://www.springer.com/us/book/9781447155584',
+      year: '2013'
     },
   ];
 

@@ -53,6 +53,14 @@ export class Str2urlPipe implements PipeTransform {
         return 'https://math.jhu.edu/~eriehl/';
       case 'Tom Leinster':
         return 'https://www.maths.ed.ac.uk/~tl/';
+      case 'Allen Hatcher':
+        return 'https://pi.math.cornell.edu/~hatcher/';
+      case 'Avi Wigderson':
+        return 'https://www.math.ias.edu/avi/';
+      case 'Steve Oudot':
+        return 'https://geometrica.saclay.inria.fr/team/Steve.Oudot/';
+      case 'Roman Vershynin':
+        return 'https://www.math.uci.edu/~rvershyn/';
       //  Tools
       case 'Graph-tool':
         return 'https://graph-tool.skewed.de/';
