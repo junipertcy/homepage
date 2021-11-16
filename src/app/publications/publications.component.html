@@ -5,9 +5,9 @@
     <div nz-col nzSpan="24">
       <div nz-row nzJustify="space-between">
         <div nz-col nzSpan="8">
-          <h2>Preprints</h2>
+          <h2 *ngIf="preprints.length > 0">Preprints</h2>
         </div>
-        <div nz-col nzSpan="12">
+        <div nz-col nzSpan="12" *ngIf="preprints.length > 0">
           <p style="text-align: right; margin-bottom: 0">
             Favorites: <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>;
             Short summary: <i nz-icon nzType="edit" nzTheme="fill"></i>
@@ -22,6 +22,7 @@
               </nz-tag>
             </h4>
             <span>{{article.authors}}<br></span>
+            <span *ngIf="article.venue" [innerHTML]="article.venue"></span>
             <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
             <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
             <nz-tag *ngIf="article.preprint_pdf"><a href="{{article.preprint_pdf}}">Preprint PDF</a></nz-tag>
@@ -34,7 +35,13 @@
         </ol>
       </div>
     </div>
-    <div nz-col nzSpan="24" style="height: 20px;"></div>
+<!--    <div nz-col nzSpan="24" style="height: 20px;"></div>-->
+    <div nz-col nzSpan="24" *ngIf="preprints.length == 0">
+      <p style="text-align: right; margin-bottom: 0">
+        Favorites: <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>;
+        Short summary: <i nz-icon nzType="edit" nzTheme="fill"></i>
+      </p>
+    </div>
     <div nz-col nzSpan="24">
       <h2>Journal Articles</h2>
     </div>
@@ -52,6 +59,7 @@
         <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
         <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
         <nz-tag *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
+        <nz-tag *ngIf="article.sm_pdf"><a href="{{article.sm_pdf}}">Suppl. Mat.</a></nz-tag>
         <nz-tag *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
         <nz-tag *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
         <nz-tag *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>

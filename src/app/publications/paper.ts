@@ -22,6 +22,7 @@ abstract class Paper {
 
 export class ArXiv extends Paper {
   preprint_pdf: string;
+  venue: string;
   constructor(readonly arXiv_id: string) {
     super();
     this.arXiv = 'https://arxiv.org/abs/' + arXiv_id;
@@ -31,6 +32,7 @@ export class ArXiv extends Paper {
 export class Article extends Paper {
   venue: string;
   paper_pdf: string;
+  sm_pdf: string;
   doi: string;
   constructor(readonly doi_str = '', public arXiv_id= '') {
     super();

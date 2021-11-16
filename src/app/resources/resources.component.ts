@@ -84,18 +84,30 @@ export class ResourcesComponent implements OnInit {
     },
   ];
 
-  mod = [
+  hdp = [
     {
       author: 'Roman Vershynin',
       title: 'High-Dimensional Probability',
       title_url: 'https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.html',
       year: '2018'
     },
+  ];
+
+  mod = [
     {
       author: 'Avrim Blum, John Hopcroft, and Ravi Kannan',
       title: 'Foundations of Data Science',
       title_url: 'https://home.ttic.edu/~avrim/book.pdf',
       year: '2020'
+    },
+  ];
+
+  differential_geometry = [
+    {
+      author: 'Tristan Needham',
+      title: 'Visual Differential Geometry and Forms',
+      title_url: 'https://www.vdgf.space/',
+      year: '2021'
     },
   ];
 

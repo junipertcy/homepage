@@ -42,7 +42,9 @@ export class Str2urlPipe implements PipeTransform {
       case 'Andy Wuensche':
         return 'http://www.ddlab.org/AW.html';
       case 'Daniel Larremore':
-        return 'http://danlarremore.com/';
+        return 'https://larremorelab.github.io/';
+      case 'Joshua Grochow':
+        return 'https://home.cs.colorado.edu/~jgrochow/index.html';
       case 'Vincent Traag':
         return 'http://www.traag.net/';
       case 'Joseph Rotman':
@@ -61,6 +63,8 @@ export class Str2urlPipe implements PipeTransform {
         return 'https://geometrica.saclay.inria.fr/team/Steve.Oudot/';
       case 'Roman Vershynin':
         return 'https://www.math.uci.edu/~rvershyn/';
+      case 'Tristan Needham':
+        return 'https://www.usfca.edu/faculty/tristan-needham';
       //  Tools
       case 'Graph-tool':
         return 'https://graph-tool.skewed.de/';

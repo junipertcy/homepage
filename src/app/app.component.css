@@ -7,7 +7,7 @@
 }
 
 .layout {
-  width: 1000px;
+  width: 980px;
   background: #ffffff;
   margin: 0 auto;
 }
@@ -34,23 +34,7 @@
   color: #37373a;
 }
 
-#vitae {
-  font-size: 18px !important;
-  font-family: 'Cookie', cursive;
-  vertical-align: top !important;
-  float: left;
-  margin-top: 10px;
-  margin-left: 0;
-  margin-bottom: 5px;
-  letter-spacing: .04em;
-  line-height: normal;
-}
-
-#vitae a {
-  color: #fa541c;
-}
-
-#wiki {
+.tag {
   font-size: 18px !important;
   font-family: 'Cookie', cursive;
   vertical-align: top !important;
@@ -62,14 +46,41 @@
   line-height: normal;
 }
 
-#wiki a {
-  color: #13c2c2;
-}
-
 #footer {
   text-align: center;
   position: relative;
   bottom: 0;
   width: 100%;
   clear: both;
+}
+
+#network-icon {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#network-icon li:last-of-type {
+  margin-right: 0;
+}
+
+#network-icon li {
+  margin-right: 10px;
+}
+
+#network-icon a {
+  color: inherit;
+  font-size: 1.3rem;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  text-decoration: none;
+  transition: color .6s ease;
 }

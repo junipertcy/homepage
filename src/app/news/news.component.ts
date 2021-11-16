@@ -1,10 +1,9 @@
 import {Component, HostListener} from '@angular/core';
-import {faMastodon, faGithub, faTwitter} from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css', '../../../node_modules/academicons/css/academicons.min.css'],
+  styleUrls: ['./news.component.css'],
 })
 
 export class NewsComponent {
@@ -13,9 +12,6 @@ export class NewsComponent {
   //   console.log('onChange: ', result);
   // }
   thisYear = '2021';
-  faMastodon = faMastodon;
-  faGithub = faGithub;
-  faTwitter = faTwitter;
 
 
   // URLs
@@ -23,6 +19,9 @@ export class NewsComponent {
   wiki_tda = 'https://en.wikipedia.org/wiki/Topological_data_analysis';
   wiki_comp_sys = 'https://en.wikipedia.org/wiki/Complex_system';
   wiki_css = 'https://en.wikipedia.org/wiki/Computational_social_science';
+  wiki_sp = 'https://en.wikipedia.org/wiki/Stochastic_process';
+  wiki_c = 'https://en.wikipedia.org/wiki/Combinatorics';
+  wiki_a = 'https://en.wikipedia.org/wiki/Algorithm';
 
   acda21 = 'https://www.siam.org/conferences/cm/conference/acda21';
   isit21 = 'https://2021.ieee-isit.org/';

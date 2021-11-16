@@ -9,15 +9,16 @@ import {Article, ArXiv} from './paper';
 
 export class PublicationsComponent implements OnInit {
   // Preprints
-  p1 = new ArXiv('2106.00185');
-  preprints = [this.p1];
+  // p1 = new ArXiv('2106.00185');
+  preprints = [];
 
   // Journal Articles
+  j5 = new Article('10.1103/PhysRevE.104.L042303', '2106.00185');
   j4 = new Article('10.1103/PhysRevE.102.032309', '2001.11818');
   j3 = new Article('10.1038/srep20542');
   j2 = new Article('10.1002/anie.201510885');
   j1 = new Article('10.1021/jz4011477', '1307.5590');
-  articles = [this.j4, this.j3, this.j2, this.j1];
+  articles = [this.j5, this.j4, this.j3, this.j2, this.j1];
 
   // Conference Proceedings
   c1 = new Article('10.1016/j.proche.2011.08.028');
@@ -34,21 +35,23 @@ export class PublicationsComponent implements OnInit {
   translations = [this.t2, this.t1];
 
   constructor() {
-    this.p1.title = 'Construction of Simplicial Complexes with Prescribed Degree-Size Sequences';
-    this.p1.authors = 'Tzu-Chi Yen';
-    this.p1.arXiv_cat = '[cs.SI]';
-    this.p1.preprint_pdf = 'https://d.junipertcy.info/images/0/03/2106.00185.pdf';
-    this.p1.code = 'https://github.com/junipertcy/simplicial-test';
-    this.p1.docs = 'https://docs.netscied.tw/simplicial-test/index.html';
-    this.p1.summary = 'Simpliciality testing, an in general NP-complete problem, asks whether a given pair of integer sequences can realize a simplicial complex. In this Letter we make essential steps towards solving this problem, demonstrating that on most instances simpliciality can be decided in polynomial time. Coupling our algorithmic output to existing techniques, we can efficiently sample simplicial ensembles from arbitrary node degree and facet size distributions. This opens an avenue for the quantitative study of higher-order network phenomena in terms of local structural attributes.';
-    this.p1.favorite = true;
+    this.j5.title = 'Construction of simplicial complexes with prescribed degree-size sequences';
+    this.j5.authors = 'Tzu-Chi Yen';
+    this.j5.venue = 'Phys. Rev. E 104, L042303 (2021)<br>';
+    this.j5.arXiv_cat = '[cs.SI]';
+    this.j5.paper_pdf = 'https://filen.io/d/5ef21f65-f183-4305-864d-2c28cb366c85#!0QQu7XCPPUZsTXMPHpV5MHf67TsQgdbA';
+    this.j5.sm_pdf = 'https://bag.netscied.tw/s/Agc2K874EpwSKHH';
+    this.j5.code = 'https://github.com/junipertcy/simplicial-test';
+    this.j5.docs = 'https://docs.netscied.tw/simplicial-test/index.html';
+    this.j5.summary = 'Simpliciality testing, an in general NP-complete problem, asks whether a given pair of integer sequences can realize a simplicial complex. In this Letter we make essential steps towards solving this problem, demonstrating that on most instances simpliciality can be decided in polynomial time. Coupling our algorithmic output to existing techniques, we can efficiently sample simplicial ensembles from arbitrary node degree and facet size distributions. This opens an avenue for the quantitative study of higher-order network phenomena in terms of local structural attributes.';
+    this.j5.favorite = true;
 
     this.j4.title = 'Community detection in bipartite networks with stochastic block models';
     this.j4.authors = 'Tzu-Chi Yen and Daniel B. Larremore';
     this.j4.venue = 'Phys. Rev. E 102, 032309 (2020)<br>';
     this.j4.arXiv_cat = '[physics.soc-ph]';
     this.j4.code = 'https://github.com/junipertcy/bipartiteSBM';
-    this.j4.paper_pdf = 'https://d.junipertcy.info/images/b/be/Research-paper-2020-PRE.pdf';
+    this.j4.paper_pdf = 'https://bag.netscied.tw/s/mPbiGCwAAQTLoDz';
     this.j4.docs = 'https://docs.netscied.tw/bipartiteSBM/index.html';
     this.j4.tweets = 'https://twitter.com/DanLarremore/status/1224439980031787009';
     this.j4.summary = 'We solve the community detection problem for bipartite networks using a nonparametric Bayesian stochastic blockmodel which is specifically customized for bipartite networks.';

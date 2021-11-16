@@ -1,21 +1,45 @@
 <nz-layout class="layout" nz-row nzJustify="center">
-  <div nz-col nzSpan="24">
-    <nz-row nzJustify="space-between">
-      <nz-header nz-col nzSpan="8"><a href="/"><h1 id="logo-title">Tzu-Chi Yen</h1></a></nz-header>
-      <div nz-col nzSpan="2">
-        <div nz-row nzJustify="end">
-<!--          <div nz-col nzSpan="12">-->
-<!--            <nz-tag [nzColor]="'cyan'" id="wiki"><a-->
-<!--              href="https://wiki.junipertcy.info" target="_blank">Wiki</a></nz-tag>-->
-<!--          </div>-->
-          <div nz-col nzSpan="12">
-            <nz-tag [nzColor]="'volcano'" id="vitae"><a
-              href="https://d.junipertcy.info/images/3/3f/Vitae-tzuchiyen.pdf" target="_blank">Vitae</a></nz-tag>
-          </div>
+  <nz-header>
+    <a href="/"><h1 id="logo-title">Tzu-Chi Yen</h1></a>
+    <div nz-row nzJustify="end">
+      <div nz-col nzSpan="4">
+        <div class="tag" style="float: left">
+          <ul id="network-icon">
+            <li>
+              <a href="https://scholar.google.com/citations?user=ZUxl-r0AAAAJ&hl=en&sortby=pubdate" target="_blank"
+                 rel="noopener">
+                <i class="ai ai-google-scholar big-icon" style="color: #37373a;"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://publons.com/researcher/4043518/tzu-chi-yen/" target="_blank" rel="noopener">
+                <i class="ai ai-philpapers big-icon" style="color: #37373a;"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/junipertcy" target="_blank" rel="noopener">
+                <i nz-icon nzType="github" nzTheme="outline" style="color: #37373a;"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/oneofyen" target="_blank" rel="noopener">
+                <i nz-icon nzType="twitter" nzTheme="outline" style="color: #37373a;"></i>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-    </nz-row>
-  </div>
+      <div nz-col nzSpan="1">
+      </div>
+      <div nz-col nzSpan="2">
+        <nz-tag class="tag" [nzColor]="'volcano'">
+          <a href="https://d.junipertcy.info/images/3/3f/Vitae-tzuchiyen.pdf" target="_blank" style="color: #fa541c;">
+            Vitae
+          </a>
+        </nz-tag>
+      </div>
+    </div>
+  </nz-header>
   <div nz-row>
     <div nz-col nzSpan="4">
       <nz-sider
@@ -44,7 +68,7 @@
         </ul>
       </nz-sider>
     </div>
-    <div nz-col nzSpan="20" [style.min-height.px]="screenHeight">
+    <div nz-col nzSpan="19" [style.min-height.px]="screenHeight">
       <router-outlet></router-outlet>
     </div>
   </div>
@@ -67,14 +91,14 @@
       </div>
     </div>
     <nz-footer nz-col nzSpan="24" id="footer">
-      © Since 2016 Tzu-Chi Yen | Last update: Jun. 14, 2021 |
+      © Since 2016 Tzu-Chi Yen | Last update: Nov. 14, 2021 |
       <a href="https://github.com/junipertcy/homepage" target="_blank" style="color: rgba(0,0,0,.65);">
         <i nz-icon nzType="code" nzTheme="outline"></i>
       </a>
       | Powered by <a
       href="https://angular.io/" target="_blank" style="color: rgba(0,0,0,.65);">Angular</a> and <a
       href="https://ng.ant.design/" target="_blank" style="color: rgba(0,0,0,.65);">NG-ZORRO</a>
-<!--      <a routerLink="/resources">.</a>-->
+      <a routerLink="/resources">.</a>
     </nz-footer>
   </div>
 </nz-layout>

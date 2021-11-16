@@ -1,80 +1,35 @@
 <div nz-col nzOffset="0">
   <div nz-row nzJustify="start">
     <div nz-col nzSpan="6">
-      <div class="polaroid">
-        <div class="container">
-          <!--              <h2>Tzu-Chi Yen</h2>-->
-        </div>
-        <img src="../../assets/img/profile_new_2019.jpg" id="profile" alt="profile">
-      </div>
+      <img src="../../assets/img/profile_new_2019.jpg" id="profile" alt="profile">
     </div>
-    <div nz-col nzSpan="18" style="max-width: 50em; padding-right:5em;">
-      <div>
-        <h3>Scientific interests</h3>
-        <div nz-row nzJustify="start">
-          <div nz-col nzSpan="22">
-            <a href="{{wiki_stat_inf}}">Statistical Inference</a>
-            &amp;
-            <a href="{{wiki_tda}}">Applied Topology</a>
-            <br>
-            <a href="{{wiki_comp_sys}}">Complex Systems</a>
-            &amp;
-            <a href="{{wiki_css}}">Computational Social Science</a>
-          </div>
-        </div>
-      </div>
-      <div style="height: 10px;"></div>
-      <div>
-        <h3>Current position</h3>
-        <div nz-row nzJustify="start">
-          <div nz-col nzSpan="22">
-            <a href="https://www.colorado.edu/cs/">University of Colorado Boulder</a>
-            <span style="font-style: italic; color: #555555"> — Graduate student</span>
-            <br>
-            <i nz-icon nzType="mail" nzTheme="outline" class="email"></i>
-            <a href="mailto:tzuchi.yen@colorado.edu">tzuchi.yen@colorado.edu</a>
-            <i nz-icon nzType="lock" nzTheme="outline" class="pgp-key"></i>
-            <a href="https://keys.openpgp.org/search?q=tzuchi.yen%40colorado.edu"
-               target="_blanks">49B1556E</a>
-            &nbsp;<a routerLink="/privacy" style="font-size: small">(why?)</a>
-
-          </div>
-        </div>
-      </div>
+    <div nz-col nzSpan="18">
+      <p>
+        I am a grad student in computer science at the
+        <a href="https://www.colorado.edu/cs/" style='color: black;'>University of Colorado Boulder</a>,
+        advised by <a href="{{'Daniel Larremore' | str2url}}" style='color: black;'>Dan Larremore</a>
+        and <a href="{{'Joshua Grochow' | str2url}}" style='color: black;'>Josh Grochow</a>.
+      </p>
+      <p>
+        My research interest is in <a href="{{wiki_comp_sys}}" style='color: deeppink;'>complex systems</a>.
+        I use tools from
+        <a href="{{wiki_sp}}" style='color: black;'>random processes</a>,
+        <a href="{{wiki_stat_inf}}" style='color: black;'>statistical inference</a>,
+        <a href="{{wiki_tda}}" style='color: black;'>computational topology</a>, and
+        <a href="{{wiki_c}}" style='color: black;'>combinatorics</a>.
+        I also develop <a href="{{wiki_a}}" style='color: black;'>algorithms</a>.
+      </p>
+      <p>
+        <i nz-icon nzType="mail" nzTheme="outline" class="email"></i>
+        <a href="mailto:tzuchi.yen@colorado.edu">tzuchi.yen@colorado.edu</a>
+        <i nz-icon nzType="lock" nzTheme="outline" class="pgp-key"></i>
+        <a href="https://keys.openpgp.org/search?q=tzuchi.yen%40colorado.edu"
+           target="_blanks">49B1556E</a>
+        &nbsp;<a routerLink="/privacy" style="font-size: small">(why?)</a>
+      </p>
     </div>
   </div>
-  <div nz-row nzJustify="start">
-    <ul id="network-icon">
-      <li>
-        <a href="https://scholar.google.com/citations?user=ZUxl-r0AAAAJ&hl=en&sortby=pubdate" target="_blank"
-           rel="noopener">
-          <i class="ai ai-google-scholar big-icon"></i>
-        </a>
-      </li>
-      <li>
-        <a href="https://publons.com/researcher/4043518/tzu-chi-yen/" target="_blank" rel="noopener">
-          <i class="ai ai-philpapers big-icon"></i>
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/junipertcy" target="_blank" rel="noopener">
-          <fa-icon [icon]="faGithub"></fa-icon>
-        </a>
-      </li>
-      <li>
-        <a href="https://twitter.com/oneofyen" target="_blank" rel="noopener">
-          <fa-icon [icon]="faTwitter"></fa-icon>
-        </a>
-      </li>
-      <!--      <li>-->
-      <!--        <a href="https://social.skewed.de/@tzuchi" target="_blank" rel="me">-->
-      <!--          <fa-icon [icon]="faMastodon"></fa-icon>-->
-      <!--        </a>-->
-      <!--      </li>-->
-    </ul>
-  </div>
-  <div style="height: 20px; ">
-  </div>
+  <div style="height: 15px;"></div>
   <!-- News section -->
   <div nz-row nzJustify="start" style="height: 350px;" id="news">
     <div nz-col class="gutter-row" nzSpan="2">

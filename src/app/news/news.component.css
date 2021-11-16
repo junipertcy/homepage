@@ -1,18 +1,9 @@
 #profile {
-  border-radius: 8px;
-  width: 100%;
-}
-
-div.polaroid {
-  width: 80%;
+  border-radius: 4px;
+  width: 86%;
   background-color: white;
-  border-radius: 8px;
   /*box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);*/
   margin-bottom: 25px;
-}
-
-div.container {
-  text-align: center;
 }
 
 nz-divider {
@@ -43,36 +34,6 @@ li.indent {
 }
 
 
-#network-icon {
-  display: inline-flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#network-icon li:last-of-type {
-  margin-right: 0;
-}
-
-#network-icon li {
-  margin-right: 10px;
-}
-
-#network-icon a {
-  color: inherit;
-  font-size: 1.3rem;
-  -webkit-font-smoothing: antialiased;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-  text-decoration: none;
-  transition: color .6s ease;
-}
 
 /*a {*/
 /*  -webkit-transition: all .25s cubic-bezier(.55,.085,0,.99),outline 0s linear,outline-offset 0s linear;*/

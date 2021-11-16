@@ -52,6 +52,15 @@
     </li>
   </ul>
   <h3>
+    High-dimensional probability
+  </h3>
+  <ul>
+    <li *ngFor="let book of hdp;">
+      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+    </li>
+  </ul>
+  <h3>
     Math of data science
   </h3>
   <ul>
@@ -61,8 +70,24 @@
     </li>
   </ul>
   <h3>
+    Differential geometry
+  </h3>
+  <ul>
+    <li *ngFor="let book of differential_geometry;">
+      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+    </li>
+  </ul>
+  <h3>
     Parametrized complexity
   </h3>
+  <ul>
+    <li *ngFor="let book of parametrized_complexity;">
+      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+    </li>
+  </ul>
+
   <h3>
     Information theory
   </h3>

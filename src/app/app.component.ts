@@ -6,7 +6,7 @@ import {HostListener} from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css', '../../node_modules/academicons/css/academicons.min.css']
 })
 
 export class AppComponent {
@@ -15,6 +15,7 @@ export class AppComponent {
   screenHeight: number;
   isDonationBannerShown = true;
   // screenWidth: number;
+
 
   logoClick = function () {
     // this.router.navigateByUrl('/network/fish');
