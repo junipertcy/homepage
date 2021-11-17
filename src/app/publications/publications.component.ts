@@ -43,7 +43,7 @@ export class PublicationsComponent implements OnInit {
     this.j5.sm_pdf = 'https://bag.netscied.tw/s/Agc2K874EpwSKHH';
     this.j5.code = 'https://github.com/junipertcy/simplicial-test';
     this.j5.docs = 'https://docs.netscied.tw/simplicial-test/index.html';
-    this.j5.summary = 'Simpliciality testing, an in general NP-complete problem, asks whether a given pair of integer sequences can realize a simplicial complex. In this Letter we make essential steps towards solving this problem, demonstrating that on most instances simpliciality can be decided in polynomial time. Coupling our algorithmic output to existing techniques, we can efficiently sample simplicial ensembles from arbitrary node degree and facet size distributions. This opens an avenue for the quantitative study of higher-order network phenomena in terms of local structural attributes.';
+    this.j5.summary = 'We examine which degree-size sequences can realize a simplicial complex (an analog of network with nonpairwise couplings). Using a recursive algorithm, we present evidence that on most inputs this problem can be decided in polynomial time. This paves the way toward understanding higher-order phenomena in terms of local structural attributes.';
     this.j5.favorite = true;
 
     this.j4.title = 'Community detection in bipartite networks with stochastic block models';

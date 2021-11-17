@@ -37,6 +37,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CllinComponent } from './cllin/cllin.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { ResourcesComponent } from './resources/resources.component';
+import { ReadingComponent } from './reading/reading.component';
 registerLocaleData(en);
 
 const appRoutes: Routes = [
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
   { path: 'cllin', component: CllinComponent },
   { path: 'privacy', component: PrivacyComponent },
   { path: 'resources', component: ResourcesComponent },
+  { path: 'reading', component: ReadingComponent },
 ];
 
 @NgModule({
@@ -62,6 +64,7 @@ const appRoutes: Routes = [
     CllinComponent,
     PrivacyComponent,
     ResourcesComponent,
+    ReadingComponent,
   ],
   imports: [
     RouterModule.forRoot(
