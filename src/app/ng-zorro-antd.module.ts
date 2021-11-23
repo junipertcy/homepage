@@ -37,7 +37,7 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
 // import { NzListModule } from 'ng-zorro-antd/list';
 // import { NzMentionModule } from 'ng-zorro-antd/mention';
 // import { NzMessageModule } from 'ng-zorro-antd/message';
-// import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 // import { NzNotificationModule } from 'ng-zorro-antd/notification';
 // import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 // import { NzPaginationModule } from 'ng-zorro-antd/pagination';
@@ -76,6 +76,7 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
     NzIconModule,
     NzRadioModule,
     NzImageModule,
+    NzModalModule,
     // NzButtonModule,
     // NzDropDownModule,
   ]

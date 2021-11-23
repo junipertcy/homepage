@@ -109,6 +109,12 @@ export class ResourcesComponent implements OnInit {
       title_url: 'https://www.vdgf.space/',
       year: '2021'
     },
+    {
+      author: 'Victor Guillemin and Alan Pollack',
+      title: 'Differential Topology',
+      title_url: 'https://bookstore.ams.org/chel-370-h',
+      year: '1974'
+    },
   ];
 
   parametrized_complexity = [

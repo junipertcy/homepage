@@ -1,12 +1,15 @@
-import {Component} from '@angular/core';
+import {Component, TemplateRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {HostListener} from '@angular/core';
+import {NzModalService} from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css', '../../node_modules/academicons/css/academicons.min.css']
+  styleUrls: ['./app.component.css',
+    '../../node_modules/academicons/css/academicons.min.css'
+  ]
 })
 
 export class AppComponent {
@@ -16,6 +19,19 @@ export class AppComponent {
   isDonationBannerShown = true;
   // screenWidth: number;
 
+  createTplModal(
+    tplTitle: TemplateRef<{}>,
+    tplContent: TemplateRef<{}>,
+    tplFooter: TemplateRef<{}>): void {
+    this.officeInfoModal.create({
+      // nzTitle: tplTitle,
+      nzContent: tplContent,
+      nzFooter: tplFooter,
+      nzMaskClosable: false,
+      nzClosable: false,
+      nzOnOk: () => console.log('Click ok')
+    });
+  }
 
   logoClick = function () {
     // this.router.navigateByUrl('/network/fish');
@@ -36,7 +52,10 @@ export class AppComponent {
     }
   };
 
-  constructor(private router: Router, private titleService: Title) {
+  constructor(private router: Router,
+              private titleService: Title,
+              private officeInfoModal: NzModalService
+  ) {
     this.getScreenSize();
     router.events.subscribe((event) => {  // fires on every URL change
       if (router.url !== '/') {

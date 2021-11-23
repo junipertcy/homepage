@@ -12,11 +12,6 @@
   margin: 0 auto;
 }
 
-/*!* make menu items closer *!*/
-.ant-menu-item, .ant-menu-submenu-title {
-  padding: 0 10px;
-}
-
 #logo-title {
   display: block;
   min-width: 200px;

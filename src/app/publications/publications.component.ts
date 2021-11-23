@@ -39,8 +39,8 @@ export class PublicationsComponent implements OnInit {
     this.j5.authors = 'Tzu-Chi Yen';
     this.j5.venue = 'Phys. Rev. E 104, L042303 (2021)<br>';
     this.j5.arXiv_cat = '[cs.SI]';
-    this.j5.paper_pdf = 'https://filen.io/d/5ef21f65-f183-4305-864d-2c28cb366c85#!0QQu7XCPPUZsTXMPHpV5MHf67TsQgdbA';
-    this.j5.sm_pdf = 'https://bag.netscied.tw/s/Agc2K874EpwSKHH';
+    this.j5.paper_pdf = 'https://d.junipertcy.info/images/7/7b/Research-paper-2021-PRE.pdf';
+    this.j5.sm_pdf = 'https://d.junipertcy.info/images/c/c2/Research-paper-2021-PRE-sm.pdf';
     this.j5.code = 'https://github.com/junipertcy/simplicial-test';
     this.j5.docs = 'https://docs.netscied.tw/simplicial-test/index.html';
     this.j5.summary = 'We examine which degree-size sequences can realize a simplicial complex (an analog of network with nonpairwise couplings). Using a recursive algorithm, we present evidence that on most inputs this problem can be decided in polynomial time. This paves the way toward understanding higher-order phenomena in terms of local structural attributes.';
@@ -51,7 +51,7 @@ export class PublicationsComponent implements OnInit {
     this.j4.venue = 'Phys. Rev. E 102, 032309 (2020)<br>';
     this.j4.arXiv_cat = '[physics.soc-ph]';
     this.j4.code = 'https://github.com/junipertcy/bipartiteSBM';
-    this.j4.paper_pdf = 'https://bag.netscied.tw/s/mPbiGCwAAQTLoDz';
+    this.j4.paper_pdf = 'https://d.junipertcy.info/images/b/be/Research-paper-2020-PRE.pdf';
     this.j4.docs = 'https://docs.netscied.tw/bipartiteSBM/index.html';
     this.j4.tweets = 'https://twitter.com/DanLarremore/status/1224439980031787009';
     this.j4.summary = 'We solve the community detection problem for bipartite networks using a nonparametric Bayesian stochastic blockmodel which is specifically customized for bipartite networks.';

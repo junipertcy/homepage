@@ -2,34 +2,44 @@
   <nz-header>
     <a href="/"><h1 id="logo-title">Tzu-Chi Yen</h1></a>
     <div nz-row nzJustify="end">
-      <div nz-col nzSpan="4">
-        <div class="tag" style="float: left">
-          <ul id="network-icon">
-            <li>
-              <a href="https://scholar.google.com/citations?user=ZUxl-r0AAAAJ&hl=en&sortby=pubdate" target="_blank"
-                 rel="noopener">
-                <i class="ai ai-google-scholar big-icon" style="color: #37373a;"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://publons.com/researcher/4043518/tzu-chi-yen/" target="_blank" rel="noopener">
-                <i class="ai ai-philpapers big-icon" style="color: #37373a;"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/junipertcy" target="_blank" rel="noopener">
-                <i nz-icon nzType="github" nzTheme="outline" style="color: #37373a;"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://twitter.com/oneofyen" target="_blank" rel="noopener">
-                <i nz-icon nzType="twitter" nzTheme="outline" style="color: #37373a;"></i>
-              </a>
-            </li>
-          </ul>
+      <ng-template #tplTitle>
+      </ng-template>
+      <ng-template #tplContent let-params>
+        <div style="
+                margin-top: 0.5em;
+                margin-bottom: 1em;
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: small;">
+          <h6>☎️ My virtual office 🏢</h6>
         </div>
-      </div>
-      <div nz-col nzSpan="1">
+        <div style="font-family: 'IBM Plex Serif', serif; text-justify: distribute;">
+          <p>Knock my office door whenever on
+            <a href="https://cuboulder.zoom.us/my/tzuchiy" target="_blank">Zoom</a>.
+            Note that I may be out of the office.
+          </p>
+          <p>
+            Alternatively, we may meet at
+            <a href="https://jitsi.org/jitsi-meet/" target="_blank">Jitsi Meet</a>.
+
+            Just email me and I can start a new conference on
+            <a href="https://jitsi.member.fsf.org/" target="_blank">the server</a>
+            offered by the Free Software Foundation.
+          </p>
+        </div>
+      </ng-template>
+      <ng-template #tplFooter let-ref="modalRef">
+        <div style="font-family: 'IBM Plex Serif', serif">
+          <button (click)="ref.destroy()" style="cursor: pointer;">Got it</button>
+        </div>
+      </ng-template>
+      <div nz-col nzSpan="2">
+        <nz-tag class="tag" [nzColor]="'green'">
+          <a
+            (click)="createTplModal(tplTitle, tplContent, tplFooter)"
+            style="color: green;">
+            Office
+          </a>
+        </nz-tag>
       </div>
       <div nz-col nzSpan="2">
         <nz-tag class="tag" [nzColor]="'volcano'">
@@ -79,15 +89,48 @@
       <div *ngIf="isDonationBannerShown" nz-col nzSpan="4">
       </div>
       <div *ngIf="isDonationBannerShown" nz-col nzSpan="4" style="margin-top: -15px;">
-        <h5>Proudly support</h5>
+        <h5>Proud supporter of</h5>
         <a href="https://freedom.press/">
-          <img src="../assets/img/fpf-logo.png" height="23pt" alt="fpf">
+          <img src="../assets/img/fpf-logo.png" style="margin-bottom: 10pt;" height="23pt" alt="fpf">
         </a>
       </div>
       <div *ngIf="isDonationBannerShown" nz-col nzSpan="4">
         <a href="https://my.fsf.org/join?referrer=2272401">
           <img src="https://static.fsf.org/nosvn/associate/crm/2272401.png" height="40pt" alt="fsf">
         </a>
+      </div>
+      <div *ngIf="isDonationBannerShown" nz-col nzSpan="2">
+        <a href="https://www.eff.org/">
+          <img src="https://www.eff.org/files/2019/11/20/2020-membership-badge-2.png" height="40pt" alt="eff">
+        </a>
+      </div>
+      <div *ngIf="isDonationBannerShown" nz-col nzSpan="4" style="margin-top: -15px;">
+        <h5>Find me at</h5>
+        <div style="float: left">
+          <ul id="network-icon">
+            <li>
+              <a href="https://scholar.google.com/citations?user=ZUxl-r0AAAAJ&hl=en&sortby=pubdate" target="_blank"
+                 rel="noopener">
+                <i class="ai ai-google-scholar big-icon" style="color: #37373a;"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://publons.com/researcher/4043518/tzu-chi-yen/" target="_blank" rel="noopener">
+                <i class="ai ai-philpapers big-icon" style="color: #37373a;"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/junipertcy" target="_blank" rel="noopener">
+                <i nz-icon nzType="github" nzTheme="outline" style="color: #37373a;"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/oneofyen" target="_blank" rel="noopener">
+                <i nz-icon nzType="twitter" nzTheme="outline" style="color: #37373a;"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <nz-footer nz-col nzSpan="24" id="footer">
