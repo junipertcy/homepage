@@ -93,6 +93,15 @@ export class ResourcesComponent implements OnInit {
     },
   ];
 
+  mf = [
+    {
+      author: 'Igor Carron',
+      title: 'The Advanced Matrix Factorization Jungle',
+      title_url: 'https://sites.google.com/site/igorcarron2/matrixfactorizations',
+      year: '2013'
+    },
+  ];
+
   mod = [
     {
       author: 'Avrim Blum, John Hopcroft, and Ravi Kannan',

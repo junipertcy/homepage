@@ -62,6 +62,15 @@
     </li>
   </ul>
   <h3>
+    Matrix factorization
+  </h3>
+  <ul>
+    <li *ngFor="let book of mf;">
+      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+    </li>
+  </ul>  
+  <h3>
     Math of data science
   </h3>
   <ul>

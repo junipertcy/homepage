@@ -65,6 +65,8 @@ export class Str2urlPipe implements PipeTransform {
         return 'https://www.math.uci.edu/~rvershyn/';
       case 'Tristan Needham':
         return 'https://www.usfca.edu/faculty/tristan-needham';
+      case 'Igor Carron':
+        return 'https://sites.google.com/site/igorcarron2/home' ; 
       //  Tools
       case 'Graph-tool':
         return 'https://graph-tool.skewed.de/';
