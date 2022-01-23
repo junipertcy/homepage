@@ -38,6 +38,8 @@ import { CllinComponent } from './cllin/cllin.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { ReadingComponent } from './reading/reading.component';
+import { YiRModule } from './yi-r/yi-r.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 registerLocaleData(en);
 
 const appRoutes: Routes = [
@@ -50,6 +52,7 @@ const appRoutes: Routes = [
   { path: 'privacy', component: PrivacyComponent },
   { path: 'resources', component: ResourcesComponent },
   { path: 'reading', component: ReadingComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
@@ -65,6 +68,7 @@ const appRoutes: Routes = [
     PrivacyComponent,
     ResourcesComponent,
     ReadingComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -82,6 +86,7 @@ const appRoutes: Routes = [
     NgZorroAntdModule,
     NgbModule,
     FontAwesomeModule,
+    YiRModule
     // ng-bootstrap
   ],
   providers: [
