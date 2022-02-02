@@ -12,12 +12,11 @@
       </p>
       <p>
         My research interest lies in <a href="{{wiki_comp_sys}}" style='color: deeppink;'>complex systems</a>.
-        I use tools from
+        To understand them, I develop <a href="{{wiki_a}}" style='color: black;'>algorithms</a> and models, using tools from
         <a href="{{wiki_sp}}" style='color: black;'>random processes</a>,
         <a href="{{wiki_stat_inf}}" style='color: black;'>statistical inference</a>,
-        <a href="{{wiki_tda}}" style='color: black;'>computational topology</a>, and
-        <a href="{{wiki_c}}" style='color: black;'>combinatorics</a> to develop
-        <a href="{{wiki_a}}" style='color: black;'>algorithms</a> and models to understand them.
+        <a href="{{wiki_tda}}" style='color: black;'>computational topology</a> or
+        <a href="{{wiki_c}}" style='color: black;'>combinatorics</a>.
       </p>
       <p>
         <i nz-icon nzType="mail" nzTheme="outline" class="email"></i>
@@ -35,13 +34,41 @@
     <div nz-col class="gutter-row" nzSpan="2">
       <h2>News</h2>
       <nz-radio-group [(ngModel)]="thisYear">
-        <label nz-radio nzValue="2021">21</label>
-        <label nz-radio nzValue="2020">20</label>
-        <label nz-radio nzValue="2019">19</label>
-        <label nz-radio nzValue="2018">18</label>
+        <label nz-radio nzValue="2022">'22</label>
+        <label nz-radio nzValue="2021">'21</label>
+        <label nz-radio nzValue="2020">'20</label>
+        <label nz-radio nzValue="2019">'19</label>
+        <label nz-radio nzValue="2018">'18</label>
       </nz-radio-group>
     </div>
     <div nz-col nzSpan="22" style="overflow: auto; height: 100%; ">
+      <ul *ngIf="thisYear === '2022'">
+        <div style="border-style: solid; border-color: coral; padding: 10pt;">
+          <li>
+            <strong>Now-ish</strong>
+            - Looking for a summer internship. I can fulfill these roles, in the order of preference:
+          </li>
+          <li class="indent">
+            research (algorithms, probabilistic models, inference)
+          </li>
+          <li class="indent">
+            data scientist
+          </li>
+          <li class="indent">
+            software engineer
+          </li>
+          <li>
+            Please spread the word and/or reach out! :-D
+          </li>
+
+        </div>
+
+        <li>
+          <strong>March 27-April 1</strong>
+          – Attending the <a href="https://shaevitzlab.princeton.edu/socialinteractions2022">Winter Conference on
+          the Dynamics of Social Interactions</a> at the <a href="https://aspenphys.org/index.html">Aspen Center for Physics</a>.
+        </li>
+      </ul>
       <ul *ngIf="thisYear === '2021'">
         <li>
           <strong>July 19-21</strong>

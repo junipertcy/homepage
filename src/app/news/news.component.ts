@@ -11,7 +11,7 @@ export class NewsComponent {
   // onChange(result: Date): void {
   //   console.log('onChange: ', result);
   // }
-  thisYear = '2021';
+  thisYear = '2022';
 
 
   // URLs
