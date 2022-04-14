@@ -8,6 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+/** Material **/
+// import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 /** icons **/
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
@@ -20,14 +23,14 @@ import {
   LaptopOutline
 } from '@ant-design/icons-angular/icons';
 
-import { NgZorroAntdModule } from './ng-zorro-antd.module';
+
 import { NewsComponent } from './news/news.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { TeachingComponent } from './teaching/teaching.component';
 import { Str2urlPipe } from './str2url.pipe';
 import { TalksComponent } from './talks/talks.component';
 import { ActivitiesComponent } from './activities/activities.component';
-
+import { NgZorroAntdModule } from './ng-zorro-antd.module';
 const icons: IconDefinition[] = [ ShareAltOutline, BookOutline, DownloadOutline, ReadOutline, LaptopOutline ];
 
 /** angular i18n **/
@@ -38,6 +41,7 @@ import { CllinComponent } from './cllin/cllin.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { ReadingComponent } from './reading/reading.component';
+import { NotesComponent } from './notes/notes.component';
 registerLocaleData(en);
 
 const appRoutes: Routes = [
@@ -50,6 +54,7 @@ const appRoutes: Routes = [
   { path: 'privacy', component: PrivacyComponent },
   { path: 'resources', component: ResourcesComponent },
   { path: 'reading', component: ReadingComponent },
+  { path: 'notes', component: NotesComponent },
 ];
 
 @NgModule({
@@ -65,8 +70,16 @@ const appRoutes: Routes = [
     PrivacyComponent,
     ResourcesComponent,
     ReadingComponent,
+    NotesComponent,
   ],
   imports: [
+    NgZorroAntdModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NgbModule,
+    FontAwesomeModule,
     RouterModule.forRoot(
       appRoutes,
       {
@@ -75,13 +88,7 @@ const appRoutes: Routes = [
         relativeLinkResolution: 'legacy'
       }
     ),
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    NgZorroAntdModule,
-    NgbModule,
-    FontAwesomeModule,
+    // MatProgressBarModule,
     // ng-bootstrap
   ],
   providers: [

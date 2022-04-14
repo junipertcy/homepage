@@ -68,10 +68,10 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 
 @NgModule({
   exports: [
-    NzDividerModule,
-    NzGridModule,
     NzLayoutModule,
     NzMenuModule,
+    NzDividerModule,
+    NzGridModule,
     NzTagModule,
     NzIconModule,
     NzRadioModule,

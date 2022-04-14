@@ -1,4 +1,8 @@
-<nz-layout class="layout" nz-row nzJustify="center">
+<!--<mat-progress-bar mode="determinate" value="40"></mat-progress-bar>-->
+<ng-template #zeroTrigger>
+  <i nz-icon nzType="menu-fold" nzTheme="outline"></i>
+</ng-template>
+<nz-layout class="layout" nz-row nzJustify="center" *ngIf="isLoaded">
   <nz-header>
     <a href="/"><h1 id="logo-title">Tzu-Chi Yen</h1></a>
     <div nz-row nzJustify="end">
@@ -144,9 +148,8 @@
       &nbsp;
       <a routerLink="/resources">🥾</a>
       <a routerLink="/reading">🧢</a>
+      <a routerLink="/notes">📝</a>
     </nz-footer>
   </div>
 </nz-layout>
-<ng-template #zeroTrigger>
-  <i nz-icon nzType="menu-fold" nzTheme="outline"></i>
-</ng-template>
+

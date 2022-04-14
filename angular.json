@@ -1,6 +1,11 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "cli": {
+    "cache": {
+      "enabled": false
+    }
+  },
   "newProjectRoot": "projects",
   "projects": {
     "netscied": {
@@ -27,11 +32,12 @@
               }
             ],
             "styles": [
-              "src/styles.css",
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "src/styles.css",
               "src/theme.less"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {

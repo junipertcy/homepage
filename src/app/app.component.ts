@@ -1,4 +1,4 @@
-import {Component, TemplateRef} from '@angular/core';
+import {Component, TemplateRef, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {HostListener} from '@angular/core';
@@ -12,11 +12,12 @@ import {NzModalService} from 'ng-zorro-antd/modal';
   ]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
   isCollapsed = false;
   screenHeight: number;
   isDonationBannerShown = true;
+  isLoaded = false;
   // screenWidth: number;
 
   createTplModal(
@@ -52,6 +53,16 @@ export class AppComponent {
     }
   };
 
+  // https://stackoverflow.com/questions/39888768
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?) {
+    // 64px: header height; 70px: footer height; 40px: banner row;
+    this.screenHeight = window.innerHeight - 64 - 70 - 40;
+    // this.screenWidth = window.innerWidth;
+    // console.log(this.screenHeight, this.screenWidth);
+
+  }
+
   constructor(private router: Router,
               private titleService: Title,
               private officeInfoModal: NzModalService
@@ -65,13 +76,9 @@ export class AppComponent {
     });
   }
 
-  // https://stackoverflow.com/questions/39888768
-  @HostListener('window:resize', ['$event'])
-  getScreenSize(event?) {
-    // 64px: header height; 70px: footer height; 40px: banner row;
-    this.screenHeight = window.innerHeight - 64 - 70 - 40;
-    // this.screenWidth = window.innerWidth;
-    // console.log(this.screenHeight, this.screenWidth);
+  // A hot fix for the homepage which renders prematurely
+  ngOnInit() {
+    setTimeout(() => {this.isLoaded = true; }, 500);
   }
 }
 
