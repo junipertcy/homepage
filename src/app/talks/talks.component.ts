@@ -13,3 +13,6 @@ export class TalksComponent implements OnInit {
   }
 
 }
+
+// Useful things if I got to teach the same class next time
+// https://clig.dev/

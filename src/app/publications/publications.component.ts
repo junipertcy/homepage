@@ -63,13 +63,13 @@ export class PublicationsComponent implements OnInit {
     this.j3.paper_pdf = 'https://d.junipertcy.info/images/6/64/Research-paper-2016-ScientificReports.pdf';
     this.j3.summary = 'We use high-speed interferometric scattering (iSCAT) optical microscopy and small gold nanoparticles as labels, recording the motions of single lipids via single-particle tracking (SPT), which provides the first experimental evidence of non-uniform molecular organization of the lipid phase, giving a new view of how rafts recruit and confine molecules in cell membranes.';
 
-    this.j2.title = 'A Rhizavidin Monomer with Nearly Multimeric Avidin-Like Binding Stability Against Biotin Conjugates';
+    this.j2.title = 'A rhizavidin monomer with nearly multimeric avidin-Like binding stability against biotin conjugates';
     this.j2.authors = 'Jeong Min Lee, Jung A Kim, Tzu-Chi Yen, In Hwan Lee, Byungjun Ahn, Younghoon Lee, Chia-Lung Hsieh, Ho Min Kim, and Yongwon Jung';
     this.j2.venue = 'Angewandte Chemie 55, 3393 (2016)<br>';
     this.j2.paper_pdf = 'https://d.junipertcy.info/images/0/05/Research-paper-2016-AngewandteChemie.pdf';
     this.j2.summary = 'We provide experimental chracterization for a monomeric avidin-like protein, with off-rates almost comparable to those of multimeric avidin proteins against various biotin conjugates.';
 
-    this.j1.title = 'Clustered Geometries Exploiting Quantum Coherence Effects for Efficient Energy Transfer in Light Harvesting';
+    this.j1.title = 'Clustered geometries exploiting quantum coherence effects for efficient energy transfer in light harvesting';
     this.j1.authors = 'Qing Ai, Tzu-Chi Yen, Bih-Yaw Jin, and Yuan-Chung Cheng';
     this.j1.venue = 'J. Phys. Chem. Lett. 4, 2577, (2013)<br>';
     this.j1.paper_pdf = 'https://d.junipertcy.info/images/b/bc/Research-paper-2013-JPCL.pdf';
