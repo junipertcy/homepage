@@ -1,4 +1,5 @@
 import {Component, HostListener} from '@angular/core';
+import {NzSelectSizeType} from 'ng-zorro-antd/select';
 
 @Component({
   selector: 'app-news',
@@ -12,7 +13,7 @@ export class NewsComponent {
   //   console.log('onChange: ', result);
   // }
   thisYear = '2022';
-
+  selectSize: NzSelectSizeType = 'default';
 
   // URLs
   wiki_stat_inf = 'https://en.wikipedia.org/wiki/Statistical_inference';

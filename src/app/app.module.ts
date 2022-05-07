@@ -27,6 +27,9 @@ import {
 import { NewsComponent } from './news/news.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { TeachingComponent } from './teaching/teaching.component';
+import { TeachingComponent2270 } from './teaching/2270/2270.component';
+import { TeachingComponent3308 } from './teaching/3308/3308.component';
+import { TeachingComponent5822 } from './teaching/5822/5822.component';
 import { Str2urlPipe } from './str2url.pipe';
 import { TalksComponent } from './talks/talks.component';
 import { ActivitiesComponent } from './activities/activities.component';
@@ -50,6 +53,9 @@ const appRoutes: Routes = [
   { path: 'activities', component: ActivitiesComponent },
   { path: 'publications', component: PublicationsComponent },
   { path: 'teaching', component: TeachingComponent },
+  { path: 'teaching/2270', component: TeachingComponent2270 },
+  { path: 'teaching/3308', component: TeachingComponent3308 },
+  { path: 'teaching/5822', component: TeachingComponent5822 },
   { path: 'cllin', component: CllinComponent },
   { path: 'privacy', component: PrivacyComponent },
   { path: 'resources', component: ResourcesComponent },
@@ -64,6 +70,9 @@ const appRoutes: Routes = [
     Str2urlPipe,
     PublicationsComponent,
     TeachingComponent,
+    TeachingComponent2270,
+    TeachingComponent3308,
+    TeachingComponent5822,
     TalksComponent,
     ActivitiesComponent,
     CllinComponent,

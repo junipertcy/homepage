@@ -9,7 +9,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 // import { NzCardModule } from 'ng-zorro-antd/card';
-// import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 // import { NzAffixModule } from 'ng-zorro-antd/affix';
 // import { NzAlertModule } from 'ng-zorro-antd/alert';
 // import { NzAnchorModule } from 'ng-zorro-antd/anchor';
@@ -77,6 +77,9 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzRadioModule,
     NzImageModule,
     NzModalModule,
+    NzSelectModule,
+    // NzPageHeaderModule,
+    // NzBreadCrumbModule
     // NzButtonModule,
     // NzDropDownModule,
   ]

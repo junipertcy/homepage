@@ -10,6 +10,11 @@ nz-divider {
   width: 4px;
 }
 
+nz-select {
+  margin: 0 0px 3px 0;
+  width: 66px;
+}
+
 li {
   list-style-type: none;
   margin: 4px 0 0 0;

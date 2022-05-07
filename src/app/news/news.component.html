@@ -34,13 +34,19 @@
   <div nz-row nzJustify="start" style="height: 350px;" id="news">
     <div nz-col class="gutter-row" nzSpan="2">
       <h2>News</h2>
-      <nz-radio-group [(ngModel)]="thisYear">
-        <label nz-radio nzValue="2022">'22</label>
-        <label nz-radio nzValue="2021">'21</label>
-        <label nz-radio nzValue="2020">'20</label>
-        <label nz-radio nzValue="2019">'19</label>
-        <label nz-radio nzValue="2018">'18</label>
-      </nz-radio-group>
+      <div style="border-bottom: 1px solid #aaa;">
+        <nz-select [nzSuffixIcon]="nzSuffixIcon" [nzShowArrow]="false" [(ngModel)]="thisYear" [nzSize]="selectSize" nzBorderless>
+          <nz-option nzValue="2022" nzLabel="2022"></nz-option>
+          <nz-option nzValue="2021" nzLabel="2021"></nz-option>
+          <nz-option nzValue="2020" nzLabel="2020"></nz-option>
+          <nz-option nzValue="2019" nzLabel="2019"></nz-option>
+          <nz-option nzValue="2018" nzLabel="2018"></nz-option>
+        </nz-select>
+        <ng-template #nzSuffixIcon>
+          <!--        <i nz-icon nzType="right-square" nzTheme="outline"></i>-->
+          <i nz-icon nzType="calendar" nzTheme="fill"></i>
+        </ng-template>
+      </div>
     </div>
     <div nz-col nzSpan="22" style="overflow: auto; height: 100%; ">
       <ul *ngIf="thisYear === '2022'">
@@ -67,7 +73,7 @@
         </li>
         <li class="indent">
           Talk: Simpliciality testing and related topics. (<a
-          href="https://d.junipertcy.info/images/9/9c/Research-talk-220331-acp.pdf" target="_blank">slides</a>) (<a
+          href="{{'Research-talk-220331-acp' | str2url}}" target="_blank">slides</a>) (<a
           href="https://twitter.com/oneofyen/status/1508606464956387330" target="_blank">other presence</a>)
         </li>
         <li class="indent">

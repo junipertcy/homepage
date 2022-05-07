@@ -7,6 +7,11 @@ export class Str2urlPipe implements PipeTransform {
 
   transform(value: string): any {
     switch (value) {
+      // Slides
+      case 'Research-talk-220331-acp':
+        console.log('If the link doesn\'t work, try this:');
+        console.log('https://d.junipertcy.info/images/9/9c/Research-talk-220331-acp.pdf');
+        return 'https://filen.io/d/534b0f60-c552-421f-bf65-a48f5d2187bb#!qWTFOEX8PKYzHVOP4q9OgLntrcGv43OL';
       // Licenses
       case 'GNU GPL v3':
         return 'https://choosealicense.com/licenses/gpl-3.0/';
@@ -66,7 +71,7 @@ export class Str2urlPipe implements PipeTransform {
       case 'Tristan Needham':
         return 'https://www.usfca.edu/faculty/tristan-needham';
       case 'Igor Carron':
-        return 'https://sites.google.com/site/igorcarron2/home' ; 
+        return 'https://sites.google.com/site/igorcarron2/home' ;
       //  Tools
       case 'Graph-tool':
         return 'https://graph-tool.skewed.de/';
