@@ -7,6 +7,9 @@ export class Str2urlPipe implements PipeTransform {
 
   transform(value: string): any {
     switch (value) {
+      // Abstracts
+      case 'SSC22_absYen':
+        return 'https://filen.io/d/847a79e2-5637-4d78-b39d-2241a801c37b#!QDnS0Pg01pLoDmDXO8MsPSWGJO2dEEmr';
       // Slides
       case 'Research-talk-220331-acp':
         console.log('If the link doesn\'t work, try this:');

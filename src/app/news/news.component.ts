@@ -25,6 +25,7 @@ export class NewsComponent {
   wiki_a = 'https://en.wikipedia.org/wiki/Algorithm';
 
   acda21 = 'https://www.siam.org/conferences/cm/conference/acda21';
+  acda21_intro_blitz = 'https://filen.io/d/ca106796-992f-4d79-8f4b-3affa248246a#!Q6jEtVdTJrsNPNqxE9tff9oJvOqXcYBM';
   isit21 = 'https://2021.ieee-isit.org/';
   networks21 = 'https://networks2021.net/';
 
