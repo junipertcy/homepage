@@ -60,7 +60,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 // import { NzTransferModule } from 'ng-zorro-antd/transfer';
 // import { NzTreeModule } from 'ng-zorro-antd/tree';
 // import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
-// import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 // import { NzUploadModule } from 'ng-zorro-antd/upload';
 // import { NzResizableModule } from 'ng-zorro-antd/resizable';
 
@@ -78,6 +78,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzImageModule,
     NzModalModule,
     NzSelectModule,
+    NzTypographyModule,
     // NzPageHeaderModule,
     // NzBreadCrumbModule
     // NzButtonModule,

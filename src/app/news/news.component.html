@@ -1,22 +1,25 @@
 <div nz-col nzOffset="0">
   <div nz-row nzJustify="start">
     <div nz-col nzSpan="6">
-      <img src="../../assets/img/profile_new_2019.jpg" id="profile" alt="profile">
+      <img src="../../assets/img/profile_2022.jpg" id="profile" alt="profile">
     </div>
-    <div nz-col nzSpan="18">
+    <div nz-col nzSpan="18" style="text-align: justify;" nz-typography>
       <p>
-        I am a grad student in computer science at the
+        Hi there! I am a PhD candidate in computer science at the
         <a href="https://www.colorado.edu/cs/" style='color: black;'>University of Colorado Boulder</a>,
         advised by <a href="{{'Daniel Larremore' | str2url}}" style='color: black;'>Dan Larremore</a>
         and <a href="{{'Joshua Grochow' | str2url}}" style='color: black;'>Josh Grochow</a>.
       </p>
       <p>
-        My research interest lies in <a href="{{wiki_comp_sys}}" style='color: deeppink;'>complex systems</a>.
-        To understand them, I develop <a href="{{wiki_a}}" style='color: black;'>algorithms</a> and models, using tools
+        My research interest lies generally in
+        <mark><a href="{{wiki_comp_sys}}" style='color: black;'>complex systems</a></mark>.
+        I try to identify problems from real data and develop solutions with better <a href="{{wiki_a}}"
+                                                                                       style='color: black;'>algorithms</a>
+        and more sensitive models, using tools
         from
         <a href="{{wiki_sp}}" style='color: black;'>random processes</a>,
         <a href="{{wiki_stat_inf}}" style='color: black;'>statistical inference</a>,
-        <a href="{{wiki_tda}}" style='color: black;'>computational topology</a> or
+        <a href="{{wiki_tda}}" style='color: black;'>computational topology</a> and
         <a href="{{wiki_c}}" style='color: black;'>combinatorics</a>.
       </p>
       <p>
@@ -31,11 +34,12 @@
   </div>
   <div style="height: 15px;"></div>
   <!-- News section -->
-  <div nz-row nzJustify="start" style="height: 350px;" id="news">
+  <div nz-row nzJustify="start" style="height: 350px; text-align: left;" id="news">
     <div nz-col class="gutter-row" nzSpan="2">
       <h2>News</h2>
       <div style="border-bottom: 1px solid #aaa;">
-        <nz-select [nzSuffixIcon]="nzSuffixIcon" [nzShowArrow]="false" [(ngModel)]="thisYear" [nzSize]="selectSize" nzBorderless>
+        <nz-select [nzSuffixIcon]="nzSuffixIcon" [nzShowArrow]="false" [(ngModel)]="thisYear" [nzSize]="selectSize"
+                   nzBorderless>
           <nz-option nzValue="2022" nzLabel="2022"></nz-option>
           <nz-option nzValue="2021" nzLabel="2021"></nz-option>
           <nz-option nzValue="2020" nzLabel="2020"></nz-option>
@@ -54,6 +58,10 @@
           <strong>August 16-19</strong>
           – Attending the <a href="https://nasit-2022.seas.ucla.edu/" target="_blank">North American School of
           Information Theory</a> at UCLA, Los Angeles, CA.
+        </li>
+        <li class="indent">
+          Poster: Active learning strategies in community reconstruction. (<a
+          href="https://nasit-2022.seas.ucla.edu/poster-symposium/entry/25/" target="_blank">abstract</a>)
         </li>
         <li>
           <strong>May 30-June 3</strong>
@@ -82,7 +90,7 @@
         </li>
         <li class="indent">
           I am grateful to the NSF, <a href="https://www.colorado.edu/gpsg/grants-awards/travel-grants" target="_blank"
-                             style="color: black;">the
+                                       style="color: black;">the
           GPSG</a>, and my advisors for financial support.
         </li>
         <li>
