@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   screenHeight: number;
   isDonationBannerShown = true;
   isLoaded = false;
+  cv_file = 'https://filen.io/d/58aba1e5-a593-435b-ae93-6ea67c02912b#!8hXRLB4KrywzZu0aaYRHz3N4HsAdf0Og';
   // screenWidth: number;
 
   createTplModal(

@@ -15,6 +15,7 @@ export class PrivacyComponent implements OnInit {
   securityplanner = 'https://securityplanner.consumerreports.org/';
   ssd_eff = 'https://ssd.eff.org/en';
   cpj_dskj = 'https://cpj.org/2019/07/digital-safety-kit-journalists/';
+  pin_mf = 'https://foundation.mozilla.org/en/privacynotincluded/';
 
   constructor() { }
 

@@ -7,10 +7,18 @@ export class Str2urlPipe implements PipeTransform {
 
   transform(value: string): any {
     switch (value) {
-      // Abstracts
+      // Talks
+      case 'SSC22_video':
+        return 'https://www.youtube.com/watch?v=_G65W_yBais';
+      // Certificate
+      case '22_OTA_cert':
+        return 'https://filen.io/d/a5b01a6a-699c-4c64-b40c-f6b5a0ce9490#!tiFlwyWJsGjNk3LRq5yOeHebvujZW4N8';
+      // Abstract
       case 'SSC22_absYen':
         return 'https://filen.io/d/847a79e2-5637-4d78-b39d-2241a801c37b#!QDnS0Pg01pLoDmDXO8MsPSWGJO2dEEmr';
-      // Slides
+      // Slide
+      case 'Research-talk-220602-ssc':
+        return 'https://filen.io/d/d29c4c9a-6b50-4ec9-83f2-0cc4a2d718ac#!5B5OcPtWIt31jKK85M21NcS8I2FwSyE4';
       case 'Research-talk-220331-acp':
         console.log('If the link doesn\'t work, try this:');
         console.log('https://d.junipertcy.info/images/9/9c/Research-talk-220331-acp.pdf');
@@ -74,7 +82,7 @@ export class Str2urlPipe implements PipeTransform {
       case 'Tristan Needham':
         return 'https://www.usfca.edu/faculty/tristan-needham';
       case 'Igor Carron':
-        return 'https://sites.google.com/site/igorcarron2/home' ;
+        return 'https://sites.google.com/site/igorcarron2/home';
       //  Tools
       case 'Graph-tool':
         return 'https://graph-tool.skewed.de/';

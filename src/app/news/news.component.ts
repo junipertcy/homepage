@@ -18,7 +18,7 @@ export class NewsComponent {
   // URLs
   wiki_stat_inf = 'https://en.wikipedia.org/wiki/Statistical_inference';
   wiki_tda = 'https://en.wikipedia.org/wiki/Topological_data_analysis';
-  wiki_comp_sys = 'https://en.wikipedia.org/wiki/Complex_system';
+  wiki_cs = 'https://en.wikipedia.org/wiki/Complex_system';
   wiki_css = 'https://en.wikipedia.org/wiki/Computational_social_science';
   wiki_sp = 'https://en.wikipedia.org/wiki/Stochastic_process';
   wiki_c = 'https://en.wikipedia.org/wiki/Combinatorics';
