@@ -17,12 +17,27 @@ export class Str2urlPipe implements PipeTransform {
       case 'SSC22_absYen':
         return 'https://filen.io/d/847a79e2-5637-4d78-b39d-2241a801c37b#!QDnS0Pg01pLoDmDXO8MsPSWGJO2dEEmr';
       // Slide
+      case 'Research-talk-220723-tyra':
+        return 'https://filen.io/d/862e0f1a-110f-4b4b-8e6e-5ed19203b638#!6IgsokBmD3jMuardqB0LEwHIBeoyDSsz';
       case 'Research-talk-220602-ssc':
         return 'https://filen.io/d/d29c4c9a-6b50-4ec9-83f2-0cc4a2d718ac#!5B5OcPtWIt31jKK85M21NcS8I2FwSyE4';
       case 'Research-talk-220331-acp':
         console.log('If the link doesn\'t work, try this:');
         console.log('https://d.junipertcy.info/images/9/9c/Research-talk-220331-acp.pdf');
         return 'https://filen.io/d/534b0f60-c552-421f-bf65-a48f5d2187bb#!qWTFOEX8PKYzHVOP4q9OgLntrcGv43OL';
+      case 'Research-talk-201107-project_tyra':
+        return 'https://filen.io/d/f995961a-ed4b-4e8a-82c3-33dd1e5865b9#!RenRun48nbFQpITBtZ0J74KI5ne2ehT4';
+      case 'Research-talk-181206-lab_meeting':
+        return 'https://filen.io/d/ec820fa4-5e0a-4f8c-8b24-4d2c05b45fd6#!ZIlJR94hpPZOZe6vSWC51SJGFt19wRys';
+      case 'Research-talk-170620-SINM':
+        return 'https://filen.io/d/22d79292-942d-418a-b4f4-6e17fa57d19d#!NII6M2vIAAfUPkI97friOxaOY27UbB8s';
+      case 'Research-talk-151028-acmmm':
+        return 'https://filen.io/d/94e2daed-5a82-4d37-9180-b713e2cf91de#!tCTC21qAJTrxDhAJrZlKgYAbFIP8EIMH';
+      case 'Research-talk-150810-urbcomp':
+        return 'https://filen.io/d/29d3f6b8-2d01-4a2e-a900-7feb4674882c#!DJBX7CmX3KuGp6OAQaZxbGV4wGPpgqtd';
+      // Posters
+      case 'Research-poster-170620-SINM':
+        return 'https://filen.io/d/44b1679b-3a17-4b4e-b0cf-ddc579f1a1b7#!UuBvYaxjg7DxZZOdDB0JI19Q5DvPyWdb';
       // Licenses
       case 'GNU GPL v3':
         return 'https://choosealicense.com/licenses/gpl-3.0/';
