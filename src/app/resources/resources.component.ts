@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-resources',
@@ -8,6 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class ResourcesComponent implements OnInit {
 
   lee_lady_blurbs = 'http://www.math.hawaii.edu/~lee/homolog/books-homolog.html';
+
+  si = [
+    {
+      author: 'Trevor Hastie, Rob Tibshirani, and Martin Wainwright',
+      title: 'Statistical Learning with Sparsity',
+      title_url: 'https://hastie.su.domains/StatLearnSparsity/',
+      year: '2015'
+    }
+  ];
 
   at = [
     {
@@ -66,6 +75,21 @@ export class ResourcesComponent implements OnInit {
       title: 'The Nature Of Computation',
       title_url: 'http://nature-of-computation.org/',
       year: '2011'
+    },
+  ];
+
+  ml = [
+    {
+      author: 'Stephen Boyd and Lieven Vandenberghe',
+      title: 'Convex Optimization',
+      title_url: 'https://web.stanford.edu/~boyd/cvxbook/',
+      year: '2004'
+    },
+    {
+      author: 'Shai Shalev-Shwartz and Shai Ben-David',
+      title: 'Understanding Machine Learning',
+      title_url: 'https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/',
+      year: '2014'
     },
   ];
 
@@ -135,7 +159,8 @@ export class ResourcesComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
