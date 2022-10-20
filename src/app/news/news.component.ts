@@ -22,6 +22,10 @@ export class NewsComponent {
   wiki_css = 'https://en.wikipedia.org/wiki/Computational_social_science';
   wiki_sp = 'https://en.wikipedia.org/wiki/Stochastic_process';
   wiki_c = 'https://en.wikipedia.org/wiki/Combinatorics';
+
+  wiki_cvx = 'https://en.wikipedia.org/wiki/Convex_optimization';
+  wiki_disc = 'https://en.wikipedia.org/wiki/Combinatorial_optimization';
+
   wiki_a = 'https://en.wikipedia.org/wiki/Algorithm';
 
   acda21 = 'https://www.siam.org/conferences/cm/conference/acda21';
