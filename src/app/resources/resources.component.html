@@ -1,114 +1,131 @@
 <p>
   Here are some resources I find useful to my research, ordered by relatedness.
 </p>
+<div style="height: 15px;"></div>
 <div style="text-align: justify; text-justify: inter-word;">
-  <h3>
-    ⟡⟡⟡ Statistical inference
-  </h3>
+  <h2 style="color: #3D9970; font-weight: bold;">Math of data science</h2>
+  <div style="border-left: 2px solid #3D9970 !important; padding-left: 10pt;">
+    <h3>
+      General
+    </h3>
     <ul>
-    <li *ngFor="let book of si;">
-      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-    </li>
-  </ul>
-  <h3>
-    ⟡⟡⟡ Math of data science
-  </h3>
-  <ul>
-    <li *ngFor="let book of mod;">
-      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-    </li>
-    <li *ngFor="let book of mf;">
-      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-    </li>
-  </ul>
-  <h3>
-    ⟡️⟡️⟡️ Information theory
-  </h3>
-  <h3>
-    ⟡⟡⟡ Machine learning
-  </h3>
-  <ul>
-    <li *ngFor="let book of ml;">
-      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-    </li>
-  </ul>
-  <h3>⟡️⟡️ Computational algebraic topology</h3>
-  <ul>
-    <li *ngFor="let book of cat;">
-      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-    </li>
-  </ul>
-  <h3>
-    ⟡️⟡️ High-dimensional probability
-  </h3>
-  <ul>
-    <li *ngFor="let book of hdp;">
-      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-    </li>
-  </ul>
-  <h3>⟡️ Algebraic topology</h3>
-  <!--  <ul style="border-left: 6px solid #2196F3 !important;">-->
-  <ul>
-    <li *ngFor="let book of at;">
-      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-    </li>
-  </ul>
-
-  <h3>
-    ⟡️ Parametrized complexity
-  </h3>
-  <ul>
-    <li *ngFor="let book of parametrized_complexity;">
-      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-    </li>
-  </ul>
-  <h3>
-    ⟡️ Theory of computing
-  </h3>
-  <ul>
-    <li *ngFor="let book of toc;">
-      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-    </li>
-  </ul>
-  <h3>
-    ⟡️ Homological algebra
-  </h3>
-  <ul>
-    <li *ngFor="let book of homological_algebra;">
-      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-    </li>
-  </ul>
-  <p>
-    Thanks to Lee Lady's <a class="name" href="{{lee_lady_blurbs}}">blurbs</a>, I also like Jans, <i>Rings and
-    Homology</i> (1964) and Sharpe and Vamos, <i>Injective Modules</i> (1975), which are out of print.
-  </p>
-  <h3>
-    ⟡️ Category theory
-  </h3>
-  <ul>
-    <li *ngFor="let book of category_theory;">
-      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-    </li>
-  </ul>
-  <h3>
-    ⟡️ Differential geometry
-  </h3>
-  <ul>
-    <li *ngFor="let book of differential_geometry;">
-      <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-      <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-    </li>
-  </ul>
+      <li *ngFor="let book of mod;">
+        <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      </li>
+      <li *ngFor="let book of mf;">
+        <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      </li>
+    </ul>
+    <h3>
+      Statistical inference
+    </h3>
+    <ul>
+      <li *ngFor="let book of si;">
+        <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      </li>
+    </ul>
+    <h3>
+      Optimization
+    </h3>
+    <ul>
+      <li *ngFor="let book of ml;">
+        <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      </li>
+    </ul>
+    <h3>Computational algebraic topology</h3>
+    <ul>
+      <li *ngFor="let book of cat;">
+        <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      </li>
+    </ul>
+  </div>
+  <div style="height: 15px;"></div>
+  <h2 style="color: #85144b; font-weight: bold;">Theoretical computer science</h2>
+  <div style="border-left: 2px solid #85144b !important; padding-left: 10pt;">
+    <h3>
+      High-dimensional probability
+    </h3>
+    <ul>
+      <li *ngFor="let book of hdp;">
+        <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      </li>
+    </ul>
+    <h3>
+      Parametrized complexity
+    </h3>
+    <ul>
+      <li *ngFor="let book of parametrized_complexity;">
+        <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      </li>
+    </ul>
+    <h3>
+      Theory of computing
+    </h3>
+    <ul>
+      <li *ngFor="let book of toc;">
+        <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      </li>
+    </ul>
+    <h3>
+      Metric embeddings
+    </h3>
+    <ul>
+      <li>
+        <i>Various authors</i>,
+        <a href="https://hackmd.io/@3S70qBUwTR6_CErLY2dm4A/SJfp46KGi" target="_blank">Advances on Metric Embeddings
+          (FOCS 2022 Workshop)</a>, 2022.
+      </li>
+    </ul>
+  </div>
+  <div style="height: 15px;"></div>
+  <h2 style="color: #0074D9; font-weight: bold;">Pure math</h2>
+  <div style="border-left: 2px solid #0074D9 !important; padding-left: 10pt;">
+    <h3>Algebraic topology</h3>
+    <ul>
+      <li *ngFor="let book of at;">
+        <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      </li>
+    </ul>
+    <h3>
+      Homological algebra
+    </h3>
+    <ul>
+      <li *ngFor="let book of homological_algebra;">
+        <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      </li>
+    </ul>
+    <p>
+      Thanks to Lee Lady's <a class="name" href="{{lee_lady_blurbs}}">blurbs</a>, I also like Jans, <i>Rings and
+        Homology</i> (1964) and Sharpe and Vamos, <i>Injective Modules</i> (1975), both of which are out of print.
+    </p>
+    <h3>
+      Category theory
+    </h3>
+    <ul>
+      <li *ngFor="let book of category_theory;">
+        <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      </li>
+    </ul>
+    <h3>
+      Differential geometry
+    </h3>
+    <ul>
+      <li *ngFor="let book of differential_geometry;">
+        <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
+        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      </li>
+    </ul>
+  </div>
+  <div style="height: 15px;"></div>
 </div>
-

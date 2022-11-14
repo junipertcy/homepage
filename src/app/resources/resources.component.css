@@ -35,3 +35,8 @@ a.name:hover {
   color: #055299;
   /*border-bottom: 1px solid #ededed;*/
 }
+
+li {
+  list-style-type: circle;
+  margin: 0pt -12pt 0;
+}
