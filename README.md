@@ -7,6 +7,7 @@ Boulder, CO
 
 ## Useful commands
 * To update dependencies: `yarn upgrade-interactive --latest`
+* Check out the [Angular Update Guide](https://update.angular.io/).
 
 ## Infra
 The site is served by an [Amazon S3 bucket](https://aws.amazon.com/s3/).  
