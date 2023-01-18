@@ -41,6 +41,7 @@
       <div style="border-bottom: 1px solid #aaa;">
         <nz-select [nzSuffixIcon]="nzSuffixIcon" [nzShowArrow]="false" [(ngModel)]="thisYear" [nzSize]="selectSize"
                    nzBorderless>
+          <nz-option nzValue="2023" nzLabel="2023"></nz-option>
           <nz-option nzValue="2022" nzLabel="2022"></nz-option>
           <nz-option nzValue="2021" nzLabel="2021"></nz-option>
           <nz-option nzValue="2020" nzLabel="2020"></nz-option>
@@ -54,6 +55,20 @@
       </div>
     </div>
     <div nz-col nzSpan="22" style="overflow: auto; height: 100%; ">
+      <ul *ngIf="thisYear === '2023'">
+        <li>
+          <strong>Jan 18-May 12</strong>
+          – I am teaching (as a graduate assistant) CSCI 5822 again this semester.
+        </li>
+        <li class="indent">
+          Check out the course <a href="https://github.com/rebeccaem/probabilistic-models-class" target="_blank">GitHub
+          repo</a>.
+        </li>
+        <li class="indent">
+          Students can make appointments with me via <a href="https://calendly.com/tcyen/5822" target="_blank">this
+          link</a>.
+        </li>
+      </ul>
       <ul *ngIf="thisYear === '2022'">
         <li>
           <strong>October 3-5</strong>
@@ -93,7 +108,8 @@
           mostly based in Australia.
         </li>
         <li class="indent">
-          I will give a talk similar to the one at the ACP and highlight the combinatorial aspects. (<a
+          Giving a talk similar to the one given at the Aspen Center for Physics and highlight the combinatorial
+          aspects. (<a
           href="{{'SSC22_absYen' | str2url}}" target="_blank">abstract</a>) (<a
           href="{{'Research-talk-220602-ssc' | str2url}}" target="_blank">slides [pptx]</a>)
           (<a href="{{'SSC22_video' | str2url}}" target="_blank">Video</a>)
