@@ -92,10 +92,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       {
-        enableTracing: true,
-        useHash: false,
-        relativeLinkResolution: 'legacy'
-      }
+    enableTracing: true,
+    useHash: false
+}
     ),
     // MatProgressBarModule,
     // ng-bootstrap
