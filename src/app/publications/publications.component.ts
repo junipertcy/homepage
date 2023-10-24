@@ -10,7 +10,7 @@ import {Article, ArXiv} from './paper';
 export class PublicationsComponent implements OnInit {
   // Preprints
   // p1 = new ArXiv('2106.00185');
-  preprints = [];
+  preprints: any[] = [];
 
   // Journal Articles
   j5 = new Article('10.1103/PhysRevE.104.L042303', '2106.00185');

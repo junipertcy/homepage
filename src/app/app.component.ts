@@ -16,7 +16,7 @@ import {NzModalService} from 'ng-zorro-antd/modal';
 export class AppComponent implements OnInit {
   title = 'app';
   isCollapsed = false;
-  screenHeight: number;
+  screenHeight: number = 0;
   isDonationBannerShown = true;
   isLoaded = false;
   cv_file = "../../assets/pdf/Tzu-Chi_Yen_CV.pdf";
@@ -50,26 +50,25 @@ export class AppComponent implements OnInit {
   getTitleFromRouter = function (router: Router) {
     for (const r of router.config) {
       if ('/' + r.path === router.url) {
-        return r.data ? r.data.title : 'Tzu-Chi Yen';
+        return r.data ? r.data['title'] : 'Tzu-Chi Yen';
       }
     }
   };
 
   // https://stackoverflow.com/questions/39888768
   @HostListener('window:resize', ['$event'])
-  getScreenSize(event?) {
+  getScreenSize(event: Event) {
     // 64px: header height; 70px: footer height; 40px: banner row;
     this.screenHeight = window.innerHeight - 64 - 70 - 40;
     // this.screenWidth = window.innerWidth;
     // console.log(this.screenHeight, this.screenWidth);
-
   }
 
   constructor(private router: Router,
               private titleService: Title,
               private officeInfoModal: NzModalService
   ) {
-    this.getScreenSize();
+    // this.getScreenSize(); // Call the method without arguments
     router.events.subscribe((event) => {  // fires on every URL change
       if (router.url !== '/') {
         this.isDonationBannerShown = false;
@@ -82,5 +81,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {this.isLoaded = true; }, 500);
   }
+
 }
 
