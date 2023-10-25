@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
 
   // https://stackoverflow.com/questions/39888768
   @HostListener('window:resize', ['$event'])
-  getScreenSize(event: Event) {
+  getScreenSize() {
     // 64px: header height; 70px: footer height; 40px: banner row;
     this.screenHeight = window.innerHeight - 64 - 70 - 40;
     // this.screenWidth = window.innerWidth;
@@ -68,7 +68,7 @@ export class AppComponent implements OnInit {
               private titleService: Title,
               private officeInfoModal: NzModalService
   ) {
-    // this.getScreenSize(); // Call the method without arguments
+    this.getScreenSize(); // Call the method without arguments
     router.events.subscribe((event) => {  // fires on every URL change
       if (router.url !== '/') {
         this.isDonationBannerShown = false;
