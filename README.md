@@ -6,7 +6,7 @@ Tzu-Chi Yen <[tzuchi.yen@colorado.edu](mailto:tzuchi.yen@colorado.edu)>
 Boulder, CO
 
 ## Useful commands
-* To update dependencies: `yarn upgrade-interactive --latest`
+* We use [pnpm](https://pnpm.io/). To update dependencies: `pnpm up -i`
 * Check out the [Angular Update Guide](https://update.angular.io/).
 
 ## Infra
