@@ -12,7 +12,7 @@ export class NewsComponent {
   // onChange(result: Date): void {
   //   console.log('onChange: ', result);
   // }
-  thisYear = '2023';
+  thisYear = '2024';
   selectSize: NzSelectSizeType = 'default';
 
   // URLs

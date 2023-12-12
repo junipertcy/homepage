@@ -34,6 +34,7 @@
       <div style="border-bottom: 1px solid #aaa;">
         <nz-select [nzSuffixIcon]="nzSuffixIcon" [nzShowArrow]="false" [(ngModel)]="thisYear" [nzSize]="selectSize"
           nzBorderless>
+          <nz-option nzValue="2024" nzLabel="2024"></nz-option>
           <nz-option nzValue="2023" nzLabel="2023"></nz-option>
           <nz-option nzValue="2022" nzLabel="2022"></nz-option>
           <nz-option nzValue="2021" nzLabel="2021"></nz-option>
@@ -48,6 +49,24 @@
       </div>
     </div>
     <div nz-col nzSpan="22" style="overflow: auto; height: 100%; ">
+      <ul *ngIf="thisYear === '2024'">
+        <li>
+          <strong>Spring</strong>
+          - <span style="color: crimson;">Hi CSCI 5352 students!</span> I will be (strictly) following Prof. Aaron
+          Clauset's <a href="https://aaronclauset.github.io/courses/5352/" target="_blank">lecture materials</a>.
+          Please find the course syllabus, prerequisites, and other references therein.
+          Course Canvas will open about a week before the semester starts. Have a great winter break!
+        </li>
+        <li class="indent">
+          Please feel free to make appointments with me via <a href="https://calendly.com/tcyen/5352"
+            target="_blank">this
+            link</a>.
+        </li>
+        <li class="indent">
+          If you are on the waitlist, no worries! You will be added to the class at a later date.
+          (Unless we reached the maximum capacity.)
+        </li>
+      </ul>
       <ul *ngIf="thisYear === '2023'">
         <li>
           <strong>Aug 23</strong>
@@ -78,7 +97,7 @@
           (<a href="../../assets/pdf/abstract/thesis_abstract_Yen.pdf" target="_blank">abstract</a>; <a
             href="../../assets/pdf/slides/Dissertation_defense-29Jun23.pdf" target="_blank">slides</a>; <a
             href="https://www.proquest.com/docview/2860429899/" target="_blank">full text</a>;
-            <a href="https://www.mathgenealogy.org/id.php?id=301918" target="_blank">my math lineage</a>)
+          <a href="https://www.mathgenealogy.org/id.php?id=301918" target="_blank">my math lineage</a>)
         </li>
         <li>
           <strong>Jan 18-May 12</strong>
@@ -87,10 +106,6 @@
         <li class="indent">
           Check out the course <a href="https://github.com/rebeccaem/probabilistic-models-class" target="_blank">GitHub
             repo</a>.
-        </li>
-        <li class="indent">
-          Students can make appointments with me via <a href="https://calendly.com/tcyen/5822" target="_blank">this
-            link</a>.
         </li>
         <li class="indent">
           Apr 28: We are happy to welcome Prof. Nuttida Rungratsameetaweemana for a guest lecture titled "Probabilistic
