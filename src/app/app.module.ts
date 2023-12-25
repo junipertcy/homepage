@@ -45,6 +45,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { ReadingComponent } from './reading/reading.component';
 import { NotesComponent } from './notes/notes.component';
+import { BooksComponent } from './books/books.component';
 registerLocaleData(en);
 
 const appRoutes: Routes = [
@@ -61,6 +62,7 @@ const appRoutes: Routes = [
   { path: 'resources', component: ResourcesComponent },
   { path: 'reading', component: ReadingComponent },
   { path: 'notes', component: NotesComponent },
+  { path: 'books', component: BooksComponent },
 ];
 
 @NgModule({
