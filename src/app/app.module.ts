@@ -82,6 +82,7 @@ const appRoutes: Routes = [
     ResourcesComponent,
     ReadingComponent,
     NotesComponent,
+    BooksComponent,
   ],
   imports: [
     NgZorroAntdModule,

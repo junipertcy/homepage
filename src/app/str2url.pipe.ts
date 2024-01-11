@@ -98,6 +98,16 @@ export class Str2urlPipe implements PipeTransform {
         return 'https://www.usfca.edu/faculty/tristan-needham';
       case 'Igor Carron':
         return 'https://sites.google.com/site/igorcarron2/home';
+      case 'Diane Poole Heller':
+        return 'https://dianepooleheller.com/';
+      case 'Wendy Behary':
+        return 'https://disarmingthenarcissist.com/about-wendy-behary/';
+      case 'Joel Trachtman':
+        return 'https://fletcher.tufts.edu/people/faculty/joel-trachtman';
+      case 'Bryan Garner':
+        return 'https://lawprose.org/bryan-garner/';
+      case 'Peter Levine':
+        return 'https://www.somaticexperiencing.com/about-peter';
       //  Tools
       case 'Graph-tool':
         return 'https://graph-tool.skewed.de/';
@@ -138,7 +148,7 @@ export class Str2urlPipe implements PipeTransform {
       case 'leidenalg':
         return 'https://github.com/vtraag/leidenalg';
       default:
-        return false;
+        return 'https://junipertcy.info/';
     }
   }
 
