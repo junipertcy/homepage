@@ -10,8 +10,8 @@ Boulder, CO
 * Check out the [Angular Update Guide](https://update.angular.io/).
 
 ## Infra
-The site is served by an [Amazon S3 bucket](https://aws.amazon.com/s3/).  
-Learn Angular on [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Angular_getting_started).
+* Served by an [Amazon S3 bucket](https://aws.amazon.com/s3/).  
+* Server-side access control, e.g., denying access to static files of a certain extension, done by Bucket Policy in S3.
 
 ## Licensed fonts
-* I use [Equity](https://typographyforlawyers.com/equity.html) for serifed typefaces.
+* I use [Equity](https://typographyforlawyers.com/equity.html) for serifed typefaces. 

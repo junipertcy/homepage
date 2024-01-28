@@ -27,6 +27,7 @@ import {
 import { NewsComponent } from './news/news.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { TeachingComponent } from './teaching/teaching.component';
+import { ErrorComponent } from './error/error.component';
 import { TeachingComponent2270 } from './teaching/2270/2270.component';
 import { TeachingComponent3308 } from './teaching/3308/3308.component';
 import { TeachingComponent5822 } from './teaching/5822/5822.component';
@@ -65,6 +66,7 @@ const appRoutes: Routes = [
   { path: 'reading', component: ReadingComponent },
   { path: 'notes', component: NotesComponent },
   { path: 'books', component: BooksComponent },
+  { path: '**', component: ErrorComponent }
 ];
 
 @NgModule({
