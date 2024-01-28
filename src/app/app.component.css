@@ -1,5 +1,6 @@
 .ant-layout-header {
   background: #ffffff;
+  height: 70px;
 }
 
 .ant-layout-footer {
@@ -7,18 +8,18 @@
 }
 
 .layout {
-  width: 980px;
+  width: 1020px;
   background: #ffffff;
   margin: 0 auto;
+  /* font-family: 'equity_a'; */
 }
 
 #logo-title {
   display: block;
   min-width: 200px;
   font-size: 28px !important;
-  font-family: 'Source Serif Pro', serif;
+  font-family: 'equity_a';
   /*text-transform: uppercase !important;*/
-  vertical-align: top !important;
   float: left;
   margin-top: 10px;
   margin-left: 0;
@@ -26,6 +27,10 @@
   letter-spacing: .04em;
   line-height: normal;
   font-weight: 600;
+  /* font-weight: normal; */
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
   color: #37373a;
 }
 
@@ -34,7 +39,7 @@
   font-family: 'Cookie', cursive;
   vertical-align: top !important;
   float: right;
-  margin-top: 10px;
+  margin-top: 16px;
   margin-left: 0;
   margin-bottom: 5px;
   letter-spacing: .04em;
