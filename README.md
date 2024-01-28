@@ -11,7 +11,7 @@ Boulder, CO
 
 ## Infra
 * Served by an [Amazon S3 bucket](https://aws.amazon.com/s3/).  
-* Server-side access control, e.g., denying access to static files of a certain extension, done by Bucket Policy in S3.
+* Server-side access control, e.g., denying access to certain static files, is done by S3 Bucket Policy.
 
 ## Licensed fonts
-* I use [Equity](https://typographyforlawyers.com/equity.html) for serifed typefaces. 
+* I use [Equity](https://typographyforlawyers.com/equity.html) for serifed typefaces. (see [license](https://mbtype.com/license/))
