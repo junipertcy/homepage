@@ -1,7 +1,7 @@
 .angular/
 
 # Licensed fonts
-equity_a*.woff2
+*.woff2
 
 
 # Omni Outline files

@@ -14,4 +14,4 @@ Boulder, CO
 * Server-side access control, e.g., denying access to certain static files, is done by S3 Bucket Policy.
 
 ## Licensed fonts
-* I use [Equity](https://typographyforlawyers.com/equity.html) for serifed typefaces. (see [license](https://mbtype.com/license/))
+* I use [Equity](https://typographyforlawyers.com/equity.html) for serifed typefaces and [Concourse](https://typographyforlawyers.com/concourse.html) for some sans serifs, see their [license](https://mbtype.com/license/).

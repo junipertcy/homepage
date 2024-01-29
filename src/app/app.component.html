@@ -4,7 +4,9 @@
 </ng-template>
 <nz-layout class="layout" nz-row nzJustify="center" *ngIf="isLoaded">
   <nz-header>
-    <a href="/"><h1 id="logo-title">Tzu-Chi Yen</h1></a>
+    <a href="/">
+      <h1 id="logo-title">Tzu-Chi Yen</h1>
+    </a>
     <div nz-row nzJustify="end">
       <div nz-col nzSpan="2">
         <nz-tag class="tag" [nzColor]="'volcano'">
@@ -17,33 +19,25 @@
   </nz-header>
   <div nz-row>
     <div nz-col nzSpan="4">
-      <nz-sider
-        nzCollapsible
-        nz-col nzSpan="4"
-        nzTheme="light"
-        [(nzCollapsed)]="isCollapsed"
-        [nzBreakpoint]="'lg'"
-        [nzCollapsedWidth]="0"
-        [nzZeroTrigger]="zeroTrigger"
-        [nzWidth]="130"
-      >
+      <nz-sider nzCollapsible nz-col nzSpan="4" nzTheme="light" [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'lg'"
+        [nzCollapsedWidth]="0" [nzZeroTrigger]="zeroTrigger" [nzWidth]="150">
         <ul nz-menu nzMode="inline" [nzInlineCollapsed]="isCollapsed" style="background: #e7e7e7;">
           <li nz-menu-item routerLink="/publications">
-            <span>Publications</span>
+            <span id="menu">Publications</span>
           </li>
           <li nz-menu-item routerLink="/talks">
-            <span>Talks</span>
+            <span id="menu">Talks</span>
           </li>
           <li nz-menu-item routerLink="/teaching">
-            <span>Teaching</span>
+            <span id="menu">Teaching</span>
           </li>
           <li nz-menu-item routerLink="/activities">
-            <span>Activities</span>
+            <span id="menu">Activities</span>
           </li>
         </ul>
       </nz-sider>
     </div>
-    <div nz-col nzSpan="19" [style.min-height.px]="screenHeight">
+    <div nz-col nzSpan="18" [style.min-height.px]="screenHeight">
       <router-outlet></router-outlet>
     </div>
   </div>
@@ -53,20 +47,18 @@
     <div nz-row nzJustify="start" style="height: 40px">
       <div *ngIf="isDonationBannerShown" nz-col nzSpan="4">
       </div>
+
       <div *ngIf="isDonationBannerShown" nz-col nzSpan="4" style="margin-top: -15px;">
         <h5>Proud supporter of</h5>
-        <a href="https://freedom.press/">
-          <img src="../assets/img/fpf-logo.png" style="margin-bottom: 10pt;" height="23pt" alt="fpf">
-        </a>
-      </div>
-      <div *ngIf="isDonationBannerShown" nz-col nzSpan="4">
         <a href="https://my.fsf.org/join?referrer=2272401">
-          <img src="https://static.fsf.org/nosvn/associate/crm/2272401.png" height="40pt" alt="fsf">
+          <img src="https://static.fsf.org/nosvn/associate/crm/2272401.png" height="32pt" alt="fsf"
+            style="margin-top: -6pt;">
         </a>
       </div>
       <div *ngIf="isDonationBannerShown" nz-col nzSpan="2">
         <a href="https://www.eff.org/">
-          <img src="https://www.eff.org/files/2019/11/20/2020-membership-badge-2.png" height="40pt" alt="eff">
+          <img src="https://www.eff.org/files/2019/11/20/2020-membership-badge-2.png" height="40pt" alt="eff"
+            style="margin-left: -30pt;">
         </a>
       </div>
       <div *ngIf="isDonationBannerShown" nz-col nzSpan="4" style="margin-top: -15px;">
@@ -75,7 +67,7 @@
           <ul id="network-icon">
             <li>
               <a href="https://scholar.google.com/citations?user=ZUxl-r0AAAAJ&hl=en&sortby=pubdate" target="_blank"
-                 rel="noopener">
+                rel="noopener">
                 <i class="ai ai-google-scholar big-icon" style="color: #37373a;"></i>
               </a>
             </li>
@@ -103,9 +95,8 @@
       <a href="https://github.com/junipertcy/homepage" target="_blank" style="color: rgba(0,0,0,.65);">
         <i nz-icon nzType="code" nzTheme="outline"></i>
       </a>
-      | Powered by <a
-      href="https://angular.io/" target="_blank" style="color: rgba(0,0,0,.65);">Angular</a> and <a
-      href="https://ng.ant.design/" target="_blank" style="color: rgba(0,0,0,.65);">NG-ZORRO</a>
+      | Powered by <a href="https://angular.io/" target="_blank" style="color: rgba(0,0,0,.65);">Angular</a> and <a
+        href="https://ng.ant.design/" target="_blank" style="color: rgba(0,0,0,.65);">NG-ZORRO</a>
       &nbsp;
       <a routerLink="/resources">🥾</a>
       <a routerLink="/reading">🧢</a>
@@ -114,4 +105,3 @@
     </nz-footer>
   </div>
 </nz-layout>
-

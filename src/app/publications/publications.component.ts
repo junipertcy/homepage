@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {Article, ArXiv} from './paper';
+import { Component, OnInit } from '@angular/core';
+import { Article, ArXiv } from './paper';
 
 @Component({
   selector: 'app-publications',
   templateUrl: './publications.component.html',
-  styleUrls: ['./publications.component.css']
+  styleUrls: ['./publications.component.css', ]
 })
 
 export class PublicationsComponent implements OnInit {
@@ -115,7 +115,7 @@ export class PublicationsComponent implements OnInit {
     this.t1.links = [{
       'title': 'NetSci2016 참가기',
       'url': 'https://filen.io/d/1bdb5c6c-cc3b-4714-9159-87f5862ec5b8#!yUjGPTzCvDYL1tvpCocpykds5uzRHfnQ'
-    }, ];
+    },];
   }
 
   ngOnInit() {

@@ -13,6 +13,15 @@ nz-divider {
 nz-select {
   margin: 0 0px 3px 0;
   width: 66px;
+  font-family: 'concourse_4_caps', sans-serif;
+}
+
+#otherYears {
+  font-family: 'concourse_4_caps', sans-serif;
+}
+
+strong {
+  font-family: 'concourse_4_caps', sans-serif;
 }
 
 li {
@@ -28,7 +37,8 @@ li.indent {
 }
 
 .email {
-  width:1em; margin-right:.5em;
+  width: 1em;
+  margin-right: .5em;
 }
 
 .pgp-key {
@@ -38,25 +48,10 @@ li.indent {
   /*width: 1em;*/
 }
 
+h2 {
+  font-family: 'concourse_4_caps', sans-serif;
+}
 
-
-/*a {*/
-/*  -webkit-transition: all .25s cubic-bezier(.55,.085,0,.99),outline 0s linear,outline-offset 0s linear;*/
-/*  transition: all .25s cubic-bezier(.55,.085,0,.99),outline 0s linear,outline-offset 0s linear;*/
-/*  !*color: rgba(0, 0, 0, 0.85);*!*/
-/*  color: black;*/
-/*  text-decoration: none;*/
-/*  background-color: transparent;*/
-/*  border-bottom: 1px solid #ededed;*/
-/*}*/
-
-/*a:hover {*/
-/*  color: #055299;*/
-/*  !*border-bottom: 1px solid #ededed;*!*/
-/*}*/
-
-
-/*a:-webkit-any-link {*/
-/*  cursor: pointer;*/
-/*}*/
-
+h3 {
+  font-family: 'concourse_4_caps', sans-serif;
+}

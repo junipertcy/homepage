@@ -1,10 +1,14 @@
-import {Component, HostListener} from '@angular/core';
-import {NzSelectSizeType} from 'ng-zorro-antd/select';
+import { Component, HostListener } from '@angular/core';
+import { NzSelectSizeType } from 'ng-zorro-antd/select';
+import * as d3 from 'd3';
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css'],
+  styleUrls: [
+    './news.component.css',
+    '../app.component.css', 
+  ]
 })
 
 export class NewsComponent {
@@ -35,5 +39,13 @@ export class NewsComponent {
 
 
   constructor() {
+
+
   }
+
+  ngAfterContentChecked() {
+    d3.selectAll(".ant-select-item-option-content").style("font-family", "concourse_4_caps");
+    // d3.selectAll("nz-option-item").on("mouseover", (event) => {console.log(event);})
+  }
+
 }

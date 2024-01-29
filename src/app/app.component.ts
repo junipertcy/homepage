@@ -1,8 +1,9 @@
-import {Component, TemplateRef, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {Title} from '@angular/platform-browser';
-import {HostListener} from '@angular/core';
-import {NzModalService} from 'ng-zorro-antd/modal';
+import { Component, TemplateRef, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { HostListener } from '@angular/core';
+import { NzModalService } from 'ng-zorro-antd/modal';
+
 
 
 @Component({
@@ -67,8 +68,8 @@ export class AppComponent implements OnInit {
   }
 
   constructor(private router: Router,
-              private titleService: Title,
-              private officeInfoModal: NzModalService
+    private titleService: Title,
+    private officeInfoModal: NzModalService
   ) {
     this.getScreenSize(); // Call the method without arguments
     router.events.subscribe((event) => {  // fires on every URL change
@@ -81,7 +82,7 @@ export class AppComponent implements OnInit {
 
   // A hot fix for the homepage which renders prematurely
   ngOnInit() {
-    setTimeout(() => {this.isLoaded = true; }, 500);
+    setTimeout(() => { this.isLoaded = true; }, 500);
   }
 
 }

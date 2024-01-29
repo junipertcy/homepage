@@ -37,7 +37,7 @@
     </div>
 <!--    <div nz-col nzSpan="24" style="height: 20px;"></div>-->
     <div nz-col nzSpan="24" *ngIf="preprints.length == 0">
-      <p style="text-align: right; margin-bottom: 0">
+      <p style="text-align: right; margin-bottom: -25pt; font-family: 'concourse_4';">
         Favorite: <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>;
         Short summary: <i nz-icon nzType="edit" nzTheme="fill"></i>
       </p>
@@ -58,11 +58,11 @@
         <span>DOI: <a href="{{article.doi}}">{{article.doi_str}}</a><br></span>
         <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
         <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
-        <nz-tag *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
-        <nz-tag *ngIf="article.sm_pdf"><a href="{{article.sm_pdf}}">Suppl. Mat.</a></nz-tag>
-        <nz-tag *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
-        <nz-tag *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
-        <nz-tag *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.sm_pdf"><a href="{{article.sm_pdf}}">Suppl. Mat.</a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
         <div class='abstract' *ngIf="article.toggle == true">{{article.summary}}
         </div>
       </li>
@@ -84,10 +84,10 @@
         <span>DOI: <a href="{{article.doi}}">{{article.doi_str}}</a><br></span>
         <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
         <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
-        <nz-tag *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
-        <nz-tag *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
-        <nz-tag *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
-        <nz-tag *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
         <div class='abstract' *ngIf="article.toggle == true">{{article.summary}}
         </div>
       </li>
@@ -108,10 +108,10 @@
         <span [innerHTML]="article.venue"></span>
         <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
         <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
-        <nz-tag *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
-        <nz-tag *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
-        <nz-tag *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
-        <nz-tag *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
         <div class='abstract' *ngIf="article.toggle == true">{{article.summary}}
         </div>
       </li>
@@ -127,11 +127,11 @@
         <span [innerHTML]="article.venue"></span>
         <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
         <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
-        <nz-tag *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
-        <nz-tag *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
-        <nz-tag *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
-        <nz-tag *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
-        <nz-tag *ngFor="let link of article.links"><a href="{{link.url}}">{{link.title}}</a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
+        <nz-tag class="tag" *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+        <nz-tag class="tag" *ngFor="let link of article.links"><a href="{{link.url}}">{{link.title}}</a></nz-tag>
         <div class='abstract' *ngIf="article.toggle == true">{{article.summary}}
         </div>
       </li>
