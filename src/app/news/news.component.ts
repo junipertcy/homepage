@@ -45,7 +45,8 @@ export class NewsComponent {
 
   ngAfterContentChecked() {
     d3.selectAll(".ant-select-item-option-content").style("font-family", "concourse_4_caps");
-    // d3.selectAll("nz-option-item").on("mouseover", (event) => {console.log(event);})
+    d3.selectAll("nz-option-item").on("mouseover", (event) => {console.log(event, this);})
+    // d3.selectAll("nz-option-item").attr("onItemHover", );
   }
 
 }
