@@ -1,38 +1,51 @@
 #teaching {
-    /*border-style: solid;*/
-    border-width: thin;
-    border-color: #000000;
-    overflow: hidden;
-  }
-  
-  h2 {
-    color: rgba(0, 0, 0, 0.85);
-    font-family: "enigmaticregular", palatino, georgia, verdana, arial, sans-serif;
-    text-align: left;
-    font-weight: bold;
-    /*margin-bottom: 10px;*/
-    margin-top: 10px;
-  }
-  
-  h4 {
-    margin-bottom: 4px;
-  }
-  
-  ol {
-    padding: 0 10px 0 20px;
-  }
-  
-  li {
-    list-style-type: circle;
-    margin: 0 0 0 0;
-    /*padding-bottom: 1em;*/
-  
-  }
-  
-  ol.nocount li {
-    list-style-type: circle;
-    margin: 0 0 0 0;
-    /*padding-bottom: 1em;*/
-  
-  }
-  
+  /*border-style: solid;*/
+  font-family: 'Equity A';
+  font-size: 14pt;
+  border-width: thin;
+  border-color: #000000;
+  overflow: hidden;
+}
+
+h2 {
+  color: rgba(0, 0, 0, 0.85);
+  font-family: 'Concourse 4';
+  text-align: left;
+  font-weight: normal;
+  /*margin-bottom: 10px;*/
+  margin-top: 10px;
+}
+h3 {
+  color: rgba(0, 0, 0, 0.85);
+  font-family: 'Concourse 4';
+  text-align: left;
+  font-weight: normal;
+  /*margin-bottom: 10px;*/
+  margin-top: 10px;
+}
+h4 {
+  margin-bottom: 4px;
+}
+
+ol {
+  padding: 0 10px 0 20px;
+}
+
+li {
+  list-style-type: circle;
+  margin: 0 0 0 0;
+  /*padding-bottom: 1em;*/
+
+}
+
+ol.nocount li {
+  list-style-type: circle;
+  margin: 0 0 0 0;
+  /*padding-bottom: 1em;*/
+
+}
+
+nz-tree {
+  font-family: 'Equity B';
+  font-size: 14pt;
+}

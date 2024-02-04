@@ -58,7 +58,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 // import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 // import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 // import { NzTransferModule } from 'ng-zorro-antd/transfer';
-// import { NzTreeModule } from 'ng-zorro-antd/tree';
+import { NzTreeModule } from 'ng-zorro-antd/tree';
 // import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 // import { NzUploadModule } from 'ng-zorro-antd/upload';
@@ -79,6 +79,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
     NzModalModule,
     NzSelectModule,
     NzTypographyModule,
+    NzTreeModule,
     // NzPageHeaderModule,
     // NzBreadCrumbModule
     // NzButtonModule,
