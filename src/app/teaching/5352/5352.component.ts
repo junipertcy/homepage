@@ -61,7 +61,7 @@ export class TeachingComponent5352 implements OnInit {
           ]
         },
         {
-          title: 'clustering coefficient (△), feed-forward / feedback loops, larger motifs (⊓), positional measures (diameter, eccentricity), small-world property',
+          title: 'clustering coefficient (▲), feed-forward / feedback loops, larger motifs (⊓, ☒), positional measures (diameter, eccentricity), small-world property',
           key: '2002',
           // children: [{ title: 'leaf', key: '10020', isLeaf: true }]
         }
@@ -75,15 +75,15 @@ export class TeachingComponent5352 implements OnInit {
       expanded: false,
       children: [
         {
-          title: 'TBD',
+          title: 'Four genres: Erdős–Rényi, configuration, modular, latent space; properties about ER graphs; their degree distribution is Poisson',
           key: '3001',
           expanded: false,
           children: [
-            // { title: 'leaf', key: '30010', isLeaf: true },
+            // { title: 'Four genres: Erdős–Rényi, configuration, modular, latent space', key: '30010', isLeaf: true },
           ]
         },
         {
-          title: 'TBD',
+          title: 'Reciprocity, clustering coeff of ER graphs; phase transition wrt. avg degs; small-world property',
           key: '3002',
           // children: [{ title: 'leaf', key: '30020', isLeaf: true }]
         }
