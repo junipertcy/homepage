@@ -1,41 +1,77 @@
 <div class="container" id="teaching">
-
-    <h2><a routerLink="/teaching"><i nz-icon nzType="left-square" nzTheme="fill"></i></a> CSCI 5352 Network Analysis and
+    <h2><a routerLink="/teaching"><i nz-icon nzType="left-square" nzTheme="fill"></i></a> Network Analysis and
         Modeling</h2>
-    <p>
-        Spring 2024 | Tuesday and Thursday, 1100a–1215p | ECST 121 | <a href="../../../assets/pdf/teaching/5352/csci5352_s24_syllabus.pdf">Syllabus</a><br>
-        Course on University Catelog: <a href="https://catalog.colorado.edu/search/?search=CSCI+5352"
-            target="_blank">CSCI
-            5352</a>.
-    </p>
+        <div>
+            <span style="font-style: italic;">I am thankful to Profs. Aaron Clauset and Dan Larremore, who allow me to use their materials for this course.</span>
+        </div>
+    <div style="margin-top: 12pt;">
+        <strong>CSCI 5352, Spring 2024</strong><nz-divider nzType="vertical"></nz-divider>
+        <nz-tag nzColor="default"><a href="../../../assets/pdf/teaching/5352/csci5352_s24_syllabus.pdf" target="_blank"
+                style="font-family: cursive;">Syllabus</a></nz-tag>
+        <br>
+        Tuesday and Thursday, 1100a–1215p, at ECST 121 (hybrid)
+        <br>
+        <span>
+            Course on CU Boulder Catelog: <a href="https://catalog.colorado.edu/search/?search=CSCI+5352"
+                target="_blank">CSCI
+                5352</a>.
+        </span>
+        <br>
+    </div>
+    <nz-divider></nz-divider>
+    <!-- <nz-tree [nzData]="nodes" nzShowIcon (nzClick)="nzEvent($event)"></nz-tree>
+    <nz-tree [nzData]="nodes" nzShowIcon [nzExpandedIcon]="multiExpandedIconTpl">
+      <ng-template #multiExpandedIconTpl let-node let-origin="origin">
+        <span
+          *ngIf="!origin.isLeaf"
+          nz-icon
+          [nzType]="node.isExpanded ? 'folder-open' : 'folder'"
+          class="ant-tree-switcher-line-icon"
+        ></span>
+        <span *ngIf="origin.isLeaf" nz-icon nzType="file" class="ant-tree-switcher-line-icon"></span>
+      </ng-template>
+    </nz-tree> -->
     <h3>Textbooks</h3>
     <p>
-        Newman, Mark E. J. Networks. Second edition, Oxford University Press, 2018.
+        <a href="https://www.amazon.com/Networks-Mark-Newman-dp-0198805098/dp/0198805098"
+            target="_blank">Networks</a> by M.E.J. Newman, Second edition, Oxford University Press, 2018.
     </p>
-    <h3>What we did in Spring 2024</h3>
-    <span>
-        Week 1: Fundamentals of networks
-    </span>
-    <ol>
-        <li>
-            syllabus, course logistics, and self-intro
-        </li>
-        <li>
-            network representation, notations
-        </li>
-    </ol>
-    <span>
-        Week 2: Summary statistics
-    </span>
-    <ol>
-        <li>
-            degree, degree distribution, reciprocity, CCDF for scale-free networks
-        </li>
-        <li>
-            clustering coefficient (△), feed-forward / feedback loops, larger motifs (⊓), positional measures (diameter,
-            eccentricity), small-world property
-        </li>
-    </ol>
+    <nz-divider></nz-divider>
+    <div id="what-we-did">
+        <h3>What we did in Spring 2024</h3>
+        <nz-tree [nzData]="week_1" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+        <nz-tree [nzData]="week_2" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+        <nz-tree [nzData]="week_3" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+        <nz-tree [nzData]="week_4" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+        <nz-tree [nzData]="week_5" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+        <nz-tree [nzData]="week_6" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+        <nz-tree [nzData]="week_7" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+        <nz-tree [nzData]="week_8" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+        <nz-tree [nzData]="week_9" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+        <nz-tree [nzData]="week_10" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+
+
+        <nz-tree [nzData]="week_11" nzShowLine (nzClick)="nzEvent($event)" [nzExpandedIcon]="springBreakTpl">
+            <ng-template #springBreakTpl let-node let-origin="origin">
+                <span *ngIf="!origin.isLeaf" nz-icon [nzType]="node.isExpanded ? 'smile' : 'smile'"
+                    class="ant-tree-switcher-line-icon"></span>
+            </ng-template>
+        </nz-tree>
+
+
+
+
+        <nz-tree [nzData]="week_12" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+        <nz-tree [nzData]="week_13" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+        <nz-tree [nzData]="week_14" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+        <nz-tree [nzData]="week_15" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+        <nz-tree [nzData]="week_16" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+    </div>
+
+
+
+
+
     <!-- <h4>Lecture: modern web technology</h4>
     <ul>
         <li>
@@ -71,6 +107,7 @@
                 Principles</a> for Digital Longevity.
         </li>
     </ul> -->
+    <nz-divider></nz-divider>
     <h3>References</h3>
     <p>
 
