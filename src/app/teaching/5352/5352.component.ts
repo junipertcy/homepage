@@ -33,7 +33,7 @@ export class TeachingComponent5352 implements OnInit {
           children: [
             { title: 'From past installments, examples of <i>what was successful</i> & <i>what was challenging</i>', key: '10010', isLeaf: true },
             { title: 'Self-intro: (1) name, pronouns, dept; (2) motivation; (3) which part of course most looking forward to?', key: '10011', isLeaf: true },
-            { title: 'Syllabus "Easter Egg"', key: '10012', isLeaf: true }
+            { title: 'Syllabus “Easter Egg”', key: '10012', isLeaf: true }
           ]
         },
         {
