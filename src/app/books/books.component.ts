@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-books',
   standalone: false,
   templateUrl: './books.component.html',
-  styleUrl: './books.component.css'
+  styleUrls: ['./books.component.css']
 })
 export class BooksComponent {
   writing = [

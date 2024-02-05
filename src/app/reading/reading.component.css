@@ -35,3 +35,7 @@ a.name:hover {
   color: #055299;
   /*border-bottom: 1px solid #ededed;*/
 }
+
+h3 {
+  font-family: 'Concourse 4';
+}

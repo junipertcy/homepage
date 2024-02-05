@@ -258,3 +258,39 @@
     font-variation-settings:
         "wdth" 100;
 }
+
+@font-face {
+    font-family: equity_b_caps;
+    font-style: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('fonts/equity_b_caps_regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: equity_b_caps;
+    font-style: normal;
+    font-weight: bold;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('fonts/equity_b_caps_bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: equity_a_caps;
+    font-style: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('fonts/equity_a_caps_regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: equity_a_caps;
+    font-style: normal;
+    font-weight: bold;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('fonts/equity_a_caps_bold.woff2') format('woff2');
+}

@@ -51,15 +51,6 @@
   font-weight: normal;
 }
 
-#footer {
-  text-align: center;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  clear: both;
-  /* font-family: 'concourse_5'; */
-}
-
 #network-icon {
   display: inline-flex;
   flex-direction: row;
@@ -91,9 +82,23 @@
   transition: color .6s ease;
 }
 
+
 h5 {
   font-family: 'concourse_4_caps';
+  font-size: 10pt;
 }
+
+#footer {
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  clear: both;
+  font-family: 'concourse 4';
+  font-size: 12pt;
+}
+
+
 
 /* General link hover behavior */
 
