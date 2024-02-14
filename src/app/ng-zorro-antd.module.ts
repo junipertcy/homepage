@@ -51,7 +51,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 // import { NzSpinModule } from 'ng-zorro-antd/spin';
 // import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 // import { NzStepsModule } from 'ng-zorro-antd/steps';
-// import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
 // import { NzTableModule } from 'ng-zorro-antd/table';
 // import { NzTabsModule } from 'ng-zorro-antd/tabs';
 // import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
@@ -80,6 +80,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
     NzSelectModule,
     NzTypographyModule,
     NzTreeModule,
+    NzSwitchModule,
     // NzPageHeaderModule,
     // NzBreadCrumbModule
     // NzButtonModule,

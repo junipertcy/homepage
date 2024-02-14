@@ -53,7 +53,10 @@ export class AppComponent implements OnInit {
   getTitleFromRouter = function (router: Router) {
     for (const r of router.config) {
       if ('/' + r.path === router.url) {
-        return r.data ? r.data['title'] : 'Tzu-Chi Yen';
+        if (r.path === '') {
+          return 'Tzu-Chi Yen';
+        }  // Feb 5, 24: Strange. I cannot use "else" to simplify the code.
+        return r.data ? r.data['title'] : 'TCY | ' + r.path;
       }
     }
   };

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzFormatEmitEvent } from 'ng-zorro-antd/tree';
+import { NzSelectSizeType } from 'ng-zorro-antd/select';
 
 @Component({
   selector: 'app-teaching',
@@ -20,6 +21,8 @@ export class TeachingComponent5352 implements OnInit {
   //     ]
   //   }
   // ];
+  size: NzSelectSizeType = 'small';
+  rv = 'A';
   week_1 = [
     {
       title: 'Week 1: Fundamentals of networks',
@@ -77,14 +80,12 @@ export class TeachingComponent5352 implements OnInit {
         {
           title: 'Four genres: Erdős–Rényi, configuration, modular, latent space; properties about ER graphs; their degree distribution is Poisson',
           key: '3001',
-          expanded: false,
-          children: [
-            // { title: 'Four genres: Erdős–Rényi, configuration, modular, latent space', key: '30010', isLeaf: true },
-          ]
+          isLeaf: true
         },
         {
           title: 'Reciprocity, clustering coeff of ER graphs; phase transition wrt. avg degs; small-world property',
           key: '3002',
+          isLeaf: true
           // children: [{ title: 'leaf', key: '30020', isLeaf: true }]
         }
       ]
@@ -116,19 +117,19 @@ export class TeachingComponent5352 implements OnInit {
     {
       title: 'Week 5: Network prediction: node attributes',
       key: '500',
-      expanded: false,
+      expanded: true,
       children: [
         {
-          title: 'TBD',
+          title: 'Four types of predictions; correlation and sparsity; assortative mixing and local smoothing; measuring performance: confusion matrix',
           key: '5001',
-          expanded: false,
-          children: [
-            // { title: 'leaf', key: '50010', isLeaf: true },
-          ]
+          isLeaf: true,
+          expanded: true,
         },
         {
-          title: 'TBD',
+          title: 'Advanced methods: Semi-supervised learning, graph convolutional networks, and more',
           key: '5002',
+          isLeaf: true,
+          expanded: true,
           // children: [{ title: 'leaf', key: '50020', isLeaf: true }]
         }
       ]
@@ -138,19 +139,19 @@ export class TeachingComponent5352 implements OnInit {
     {
       title: 'Week 6: Network prediction: missing links',
       key: '600',
-      expanded: false,
+      expanded: true,
       children: [
         {
-          title: 'TBD',
+          title: 'Predicting missing links; topological predictors and local smoothness; measuring performance: AUC; Three main classes of missing link predictors; ensemble learning',
           key: '6001',
-          expanded: false,
-          children: [
-            // { title: 'leaf', key: '60010', isLeaf: true },
-          ]
+          expanded: true,
+          isLeaf: true
         },
         {
-          title: 'TBD',
+          title: 'Depth dive: Ghasemian et al. (PNAS 2020) & Peixoto and Kirkley (PRE 2023)',
           key: '6002',
+          expanded: true,
+          isLeaf: true
           // children: [{ title: 'leaf', key: '60020', isLeaf: true }]
         }
       ]
