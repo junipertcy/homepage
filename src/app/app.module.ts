@@ -32,9 +32,10 @@ import { TeachingComponent2270 } from './teaching/2270/2270.component';
 import { TeachingComponent3308 } from './teaching/3308/3308.component';
 import { TeachingComponent5822 } from './teaching/5822/5822.component';
 import { TeachingComponent5352 } from './teaching/5352/5352.component';
-import { Str2urlPipe } from './str2url.pipe';
 import { TalksComponent } from './talks/talks.component';
 import { ActivitiesComponent } from './activities/activities.component';
+
+import { Str2urlPipe } from './str2url.pipe';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 const icons: IconDefinition[] = [ ShareAltOutline, BookOutline, DownloadOutline, ReadOutline, LaptopOutline ];
 

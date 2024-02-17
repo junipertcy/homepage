@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { NzSelectSizeType } from 'ng-zorro-antd/select';
 import * as d3 from 'd3';
 
@@ -46,7 +46,7 @@ export class NewsComponent {
   ngAfterContentChecked() {
     d3.selectAll(".ant-select-item-option-content")
       .style("font-family", "concourse_4_caps")
-      .style("font-size", "12pt");
+      .style("font-size", "1rem");
     // d3.selectAll("nz-option-item").on("mouseover", (event) => {console.log(event, this);})
     // d3.selectAll("nz-option-item").attr("onItemHover", );
   }

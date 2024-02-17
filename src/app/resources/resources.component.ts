@@ -11,7 +11,7 @@ export class ResourcesComponent implements OnInit {
 
   si = [
     {
-      author: 'Trevor Hastie, Rob Tibshirani, and Martin Wainwright',
+      authors: 'Trevor Hastie, Rob Tibshirani, and Martin Wainwright',
       title: 'Statistical Learning with Sparsity',
       title_url: 'https://hastie.su.domains/StatLearnSparsity/',
       year: '2015'
@@ -20,13 +20,13 @@ export class ResourcesComponent implements OnInit {
 
   at = [
     {
-      author: 'Allen Hatcher',
+      authors: 'Allen Hatcher',
       title: 'Algebraic Topology',
       title_url: 'https://pi.math.cornell.edu/~hatcher/AT/ATpage.html',
       year: '2002'
     },
     {
-      author: 'Michael Starbird and Francis Su',
+      authors: 'Michael Starbird and Francis Su',
       title: 'Topology Through Inquiry',
       title_url: 'https://math.hmc.edu/su/topology-through-inquiry/',
       year: '2019'
@@ -35,13 +35,13 @@ export class ResourcesComponent implements OnInit {
 
   cat = [
     {
-      author: 'Tamal Dey and Yusu Wang',
+      authors: 'Tamal Dey and Yusu Wang',
       title: 'Computational Topology for Data Analysis',
       title_url: 'https://www.cs.purdue.edu/homes/tamaldey/book/CTDAbook/CTDAbook.html',
       year: '2021'
     },
     {
-      author: 'Steve Oudot',
+      authors: 'Steve Oudot',
       title: 'Persistence Theory: From Quiver Representations to Data Analysis',
       title_url: 'https://geometrica.saclay.inria.fr/team/Steve.Oudot/books/o-pt-fqrtda-15/surv-209.pdf',
       year: '2015'
@@ -50,13 +50,13 @@ export class ResourcesComponent implements OnInit {
 
   homological_algebra = [
     {
-      author: 'Joseph Rotman',
+      authors: 'Joseph Rotman',
       title: 'An Introduction to Homological Algebra',
       title_url: 'https://link.springer.com/book/10.1007/b98977',
       year: '2009'
     },
     {
-      author: 'Charles Weibel',
+      authors: 'Charles Weibel',
       title: 'An introduction to homological algebra',
       title_url: 'https://doi.org/10.1017/CBO9781139644136',
       year: '1994'
@@ -65,13 +65,13 @@ export class ResourcesComponent implements OnInit {
 
   toc = [
     {
-      author: 'Avi Wigderson',
+      authors: 'Avi Wigderson',
       title: 'Math and Computation',
       title_url: 'https://www.math.ias.edu/avi/book',
       year: '2019'
     },
     {
-      author: 'Cris Moore and Stephan Mertens',
+      authors: 'Cris Moore and Stephan Mertens',
       title: 'The Nature Of Computation',
       title_url: 'http://nature-of-computation.org/',
       year: '2011'
@@ -80,13 +80,13 @@ export class ResourcesComponent implements OnInit {
 
   ml = [
     {
-      author: 'Stephen Boyd and Lieven Vandenberghe',
+      authors: 'Stephen Boyd and Lieven Vandenberghe',
       title: 'Convex Optimization',
       title_url: 'https://web.stanford.edu/~boyd/cvxbook/',
       year: '2004'
     },
     {
-      author: 'Shai Shalev-Shwartz and Shai Ben-David',
+      authors: 'Shai Shalev-Shwartz and Shai Ben-David',
       title: 'Understanding Machine Learning',
       title_url: 'https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/',
       year: '2014'
@@ -95,13 +95,13 @@ export class ResourcesComponent implements OnInit {
 
   category_theory = [
     {
-      author: 'Emily Riehl',
+      authors: 'Emily Riehl',
       title: 'Category Theory in Context',
       title_url: 'https://math.jhu.edu/~eriehl/context/',
       year: '2016'
     },
     {
-      author: 'Tom Leinster',
+      authors: 'Tom Leinster',
       title: 'Basic Category Theory',
       title_url: 'https://www.maths.ed.ac.uk/~tl/bct/',
       year: '2014'
@@ -110,7 +110,7 @@ export class ResourcesComponent implements OnInit {
 
   hdp = [
     {
-      author: 'Roman Vershynin',
+      authors: 'Roman Vershynin',
       title: 'High-Dimensional Probability',
       title_url: 'https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.html',
       year: '2018'
@@ -119,7 +119,7 @@ export class ResourcesComponent implements OnInit {
 
   mf = [
     {
-      author: 'Igor Carron',
+      authors: 'Igor Carron',
       title: 'The Advanced Matrix Factorization Jungle',
       title_url: 'https://sites.google.com/site/igorcarron2/matrixfactorizations',
       year: '2013'
@@ -128,7 +128,7 @@ export class ResourcesComponent implements OnInit {
 
   mod = [
     {
-      author: 'Avrim Blum, John Hopcroft, and Ravi Kannan',
+      authors: 'Avrim Blum, John Hopcroft, and Ravi Kannan',
       title: 'Foundations of Data Science',
       title_url: 'https://home.ttic.edu/~avrim/book.pdf',
       year: '2020'
@@ -137,13 +137,13 @@ export class ResourcesComponent implements OnInit {
 
   differential_geometry = [
     {
-      author: 'Tristan Needham',
+      authors: 'Tristan Needham',
       title: 'Visual Differential Geometry and Forms',
       title_url: 'https://www.vdgf.space/',
       year: '2021'
     },
     {
-      author: 'Victor Guillemin and Alan Pollack',
+      authors: 'Victor Guillemin and Alan Pollack',
       title: 'Differential Topology',
       title_url: 'https://bookstore.ams.org/chel-370-h',
       year: '1974'
@@ -152,7 +152,7 @@ export class ResourcesComponent implements OnInit {
 
   parametrized_complexity = [
     {
-      author: 'Rod Downey and Mike Fellows',
+      authors: 'Rod Downey and Mike Fellows',
       title: 'Fundamentals of Parameterized Complexity',
       title_url: 'https://www.springer.com/us/book/9781447155584',
       year: '2013'

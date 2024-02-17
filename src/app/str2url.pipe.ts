@@ -6,6 +6,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class Str2urlPipe implements PipeTransform {
 
   transform(value: string): any {
+    
     switch (value) {
       // Talks
       case 'SSC22_video':
