@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# Function to display usage
+function usage() {
+    cat << EOF
+Usage: $0 [options]
+Uploads the Angular site to AWS S3.
+
+Options:
+  -h, --help            Show this message and exit.
+  -d, --delete-first    Remove specific contents in the target bucket before syncing.
+  -s, --sync            Sync the local directory to the S3 bucket.
+EOF
+}
+
+# AWS CloudFront Distribution ID
+DISTID=""
+
+# Check for necessary commands
+if ! command -v ng &> /dev/null || ! command -v aws &> /dev/null; then
+    echo "Error: This script requires both 'ng' and 'aws' commands to be available."
+    exit 1
+fi
+
+# Default action is to show usage if no arguments are passed
+if [ $# -eq 0 ]; then
+    usage
+    exit 1
+fi
+
+# Function to perform sync
+sync_to_s3() {
+    ng build --configuration production
+    # Use --delete to mirror the source directory in the destination
+    aws s3 sync ./dist s3://YOUR_S3 --acl public-read --delete --profile default
+    aws cloudfront create-invalidation --distribution-id ${DISTID} --paths "/*" --profile default
+}
+
+# Parse options
+while getopts ":hds" option; do
+    case "${option}" in
+        h)
+            usage
+            exit 0
+            ;;
+        d)
+            # Remove specific contents before syncing
+            aws s3 rm s3://YOUR_S3 --recursive --exclude "*" --include "*.js" --include "*.css" --include "*.eot" --include "*.woff" --include "*.woff2" --profile default
+            sync_to_s3
+            exit 0
+            ;;
+        s)
+            sync_to_s3
+            exit 0
+            ;;
+        *)
+            usage
+            exit 1
+            ;;
+    esac
+done
+
+# Shift off the options and potential --
+shift $((OPTIND-1))
+
+# If no options were passed then display usage
+if [ $# -eq 0 ]; then
+    usage
+    exit 1
+fi
