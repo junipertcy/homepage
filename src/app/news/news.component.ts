@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NzSelectSizeType } from 'ng-zorro-antd/select';
 import * as d3 from 'd3';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHandPointUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-news',
@@ -40,7 +42,7 @@ export class NewsComponent {
 
   constructor() {
 
-
+    library.add(faHandPointUp);
   }
 
   ngAfterContentChecked() {

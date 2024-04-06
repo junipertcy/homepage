@@ -23,18 +23,18 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 // import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 // import { NzCascaderModule } from 'ng-zorro-antd/cascader';
 // import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-// import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 // import { NzCommentModule } from 'ng-zorro-antd/comment';
 // import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 // import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 // import { NzDrawerModule } from 'ng-zorro-antd/drawer';
-// import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzContextMenuService, NzDropDownModule } from 'ng-zorro-antd/dropdown';
 // import { NzEmptyModule } from 'ng-zorro-antd/empty';
 // import { NzFormModule } from 'ng-zorro-antd/form';
 // import { NzI18nModule } from 'ng-zorro-antd/i18n';
 // import { NzInputModule } from 'ng-zorro-antd/input';
 // import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
-// import { NzListModule } from 'ng-zorro-antd/list';
+import { NzListModule } from 'ng-zorro-antd/list';
 // import { NzMentionModule } from 'ng-zorro-antd/mention';
 // import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -63,6 +63,7 @@ import { NzTreeModule } from 'ng-zorro-antd/tree';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 // import { NzUploadModule } from 'ng-zorro-antd/upload';
 // import { NzResizableModule } from 'ng-zorro-antd/resizable';
+import { NzTreeViewModule } from 'ng-zorro-antd/tree-view';
 
 
 
@@ -84,7 +85,10 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
     // NzPageHeaderModule,
     // NzBreadCrumbModule
     // NzButtonModule,
-    // NzDropDownModule,
+    NzDropDownModule,
+    NzListModule,
+    NzCollapseModule,
+    NzTreeViewModule
   ]
 })
 export class NgZorroAntdModule {

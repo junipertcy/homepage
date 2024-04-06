@@ -42,6 +42,9 @@ li {
   list-style-type: circle;
 } */
 
+
 li strong {
   font-family: 'concourse_4_caps', sans-serif;
+  font-weight: 400;
+  letter-spacing: -1px;
 }

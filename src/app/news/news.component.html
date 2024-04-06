@@ -33,7 +33,7 @@
   <div nz-row nzJustify="start" style="height: 350px; text-align: left;">
     <div nz-col class="gutter-row" nzSpan="2">
       <h2>News</h2>
-      <div style="border-bottom: 1px solid #aaa;">
+      <div class="border-container">
         <nz-select [nzSuffixIcon]="nzSuffixIcon" [nzShowArrow]="false" [(ngModel)]="thisYear" [nzSize]="selectSize"
           [nzOptionOverflowSize]="8" nzBorderless>
           <nz-option nzValue="2024" nzLabel="2024"></nz-option>
@@ -44,6 +44,7 @@
           <nz-option nzValue="2019" nzLabel="2019"></nz-option>
           <nz-option nzValue="2018" nzLabel="2018"></nz-option>
         </nz-select>
+        <div class="emoji">👆</div>
         <ng-template #nzSuffixIcon>
           <!--        <i nz-icon nzType="right-square" nzTheme="outline"></i>-->
           <i nz-icon nzType="calendar" nzTheme="fill"></i>

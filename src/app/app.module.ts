@@ -43,6 +43,7 @@ const icons: IconDefinition[] = [ ShareAltOutline, BookOutline, DownloadOutline,
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { CllinComponent } from './cllin/cllin.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { ResourcesComponent } from './resources/resources.component';

@@ -20,67 +20,35 @@
         <br>
     </div>
     <nz-divider></nz-divider>
-    <!-- <nz-tree [nzData]="nodes" nzShowIcon (nzClick)="nzEvent($event)"></nz-tree>
-    <nz-tree [nzData]="nodes" nzShowIcon [nzExpandedIcon]="multiExpandedIconTpl">
-      <ng-template #multiExpandedIconTpl let-node let-origin="origin">
-        <span
-          *ngIf="!origin.isLeaf"
-          nz-icon
-          [nzType]="node.isExpanded ? 'folder-open' : 'folder'"
-          class="ant-tree-switcher-line-icon"
-        ></span>
-        <span *ngIf="origin.isLeaf" nz-icon nzType="file" class="ant-tree-switcher-line-icon"></span>
-      </ng-template>
-    </nz-tree> -->
     <h3>Textbooks</h3>
     <p>
         <a href="https://www.amazon.com/Networks-Mark-Newman-dp-0198805098/dp/0198805098" target="_blank">Networks</a>
         by M.E.J. Newman, Second edition, Oxford University Press, 2018.
     </p>
     <nz-divider></nz-divider>
-    <div id="what-we-did">
-        <nz-row>
-            <nz-col nzSpan="8">
-                <h3>What we did in Spring 2024</h3>
-            </nz-col>
-            <!-- <nz-col nzSpan="2">
-                <nz-switch [ngModel]="true" [nzCheckedChildren]="checkedTemplate"
-                    [nzUnCheckedChildren]="unCheckedTemplate" nzSize="small"></nz-switch>
-                <ng-template #checkedTemplate><span nz-icon nzType="check"></span></ng-template>
-                <ng-template #unCheckedTemplate><span nz-icon nzType="close"></span></ng-template>
-            </nz-col>
-            <nz-col nzSpan="2">
-                <nz-switch [ngModel]="true" [nzCheckedChildren]="checkedTemplate"
-                    [nzUnCheckedChildren]="unCheckedTemplate" nzSize="small"></nz-switch>
-                <ng-template #checkedTemplate><span nz-icon nzType="check"></span></ng-template>
-                <ng-template #unCheckedTemplate><span nz-icon nzType="close"></span></ng-template>
-            </nz-col> -->
-        </nz-row>
-        <nz-tree [nzData]="week_1" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-        <nz-tree [nzData]="week_2" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-        <nz-tree [nzData]="week_3" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-        <nz-tree [nzData]="week_4" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-        <nz-tree [nzData]="week_5" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-        <nz-tree [nzData]="week_6" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-        <nz-tree [nzData]="week_7" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-        <nz-tree [nzData]="week_8" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-        <nz-tree [nzData]="week_9" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-        <nz-tree [nzData]="week_10" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-
-
-        <nz-tree [nzData]="week_11" nzShowLine (nzClick)="nzEvent($event)" [nzExpandedIcon]="springBreakTpl">
-            <ng-template #springBreakTpl let-node let-origin="origin">
-                <span *ngIf="!origin.isLeaf" nz-icon [nzType]="node.isExpanded ? 'smile' : 'smile'"
-                    class="ant-tree-switcher-line-icon"></span>
+    <div>
+        <h3>What we did in Spring 2024</h3>
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;Use <span nz-icon nzType="book"></span> to open the lecture scribbles in a new tab.
+        </p>
+        <nz-collapse [nzExpandIconPosition]="expandIconPosition">
+            @for (week of weeks; track week;) {
+            <nz-collapse-panel [nzHeader]="week.name" [nzActive]="week.active" [nzExtra]="extraTpl"
+                [nzDisabled]="week.disabled" nzExpandedIcon="caret-right">
+                <p style="margin:0;">
+                    {{ week.content }}
+                </p>
+            </nz-collapse-panel>
+            <ng-template #extraTpl>
+                <a *ngIf="week.pdfUrl">
+                    <span nz-icon nzType="book" (click)="openPDFInNewTab($event, week.pdfUrl)"></span>
+                </a>
             </ng-template>
-        </nz-tree>
-        <nz-tree [nzData]="week_12" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-        <nz-tree [nzData]="week_13" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-        <nz-tree [nzData]="week_14" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-        <nz-tree [nzData]="week_15" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-        <nz-tree [nzData]="week_16" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
-    </div>
+            }
+    
+        </nz-collapse>
 
+    </div>
 
 
 
@@ -120,30 +88,22 @@
                 Principles</a> for Digital Longevity.
         </li>
     </ul> -->
-    <nz-divider></nz-divider>
+    <!-- <nz-divider></nz-divider>
     <h3>Supplemental Readings</h3>
     <p>
         TBD.
     </p>
-    
+
     <span>
         Weeks 5, 6:
     </span>
     <ul>
         <li>
-            V. Thibeault, A. Allard, and P. Desrosiers, <a href="https://doi.org/10.1038/s41567-023-02303-0" target="_blank">The Low-Rank Hypothesis of Complex Systems</a>, <i>Nature Physics</i> 1–9 (2024).
+            V. Thibeault, A. Allard, and P. Desrosiers, <a href="https://doi.org/10.1038/s41567-023-02303-0"
+                target="_blank">The Low-Rank Hypothesis of Complex Systems</a>, <i>Nature Physics</i> 1–9 (2024).
         </li>
-        <!-- <li>
-            For research software outputs, see the FAIR principles: <a
-                href="https://www.nature.com/articles/s41597-022-01710-x" target="_blank">paper</a> & <a
-                href="https://researchdata.springernature.com/posts/introducing-the-fair-principles-for-research-software"
-                target="_blank">blog post</a>.
-        </li>
-        <li>
-            For humanities outputs, see <a href="https://endings.uvic.ca/principles.html" target="_blank">the Endings
-                Principles</a> for Digital Longevity.
-        </li> -->
-    </ul>
+
+    </ul> -->
 
     <nz-divider></nz-divider>
     <h3>References</h3>

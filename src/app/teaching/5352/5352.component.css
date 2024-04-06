@@ -50,3 +50,13 @@ nz-tree {
   font-family: 'Equity B';
   font-size: 14pt;
 }
+
+.file-desc,
+.folder-desc {
+  padding: 0 8px;
+  display: inline-block;
+  background: #87ceff;
+  color: #ffffff;
+  position: relative;
+  left: 12px;
+}

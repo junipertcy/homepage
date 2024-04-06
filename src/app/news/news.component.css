@@ -16,12 +16,29 @@ nz-select {
   font-family: 'concourse_4_caps', sans-serif;
 }
 
+.border-container {
+  position: relative; /* Required for absolute positioning of the emoji */
+  border-bottom: 2px solid #929292; /* Adjust color as needed */
+  /* text-align: center; Helps center the emoji */
+  height: 40px; /* Adjust as needed */
+}
+
+.emoji {
+  position: absolute;
+  bottom: -15px; /* Adjust based on the size of the emoji and desired placement */
+  left: 35%;
+  transform: translateX(-50%); /* Center the emoji */
+  background: white; /* Match the background of your page */
+  padding: 0 1px; /* Add some padding around the emoji */
+}
 #otherYears {
   font-family: 'concourse_4_caps', sans-serif;
 }
 
 strong {
   font-family: 'concourse_4_caps', sans-serif;
+  font-weight: 400;
+  letter-spacing: -1px;
 }
 
 li {
