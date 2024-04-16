@@ -18,6 +18,8 @@ export class Str2urlPipe implements PipeTransform {
       case 'SSC22_absYen':
         return 'https://filen.io/d/847a79e2-5637-4d78-b39d-2241a801c37b#!QDnS0Pg01pLoDmDXO8MsPSWGJO2dEEmr';
       // Slide
+      case 'Project-talk-200417-cu_boulder':
+        return '/assets/pdf/slides/Project-talk-200417-cu_boulder.pdf';
       case 'Research-talk-220723-tyra':
         return 'https://filen.io/d/862e0f1a-110f-4b4b-8e6e-5ed19203b638#!6IgsokBmD3jMuardqB0LEwHIBeoyDSsz';
       case 'Research-talk-220602-ssc':
@@ -37,6 +39,8 @@ export class Str2urlPipe implements PipeTransform {
       case 'Research-talk-150810-urbcomp':
         return 'https://filen.io/d/29d3f6b8-2d01-4a2e-a900-7feb4674882c#!DJBX7CmX3KuGp6OAQaZxbGV4wGPpgqtd';
       // Posters
+      case 'Research-poster-151028-acmmm':
+        return '/assets/pdf/slides/Research-poster-151028-acmmm.pdf';
       case 'Research-poster-170620-SINM':
         return 'https://filen.io/d/44b1679b-3a17-4b4e-b0cf-ddc579f1a1b7#!UuBvYaxjg7DxZZOdDB0JI19Q5DvPyWdb';
       // Licenses
