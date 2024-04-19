@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'str2url'
@@ -6,7 +6,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class Str2urlPipe implements PipeTransform {
 
   transform(value: string): any {
-    
+
     switch (value) {
       // Talks
       case 'SSC22_video':
@@ -45,6 +45,11 @@ export class Str2urlPipe implements PipeTransform {
         return '/assets/pdf/slides/Research-poster-151028-acmmm.pdf';
       case 'Research-poster-170620-SINM':
         return 'https://filen.io/d/44b1679b-3a17-4b4e-b0cf-ddc579f1a1b7#!UuBvYaxjg7DxZZOdDB0JI19Q5DvPyWdb';
+      // Videos
+      case 'sensoro-network':
+        return 'assets/video/sensoro/network.m4v';
+      case 'sensoro-label':
+        return 'assets/video/sensoro/label.m4v';
       // Licenses
       case 'GNU GPL v3':
         return 'https://choosealicense.com/licenses/gpl-3.0/';
