@@ -50,74 +50,70 @@ import { ResourcesComponent } from './resources/resources.component';
 import { ReadingComponent } from './reading/reading.component';
 import { NotesComponent } from './notes/notes.component';
 import { BooksComponent } from './books/books.component';
+import { NotionComponent } from './notion/notion.component';
 registerLocaleData(en);
 
 const appRoutes: Routes = [
   { path: '', component: NewsComponent },
-  { path: 'talks', component: TalksComponent },
   { path: 'activities', component: ActivitiesComponent },
+  { path: 'books', component: BooksComponent },
+  { path: 'cllin', component: CllinComponent },
+  { path: 'notion', component: NotionComponent },
+  { path: 'notes', component: NotesComponent },
+  { path: 'privacy', component: PrivacyComponent },
   { path: 'publications', component: PublicationsComponent },
+  { path: 'reading', component: ReadingComponent },
+  { path: 'resources', component: ResourcesComponent },
+  { path: 'talks', component: TalksComponent },
   { path: 'teaching', component: TeachingComponent },
   { path: 'teaching/2270', component: TeachingComponent2270 },
   { path: 'teaching/3308', component: TeachingComponent3308 },
-  { path: 'teaching/5822', component: TeachingComponent5822 },
   { path: 'teaching/5352', component: TeachingComponent5352 },
-  { path: 'cllin', component: CllinComponent },
-  { path: 'privacy', component: PrivacyComponent },
-  { path: 'resources', component: ResourcesComponent },
-  { path: 'reading', component: ReadingComponent },
-  { path: 'notes', component: NotesComponent },
-  { path: 'books', component: BooksComponent },
+  { path: 'teaching/5822', component: TeachingComponent5822 },
   { path: '**', component: ErrorComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
+    ActivitiesComponent,
+    BooksComponent,
+    CllinComponent,
     NewsComponent,
-    Str2urlPipe,
+    NotesComponent,
+    PrivacyComponent,
     PublicationsComponent,
+    ReadingComponent,
+    ResourcesComponent,
+    Str2urlPipe,
+    TalksComponent,
     TeachingComponent,
     TeachingComponent2270,
     TeachingComponent3308,
-    TeachingComponent5822,
     TeachingComponent5352,
-    TalksComponent,
-    ActivitiesComponent,
-    CllinComponent,
-    PrivacyComponent,
-    ResourcesComponent,
-    ReadingComponent,
-    NotesComponent,
-    BooksComponent,
+    TeachingComponent5822,
   ],
   imports: [
-    NgZorroAntdModule,
+    BrowserAnimationsModule,
     BrowserModule,
+    FontAwesomeModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    NotionComponent,
     NgbModule,
-    FontAwesomeModule,
-    RouterModule.forRoot(
-      appRoutes,
-      {
-    enableTracing: true,
-    useHash: false
-}
-    ),
-    // MatProgressBarModule,
-    // ng-bootstrap
+    NgZorroAntdModule,
+    RouterModule.forRoot(appRoutes, {
+      enableTracing: true,
+      useHash: false,
+    }),
   ],
   providers: [
     Title,
     { provide: NZ_I18N, useValue: en_US },
     { provide: NZ_ICON_DEFAULT_TWOTONE_COLOR, useValue: '#00ff00' },
-    { provide: NZ_ICONS, useValue: icons }
+    { provide: NZ_ICONS, useValue: icons },
   ],
-  bootstrap: [
-    AppComponent
-  ],
-  exports: []
+  bootstrap: [AppComponent],
+  exports: [],
 })
-export class AppModule { }
+export class AppModule {}
