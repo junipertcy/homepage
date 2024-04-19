@@ -39,6 +39,8 @@ export class Str2urlPipe implements PipeTransform {
       case 'Research-talk-150810-urbcomp':
         return 'https://filen.io/d/29d3f6b8-2d01-4a2e-a900-7feb4674882c#!DJBX7CmX3KuGp6OAQaZxbGV4wGPpgqtd';
       // Posters
+      case 'Industry_poster-2016-NetSci':
+        return 'assets/pdf/posters/Industry_poster-2016-NetSci.pdf';
       case 'Research-poster-151028-acmmm':
         return '/assets/pdf/slides/Research-poster-151028-acmmm.pdf';
       case 'Research-poster-170620-SINM':
