@@ -2,7 +2,7 @@
 
 # Function to display usage
 function usage() {
-    cat << EOF
+    cat <<EOF
 Usage: $0 [options]
 Uploads the Angular site to AWS S3.
 
@@ -17,7 +17,7 @@ EOF
 DISTID=""
 
 # Check for necessary commands
-if ! command -v ng &> /dev/null || ! command -v aws &> /dev/null; then
+if ! command -v ng &>/dev/null || ! command -v aws &>/dev/null; then
     echo "Error: This script requires both 'ng' and 'aws' commands to be available."
     exit 1
 fi
@@ -30,38 +30,85 @@ fi
 
 # Function to perform sync
 sync_to_s3() {
-    ng build --configuration production
-    # Use --delete to mirror the source directory in the destination
-    aws s3 sync ./dist s3://YOUR_S3 --acl public-read --delete --profile default
-    aws cloudfront create-invalidation --distribution-id ${DISTID} --paths "/*" --profile default
+    echo "Building Angular project..."
+    ng build --configuration production || {
+        echo "Build failed"
+        exit 1
+    }
+
+    echo "Checking for changed files..."
+    local local_files_checksum="./local_files_checksum.txt"
+    local s3_files_metadata="./s3_files_metadata.txt"
+
+    # Generate list of local files and their checksums and store them as metadata
+    find ./dist -type f -exec md5sum {} + | sed 's|./dist/||' | sort >"$local_files_checksum"
+
+    # Get list of existing files in S3 and their checksums
+    aws s3api list-objects --bucket junipertcy.info --query "Contents[].{Key: Key, ETag: ETag}" --output text | 
+    awk '{print $1 "  " $2}' | sed 's/"//g' | sort > "$s3_files_metadata"
+
+
+    # # Use GNU Parallel to fetch metadata for each file directly from the output of awk
+    # awk '{print $2}' "$local_files_checksum" | parallel -j 100 --will-cite \
+    #     "aws s3api head-object --bucket junipertcy.info --key {} \
+    #     --query Metadata.md5checksum --output text --profile default 2>/dev/null \
+    #     | awk '{print \$1 \" {}\"}'" >"$s3_files_metadata"
+
+    # Sync files that are different
+    while IFS= read -r line; do
+        local md5=$(echo "$line" | awk '{print $1}')
+        local file_path=$(echo "$line" | awk '{print $2}')
+        local s3_md5=$(grep "$file_path" "$s3_files_metadata" | awk '{print $1}')
+
+        if [[ "$md5" != "$s3_md5" ]]; then
+            echo "MD5 mismatch or new file - Syncing file: $file_path: local=$md5 vs s3=$s3_md5"
+            metadata=$(aws s3api head-object --bucket junipertcy.info --key "$file_path" --query Metadata.md5checksum --output text --profile default 2>/dev/null)
+            if [[ "$md5" != "$metadata" ]]; then
+                aws s3 cp "./dist/$file_path" "s3://junipertcy.info/$file_path" --acl public-read --metadata md5checksum=$md5 --profile default || echo "Failed to sync $file_path"
+            else
+                echo "Yet, metadata match - No need to sync: $file_path"
+            fi
+        else
+            echo "MD5 match - No need to sync: $file_path"
+        fi
+    done <"$local_files_checksum"
+
+    # Invalidate CloudFront cache
+    echo "Invalidating CloudFront distribution..."
+    aws cloudfront create-invalidation --distribution-id $DISTID --paths "/*" --profile default || echo "Failed to invalidate CloudFront distribution"
+
+    # Cleanup temporary files
+    echo "Cleaning up temporary files..."
+    rm -f "$local_files_checksum" "$s3_files_metadata"
+    echo "Sync completed."
 }
 
 # Parse options
 while getopts ":hds" option; do
     case "${option}" in
-        h)
-            usage
-            exit 0
-            ;;
-        d)
-            # Remove specific contents before syncing
-            aws s3 rm s3://YOUR_S3 --recursive --exclude "*" --include "*.js" --include "*.css" --include "*.eot" --include "*.woff" --include "*.woff2" --profile default
-            sync_to_s3
-            exit 0
-            ;;
-        s)
-            sync_to_s3
-            exit 0
-            ;;
-        *)
-            usage
-            exit 1
-            ;;
+    h)
+        usage
+        exit 0
+        ;;
+    d)
+        # Remove specific contents before syncing
+        aws s3 rm s3://junipertcy.info --recursive --exclude "*" --include "*.js" --include "*.css" --include "*.eot" --include "*.woff" --include "*.woff2" --profile default
+        sync_to_s3
+        exit 0
+        ;;
+    s)
+        sync_to_s3
+        exit 0
+        ;;
+    *)
+        usage
+        exit 1
+        ;;
     esac
 done
 
 # Shift off the options and potential --
-shift $((OPTIND-1))
+shift $((OPTIND - 1))
 
 # If no options were passed then display usage
 if [ $# -eq 0 ]; then
