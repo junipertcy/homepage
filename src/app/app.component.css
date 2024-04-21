@@ -35,15 +35,18 @@
 }
 
 .tag {
+  margin-top: 16px;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+#vitae {
+  line-height: normal;
+  letter-spacing: .04em;
   font-size: 18px !important;
   font-family: 'Cookie', cursive;
   vertical-align: top !important;
   float: right;
-  margin-top: 16px;
-  margin-right: 40px;
-  margin-bottom: 5px;
-  letter-spacing: .04em;
-  line-height: normal;
 }
 
 #menu {
@@ -61,27 +64,24 @@
   margin: 0;
 }
 
-#network-icon li:last-of-type {
-  margin-right: 0;
-}
-
 #network-icon li {
   margin-right: 10px;
 }
 
-#network-icon a {
-  color: inherit;
+#network-icon a i,
+#network-icon a span {
   font-size: 1.3rem;
-  -webkit-font-smoothing: antialiased;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-  text-decoration: none;
-  transition: color .6s ease;
+  color: #37373a;
+  /* Default color */
 }
 
+#network-icon a:hover i,
+#network-icon a:hover span {
+  color: #3077B0 !important;
+  /* Color changes to this on hover */
+  transition: color .6s ease;
+  /* Smooth color transition */
+}
 
 h5 {
   font-family: 'concourse_4_caps';
@@ -102,7 +102,9 @@ h5 {
 
 /* General link hover behavior */
 
-li a, p a, i a {
+li a,
+p a,
+i a {
   -webkit-transition: all .25s cubic-bezier(.55, .085, 0, .99), outline 0s linear, outline-offset 0s linear;
   transition: all .25s cubic-bezier(.55, .085, 0, .99), outline 0s linear, outline-offset 0s linear;
   color: rgba(0, 0, 0, 0.85);
@@ -113,7 +115,9 @@ li a, p a, i a {
   text-underline-offset: 0.125rem;
 }
 
-li a:hover, p a:hover, i a:hover {
+li a:hover,
+p a:hover,
+i a:hover {
   color: #3077B0;
   text-decoration-color: #3077B0;
   text-decoration-thickness: 0.050rem;
@@ -121,6 +125,23 @@ li a:hover, p a:hover, i a:hover {
 }
 
 
-li a:-webkit-any-link, p a:-webkit-any-link, i a:-webkit-any-link {
+li a:-webkit-any-link,
+p a:-webkit-any-link,
+i a:-webkit-any-link {
   cursor: pointer;
+}
+
+mat-icon {
+  cursor: pointer;
+  font-size: 22px;
+  /* Customize the size as needed */
+  color: #37373a;
+  /* Default color */
+  transition: color 0.6s ease;
+  /* Smooth transition for color change */
+}
+
+mat-icon:hover {
+  color: #3077B0;
+  /* Color changes to this on hover */
 }

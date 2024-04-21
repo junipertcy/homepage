@@ -1,6 +1,6 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-
+import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -52,6 +52,7 @@ import { ReadingComponent } from './reading/reading.component';
 import { NotesComponent } from './notes/notes.component';
 import { BooksComponent } from './books/books.component';
 import { NotionComponent } from './notion/notion.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 registerLocaleData(en);
 
 const appRoutes: Routes = [
@@ -107,7 +108,8 @@ const appRoutes: Routes = [
       useHash: false,
     }),
     InternalUriResolverPipe,
-    Str2urlPipe
+    Str2urlPipe,
+    MatIconModule,
   ],
   exports: [
     // 
@@ -117,6 +119,7 @@ const appRoutes: Routes = [
     { provide: NZ_I18N, useValue: en_US },
     { provide: NZ_ICON_DEFAULT_TWOTONE_COLOR, useValue: '#00ff00' },
     { provide: NZ_ICONS, useValue: icons },
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent],
 })

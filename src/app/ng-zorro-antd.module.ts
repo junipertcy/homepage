@@ -18,7 +18,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 // import { NzBackTopModule } from 'ng-zorro-antd/back-top';
 // import { NzBadgeModule } from 'ng-zorro-antd/badge';
 // import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
-// import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 // import { NzCalendarModule } from 'ng-zorro-antd/calendar';
 // import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 // import { NzCascaderModule } from 'ng-zorro-antd/cascader';
@@ -84,7 +84,7 @@ import { NzTreeViewModule } from 'ng-zorro-antd/tree-view';
     NzSwitchModule,
     // NzPageHeaderModule,
     // NzBreadCrumbModule
-    // NzButtonModule,
+    NzButtonModule,
     NzDropDownModule,
     NzListModule,
     NzCollapseModule,

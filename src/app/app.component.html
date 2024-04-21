@@ -9,11 +9,16 @@
     </a>
     <div nz-row nzJustify="end">
       <div nz-col nzSpan="2">
-        <nz-tag class="tag" [nzColor]="'volcano'">
+        <nz-tag class="tag" id="vitae" [nzColor]="'volcano'">
           <a href="{{cv_file}}" target="_blank" style="color: #fa541c;">
             Vitae
           </a>
         </nz-tag>
+      </div>
+      <div nz-col nzSpan="2">
+        <mat-icon class="tag" role="button" aria-label="Toggle dark mode" (click)="toggleDarkMode()">
+          {{ isDarkMode ? 'brightness_7' : 'nights_stay' }}
+        </mat-icon>
       </div>
     </div>
   </nz-header>
@@ -43,7 +48,7 @@
   </div>
 
   <div nz-col nzSpan="24">
-    <!-- Banner section -->
+
     <div nz-row nzJustify="start" style="height: 40px">
       <div *ngIf="isDonationBannerShown" nz-col nzSpan="4">
       </div>
@@ -68,22 +73,22 @@
             <li>
               <a href="https://scholar.google.com/citations?user=ZUxl-r0AAAAJ&hl=en&sortby=pubdate" target="_blank"
                 rel="noopener">
-                <i class="ai ai-google-scholar big-icon" style="color: #37373a;"></i>
+                <i class="ai ai-google-scholar big-icon"></i>
               </a>
             </li>
             <li>
               <a href="https://www.webofscience.com/wos/author/record/ABE-6509-2020" target="_blank" rel="noopener">
-                <i class="ai ai-clarivate big-icon" style="color: #37373a;"></i>
+                <i class="ai ai-clarivate big-icon"></i>
               </a>
             </li>
             <li>
               <a href="https://github.com/junipertcy" target="_blank" rel="noopener">
-                <span nz-icon nzType="github" nzTheme="outline" style="color: #37373a;"></span>
+                <span nz-icon nzType="github" nzTheme="outline"></span>
               </a>
             </li>
             <li>
               <a href="https://twitter.com/oneofyen" target="_blank" rel="noopener">
-                <span nz-icon nzType="twitter" nzTheme="outline" style="color: #37373a;"></span>
+                <span nz-icon nzType="twitter" nzTheme="outline"></span>
               </a>
             </li>
           </ul>
