@@ -35,9 +35,10 @@ import { TeachingComponent5352 } from './teaching/5352/5352.component';
 import { TalksComponent } from './talks/talks.component';
 import { ActivitiesComponent } from './activities/activities.component';
 
-import { Str2urlPipe } from './str2url.pipe';
+import { InternalUriResolverPipe } from './@pipes/internal-uri-resolver.pipe';
+import { Str2urlPipe } from './@pipes/str2url.pipe';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
-const icons: IconDefinition[] = [ ShareAltOutline, BookOutline, DownloadOutline, ReadOutline, LaptopOutline ];
+const icons: IconDefinition[] = [ShareAltOutline, BookOutline, DownloadOutline, ReadOutline, LaptopOutline];
 
 /** angular i18n **/
 import { registerLocaleData } from '@angular/common';
@@ -85,7 +86,6 @@ const appRoutes: Routes = [
     PublicationsComponent,
     ReadingComponent,
     ResourcesComponent,
-    Str2urlPipe,
     TalksComponent,
     TeachingComponent,
     TeachingComponent2270,
@@ -106,6 +106,11 @@ const appRoutes: Routes = [
       enableTracing: true,
       useHash: false,
     }),
+    InternalUriResolverPipe,
+    Str2urlPipe
+  ],
+  exports: [
+    // 
   ],
   providers: [
     Title,
@@ -114,6 +119,5 @@ const appRoutes: Routes = [
     { provide: NZ_ICONS, useValue: icons },
   ],
   bootstrap: [AppComponent],
-  exports: [],
 })
-export class AppModule {}
+export class AppModule { }

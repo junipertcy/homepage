@@ -17,22 +17,40 @@ nz-select {
 }
 
 .border-container {
-  position: relative; /* Required for absolute positioning of the emoji */
-  border-bottom: 2px solid #929292; /* Adjust color as needed */
+  position: relative;
+  /* Required for absolute positioning of the emoji */
+  border-bottom: 2px solid #929292;
+  /* Adjust color as needed */
   /* text-align: center; Helps center the emoji */
-  height: 40px; /* Adjust as needed */
+  height: 40px;
+  /* Adjust as needed */
 }
 
 .emoji {
   position: absolute;
-  bottom: -15px; /* Adjust based on the size of the emoji and desired placement */
+  bottom: -15px;
+  /* Adjust based on the size of the emoji and desired placement */
   left: 35%;
-  transform: translateX(-50%); /* Center the emoji */
-  background: white; /* Match the background of your page */
-  padding: 0 1px; /* Add some padding around the emoji */
+  transform: translateX(-50%);
+  /* Center the emoji */
+  background: white;
+  /* Match the background of your page */
+  padding: 0 1px;
+  /* Add some padding around the emoji */
 }
+
 #otherYears {
   font-family: 'concourse_4_caps', sans-serif;
+}
+
+.stylish-border {
+  border: 2px solid #276190;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  color: #111111;
+  font-family: 'concourse_4', sans-serif;
 }
 
 strong {

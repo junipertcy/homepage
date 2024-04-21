@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { NzContextMenuService } from 'ng-zorro-antd/dropdown';
+import { InternalUriResolverPipe } from 'src/app/@pipes/internal-uri-resolver.pipe';
 
 
 @Component({
   selector: 'app-teaching',
   standalone: false,
   templateUrl: './5352.component.html',
-  styleUrls: ['./5352.component.css']
+  styleUrls: ['./5352.component.css'],
 })
 
 
 export class TeachingComponent5352 implements OnInit {
-  
+  private str2IntRes: InternalUriResolverPipe = new InternalUriResolverPipe();
   // week_1 = [
   //   {
   //     title: 'Week 1: Fundamentals of networks',
@@ -155,21 +155,28 @@ export class TeachingComponent5352 implements OnInit {
   
   On Thursday, Prof. Dan Larremore came to give a guest lecture on Linear Hierarchies in Complex Networks.
   `;
-
+  
+  customStyle = {
+    background: 'transparent',
+    'border-radius': '4px',
+    'margin-bottom': '-20px',
+    'margin-top': '-20px',
+    border: '0px'
+  }
 
   weeks = [
     {
       active: false,
       name: 'Week 1: Fundamentals of networks',
       disabled: false,
-      pdfUrl: "assets/pdf/teaching/5352/scribbles/csci5352_S24_L1b_scribbles.pdf",
+      pdfUrl: "5352_wk1",
       content: ""
     },
     {
       active: false,
       disabled: false,
       name: 'Week 2: Summary statistics',
-      pdfUrl: "assets/pdf/teaching/5352/scribbles/csci5352_S24_L2_scribbles.pdf",
+      pdfUrl: "5352_wk2",
       content: ""
 
     },
@@ -177,7 +184,7 @@ export class TeachingComponent5352 implements OnInit {
       active: false,
       disabled: false,
       name: 'Week 3: Random graphs with homogeneous degrees',
-      pdfUrl: "assets/pdf/teaching/5352/scribbles/csci5352_S24_L3_scribbles.pdf",
+      pdfUrl: "5352_wk3",
       content: ""
       
     },
@@ -185,49 +192,49 @@ export class TeachingComponent5352 implements OnInit {
       active: false,
       disabled: false,
       name: 'Week 4: Random graphs with heterogeneous degrees',
-      pdfUrl: "assets/pdf/teaching/5352/scribbles/csci5352_S24_L4_scribbles.pdf",
+      pdfUrl: "5352_wk4",
       content: ""
     },
     {
       active: false,
       disabled: false,
       name: 'Week 5: Network prediction: node attributes',
-      pdfUrl: "assets/pdf/teaching/5352/scribbles/csci5352_S24_L5_scribbles.pdf",
+      pdfUrl: "5352_wk5",
       content: ""
     },
     {
       active: false,
       disabled: false,
       name: 'Week 6: Network prediction: missing links',
-      pdfUrl: "assets/pdf/teaching/5352/scribbles/csci5352_S24_L6_scribbles.pdf",
+      pdfUrl: "5352_wk6",
       content: ""
     },
     {
       active: false,
       disabled: false,
       name: 'Week 7: Community structure and mixing patterns',
-      pdfUrl: "assets/pdf/teaching/5352/scribbles/csci5352_S24_L7_scribbles.pdf",
+      pdfUrl: "5352_wk7",
       content: ""
     },
     {
       active: false,
       disabled: false,
       name: 'Week 8: Community structure models',
-      pdfUrl: "assets/pdf/teaching/5352/scribbles/csci5352_S24_L8_scribbles.pdf",
+      pdfUrl: "5352_wk8",
       content: ""
     },
     {
       active: false,
       disabled: false,
       name: 'Week 9: Spreading processes and cascades',
-      pdfUrl: "assets/pdf/teaching/5352/scribbles/csci5352_S24_L9_scribbles.pdf",
+      pdfUrl: "5352_wk9",
       content: ""
     },
     {
       active: false,
       disabled: false,
       name: 'Week 10: Spreading processes with structure',
-      pdfUrl: "assets/pdf/teaching/5352/scribbles/csci5352_S24_L10_scribbles.pdf",
+      pdfUrl: "5352_wk10",
       content: ""
     },
     {
@@ -241,21 +248,21 @@ export class TeachingComponent5352 implements OnInit {
       active: false,
       disabled: false,
       name: 'Week 12: Ranking in networks',
-      pdfUrl: "assets/pdf/teaching/5352/scribbles/csci5352_S24_L11a_scribbles.pdf",
+      pdfUrl: "5352_wk12",
       content: this.wk12
     },
     {
       active: false,
       disabled: false,
       name: 'Week 13: Network sampling & Network growth models',
-      pdfUrl: "",
+      pdfUrl: "5352_wk13",
       content: ""
     },
     {
       active: false,
       disabled: false,
       name: 'Week 14: Higher-order networks',
-      pdfUrl: "",
+      pdfUrl: "5352_wk14",
       content: ""
     },
     {
@@ -275,14 +282,13 @@ export class TeachingComponent5352 implements OnInit {
   ];
   expandIconPosition: 'left' | 'right' = 'left';
 
-  openPDFInNewTab(event: Event, pdfUrl: string): void {
+  openPDFInNewTab(event: Event, pdfUrl: any): void {
     event.stopPropagation();
-    console.log(event);
-    console.log(this);
-    window.open(pdfUrl, '_blank');
+    const url = this.str2IntRes.transform(pdfUrl);
+    window.open(url, '_blank');
   }
 
-  constructor(private nzContextMenuService: NzContextMenuService) {
+  constructor() {
 
 
   }

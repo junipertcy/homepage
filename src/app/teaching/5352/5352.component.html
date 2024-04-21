@@ -1,19 +1,18 @@
 <div class="container" id="teaching">
-    <h2><a routerLink="/teaching"><i nz-icon nzType="left-square" nzTheme="fill"></i></a> Network Analysis and
-        Modeling</h2>
+    <h2><a routerLink="/teaching"><i nz-icon nzType="left-square" nzTheme="fill"></i></a> CSCI 5352: Network Analysis
+        and
+        Modeling <span style="font-size:large;">Spring 2024, <a href="{{'5352_s24_syllabus' | str2IntRes}}"
+                target="_blank">Syllabus</a></span></h2>
     <div>
         <span style="font-style: italic;">I am thankful to Profs. Aaron Clauset and Dan Larremore, who allow me to use
             their materials for this course.</span>
     </div>
-    <div style="margin-top: 12pt;">
-        <strong>CSCI 5352, Spring 2024</strong><nz-divider nzType="vertical"></nz-divider>
-        <nz-tag nzColor="default"><a href="../../../assets/pdf/teaching/5352/csci5352_s24_syllabus.pdf" target="_blank"
-                style="font-family: 'Cookie', cursive; font-size: 16pt;">Syllabus</a></nz-tag>
+    <div>
         <br>
         Tuesday and Thursday, 1100a–1215p, at ECST 121 (hybrid)
         <br>
         <span>
-            Course on CU Boulder Catelog: <a href="https://catalog.colorado.edu/search/?search=CSCI+5352"
+            Course on CU Boulder Catalog: <a href="https://catalog.colorado.edu/search/?search=CSCI+5352"
                 target="_blank">CSCI
                 5352</a>.
         </span>
@@ -31,11 +30,12 @@
         <p>
             &nbsp;&nbsp;&nbsp;&nbsp;Use <span nz-icon nzType="book"></span> to open the lecture scribbles in a new tab.
         </p>
-        <nz-collapse [nzExpandIconPosition]="expandIconPosition">
+        <nz-collapse [nzExpandIconPosition]="expandIconPosition" nzGhost>
             @for (week of weeks; track week;) {
             <nz-collapse-panel [nzHeader]="week.name" [nzActive]="week.active" [nzExtra]="extraTpl"
-                [nzDisabled]="week.disabled" nzExpandedIcon="caret-right">
-                <p style="margin:0;">
+                [nzDisabled]="week.disabled" [ngStyle]="customStyle" nzExpandedIcon="right-square">
+                <p style="padding-left: 20pt; padding-right: 40pt; text-align: justify;
+                text-justify: inter-word;">
                     {{ week.content }}
                 </p>
             </nz-collapse-panel>
@@ -45,7 +45,7 @@
                 </a>
             </ng-template>
             }
-    
+
         </nz-collapse>
 
     </div>
