@@ -10,23 +10,42 @@
     <div nz-row nzJustify="end">
       <div nz-col nzSpan="2">
         <nz-tag class="tag" id="vitae" [nzColor]="'volcano'">
-          <a href="{{cv_file}}" target="_blank" style="color: #fa541c;">
+          <a href="{{ cv_file }}" target="_blank" style="color: #fa541c">
             Vitae
           </a>
         </nz-tag>
       </div>
       <div nz-col nzSpan="2">
-        <mat-icon class="tag" role="button" aria-label="Toggle dark mode" (click)="toggleDarkMode()">
-          {{ isDarkMode ? 'brightness_7' : 'nights_stay' }}
+        <mat-icon
+          class="tag"
+          role="button"
+          aria-label="Toggle dark mode"
+          (click)="toggleDarkMode()"
+        >
+          {{ isDarkMode ? "brightness_7" : "nights_stay" }}
         </mat-icon>
       </div>
     </div>
   </nz-header>
   <div nz-row>
     <div nz-col nzSpan="4">
-      <nz-sider nzCollapsible nz-col nzSpan="4" nzTheme="light" [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'lg'"
-        [nzCollapsedWidth]="0" [nzZeroTrigger]="zeroTrigger" [nzWidth]="150">
-        <ul nz-menu nzMode="inline" [nzInlineCollapsed]="isCollapsed" style="background: #e7e7e7;">
+      <nz-sider
+        nzCollapsible
+        nz-col
+        nzSpan="4"
+        nzTheme="light"
+        [(nzCollapsed)]="isCollapsed"
+        [nzBreakpoint]="'lg'"
+        [nzCollapsedWidth]="0"
+        [nzZeroTrigger]="zeroTrigger"
+        [nzWidth]="150"
+      >
+        <ul
+          nz-menu
+          nzMode="inline"
+          [nzInlineCollapsed]="isCollapsed"
+          style="background: #e7e7e7"
+        >
           <li nz-menu-item routerLink="/publications">
             <span id="menu">Publications</span>
           </li>
@@ -48,46 +67,77 @@
   </div>
 
   <div nz-col nzSpan="24">
-
     <div nz-row nzJustify="start" style="height: 40px">
-      <div *ngIf="isDonationBannerShown" nz-col nzSpan="4">
-      </div>
+      <div *ngIf="isDonationBannerShown" nz-col nzSpan="4"></div>
 
-      <div *ngIf="isDonationBannerShown" nz-col nzSpan="4" style="margin-top: -25px;">
+      <div
+        *ngIf="isDonationBannerShown"
+        nz-col
+        nzSpan="4"
+        style="margin-top: -25px"
+      >
         <h5>Proud supporter of</h5>
         <a href="https://my.fsf.org/join?referrer=2272401">
-          <img src="https://static.fsf.org/nosvn/associate/crm/2272401.png" height="32pt" alt="fsf"
-            style="margin-top: -6pt;">
+          <img
+            src="https://static.fsf.org/nosvn/associate/crm/2272401.png"
+            height="32pt"
+            alt="fsf"
+            style="margin-top: -6pt"
+          />
         </a>
       </div>
       <div *ngIf="isDonationBannerShown" nz-col nzSpan="2">
         <a href="https://www.eff.org/">
-          <img src="https://www.eff.org/files/2019/11/20/2020-membership-badge-2.png" height="40pt" alt="eff"
-            style="margin-left: -30pt;">
+          <img
+            src="https://www.eff.org/files/2019/11/20/2020-membership-badge-2.png"
+            height="40pt"
+            alt="eff"
+            style="margin-left: -30pt"
+          />
         </a>
       </div>
-      <div *ngIf="isDonationBannerShown" nz-col nzSpan="4" style="margin-top: -25px;">
+      <div
+        *ngIf="isDonationBannerShown"
+        nz-col
+        nzSpan="4"
+        style="margin-top: -25px"
+      >
         <h5>Find me at</h5>
         <div style="float: left">
           <ul id="network-icon">
             <li>
-              <a href="https://scholar.google.com/citations?user=ZUxl-r0AAAAJ&hl=en&sortby=pubdate" target="_blank"
-                rel="noopener">
+              <a
+                href="https://scholar.google.com/citations?user=ZUxl-r0AAAAJ&hl=en&sortby=pubdate"
+                target="_blank"
+                rel="noopener"
+              >
                 <i class="ai ai-google-scholar big-icon"></i>
               </a>
             </li>
             <li>
-              <a href="https://www.webofscience.com/wos/author/record/ABE-6509-2020" target="_blank" rel="noopener">
+              <a
+                href="https://www.webofscience.com/wos/author/record/ABE-6509-2020"
+                target="_blank"
+                rel="noopener"
+              >
                 <i class="ai ai-clarivate big-icon"></i>
               </a>
             </li>
             <li>
-              <a href="https://github.com/junipertcy" target="_blank" rel="noopener">
+              <a
+                href="https://github.com/junipertcy"
+                target="_blank"
+                rel="noopener"
+              >
                 <span nz-icon nzType="github" nzTheme="outline"></span>
               </a>
             </li>
             <li>
-              <a href="https://twitter.com/oneofyen" target="_blank" rel="noopener">
+              <a
+                href="https://twitter.com/oneofyen"
+                target="_blank"
+                rel="noopener"
+              >
                 <span nz-icon nzType="twitter" nzTheme="outline"></span>
               </a>
             </li>
@@ -97,11 +147,27 @@
     </div>
     <nz-footer nz-col nzSpan="24" id="footer">
       © Since 2016 Tzu-Chi Yen | Last update: Apr 21, 2024 |
-      <a href="https://github.com/junipertcy/homepage" target="_blank" style="color: rgba(0,0,0,.65);">
+      <a
+        href="https://github.com/junipertcy/homepage"
+        target="_blank"
+        style="color: rgba(0, 0, 0, 0.65)"
+      >
         <i nz-icon nzType="code" nzTheme="outline"></i>
       </a>
-      | Powered by <a href="https://angular.io/" target="_blank" style="color: rgba(0,0,0,.65);">Angular</a> and <a
-        href="https://ng.ant.design/" target="_blank" style="color: rgba(0,0,0,.65);">NG-ZORRO</a>
+      | Powered by
+      <a
+        href="https://angular.io/"
+        target="_blank"
+        style="color: rgba(0, 0, 0, 0.65)"
+        >Angular</a
+      >
+      and
+      <a
+        href="https://ng.ant.design/"
+        target="_blank"
+        style="color: rgba(0, 0, 0, 0.65)"
+        >NG-ZORRO</a
+      >
       &nbsp;
       <a routerLink="/resources">🥾</a>
       &nbsp;

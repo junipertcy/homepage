@@ -1,59 +1,96 @@
 <div class="container" id="teaching">
-    <h2><a routerLink="/teaching"><i nz-icon nzType="left-square" nzTheme="fill"></i></a> CSCI 5352: Network Analysis
-        and
-        Modeling <span style="font-size:large;">Spring 2024, <a href="{{'5352_s24_syllabus' | str2IntRes}}"
-                target="_blank">Syllabus</a></span></h2>
-    <div>
-        <span style="font-style: italic;">I am thankful to Profs. Aaron Clauset and Dan Larremore, who allow me to use
-            their materials for this course.</span>
-    </div>
-    <div>
-        <br>
-        Tuesday and Thursday, 1100a–1215p, at ECST 121 (hybrid)
-        <br>
-        <span>
-            Course on CU Boulder Catalog: <a href="https://catalog.colorado.edu/search/?search=CSCI+5352"
-                target="_blank">CSCI
-                5352</a>.
-        </span>
-        <br>
-    </div>
-    <nz-divider></nz-divider>
-    <h3>Textbooks</h3>
-    <p>
-        <a href="https://www.amazon.com/Networks-Mark-Newman-dp-0198805098/dp/0198805098" target="_blank">Networks</a>
-        by M.E.J. Newman, Second edition, Oxford University Press, 2018.
-    </p>
-    <nz-divider></nz-divider>
-    <div>
+  <h2>
+    <a routerLink="/teaching">
+      <i nz-icon nzType="left-square" nzTheme="fill"></i>
+    </a>
+    CSCI 5352: Network Analysis and Modeling
+    <span style="font-size: large">
+      Spring 2024,
+      <a href="{{ '5352_s24_syllabus' | str2IntRes }}" target="_blank">
+        Syllabus
+      </a>
+    </span>
+  </h2>
+  <div>
+    <span style="font-style: italic">
+      I am thankful to Profs. Aaron Clauset and Dan Larremore, who shared me
+      their materials for this course.
+    </span>
+  </div>
+  <div>
+    <br />
+    Tuesday and Thursday, 1100a–1215p, at ECST 121 (hybrid)
+    <br />
+    <span>
+      Course on CU Boulder Catalog:
+      <a
+        href="https://catalog.colorado.edu/search/?search=CSCI+5352"
+        target="_blank"
+      >
+        CSCI 5352
+      </a>
+      .
+    </span>
+    <br />
+  </div>
+  <nz-divider></nz-divider>
+  <h3>Textbooks</h3>
+  <p>
+    <a
+      href="https://www.amazon.com/Networks-Mark-Newman-dp-0198805098/dp/0198805098"
+      target="_blank"
+    >
+      Networks
+    </a>
+    by M.E.J. Newman, Second edition, Oxford University Press, 2018.
+  </p>
+  <nz-divider></nz-divider>
+  <div>
+    <nz-row>
+      <nz-col nzSpan="12">
         <h3>What we did in Spring 2024</h3>
-        <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;Use <span nz-icon nzType="book"></span> to open the lecture scribbles in a new tab.
-        </p>
-        <nz-collapse [nzExpandIconPosition]="expandIconPosition" nzGhost>
-            @for (week of weeks; track week;) {
-            <nz-collapse-panel [nzHeader]="week.name" [nzActive]="week.active" [nzExtra]="extraTpl"
-                [nzDisabled]="week.disabled" [ngStyle]="customStyle" nzExpandedIcon="right-square">
-                <p style="padding-left: 20pt; padding-right: 40pt; text-align: justify;
-                text-justify: inter-word;">
-                    {{ week.content }}
-                </p>
-            </nz-collapse-panel>
-            <ng-template #extraTpl>
-                <a *ngIf="week.pdfUrl">
-                    <span nz-icon nzType="book" (click)="openPDFInNewTab($event, week.pdfUrl)"></span>
-                </a>
-            </ng-template>
-            }
+      </nz-col>
+      <nz-col nzSpan="12" style="text-align: right">
+        <!-- <nz-switch
+          nzSize="small"
+          [(ngModel)]="allExpanded"
+          [nzControl]="allExpanded"
+          (click)="toggleAllPanels()"
+        ></nz-switch> -->
+      </nz-col>
+    </nz-row>
+    <p>
+      &nbsp;&nbsp;&nbsp;&nbsp;Use
+      <span nz-icon nzType="book"></span>
+      to open the lecture scribbles in a new tab.
+      <!-- <nz-switch nzSize="small" [(ngModel)]="allExpanded" [nzControl]="true" (click)="toggleAllPanels()"></nz-switch> -->
+    </p>
+    <nz-collapse [nzExpandIconPosition]="expandIconPosition" nzGhost>
+      @for (week of weeks; track week;) {
+      <nz-collapse-panel
+        [nzHeader]="week.name"
+        [nzActive]="week.active"
+        [nzExtra]="extraTpl"
+        [nzDisabled]="week.disabled"
+        [ngStyle]="customStyle"
+        nzExpandedIcon="right-square"
+      >
+        <div [innerHTML]="week.content"></div>
+      </nz-collapse-panel>
+      <ng-template #extraTpl>
+        <a *ngIf="week.pdfUrl">
+          <span
+            nz-icon
+            nzType="book"
+            (click)="openPDFInNewTab($event, week.pdfUrl)"
+          ></span>
+        </a>
+      </ng-template>
+      }
+    </nz-collapse>
+  </div>
 
-        </nz-collapse>
-
-    </div>
-
-
-
-
-    <!-- <h4>Lecture: modern web technology</h4>
+  <!-- <h4>Lecture: modern web technology</h4>
     <ul>
         <li>
             <a href="https://www.convex.dev/" target="_blank">Convex</a>: a reactive backend-as-a-service for web
@@ -62,7 +99,7 @@
                 href="https://twitter.com/jamesacowling/status/1591221339549216769">here</a>.
         </li>
     </ul> -->
-    <!-- <h4>Lecture: modern alternatives for the classic Linux commands</h4>
+  <!-- <h4>Lecture: modern alternatives for the classic Linux commands</h4>
     <ul>
         <li>
             A <a href="https://github.com/ibraheemdev/modern-unix" target="_blank">Modern Unix</a> collection
@@ -72,7 +109,7 @@
             command line tools.
         </li>
     </ul> -->
-    <!-- <h4>Case study: all things open-source software</h4>
+  <!-- <h4>Case study: all things open-source software</h4>
     <ul>
         <li>
             GNU GPL: <a href="https://twitter.com/tonroosendaal/status/1135229214607773696" target="_blank">Blender</a>
@@ -88,7 +125,7 @@
                 Principles</a> for Digital Longevity.
         </li>
     </ul> -->
-    <!-- <nz-divider></nz-divider>
+  <!-- <nz-divider></nz-divider>
     <h3>Supplemental Readings</h3>
     <p>
         TBD.
@@ -105,11 +142,13 @@
 
     </ul> -->
 
-    <nz-divider></nz-divider>
-    <h3>References</h3>
-    <p>
-
-        External class website: Prof. Aaron Clauset’s <a href="https://aaronclauset.github.io/courses/5352/"
-            target="_blank">webpage</a>.
-    </p>
+  <nz-divider></nz-divider>
+  <h3>References</h3>
+  <p>
+    External class website: Prof. Aaron Clauset’s
+    <a href="https://aaronclauset.github.io/courses/5352/" target="_blank">
+      webpage
+    </a>
+    .
+  </p>
 </div>

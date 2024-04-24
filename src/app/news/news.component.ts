@@ -7,12 +7,8 @@ import { faHandPointUp } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: [
-    './news.component.css',
-    '../app.component.css', 
-  ]
+  styleUrls: ['./news.component.css', '../app.component.css'],
 })
-
 export class NewsComponent {
   // date = null;
   // onChange(result: Date): void {
@@ -35,22 +31,20 @@ export class NewsComponent {
   wiki_a = 'https://en.wikipedia.org/wiki/Algorithm';
 
   acda21 = 'https://www.siam.org/conferences/cm/conference/acda21';
-  acda21_intro_blitz = 'https://filen.io/d/ca106796-992f-4d79-8f4b-3affa248246a#!Q6jEtVdTJrsNPNqxE9tff9oJvOqXcYBM';
+  acda21_intro_blitz =
+    'https://filen.io/d/ca106796-992f-4d79-8f4b-3affa248246a#!Q6jEtVdTJrsNPNqxE9tff9oJvOqXcYBM';
   isit21 = 'https://2021.ieee-isit.org/';
   networks21 = 'https://networks2021.net/';
 
-
   constructor() {
-
     library.add(faHandPointUp);
   }
 
   ngAfterContentChecked() {
-    d3.selectAll(".ant-select-item-option-content")
-      .style("font-family", "concourse_4_caps")
-      .style("font-size", "1rem");
+    d3.selectAll('.ant-select-item-option-content')
+      .style('font-family', 'concourse_4_caps')
+      .style('font-size', '1rem');
     // d3.selectAll("nz-option-item").on("mouseover", (event) => {console.log(event, this);})
     // d3.selectAll("nz-option-item").attr("onItemHover", );
   }
-
 }

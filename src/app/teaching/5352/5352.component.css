@@ -1,6 +1,6 @@
 #teaching {
   /*border-style: solid;*/
-  font-family: 'Equity A';
+  font-family: "Equity A";
   font-size: 14pt;
   border-width: thin;
   border-color: #000000;
@@ -9,7 +9,7 @@
 
 h2 {
   color: rgba(0, 0, 0, 0.85);
-  font-family: 'Concourse 4';
+  font-family: "Concourse 4";
   text-align: left;
   font-weight: normal;
   /*margin-bottom: 10px;*/
@@ -17,14 +17,14 @@ h2 {
 }
 h3 {
   color: rgba(0, 0, 0, 0.85);
-  font-family: 'Concourse 4';
+  font-family: "Concourse 4";
   text-align: left;
   font-weight: normal;
   /*margin-bottom: 10px;*/
   /* margin-top: 10px; */
 }
 h4 {
-  font-family: 'Concourse 4';
+  font-family: "Concourse 4";
   /* margin-bottom: 4px; */
 }
 
@@ -36,18 +36,16 @@ li {
   list-style-type: circle;
   margin: 0 0 0 0;
   /*padding-bottom: 1em;*/
-
 }
 
 ol.nocount li {
   list-style-type: circle;
   margin: 0 0 0 0;
   /*padding-bottom: 1em;*/
-
 }
 
 nz-tree {
-  font-family: 'Equity B';
+  font-family: "Equity B";
   font-size: 14pt;
 }
 
@@ -59,4 +57,41 @@ nz-tree {
   color: #ffffff;
   position: relative;
   left: 12px;
+}
+
+.week-content {
+  padding-left: 20pt;
+  padding-right: 40pt;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+
+.stylish-content {
+  padding: 1em;
+  margin: 1em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #f0f0f0;
+  color: #222222;
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: justify;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease-in-out, background-color 0.2s linear;
+  transform: translateY(-20px);
+}
+
+.stylish-content:hover,
+.stylish-content:focus {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  background-color: #e8e8e8;
+}
+
+.stylish-content > div {
+  margin-bottom: 4px;
+  padding: 10px; 
+}
+
+.stylish-content > div:last-child {
+  margin-bottom: 0; 
 }

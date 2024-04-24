@@ -1,41 +1,54 @@
 <h2>What to read next?</h2>
 <p>Here are some resources that I found useful:</p>
 <ul>
-    <li>
-        <a href="https://apps.npr.org/best-books/#view=covers&year=2023" target="_blank" rel="noopener">great reads,
-            thoughtfully curated by NPR</a>
-    </li>
-    <li>
-        <a href="https://www.economist.com/culture/2023/12/01/the-best-books-of-2023-as-chosen-by-the-economist"
-            target="_blank" rel="noopener">best books chosen by The Economist</a>
-    </li>
+  <li>
+    <a
+      href="https://apps.npr.org/best-books/#view=covers&year=2023"
+      target="_blank"
+      rel="noopener"
+      >great reads, thoughtfully curated by NPR</a
+    >
+  </li>
+  <li>
+    <a
+      href="https://www.economist.com/culture/2023/12/01/the-best-books-of-2023-as-chosen-by-the-economist"
+      target="_blank"
+      rel="noopener"
+      >best books chosen by The Economist</a
+    >
+  </li>
 </ul>
 
-<div style="height: 15px;"></div>
-<div style="text-align: justify; text-justify: inter-word;">
-    <h2 style="color: #111111; font-weight: normal;">Humanities & social sciences</h2>
-    <div style="border-left: 2px solid #111111 !important; padding-left: 10pt;">
-        <h3 style="color: #111111; font-weight: normal;">Writing</h3>
-        <ul>
-            <li *ngFor="let book of writing;">
-                <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-                <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-            </li>
-        </ul>
-        <h3 style="color: #111111; font-weight: normal;">Psychology</h3>
-        <ul>
-            <li *ngFor="let book of psychology;">
-                <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-                <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-            </li>
-        </ul>
-        <h3 style="color: #111111; font-weight: normal;">Law</h3>
-        <ul>
-            <li *ngFor="let book of law;">
-                <a class="name" href="{{book.author | str2url}}">{{book.author}}</a>,
-                <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-            </li>
-        </ul>
-    </div>
-    <div style="height: 15px;"></div>
+<div style="height: 15px"></div>
+<div style="text-align: justify; text-justify: inter-word">
+  <h2 style="color: #111111; font-weight: normal">
+    Humanities & social sciences
+  </h2>
+  <div style="border-left: 2px solid #111111 !important; padding-left: 10pt">
+    <h3 style="color: #111111; font-weight: normal">Writing</h3>
+    <ul>
+      <li *ngFor="let book of writing">
+        <a class="name" href="{{ book.author | str2url }}">{{ book.author }}</a
+        >, <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a
+        >, {{ book.year }}.
+      </li>
+    </ul>
+    <h3 style="color: #111111; font-weight: normal">Psychology</h3>
+    <ul>
+      <li *ngFor="let book of psychology">
+        <a class="name" href="{{ book.author | str2url }}">{{ book.author }}</a
+        >, <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a
+        >, {{ book.year }}.
+      </li>
+    </ul>
+    <h3 style="color: #111111; font-weight: normal">Law</h3>
+    <ul>
+      <li *ngFor="let book of law">
+        <a class="name" href="{{ book.author | str2url }}">{{ book.author }}</a
+        >, <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a
+        >, {{ book.year }}.
+      </li>
+    </ul>
+  </div>
+  <div style="height: 15px"></div>
 </div>

@@ -1,42 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  TrackByFunction,
+} from '@angular/core';
 import { InternalUriResolverPipe } from 'src/app/@pipes/internal-uri-resolver.pipe';
 
+export interface Week {
+  active: boolean;
+  name: string;
+  disabled: boolean;
+  pdfUrl?: string;
+  content: string;
+}
 
 @Component({
   selector: 'app-teaching',
   standalone: false,
   templateUrl: './5352.component.html',
   styleUrls: ['./5352.component.css'],
+  encapsulation: ViewEncapsulation.None, // Disables view encapsulation
 })
-
-
 export class TeachingComponent5352 implements OnInit {
   private str2IntRes: InternalUriResolverPipe = new InternalUriResolverPipe();
-  // week_1 = [
-  //   {
-  //     title: 'Week 1: Fundamentals of networks',
-  //     scribbles: '/assets/pdf/teaching/5352/scribbles/csci5352_S24_L1b_scribbles.pdf',
-  //     key: '100',
-  //     expanded: false,
-  //     children: [
-  //       {
-  //         title: 'syllabus, course logistics, and self-intro',
-  //         key: '1001',
-  //         expanded: false,
-  //         children: [
-  //           { title: 'From past installments, examples of what was successful & what was challenging', key: '10010', isLeaf: true },
-  //           { title: 'Self-intro: (1) name, pronouns, dept; (2) motivation; (3) which part of course most looking forward to?', key: '10011', isLeaf: true },
-  //           { title: 'Syllabus “Easter Egg”', key: '10012', isLeaf: true }
-  //         ]
-  //       },
-  //       {
-  //         title: 'network representation, notations',
-  //         key: '1002',
-  //         // children: [{ title: 'leaf', key: '10020', isLeaf: true }]
-  //       }
-  //     ]
-  //   }
-  // ];
+
   // week_2 = [
   //   {
   //     title: 'Week 2: Summary statistics',
@@ -148,137 +135,287 @@ export class TeachingComponent5352 implements OnInit {
   //   }
   // ];
 
-  wk12 = `
-  On Tuesday, we explored ideas for ranking node importance in networks.
-  We discussed structural centralities and dynamical centralities. 
-  One takeaway is that, often, a structural centrality is a (cheaper) proxy for the importance of a node in some dyanmical phenomenon. 
-  
-  On Thursday, Prof. Dan Larremore came to give a guest lecture on Linear Hierarchies in Complex Networks.
-  `;
-  
+  allExpanded: boolean = false;
+
+  toggleAllPanels(): void {
+    this.allExpanded = !this.allExpanded;
+    this.weeks.forEach((week) => (week.active = this.allExpanded));
+  }
+
+  trackWeek: TrackByFunction<Week> = (index: number, week: Week) => {
+    return week.name;
+  };
+
+  wk1: string = `
+  <div class="stylish-content">
+<div>
+    Tu: syllabus (“Easter Egg”) & course logistics. 
+  From past installments, examples of what was successful & what was challenging. 
+  Then we did self-intro: 
+  (1) name, pronouns, dept; 
+  (2) motivation; 
+  (3) which part of course most looking forward to?
+    </div>
+    
+    <div>
+    Th: network representation, notations
+    </div>
+  </div>
+`;
+
+  wk2: string = `
+  <div class="stylish-content">
+    <div>
+    </div>
+
+    <div>
+    </div>
+  </div>
+`;
+
+  wk3: string = `
+<div class="stylish-content">
+  <div>
+  </div>
+
+  <div>
+  </div>
+</div>
+`;
+
+  wk4: string = `
+<div class="stylish-content">
+  <div>
+  </div>
+
+  <div>
+  </div>
+</div>
+`;
+  wk5: string = `
+<div class="stylish-content">
+  <div>
+  </div>
+
+  <div>
+  </div>
+</div>
+`;
+
+  wk6: string = `
+<div class="stylish-content">
+  <div>
+  </div>
+
+  <div>
+  </div>
+</div>
+`;
+  wk7: string = `
+<div class="stylish-content">
+  <div>
+  </div>
+
+  <div>
+  </div>
+</div>
+`;
+
+  wk8: string = `
+<div class="stylish-content">
+  <div>
+  </div>
+
+  <div>
+  </div>
+</div>
+`;
+  wk9: string = `
+<div class="stylish-content">
+  <div>
+  </div>
+
+  <div>
+  </div>
+</div>
+`;
+
+  wk10: string = `
+<div class="stylish-content">
+  <div>
+  </div>
+
+  <div>
+  </div>
+</div>
+`;
+
+  wk12: string = `
+  <div class="stylish-content">
+    <div>
+      On Tuesday, we explored ideas for ranking node importance in networks.
+      We discussed structural centralities and dynamical centralities.
+      One takeaway is that, often, a structural centrality is a (cheaper) proxy for the importance of a node in some dynamical phenomenon.
+    </div>
+
+    <div>
+      On Thursday, Prof. Dan Larremore came to give a guest lecture on Linear Hierarchies in Complex Networks.
+    </div>
+  </div>
+
+`;
+
+  wk13: string = `
+<div class="stylish-content">
+  <div>
+  </div>
+
+  <div>
+  </div>
+</div>
+`;
+
+  wk14: string = `
+<div class="stylish-content">
+  <div>
+  </div>
+
+  <div>
+  </div>
+</div>
+`;
+
+  wk15: string = `
+<div class="stylish-content">
+  <div>
+  </div>
+
+  <div>
+  </div>
+</div>
+`;
+
   customStyle = {
     background: 'transparent',
     'border-radius': '4px',
     'margin-bottom': '-20px',
     'margin-top': '-20px',
-    border: '0px'
-  }
+    border: '0px',
+  };
 
-  weeks = [
+  weeks: Week[] = [
     {
       active: false,
       name: 'Week 1: Fundamentals of networks',
       disabled: false,
-      pdfUrl: "5352_wk1",
-      content: ""
+      pdfUrl: '5352_wk1',
+      content: this.wk1,
     },
     {
       active: false,
       disabled: false,
       name: 'Week 2: Summary statistics',
-      pdfUrl: "5352_wk2",
-      content: ""
-
+      pdfUrl: '5352_wk2',
+      content: this.wk2,
     },
     {
       active: false,
       disabled: false,
       name: 'Week 3: Random graphs with homogeneous degrees',
-      pdfUrl: "5352_wk3",
-      content: ""
-      
+      pdfUrl: '5352_wk3',
+      content: this.wk3,
     },
     {
       active: false,
       disabled: false,
       name: 'Week 4: Random graphs with heterogeneous degrees',
-      pdfUrl: "5352_wk4",
-      content: ""
+      pdfUrl: '5352_wk4',
+      content: this.wk4,
     },
     {
       active: false,
       disabled: false,
       name: 'Week 5: Network prediction: node attributes',
-      pdfUrl: "5352_wk5",
-      content: ""
+      pdfUrl: '5352_wk5',
+      content: this.wk5,
     },
     {
       active: false,
       disabled: false,
       name: 'Week 6: Network prediction: missing links',
-      pdfUrl: "5352_wk6",
-      content: ""
+      pdfUrl: '5352_wk6',
+      content: this.wk6,
     },
     {
       active: false,
       disabled: false,
       name: 'Week 7: Community structure and mixing patterns',
-      pdfUrl: "5352_wk7",
-      content: ""
+      pdfUrl: '5352_wk7',
+      content: this.wk7,
     },
     {
       active: false,
       disabled: false,
       name: 'Week 8: Community structure models',
-      pdfUrl: "5352_wk8",
-      content: ""
+      pdfUrl: '5352_wk8',
+      content: this.wk8,
     },
     {
       active: false,
       disabled: false,
       name: 'Week 9: Spreading processes and cascades',
-      pdfUrl: "5352_wk9",
-      content: ""
+      pdfUrl: '5352_wk9',
+      content: this.wk9,
     },
     {
       active: false,
       disabled: false,
       name: 'Week 10: Spreading processes with structure',
-      pdfUrl: "5352_wk10",
-      content: ""
+      pdfUrl: '5352_wk10',
+      content: this.wk10,
     },
     {
       active: false,
       disabled: true,
       name: 'Week 11: Spring break',
-      pdfUrl: "",
-      content: ""
+      pdfUrl: '',
+      content: '',
     },
     {
       active: false,
       disabled: false,
       name: 'Week 12: Ranking in networks',
-      pdfUrl: "5352_wk12",
-      content: this.wk12
+      pdfUrl: '5352_wk12',
+      content: this.wk12,
     },
     {
       active: false,
       disabled: false,
       name: 'Week 13: Network sampling & Network growth models',
-      pdfUrl: "5352_wk13",
-      content: ""
+      pdfUrl: '5352_wk13',
+      content: this.wk13,
     },
     {
       active: false,
       disabled: false,
       name: 'Week 14: Higher-order networks',
-      pdfUrl: "5352_wk14",
-      content: ""
+      pdfUrl: '5352_wk14',
+      content: this.wk14,
     },
     {
       active: false,
       disabled: false,
       name: 'Week 15: Ethics in network science & Project presentations',
-      pdfUrl: "",
-      content: ""
+      pdfUrl: '',
+      content: this.wk15,
     },
     {
       active: false,
       disabled: false,
       name: 'Week 16: Project presentations',
-      pdfUrl: "",
-      content: ""
-    }
+      pdfUrl: '',
+      content: '',
+    },
   ];
   expandIconPosition: 'left' | 'right' = 'left';
 
@@ -288,12 +425,7 @@ export class TeachingComponent5352 implements OnInit {
     window.open(url, '_blank');
   }
 
-  constructor() {
+  constructor() {}
 
-
-  }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
