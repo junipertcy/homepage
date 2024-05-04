@@ -1,13 +1,23 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-resources',
-  templateUrl: './resources.component.html',
-  styleUrls: ['./resources.component.css']
+  selector: 'app-textbooks',
+  templateUrl: './textbooks.component.html',
+  styleUrls: ['./textbooks.component.css']
 })
-export class ResourcesComponent implements OnInit {
+export class TextbooksComponent implements OnInit {
 
   lee_lady_blurbs = 'http://www.math.hawaii.edu/~lee/homolog/books-homolog.html';
+
+
+  statistical_mechanics = [
+    {
+      authors: 'David MacKay',
+      title: 'Information Theory, Inference, and Learning Algorithms',
+      title_url: 'http://www.inference.org.uk/itprnn/book.html',
+      year: '2003'
+    }
+  ]
 
   si = [
     {
@@ -78,18 +88,24 @@ export class ResourcesComponent implements OnInit {
     },
   ];
 
-  ml = [
+  optimization = [
     {
       authors: 'Stephen Boyd and Lieven Vandenberghe',
       title: 'Convex Optimization',
       title_url: 'https://web.stanford.edu/~boyd/cvxbook/',
       year: '2004'
     },
+    // {
+    //   authors: 'Shai Shalev-Shwartz and Shai Ben-David',
+    //   title: 'Understanding Machine Learning',
+    //   title_url: 'https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/',
+    //   year: '2014'
+    // },
     {
-      authors: 'Shai Shalev-Shwartz and Shai Ben-David',
-      title: 'Understanding Machine Learning',
-      title_url: 'https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/',
-      year: '2014'
+      authors: 'Amir Beck',
+      title: 'First-Order Methods in Optimization',
+      title_url: 'https://epubs.siam.org/doi/10.1137/1.9781611974997',
+      year: '2017'
     },
   ];
 
@@ -117,23 +133,37 @@ export class ResourcesComponent implements OnInit {
     },
   ];
 
-  mf = [
-    {
-      authors: 'Igor Carron',
-      title: 'The Advanced Matrix Factorization Jungle',
-      title_url: 'https://sites.google.com/site/igorcarron2/matrixfactorizations',
-      year: '2013'
-    },
-  ];
+  // mf = [
+  //   {
+  //     authors: 'Igor Carron',
+  //     title: 'The Advanced Matrix Factorization Jungle',
+  //     title_url: 'https://sites.google.com/site/igorcarron2/matrixfactorizations',
+  //     year: '2013'
+  //   },
+  // ];
 
-  mod = [
+  // mod = [
+  //   {
+  //     authors: 'Avrim Blum, John Hopcroft, and Ravi Kannan',
+  //     title: 'Foundations of Data Science',
+  //     title_url: 'https://home.ttic.edu/~avrim/book.pdf',
+  //     year: '2020'
+  //   },
+  // ];
+  deep_learning = [
     {
-      authors: 'Avrim Blum, John Hopcroft, and Ravi Kannan',
-      title: 'Foundations of Data Science',
-      title_url: 'https://home.ttic.edu/~avrim/book.pdf',
-      year: '2020'
+      authors: 'Chris Bishop and Hugh Bishop',
+      title: 'Deep Learning: Foundations and Concepts',
+      title_url: 'http://www.bishopbook.com/',
+      year: '2024'
     },
-  ];
+    {
+      authors: 'Simon J.D. Prince',
+      title: 'Understanding Deep Learning',
+      title_url: 'https://udlbook.github.io/udlbook/',
+      year: '2023'
+    },
+  ]
 
   differential_geometry = [
     {

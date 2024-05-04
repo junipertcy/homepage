@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   isDonationBannerShown = true;
   isLoaded = false;
   cv_file = "../../assets/pdf/Tzu-Chi_Yen_CV.pdf";
+  resume_file = "../../assets/pdf/Tzu-Chi_Yen_Resume.pdf";
   // screenWidth: number;
 
 

@@ -49,6 +49,16 @@
   float: right;
 }
 
+#resume {
+  margin-right: 2em;
+  line-height: normal;
+  letter-spacing: .04em;
+  font-size: 18px !important;
+  font-family: 'Cookie', cursive;
+  vertical-align: top !important;
+  float: right;
+}
+
 #menu {
   font-family: 'concourse_4_caps';
   font-weight: normal;

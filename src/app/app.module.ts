@@ -47,7 +47,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CllinComponent } from './cllin/cllin.component';
 import { PrivacyComponent } from './privacy/privacy.component';
-import { ResourcesComponent } from './resources/resources.component';
+import { TextbooksComponent } from './textbooks/textbooks.component';
 import { ReadingComponent } from './reading/reading.component';
 import { NotesComponent } from './notes/notes.component';
 import { BooksComponent } from './books/books.component';
@@ -65,7 +65,7 @@ const appRoutes: Routes = [
   { path: 'privacy', component: PrivacyComponent },
   { path: 'publications', component: PublicationsComponent },
   { path: 'reading', component: ReadingComponent },
-  { path: 'resources', component: ResourcesComponent },
+  { path: 'textbooks', component: TextbooksComponent },
   { path: 'talks', component: TalksComponent },
   { path: 'teaching', component: TeachingComponent },
   { path: 'teaching/2270', component: TeachingComponent2270 },
@@ -86,7 +86,7 @@ const appRoutes: Routes = [
     PrivacyComponent,
     PublicationsComponent,
     ReadingComponent,
-    ResourcesComponent,
+    TextbooksComponent,
     TalksComponent,
     TeachingComponent,
     TeachingComponent2270,
