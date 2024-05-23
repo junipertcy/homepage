@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -75,52 +75,46 @@ const appRoutes: Routes = [
   { path: '**', component: ErrorComponent }
 ];
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    ActivitiesComponent,
-    BooksComponent,
-    CllinComponent,
-    NewsComponent,
-    NotesComponent,
-    PrivacyComponent,
-    PublicationsComponent,
-    ReadingComponent,
-    TextbooksComponent,
-    TalksComponent,
-    TeachingComponent,
-    TeachingComponent2270,
-    TeachingComponent3308,
-    TeachingComponent5352,
-    TeachingComponent5822,
-  ],
-  imports: [
-    BrowserAnimationsModule,
-    BrowserModule,
-    FontAwesomeModule,
-    FormsModule,
-    HttpClientModule,
-    NotionComponent,
-    NgbModule,
-    NgZorroAntdModule,
-    RouterModule.forRoot(appRoutes, {
-      enableTracing: true,
-      useHash: false,
-    }),
-    InternalUriResolverPipe,
-    Str2urlPipe,
-    MatIconModule,
-  ],
-  exports: [
+@NgModule({ declarations: [
+        AppComponent,
+        ActivitiesComponent,
+        BooksComponent,
+        CllinComponent,
+        NewsComponent,
+        NotesComponent,
+        PrivacyComponent,
+        PublicationsComponent,
+        ReadingComponent,
+        TextbooksComponent,
+        TalksComponent,
+        TeachingComponent,
+        TeachingComponent2270,
+        TeachingComponent3308,
+        TeachingComponent5352,
+        TeachingComponent5822,
+    ],
+    exports: [
     // 
-  ],
-  providers: [
-    Title,
-    { provide: NZ_I18N, useValue: en_US },
-    { provide: NZ_ICON_DEFAULT_TWOTONE_COLOR, useValue: '#00ff00' },
-    { provide: NZ_ICONS, useValue: icons },
-    provideAnimationsAsync(),
-  ],
-  bootstrap: [AppComponent],
-})
+    ],
+    bootstrap: [AppComponent], imports: [BrowserAnimationsModule,
+        BrowserModule,
+        FontAwesomeModule,
+        FormsModule,
+        NotionComponent,
+        NgbModule,
+        NgZorroAntdModule,
+        RouterModule.forRoot(appRoutes, {
+            enableTracing: true,
+            useHash: false,
+        }),
+        InternalUriResolverPipe,
+        Str2urlPipe,
+        MatIconModule], providers: [
+        Title,
+        { provide: NZ_I18N, useValue: en_US },
+        { provide: NZ_ICON_DEFAULT_TWOTONE_COLOR, useValue: '#00ff00' },
+        { provide: NZ_ICONS, useValue: icons },
+        provideAnimationsAsync(),
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule { }
