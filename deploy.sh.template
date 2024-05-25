@@ -41,7 +41,7 @@ sync_to_s3() {
     local s3_files_metadata="./s3_files_metadata.txt"
 
     # Generate list of local files and their checksums and store them as metadata
-    find ./dist -type f -exec md5sum {} + | sed 's|./dist/||' | sort >"$local_files_checksum"
+    find ./dist/browser -type f -exec md5sum {} + | sed 's|./dist/browser/||' | sort > "$local_files_checksum"
 
     # Get list of existing files in S3 and their checksums
     aws s3api list-objects --bucket junipertcy.info --query "Contents[].{Key: Key, ETag: ETag}" --output text | 
@@ -61,15 +61,17 @@ sync_to_s3() {
         local s3_md5=$(grep "$file_path" "$s3_files_metadata" | awk '{print $1}')
 
         if [[ "$md5" != "$s3_md5" ]]; then
-            echo "MD5 mismatch or new file - Syncing file: $file_path: local=$md5 vs s3=$s3_md5"
+            # echo "MD5 mismatch or new file - Syncing file: $file_path: local=$md5 vs s3=$s3_md5"
             metadata=$(aws s3api head-object --bucket junipertcy.info --key "$file_path" --query Metadata.md5checksum --output text --profile default 2>/dev/null)
             if [[ "$md5" != "$metadata" ]]; then
-                aws s3 cp "./dist/$file_path" "s3://junipertcy.info/$file_path" --acl public-read --metadata md5checksum=$md5 --profile default || echo "Failed to sync $file_path"
+                aws s3 cp "./dist/browser/$file_path" "s3://junipertcy.info/$file_path" --acl public-read --metadata md5checksum=$md5 --profile default || echo "Failed to sync $file_path"
             else
-                echo "Yet, metadata match - No need to sync: $file_path"
+                # echo "Yet, metadata match - No need to sync: $file_path"
+                :
             fi
         else
-            echo "MD5 match - No need to sync: $file_path"
+            # echo "MD5 match - No need to sync: $file_path"
+            :
         fi
     done <"$local_files_checksum"
 

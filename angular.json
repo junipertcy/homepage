@@ -26,6 +26,9 @@
             "outputPath": {
               "base": "dist"
             },
+            "allowedCommonJsDependencies": [
+              "darkreader"
+            ],
             "index": "src/index.html",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
