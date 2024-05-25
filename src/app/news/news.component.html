@@ -56,7 +56,6 @@
       <h2>News</h2>
       <div class="border-container">
         <nz-select
-          [nzSuffixIcon]="nzSuffixIcon"
           [nzShowArrow]="false"
           [(ngModel)]="thisYear"
           [nzSize]="selectSize"
@@ -72,10 +71,6 @@
           <nz-option nzValue="2018" nzLabel="2018"></nz-option>
         </nz-select>
         <div class="emoji">👆</div>
-        <ng-template #nzSuffixIcon>
-          <!--        <i nz-icon nzType="right-square" nzTheme="outline"></i>-->
-          <i nz-icon nzType="calendar" nzTheme="fill"></i>
-        </ng-template>
       </div>
     </div>
     <div nz-col nzSpan="22" style="overflow: auto; height: 100%">
