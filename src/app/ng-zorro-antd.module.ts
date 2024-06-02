@@ -8,7 +8,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
-// import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 // import { NzAffixModule } from 'ng-zorro-antd/affix';
 // import { NzAlertModule } from 'ng-zorro-antd/alert';
@@ -52,7 +52,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 // import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 // import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
-// import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzTableModule } from 'ng-zorro-antd/table';
 // import { NzTabsModule } from 'ng-zorro-antd/tabs';
 // import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 // import { NzTimelineModule } from 'ng-zorro-antd/timeline';
@@ -70,6 +70,8 @@ import { NzTreeViewModule } from 'ng-zorro-antd/tree-view';
 @NgModule({
   exports: [
     NzLayoutModule,
+    NzCardModule,
+    NzTableModule,
     NzMenuModule,
     NzDividerModule,
     NzGridModule,
