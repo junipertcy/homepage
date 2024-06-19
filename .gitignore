@@ -8,7 +8,8 @@
 # Omni Outline files
 *.ooutline
 
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# Large files
+Industry_poster-2016-NetSci.pdf
 
 # compiled output
 /dist

@@ -417,7 +417,7 @@ export class TeachingComponent5352 implements OnInit {
       content: '',
     },
   ];
-  expandIconPosition: 'left' | 'right' = 'left';
+  expandIconPosition: 'start' | 'end' = 'start';
 
   openPDFInNewTab(event: Event, pdfUrl: any): void {
     event.stopPropagation();
