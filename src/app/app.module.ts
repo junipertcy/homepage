@@ -4,7 +4,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -20,9 +23,8 @@ import {
   BookOutline,
   DownloadOutline,
   ReadOutline,
-  LaptopOutline
+  LaptopOutline,
 } from '@ant-design/icons-angular/icons';
-
 
 import { NewsComponent } from './news/news.component';
 import { PublicationsComponent } from './publications/publications.component';
@@ -38,7 +40,13 @@ import { ActivitiesComponent } from './activities/activities.component';
 import { InternalUriResolverPipe } from './@pipes/internal-uri-resolver.pipe';
 import { Str2urlPipe } from './@pipes/str2url.pipe';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
-const icons: IconDefinition[] = [ShareAltOutline, BookOutline, DownloadOutline, ReadOutline, LaptopOutline];
+const icons: IconDefinition[] = [
+  ShareAltOutline,
+  BookOutline,
+  DownloadOutline,
+  ReadOutline,
+  LaptopOutline,
+];
 
 /** angular i18n **/
 import { registerLocaleData } from '@angular/common';
@@ -72,49 +80,55 @@ const appRoutes: Routes = [
   { path: 'teaching/3308', component: TeachingComponent3308 },
   { path: 'teaching/5352', component: TeachingComponent5352 },
   { path: 'teaching/5822', component: TeachingComponent5822 },
-  { path: '**', component: ErrorComponent }
+  { path: '**', component: ErrorComponent },
 ];
 
-@NgModule({ declarations: [
-        AppComponent,
-        ActivitiesComponent,
-        BooksComponent,
-        CllinComponent,
-        NewsComponent,
-        NotesComponent,
-        PrivacyComponent,
-        PublicationsComponent,
-        ReadingComponent,
-        TextbooksComponent,
-        TalksComponent,
-        TeachingComponent,
-        TeachingComponent2270,
-        TeachingComponent3308,
-        TeachingComponent5352,
-        TeachingComponent5822,
-    ],
-    exports: [
-    // 
-    ],
-    bootstrap: [AppComponent], imports: [BrowserAnimationsModule,
-        BrowserModule,
-        FontAwesomeModule,
-        FormsModule,
-        NotionComponent,
-        NgbModule,
-        NgZorroAntdModule,
-        RouterModule.forRoot(appRoutes, {
-            enableTracing: true,
-            useHash: false,
-        }),
-        InternalUriResolverPipe,
-        Str2urlPipe,
-        MatIconModule], providers: [
-        Title,
-        { provide: NZ_I18N, useValue: en_US },
-        { provide: NZ_ICON_DEFAULT_TWOTONE_COLOR, useValue: '#00ff00' },
-        { provide: NZ_ICONS, useValue: icons },
-        provideAnimationsAsync(),
-        provideHttpClient(withInterceptorsFromDi()),
-    ] })
-export class AppModule { }
+@NgModule({
+  declarations: [
+    AppComponent,
+    ActivitiesComponent,
+    BooksComponent,
+    CllinComponent,
+    NewsComponent,
+    NotesComponent,
+    PrivacyComponent,
+    PublicationsComponent,
+    ReadingComponent,
+    TextbooksComponent,
+    TalksComponent,
+    TeachingComponent,
+    TeachingComponent2270,
+    TeachingComponent3308,
+    TeachingComponent5352,
+    TeachingComponent5822,
+  ],
+  exports: [
+    //
+  ],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    FontAwesomeModule,
+    FormsModule,
+    NotionComponent,
+    NgbModule,
+    NgZorroAntdModule,
+    RouterModule.forRoot(appRoutes, {
+      enableTracing: true,
+      useHash: false,
+    }),
+    InternalUriResolverPipe,
+    Str2urlPipe,
+    MatIconModule,
+  ],
+  providers: [
+    Title,
+    { provide: NZ_I18N, useValue: en_US },
+    { provide: NZ_ICON_DEFAULT_TWOTONE_COLOR, useValue: '#00ff00' },
+    { provide: NZ_ICONS, useValue: icons },
+    provideAnimationsAsync(),
+    provideHttpClient(withInterceptorsFromDi()),
+  ],
+})
+export class AppModule {}

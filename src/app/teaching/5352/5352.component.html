@@ -59,12 +59,16 @@
         ></nz-switch> -->
       </nz-col>
     </nz-row>
-    <p>
-      &nbsp;&nbsp;&nbsp;&nbsp;Use
+    <p style="text-align: justify">
+      Click
       <span nz-icon nzType="book"></span>
-      to open the lecture scribbles in a new tab.
-      <!-- <nz-switch nzSize="small" [(ngModel)]="allExpanded" [nzControl]="true" (click)="toggleAllPanels()"></nz-switch> -->
+      for the lecture scribbles. Notably, Week 14 in higher-order networks is
+      new. Other parts we had followed existing lecture notes. I am adding
+      relevant papers in the expanded section (work in progress) in case I had a
+      chance to teach the course in the future. Use the external class website
+      to see the papers that we had referenced in this installment.
     </p>
+    <div style="height: 20pt"></div>
     <nz-collapse [nzExpandIconPosition]="expandIconPosition" nzGhost>
       @for (week of weeks; track week;) {
       <nz-collapse-panel

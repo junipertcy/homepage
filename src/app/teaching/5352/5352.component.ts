@@ -231,13 +231,14 @@ export class TeachingComponent5352 implements OnInit {
 </div>
 `;
   wk9: string = `
-<div class="stylish-content">
-  <div>
+  <div class="stylish-content">
+    <div>
+        <p>Shalizi & Thomas,
+        <i>“Homophily and Contagion Are Generically Confounded in Observational Social Network Studies.”</i>
+        (Sociological Methods & Research, 2011;
+        <a href="https://journals.sagepub.com/doi/10.1177/0049124111404820">🔗</a>)</p>
+    </div>
   </div>
-
-  <div>
-  </div>
-</div>
 `;
 
   wk10: string = `
