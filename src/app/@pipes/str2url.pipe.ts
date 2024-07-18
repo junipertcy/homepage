@@ -8,6 +8,16 @@ export class Str2urlPipe implements PipeTransform {
 
   transform(value: string): any {
 
+    // Remove 'and' and '&' from the value
+    const cleanedValue = value.replace(/and|&/g, '');
+    
+    // Split the cleaned value by ', '
+    const splitValues = cleanedValue.split(', ');
+    if (splitValues.length > 1) {
+      return null;
+    }
+    value = splitValues[0];
+
     switch (value) {
       // Talks
       case 'SSC22_video':
@@ -161,7 +171,7 @@ export class Str2urlPipe implements PipeTransform {
       case 'leidenalg':
         return 'https://github.com/vtraag/leidenalg';
       default:
-        return 'https://junipertcy.info/';
+        return null;
     }
   }
 

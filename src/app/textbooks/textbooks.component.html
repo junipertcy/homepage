@@ -1,156 +1,118 @@
-<p>
-  Here are some textbooks I find useful for my work.
-</p>
-<div style="height: 15px;"></div>
-<div style="text-align: justify; text-justify: inter-word;">
-  <h2 style="color: #3D9970; font-weight: bold;">Math of data science</h2>
-  <div style="border-left: 2px solid #3D9970 !important; padding-left: 10pt;">
-    <!-- <h3>
-      General
-    </h3>
+<p>Here are some textbooks I find useful for my work.</p>
+<div style="height: 15px"></div>
+<div style="text-align: justify; text-justify: inter-word">
+  <h2 style="color: #3d9970; font-weight: bold">Math of data science</h2>
+  <div style="border-left: 2px solid #3d9970 !important; padding-left: 10pt">
+    <h3>High-dimensional probability</h3>
     <ul>
-      <li *ngFor="let book of mod;">
-        <a class="name" href="{{book.authors | str2url}}">{{book.authors}}</a>,
-        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-      </li>
-      <li *ngFor="let book of mf;">
-        <a class="name" href="{{book.authors | str2url}}">{{book.authors}}</a>,
-        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-      </li>
-    </ul> -->
-    <h3>
-      High-dimensional probability
-    </h3>
-    <ul>
-      <li *ngFor="let book of hdp;">
-        <a class="name" href="{{book.authors | str2url}}">{{book.authors}}</a>,
-        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      <li *ngFor="let book of hdp">
+        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+        ({{ getLastNames(book.authors) }}, {{ book.year }})
       </li>
     </ul>
-    <h3>
-      Statistical inference
-    </h3>
+    <h3>Statistical inference</h3>
     <ul>
-      <li *ngFor="let book of si;">
-        <a class="name" href="{{book.authors | str2url}}">{{book.authors}}</a>,
-        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      <li *ngFor="let book of si">
+        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+        ({{ getLastNames(book.authors) }}, {{ book.year }})
       </li>
     </ul>
-
-
   </div>
-  <div style="height: 15px;"></div>
-  <h2 style="color: #85144b; font-weight: bold;">Computation of data science</h2>
-  <div style="border-left: 2px solid #85144b !important; padding-left: 10pt;">
-    <h3>
-      Deep learning
-    </h3>
+  <div style="height: 15px"></div>
+  <h2 style="color: #85144b; font-weight: bold">Computation of data science</h2>
+  <div style="border-left: 2px solid #85144b !important; padding-left: 10pt">
+    <h3>Deep learning</h3>
     <ul>
-      <li *ngFor="let book of deep_learning;">
-        <a class="name" href="{{book.authors | str2url}}">{{book.authors}}</a>,
-        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-      </li>
-    </ul>  
-    <h3>
-      Optimization
-    </h3>
-    <ul>
-      <li *ngFor="let book of optimization;">
-        <a class="name" href="{{book.authors | str2url}}">{{book.authors}}</a>,
-        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      <li *ngFor="let book of deep_learning">
+        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+        ({{ getLastNames(book.authors) }}, {{ book.year }})
       </li>
     </ul>
-    <!-- <h3>
-      Parametrized complexity
-    </h3>
+    <h3>Optimization</h3>
     <ul>
-      <li *ngFor="let book of parametrized_complexity;">
-        <a class="name" href="{{book.authors | str2url}}">{{book.authors}}</a>,
-        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      <li *ngFor="let book of optimization">
+        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+        ({{ getLastNames(book.authors) }}, {{ book.year }})
       </li>
-    </ul> -->
+    </ul>
     <h3>Applied topology</h3>
     <ul>
-      <li *ngFor="let book of cat;">
-        <a class="name" href="{{book.authors | str2url}}">{{book.authors}}</a>,
-        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      <li *ngFor="let book of cat">
+        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+        ({{ getLastNames(book.authors) }}, {{ book.year }})
       </li>
     </ul>
-    <h3>
-      Metric embeddings
-    </h3>
+    <h3>Metric embeddings</h3>
     <ul>
       <li>
-        <i>Various authors</i>,
-        <a href="https://hackmd.io/@3S70qBUwTR6_CErLY2dm4A/SJfp46KGi" target="_blank">Advances on Metric Embeddings
-          (FOCS 2022 Workshop)</a>, 2022.
+        <a
+          href="https://hackmd.io/@3S70qBUwTR6_CErLY2dm4A/SJfp46KGi"
+          target="_blank"
+        >
+          Advances on Metric Embeddings (FOCS 2022 Workshop)
+        </a>
+        (Various authors, 2022)
       </li>
     </ul>
-    <h3>
-      Theory
-    </h3>
+    <h3>Theory</h3>
     <ul>
-      <li *ngFor="let book of toc;">
-        <a class="name" href="{{book.authors | str2url}}">{{book.authors}}</a>,
-        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
-      </li>
-    </ul>
-
-  </div>
-  <div style="height: 15px;"></div>
-  <h2 style="color: #3e1291; font-weight: bold;">Physics of data science</h2>
-  <div style="border-left: 2px solid #3e1291 !important; padding-left: 10pt;">
-    <h3>
-      Statistical mechanics
-    </h3>
-    <ul>
-      <li *ngFor="let book of statistical_mechanics;">
-        <a class="name" href="{{book.authors | str2url}}">{{book.authors}}</a>,
-        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      <li *ngFor="let book of toc">
+        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+        ({{ getLastNames(book.authors) }}, {{ book.year }})
       </li>
     </ul>
   </div>
-  <div style="height: 15px;"></div>
-  <h2 style="color: #0074D9; font-weight: bold;">Pure math</h2>
-  <div style="border-left: 2px solid #0074D9 !important; padding-left: 10pt;">
+  <div style="height: 15px"></div>
+  <h2 style="color: #3e1291; font-weight: bold">Physics of data science</h2>
+  <div style="border-left: 2px solid #3e1291 !important; padding-left: 10pt">
+    <h3>Statistical mechanics</h3>
+    <ul>
+      <li *ngFor="let book of statistical_mechanics">
+        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+        ({{ getLastNames(book.authors) }}, {{ book.year }})
+      </li>
+    </ul>
+  </div>
+  <div style="height: 15px"></div>
+  <h2 style="color: #0074d9; font-weight: bold">Pure math</h2>
+  <div style="border-left: 2px solid #0074d9 !important; padding-left: 10pt">
     <h3>Algebraic topology</h3>
     <ul>
-      <li *ngFor="let book of at;">
-        <a class="name" href="{{book.authors | str2url}}">{{book.authors}}</a>,
-        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      <li *ngFor="let book of at">
+        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+        ({{ getLastNames(book.authors) }}, {{ book.year }})
       </li>
     </ul>
-    <h3>
-      Homological algebra
-    </h3>
+    <h3>Homological algebra</h3>
     <ul>
-      <li *ngFor="let book of homological_algebra;">
-        <a class="name" href="{{book.authors | str2url}}">{{book.authors}}</a>,
-        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      <li *ngFor="let book of homological_algebra">
+        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+        ({{ getLastNames(book.authors) }}, {{ book.year }})
       </li>
     </ul>
     <p>
-      Thanks to Lee Lady's <a class="name" href="{{lee_lady_blurbs}}">blurbs</a>, I also like Jans, <i>Rings and
-        Homology</i> (1964) and Sharpe and Vamos, <i>Injective Modules</i> (1975), both of which are out of print.
+      Thanks to Lee Lady's
+      <a class="name" href="{{ lee_lady_blurbs }}">blurbs</a>
+      , I also like Jans,
+      <i>Rings and Homology</i>
+      (1964) and Sharpe and Vamos,
+      <i>Injective Modules</i>
+      (1975), both of which are out of print.
     </p>
-    <h3>
-      Category theory
-    </h3>
+    <h3>Category theory</h3>
     <ul>
-      <li *ngFor="let book of category_theory;">
-        <a class="name" href="{{book.authors | str2url}}">{{book.authors}}</a>,
-        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      <li *ngFor="let book of category_theory">
+        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+        ({{ getLastNames(book.authors) }}, {{ book.year }})
       </li>
     </ul>
-    <h3>
-      Differential geometry
-    </h3>
+    <h3>Differential geometry</h3>
     <ul>
-      <li *ngFor="let book of differential_geometry;">
-        <a class="name" href="{{book.authors | str2url}}">{{book.authors}}</a>,
-        <a href="{{book.title_url}}" target="_blank">{{book.title}}</a>, {{book.year}}.
+      <li *ngFor="let book of differential_geometry">
+        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+        ({{ getLastNames(book.authors) }}, {{ book.year }})
       </li>
     </ul>
   </div>
-  <div style="height: 15px;"></div>
+  <div style="height: 15px"></div>
 </div>

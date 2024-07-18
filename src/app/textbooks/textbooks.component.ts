@@ -6,6 +6,12 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./textbooks.component.css']
 })
 export class TextbooksComponent implements OnInit {
+  getLastNames(authors: string): string {
+    return authors.split(',').map(author => {
+      const names = author.trim().split(' ');
+      return names[names.length - 1];
+    }).join('–');
+  }
 
   lee_lady_blurbs = 'http://www.math.hawaii.edu/~lee/homolog/books-homolog.html';
 
@@ -25,6 +31,12 @@ export class TextbooksComponent implements OnInit {
       title: 'Statistical Learning with Sparsity',
       title_url: 'https://hastie.su.domains/StatLearnSparsity/',
       year: '2015'
+    },
+    {
+      authors: 'Paul Fearnhead, Christopher Nemeth, Chris J. Oates, and Chris Sherlock',
+      title: 'Scalable Monte Carlo for Bayesian Learning',
+      title_url: 'https://arxiv.org/abs/2407.12751',
+      year: '2024'
     }
   ];
 
