@@ -44,14 +44,9 @@
     </ul>
     <h3>Metric embeddings</h3>
     <ul>
-      <li>
-        <a
-          href="https://hackmd.io/@3S70qBUwTR6_CErLY2dm4A/SJfp46KGi"
-          target="_blank"
-        >
-          Advances on Metric Embeddings (FOCS 2022 Workshop)
-        </a>
-        (Various authors, 2022)
+      <li *ngFor="let book of embeddings">
+        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+        ({{ getLastNames(book.authors) }}, {{ book.year }})
       </li>
     </ul>
     <h3>Theory</h3>
