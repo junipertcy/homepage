@@ -30,9 +30,6 @@ export class AppComponent implements OnInit {
   resume_file = "../../assets/pdf/Tzu-Chi_Yen_Resume.pdf";
   // screenWidth: number;
 
-
-
-
   createTplModal(
     tplTitle: TemplateRef<{}>,
     tplContent: TemplateRef<{}>,

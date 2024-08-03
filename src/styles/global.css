@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+/*li a {*/
+/*  color: black;*/
+/*}*/
+/* @import "ng-zorro-antd/ng-zorro-antd.min.css"; */
+html,
+body {
+  height: 100%;
+}
+
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
+div {
+  font-family: 'Equity B';
+  font-size: 13.5pt;
+  line-height: 1.45em;
+  text-align: left;
+}
+
+h2 {
+  color: rgba(0, 0, 0, 0.85);
+  font-family: 'concourse_4';
+  text-align: left;
+  font-weight: normal;
+}
+
+h3 {
+  font-family: 'concourse_4', sans-serif;
+}
+h4 {
+  margin-bottom: 4px;
+}
+
+h5 {
+  font-family: 'concourse_4_caps';
+  font-size: 10pt;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.addendum {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  position: static;
+  bottom: 0;
+  width: 100%;
+}
