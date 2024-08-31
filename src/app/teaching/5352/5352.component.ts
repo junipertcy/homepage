@@ -1,7 +1,6 @@
 import {
   Component,
   OnInit,
-  ViewEncapsulation,
   TrackByFunction,
 } from '@angular/core';
 import { InternalUriResolverPipe } from 'src/app/@pipes/internal-uri-resolver.pipe';
@@ -19,7 +18,6 @@ export interface Week {
   standalone: false,
   templateUrl: './5352.component.html',
   styleUrls: ['./5352.component.css'],
-  encapsulation: ViewEncapsulation.None, // Disables view encapsulation
 })
 export class TeachingComponent5352 implements OnInit {
   private str2IntRes: InternalUriResolverPipe = new InternalUriResolverPipe();
