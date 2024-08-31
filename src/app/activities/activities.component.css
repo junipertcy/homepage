@@ -3,17 +3,6 @@
   width: 100%;
 }
 
-h2 {
-  color: rgba(0, 0, 0, 0.85);
-  font-family: 'concourse_4';
-  text-align: left;
-  font-weight: normal;
-}
-
-h3 {
-  font-family: 'concourse_4', sans-serif;
-}
-
 div.polaroid {
   width: 80%;
   background-color: white;
@@ -41,7 +30,6 @@ li {
   margin: 0 0 0 20px;
   list-style-type: circle;
 } */
-
 
 li strong {
   font-family: 'concourse_4_caps', sans-serif;
