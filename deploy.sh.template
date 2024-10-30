@@ -1,119 +1,166 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+# Constants
+readonly DISTID=""
+readonly BUCKET_NAME=""
+readonly BUILD_DIR="./dist/browser"
+readonly LOG_FILE="/tmp/s3_sync_$(date +%Y%m%d_%H%M%S).log"
+readonly REQUIRED_COMMANDS=("ng" "aws" "md5sum" "parallel")
 
 # Function to display usage
-function usage() {
+usage() {
     cat <<EOF
-Usage: $0 [options]
+Usage: ${0##*/} [options]
 Uploads the Angular site to AWS S3.
 
 Options:
-  -h, --help            Show this message and exit.
-  -d, --delete-first    Remove specific contents in the target bucket before syncing.
-  -s, --sync            Sync the local directory to the S3 bucket.
+  -h, --help            Show this message and exit
+  -d, --delete-first    Remove specific contents in target bucket before syncing
+  -s, --sync            Sync the local directory to the S3 bucket
+  -v, --verbose         Enable verbose logging
 EOF
 }
 
-# AWS CloudFront Distribution ID
-DISTID=""
-
-# Check for necessary commands
-if ! command -v ng &>/dev/null || ! command -v aws &>/dev/null; then
-    echo "Error: This script requires both 'ng' and 'aws' commands to be available."
-    exit 1
-fi
-
-# Default action is to show usage if no arguments are passed
-if [ $# -eq 0 ]; then
-    usage
-    exit 1
-fi
-
-# Function to perform sync
-sync_to_s3() {
-    echo "Building Angular project..."
-    ng build --configuration production || {
-        echo "Build failed"
-        exit 1
-    }
-
-    echo "Checking for changed files..."
-    local local_files_checksum="./local_files_checksum.txt"
-    local s3_files_metadata="./s3_files_metadata.txt"
-
-    # Generate list of local files and their checksums and store them as metadata
-    find ./dist/browser -type f -exec md5sum {} + | sed 's|./dist/browser/||' | sort > "$local_files_checksum"
-
-    # Get list of existing files in S3 and their checksums
-    aws s3api list-objects --bucket junipertcy.info --query "Contents[].{Key: Key, ETag: ETag}" --output text | 
-    awk '{print $1 "  " $2}' | sed 's/"//g' | sort > "$s3_files_metadata"
-
-
-    # # Use GNU Parallel to fetch metadata for each file directly from the output of awk
-    # awk '{print $2}' "$local_files_checksum" | parallel -j 100 --will-cite \
-    #     "aws s3api head-object --bucket junipertcy.info --key {} \
-    #     --query Metadata.md5checksum --output text --profile default 2>/dev/null \
-    #     | awk '{print \$1 \" {}\"}'" >"$s3_files_metadata"
-
-    # Sync files that are different
-    while IFS= read -r line; do
-        local md5=$(echo "$line" | awk '{print $1}')
-        local file_path=$(echo "$line" | awk '{print $2}')
-        local s3_md5=$(grep "$file_path" "$s3_files_metadata" | awk '{print $1}')
-
-        if [[ "$md5" != "$s3_md5" ]]; then
-            # echo "MD5 mismatch or new file - Syncing file: $file_path: local=$md5 vs s3=$s3_md5"
-            metadata=$(aws s3api head-object --bucket junipertcy.info --key "$file_path" --query Metadata.md5checksum --output text --profile default 2>/dev/null)
-            if [[ "$md5" != "$metadata" ]]; then
-                aws s3 cp "./dist/browser/$file_path" "s3://junipertcy.info/$file_path" --acl public-read --metadata md5checksum=$md5 --profile default || echo "Failed to sync $file_path"
-            else
-                # echo "Yet, metadata match - No need to sync: $file_path"
-                :
-            fi
-        else
-            # echo "MD5 match - No need to sync: $file_path"
-            :
-        fi
-    done <"$local_files_checksum"
-
-    # Invalidate CloudFront cache
-    echo "Invalidating CloudFront distribution..."
-    aws cloudfront create-invalidation --distribution-id $DISTID --paths "/*" --profile default || echo "Failed to invalidate CloudFront distribution"
-
-    # Cleanup temporary files
-    echo "Cleaning up temporary files..."
-    rm -f "$local_files_checksum" "$s3_files_metadata"
-    echo "Sync completed."
+log() {
+    local level=$1
+    shift
+    echo "[$(date +'%Y-%m-%d %H:%M:%S')] [${level}] $*" | tee -a "$LOG_FILE"
 }
 
-# Parse options
-while getopts ":hds" option; do
-    case "${option}" in
-    h)
-        usage
-        exit 0
-        ;;
-    d)
-        # Remove specific contents before syncing
-        aws s3 rm s3://junipertcy.info --recursive --exclude "*" --include "*.js" --include "*.css" --include "*.eot" --include "*.woff" --include "*.woff2" --profile default
-        sync_to_s3
-        exit 0
-        ;;
-    s)
-        sync_to_s3
-        exit 0
-        ;;
-    *)
+check_dependencies() {
+    local missing_deps=()
+    for cmd in "${REQUIRED_COMMANDS[@]}"; do
+        if ! command -v "$cmd" &>/dev/null; then
+            missing_deps+=("$cmd")
+        fi
+    done
+
+    if [[ ${#missing_deps[@]} -gt 0 ]]; then
+        log "ERROR" "Missing required commands: ${missing_deps[*]}"
+        exit 1
+    fi
+}
+
+build_angular() {
+    log "INFO" "Building Angular project..."
+    if ! ng build --configuration production; then
+        log "ERROR" "Angular build failed"
+        exit 1
+    fi
+}
+
+generate_file_list() {
+    local output_file=$1
+    if ! find "$BUILD_DIR" -type f -exec md5sum {} + | \
+        sed "s|${BUILD_DIR}/||" | sort > "$output_file"; then
+        log "ERROR" "Failed to generate file list"
+        exit 1
+    fi
+}
+
+sync_to_s3() {
+    local verbose=$1
+    local temp_dir
+    temp_dir=$(mktemp -d)
+    local local_files_checksum="${temp_dir}/local_files.txt"
+    local s3_files_metadata="${temp_dir}/s3_files.txt"
+    
+    trap 'rm -rf "$temp_dir"' EXIT
+
+    build_angular
+    log "INFO" "Generating local file checksums..."
+    generate_file_list "$local_files_checksum"
+
+    log "INFO" "Fetching S3 metadata..."
+    if ! aws s3api list-objects-v2 --bucket "$BUCKET_NAME" \
+        --query 'Contents[].[Key, ETag]' --output text | \
+        sed 's/"//g' | sort > "$s3_files_metadata"; then
+        log "ERROR" "Failed to fetch S3 metadata"
+        exit 1
+    fi
+
+    log "INFO" "Syncing changed files..."
+    while IFS= read -r line; do
+        local md5 file_path
+        md5=$(echo "$line" | awk '{print $1}')
+        file_path=$(echo "$line" | awk '{print $2}')
+        
+        if ! grep -q "$file_path" "$s3_files_metadata" || \
+           ! grep -q "$md5" "$s3_files_metadata"; then
+            if [[ $verbose == true ]]; then
+                log "INFO" "Uploading: $file_path"
+            fi
+            
+            if ! aws s3 cp "${BUILD_DIR}/${file_path}" \
+                "s3://${BUCKET_NAME}/${file_path}" \
+                --acl public-read \
+                --metadata "md5checksum=${md5}" \
+                --profile default; then
+                log "ERROR" "Failed to upload: $file_path"
+            fi
+        fi
+    done < "$local_files_checksum"
+
+    log "INFO" "Invalidating CloudFront cache..."
+    if ! aws cloudfront create-invalidation \
+        --distribution-id "$DISTID" \
+        --paths "/*" \
+        --profile default; then
+        log "ERROR" "Failed to invalidate CloudFront cache"
+        exit 1
+    fi
+
+    log "INFO" "Sync completed successfully"
+}
+
+delete_s3_contents() {
+    log "INFO" "Removing specified contents from S3 bucket..."
+    if ! aws s3 rm "s3://${BUCKET_NAME}" --recursive \
+        --exclude "*" \
+        --include "*.js" \
+        --include "*.css" \
+        --include "*.eot" \
+        --include "*.woff" \
+        --include "*.woff2" \
+        --profile default; then
+        log "ERROR" "Failed to delete S3 contents"
+        exit 1
+    fi
+}
+
+main() {
+    local verbose=false
+    local delete=false
+    local sync=false
+
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            -h|--help) usage; exit 0 ;;
+            -d|--delete-first) delete=true ;;
+            -s|--sync) sync=true ;;
+            -v|--verbose) verbose=true ;;
+            *) usage; exit 1 ;;
+        esac
+        shift
+    done
+
+    check_dependencies
+
+    if [[ $delete == true ]]; then
+        delete_s3_contents
+    fi
+
+    if [[ $sync == true ]]; then
+        sync_to_s3 "$verbose"
+    fi
+
+    if [[ $delete == false && $sync == false ]]; then
         usage
         exit 1
-        ;;
-    esac
-done
+    fi
+}
 
-# Shift off the options and potential --
-shift $((OPTIND - 1))
-
-# If no options were passed then display usage
-if [ $# -eq 0 ]; then
-    usage
-    exit 1
-fi
+main "$@"
