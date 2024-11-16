@@ -65,7 +65,37 @@ registerLocaleData(en);
 
 const appRoutes: Routes = [
   { path: '', component: NewsComponent },
-  { path: 'activities', component: ActivitiesComponent },
+  {
+    path: 'activities',
+    component: ActivitiesComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'sem',
+        pathMatch: 'full'
+      },
+      {
+        path: 'sem',
+        loadComponent: () => import('./activities/sem/sem.component').then(m => m.SemComponent)
+      },
+      {
+        path: 'ref',
+        loadComponent: () => import('./activities/ref/ref.component').then(m => m.RefComponent)
+      },
+      {
+        path: 'pers',
+        loadComponent: () => import('./activities/pers/pers.component').then(m => m.PersComponent)
+      },
+      {
+        path: 'tw',
+        loadComponent: () => import('./activities/tw/tw.component').then(m => m.TwComponent)
+      },
+      {
+        path: 'inact',
+        loadComponent: () => import('./activities/inact/inact.component').then(m => m.InactComponent)
+      }
+    ]
+  },
   { path: 'books', component: BooksComponent },
   { path: 'cllin', component: CllinComponent },
   { path: 'notion', component: NotionComponent },
@@ -86,7 +116,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ActivitiesComponent,
     BooksComponent,
     CllinComponent,
     NewsComponent,
@@ -103,7 +132,7 @@ const appRoutes: Routes = [
     TeachingComponent5822,
   ],
   exports: [
-    //
+    RouterModule
   ],
   bootstrap: [AppComponent],
   imports: [
@@ -131,4 +160,4 @@ const appRoutes: Routes = [
     provideHttpClient(withInterceptorsFromDi()),
   ],
 })
-export class AppModule {}
+export class AppModule { }

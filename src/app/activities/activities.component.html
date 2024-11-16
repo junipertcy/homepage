@@ -1,120 +1,25 @@
-<div>
-  <h2>
-    <a href="http://societyofyoungnetworkscientists.com/" target="_blank">
-      <i nz-icon nzType="link" nzTheme="outline"></i>
-    </a>
-    The Society of Young Network Scientists
-  </h2>
-  <h3>What is SYNS? 🤔</h3>
-  <p>
-    The SYNS is an organization designed to support early-career network
-    scientists as they pursue research, to promote their work, and to shape the
-    evolving field of network science.
-  </p>
-
-  <h3>How do I get involved? 🙋</h3>
-  <p>
-    Stop by one of the SYNS events! Alternatively, feel free to contact the
-    organizers (me) with questions, or to get added to our Slack.
-  </p>
-  <nz-divider></nz-divider>
-  <h2>
-    <a href="https://syns-colorado.github.io/" target="_blank">
-      <i nz-icon nzType="link" nzTheme="outline"></i>
-    </a>
-    SYNS in Colorado!
-    <i nz-icon>
-      <img
-        src="assets/img/flag-for-colorado.png"
-        height="24"
-        alt="colorado-flag"
-        style="vertical-align: -0.125em"
-      />
-    </i>
-  </h2>
-  <p>
-    With
-    <a href="https://allisonmorgan.github.io/">Allie Morgan</a>
-    and
-    <a href="https://hneutr.github.io/">Hunter Wapman</a>
-    , we launched our inaugural local meet-up in Oct’19. In our second meeting
-    (Feb’20), five great speakers, each from a distinct expertise (Mechanical
-    Engineering, Computer Science, Applied Math, & Environmental Science), came
-    to give a 5-min short research talk. Attendees are from Boulder, Fort
-    Collins, and Denver area.
-  </p>
-  <p>
-    If you are in our neck of the woods, poke us to be added to our
-    <a href="https://groups.google.com/forum/#!forum/syns-colorado">
-      Google Group
-    </a>
-    and email list!
-  </p>
-  <nz-divider></nz-divider>
-  <h2>
-    <a href="https://netscied.tw/" target="_blank">
-      <i nz-icon nzType="link" nzTheme="outline"></i>
-    </a>
-    台灣網絡科學教育 (Network Science Education in Taiwan)
-  </h2>
-  <p>
-    這是一個公益專案，該網站收集和台灣有關的網絡數據、案例研究，也收集網絡的建模與分析的課程資料。希望讓網絡科學更親近實際生活。
-  </p>
-
-  <!--  <p></p>-->
-
-  <!--  <div nz-row nzType="flex" nzJustify="start">-->
-  <!--    <nz-divider nzType="vertical" nz-col nzSpan="2" style="height: 3.6em;"></nz-divider>-->
-  <!--    <div nz-col nzSpan="22">-->
-  <!--      <a href="http://societyofyoungnetworkscientists.com/">Society of Young Network Scientists (SYNS)</a>-->
-  <!--      <span style="font-style: italic; color: #555555"> — Event officer</span><br>-->
-  <!--      <a href="https://syns-colorado.github.io/">SYNS Colorado Chapter</a>-->
-  <!--      <span style="font-style: italic; color: #555555"> — Organizer</span>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <nz-divider></nz-divider>
-  <div class="row">
-    <h2>Seminars</h2>
-    <ol class="nocount">
-      <li>
-        <a
-          href="https://sites.google.com/view/minds-seminar/home"
-          style="font-weight: 500"
-        >
-          One World MINDS seminar
-        </a>
-        Weekly seminars on the mathematics of information, data, and signals
-        (MINDS).
-      </li>
-      <li>
-        <a href="https://www.whatisaseminar.com/home" style="font-weight: 500">
-          What is... a seminar?
-        </a>
-        If you loved math, you might love this seminar series, for non-technical
-        expository talks aimed at grad students.
-      </li>
-      <li>
-        <a href="https://dsiseminar.github.io/" style="font-weight: 500">
-          IEEE Signal Processing Society data science webinar series
-        </a>
-        Updates and advances in learning and inference on graphs.
-      </li>
-    </ol>
+<nz-page-header-extra>
+  <div class="header-content">
+    <nav class="text-nav">
+      <a routerLink="sem" routerLinkActive="active">Seminar</a>
+      <span class="separator">|</span>
+      <a routerLink="ref" routerLinkActive="active">Referee</a>
+      <span class="separator">|</span>
+      <a routerLink="pers" routerLinkActive="active">Personal</a>
+      <span class="separator">|</span>
+      <a routerLink="tw" routerLinkActive="active">台灣</a>
+    </nav>
+    <button 
+      nz-button 
+      nzNoAnimation 
+      routerLink="inact" 
+      routerLinkActive="active"
+      class="custom-icon-button"
+    >
+      <span nz-icon nzType="more" nzTheme="outline"></span>
+    </button>
   </div>
-</div>
-<div class="addendum">
-  <h2>Personal</h2>
-  <ol class="nocount">
-    <li>
-      <strong>Dec 2023</strong>
-      – I become a
-      <a href="../../assets/pdf/WFR.pdf" target="_blank">
-        Wilderness First Responder</a>, via
-      <a
-        href="https://www.nols.edu/en/professionals/wilderness-medicine/"
-        target="_blank"
-      >
-        NOLS Wilderness Medicine</a>.
-    </li>
-  </ol>
-</div>
+
+</nz-page-header-extra>
+<div style="height: 20pt;"></div>
+<router-outlet></router-outlet>

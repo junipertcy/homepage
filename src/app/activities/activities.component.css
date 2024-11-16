@@ -1,38 +1,107 @@
-#profile {
-  border-radius: 8px;
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 
-div.polaroid {
-  width: 80%;
-  background-color: white;
-  border-radius: 8px;
-  /*box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);*/
-  margin-bottom: 25px;
+.text-nav {
+  display: flex;
+  align-items: center;
+  font-family: 'concourse_4', sans-serif;
+  font-weight: normal;
 }
 
-div.container {
-  text-align: center;
+.text-nav a {
+  padding: 10px 15px;
+  color: rgba(0, 0, 0, 0.85);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.text-nav a:hover {
+  background-color: #d0d0d0;
 }
 
-nz-divider {
-  width: 4px;
+.text-nav a.active {
+  background-color: #bfbfbf;
+  color: rgba(0, 0, 0, 0.85);
 }
 
-li {
-  list-style-type: none;
-  margin: 4px 0 0 0;
-  text-align: justify;
-  text-justify: inter-word;
+.separator {
+  color: #ccc;
+  margin: 0 5px;
 }
 
-/* li.indent {
-  margin: 0 0 0 20px;
-  list-style-type: circle;
-} */
+/* Underline effect */
+.text-nav a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.87);
+  transition: width .3s;
+}
 
-li strong {
-  font-family: 'concourse_4_caps', sans-serif;
-  font-weight: 400;
-  letter-spacing: -1px;
+.text-nav a:hover::after,
+.text-nav a.active::after {
+  width: 100%;
+}
+
+/* Custom icon button */
+.custom-icon-button {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.custom-icon-button span {
+  font-size: 22px;
+  color: #37373a;
+  transition: color 0.6s ease;
+}
+
+.custom-icon-button:hover span {
+  color: #3077B0;
+}
+
+/* Custom icon button */
+.custom-icon-button:hover {
+  background-color: #d0d0d0;  /* Match the hover color of text links */
+}
+
+.custom-icon-button.active {
+  background-color: #bfbfbf;  /* Match the active color of text links */
+}
+
+.custom-icon-button span {
+  font-size: 22px;
+  color: #37373a;
+  transition: color 0.6s ease;
+}
+
+.custom-icon-button:hover span,
+.custom-icon-button.active span {
+  color: rgba(0, 0, 0, 0.85);  /* Match the text color of active links */
+}
+
+/* Underline effect for the button */
+.custom-icon-button::after {
+  content: '';
+  display: block;
+  width: 0;
+  transition: width .3s;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.custom-icon-button:hover::after,
+.custom-icon-button.active::after {
+  width: 100%;
 }
