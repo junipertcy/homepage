@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-teaching',
+  standalone: true,
   templateUrl: './5822.component.html',
   styleUrls: ['./5822.component.css']
 })

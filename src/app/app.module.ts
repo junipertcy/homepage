@@ -30,10 +30,10 @@ import { NewsComponent } from './news/news.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { TeachingComponent } from './teaching/teaching.component';
 import { ErrorComponent } from './error/error.component';
-import { TeachingComponent2270 } from './teaching/2270/2270.component';
-import { TeachingComponent3308 } from './teaching/3308/3308.component';
-import { TeachingComponent5822 } from './teaching/5822/5822.component';
-import { TeachingComponent5352 } from './teaching/5352/5352.component';
+import { TeachingComponent2270 } from './teaching/cu/2270/2270.component';
+import { TeachingComponent3308 } from './teaching/cu/3308/3308.component';
+import { TeachingComponent5822 } from './teaching/cu/5822/5822.component';
+import { TeachingComponent5352 } from './teaching/cu/5352/5352.component';
 import { TalksComponent } from './talks/talks.component';
 import { ActivitiesComponent } from './activities/activities.component';
 
@@ -105,11 +105,45 @@ const appRoutes: Routes = [
   { path: 'reading', component: ReadingComponent },
   { path: 'textbooks', component: TextbooksComponent },
   { path: 'talks', component: TalksComponent },
-  { path: 'teaching', component: TeachingComponent },
-  { path: 'teaching/2270', component: TeachingComponent2270 },
-  { path: 'teaching/3308', component: TeachingComponent3308 },
-  { path: 'teaching/5352', component: TeachingComponent5352 },
-  { path: 'teaching/5822', component: TeachingComponent5822 },
+  {
+    path: 'teaching',
+    component: TeachingComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'cu',
+        pathMatch: 'full'
+      },
+      {
+        path: 'cu',
+        loadComponent: () => import('./teaching/cu/cu.component').then(m => m.CuComponent)
+      },
+      {
+        path: '2270',
+        loadComponent: () => import('./teaching/cu/2270/2270.component').then(m => m.TeachingComponent2270)
+      },
+      {
+        path: '3308',
+        loadComponent: () => import('./teaching/cu/3308/3308.component').then(m => m.TeachingComponent3308)
+      },
+      {
+        path: '5352',
+        loadComponent: () => import('./teaching/cu/5352/5352.component').then(m => m.TeachingComponent5352)
+      },
+      {
+        path: '5822',
+        loadComponent: () => import('./teaching/cu/5822/5822.component').then(m => m.TeachingComponent5822)
+      },
+      {
+        path: 'tw',
+        loadComponent: () => import('./teaching/tw/tw.component').then(m => m.TwComponent)
+      },
+      {
+        path: 'resources',
+        loadComponent: () => import('./teaching/resources/resources.component').then(m => m.ResourcesComponent)
+      }
+    ]
+  },
   { path: '**', component: ErrorComponent },
 ];
 
@@ -125,11 +159,6 @@ const appRoutes: Routes = [
     ReadingComponent,
     TextbooksComponent,
     TalksComponent,
-    TeachingComponent,
-    TeachingComponent2270,
-    TeachingComponent3308,
-    TeachingComponent5352,
-    TeachingComponent5822,
   ],
   exports: [
     RouterModule

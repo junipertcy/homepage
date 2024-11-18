@@ -3,7 +3,22 @@ import {
   OnInit,
   TrackByFunction,
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { InternalUriResolverPipe } from 'src/app/@pipes/internal-uri-resolver.pipe';
+import { RouterModule } from '@angular/router';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzNoAnimationModule } from 'ng-zorro-antd/core/no-animation';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 
 export interface Week {
   active: boolean;
@@ -15,7 +30,25 @@ export interface Week {
 
 @Component({
   selector: 'app-teaching',
-  standalone: false,
+  standalone: true,
+  imports: [
+    CommonModule,
+    NzDividerModule,
+    NzCollapseModule,
+    NzAvatarModule,
+    NzBreadCrumbModule,
+    NzButtonModule,
+    NzDropDownModule,
+    RouterModule,
+    NzGridModule,
+    NzIconModule,
+    NzNoAnimationModule,
+    NzPageHeaderModule,
+    NzSpaceModule,
+    NzTagModule,
+    NzTypographyModule,
+    InternalUriResolverPipe
+  ],
   templateUrl: './5352.component.html',
   styleUrls: ['./5352.component.css'],
 })
