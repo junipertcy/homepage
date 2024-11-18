@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './tw.component.html',
   styleUrls: [
     './tw.component.css', 
-    '../teaching.component.css'
   ]
 })
 export class TwComponent {

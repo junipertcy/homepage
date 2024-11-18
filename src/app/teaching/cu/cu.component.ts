@@ -12,7 +12,6 @@ import { RouterModule } from '@angular/router';
   templateUrl: './cu.component.html',
   styleUrls: [
     './cu.component.css', 
-    '../teaching.component.css'
   ]
 })
 export class CuComponent {

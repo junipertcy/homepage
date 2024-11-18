@@ -1,54 +1,7 @@
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
 
-.text-nav {
-  display: flex;
-  align-items: center;
-  font-family: 'concourse_4', sans-serif;
-  font-weight: normal;
-}
 
-.text-nav a {
-  padding: 10px 15px;
-  color: rgba(0, 0, 0, 0.85);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.text-nav a:hover {
-  background-color: #d0d0d0;
-}
-
-.text-nav a.active {
-  background-color: #bfbfbf;
-  color: rgba(0, 0, 0, 0.85);
-}
-
-.separator {
-  color: #ccc;
-  margin: 0 5px;
-}
-
-/* Underline effect */
-.text-nav a::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 3px;
-  background: rgba(0, 0, 0, 0.87);
-  transition: width .3s;
-}
-
-.text-nav a:hover::after,
-.text-nav a.active::after {
-  width: 100%;
-}
-
-/* Custom icon button */
-.custom-icon-button {
+/* Misc icon button */
+.misc-icon-button {
   background: transparent;
   border: none;
   padding: 4px;
@@ -56,42 +9,42 @@
   transition: all 0.3s ease;
 }
 
-.custom-icon-button:hover {
+.misc-icon-button:hover {
   background-color: rgba(0, 0, 0, 0.04);
 }
 
-.custom-icon-button span {
+.misc-icon-button span {
   font-size: 22px;
   color: #37373a;
   transition: color 0.6s ease;
 }
 
-.custom-icon-button:hover span {
+.misc-icon-button:hover span {
   color: #3077B0;
 }
 
 /* Custom icon button */
-.custom-icon-button:hover {
+.misc-icon-button:hover {
   background-color: #d0d0d0;  /* Match the hover color of text links */
 }
 
-.custom-icon-button.active {
+.misc-icon-button.active {
   background-color: #bfbfbf;  /* Match the active color of text links */
 }
 
-.custom-icon-button span {
+.misc-icon-button span {
   font-size: 22px;
   color: #37373a;
   transition: color 0.6s ease;
 }
 
-.custom-icon-button:hover span,
-.custom-icon-button.active span {
+.misc-icon-button:hover span,
+.misc-icon-button.active span {
   color: rgba(0, 0, 0, 0.85);  /* Match the text color of active links */
 }
 
 /* Underline effect for the button */
-.custom-icon-button::after {
+.misc-icon-button::after {
   content: '';
   display: block;
   width: 0;
@@ -101,7 +54,7 @@
   left: 0;
 }
 
-.custom-icon-button:hover::after,
-.custom-icon-button.active::after {
+.misc-icon-button:hover::after,
+.misc-icon-button.active::after {
   width: 100%;
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';  // <-- Import CommonModule for ngClass and other common directives
+import { CommonModule } from '@angular/common';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -35,7 +35,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
     NzDividerModule
   ],
   standalone: true,
-  styleUrls: ['./teaching.component.css']
+  styleUrls: ['./teaching.component.css',]
 })
 export class TeachingComponent implements OnInit {
 

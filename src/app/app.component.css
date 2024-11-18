@@ -8,60 +8,15 @@
 }
 
 .layout {
-  width: 1200px;
+  width: 1080px;
   background: #ffffff;
   margin: 0 auto;
-  /* font-family: 'concourse_4'; */
-}
-
-#logo-title {
-  display: block;
-  min-width: 200px;
-  font-size: 28px !important;
-  font-family: 'equity_a';
-  /*text-transform: uppercase !important;*/
-  float: left;
-  margin-top: 10px;
-  margin-left: 0;
-  margin-bottom: 5px;
-  letter-spacing: .04em;
-  line-height: normal;
-  font-weight: 600;
-  /* font-weight: normal; */
-  font-style: normal;
-  font-stretch: normal;
-  font-display: auto;
-  color: #37373a;
 }
 
 .tag {
   margin-top: 16px;
   margin-right: 20px;
   margin-bottom: 5px;
-}
-
-#vitae {
-  line-height: normal;
-  letter-spacing: .04em;
-  font-size: 18px !important;
-  font-family: 'Cookie', cursive;
-  vertical-align: top !important;
-  float: right;
-}
-
-#resume {
-  margin-right: 2em;
-  line-height: normal;
-  letter-spacing: .04em;
-  font-size: 18px !important;
-  font-family: 'Cookie', cursive;
-  vertical-align: top !important;
-  float: right;
-}
-
-#menu {
-  font-family: 'concourse_4_caps';
-  font-weight: normal;
 }
 
 #network-icon {
@@ -75,6 +30,7 @@
 }
 
 #network-icon li {
+  list-style-type: none;
   margin-right: 10px;
 }
 
@@ -93,17 +49,6 @@
   /* Smooth color transition */
 }
 
-
-#footer {
-  text-align: center;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  clear: both;
-  font-family: 'concourse 4';
-  font-size: 12pt;
-}
-
 /* General menu-item behavior */
 .menu-item:hover {
   transition: background-color .3s ease;
@@ -115,7 +60,6 @@
 }
 
 /* General link hover behavior */
-
 li a,
 p a,
 i a {

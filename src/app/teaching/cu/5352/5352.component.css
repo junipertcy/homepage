@@ -1,28 +1,3 @@
-#teaching {
-  /*border-style: solid;*/
-  font-family: "Equity A";
-  font-size: 14pt;
-  border-width: thin;
-  border-color: #000000;
-  overflow: hidden;
-}
-
-ol {
-  padding: 0 10px 0 20px;
-}
-
-li {
-  list-style-type: circle;
-  margin: 0 0 0 0;
-  /*padding-bottom: 1em;*/
-}
-
-ol.nocount li {
-  list-style-type: circle;
-  margin: 0 0 0 0;
-  /*padding-bottom: 1em;*/
-}
-
 nz-tree {
   font-family: "Equity B";
   font-size: 14pt;

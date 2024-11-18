@@ -60,6 +60,7 @@ strong {
   letter-spacing: -1px;
 }
 
+/* Keep this; it's different from the global.css */
 li {
   list-style-type: none;
   margin: 4px 0 0 0;
@@ -71,6 +72,7 @@ li.indent {
   margin: 0 0 0 20px;
   list-style-type: circle;
 }
+/* Keep this; it's different from the global.css */
 
 .email {
   width: 1em;
@@ -100,3 +102,5 @@ li.indent {
 #small {
   font-family: "equity_b_caps";
 }
+
+

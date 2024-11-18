@@ -30,10 +30,6 @@ import { NewsComponent } from './news/news.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { TeachingComponent } from './teaching/teaching.component';
 import { ErrorComponent } from './error/error.component';
-import { TeachingComponent2270 } from './teaching/cu/2270/2270.component';
-import { TeachingComponent3308 } from './teaching/cu/3308/3308.component';
-import { TeachingComponent5822 } from './teaching/cu/5822/5822.component';
-import { TeachingComponent5352 } from './teaching/cu/5352/5352.component';
 import { TalksComponent } from './talks/talks.component';
 import { ActivitiesComponent } from './activities/activities.component';
 

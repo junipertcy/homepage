@@ -2,6 +2,7 @@
 
 set -euo pipefail
 IFS=$'\n\t'
+temp_dir=""
 
 # Constants
 readonly DISTID=""
@@ -63,7 +64,6 @@ generate_file_list() {
 
 sync_to_s3() {
     local verbose=$1
-    local temp_dir
     temp_dir=$(mktemp -d)
     local local_files_checksum="${temp_dir}/local_files.txt"
     local s3_files_metadata="${temp_dir}/s3_files.txt"
