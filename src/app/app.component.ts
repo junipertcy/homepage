@@ -57,6 +57,9 @@ export class AppComponent implements OnInit {
 
   getTitleFromRouter = function (router: Router) {
     for (const r of router.config) {
+      if (router.url.split('/').length > 2 && r.path === router.url.split('/')[1]) {
+        return r.data ? r.data['title'] : 'TCY | ' + r.path + ' | ' + router.url.split('/')[2];
+      }
       if ('/' + r.path === router.url) {
         if (r.path === '') {
           return 'Tzu-Chi Yen';
@@ -103,13 +106,12 @@ export class AppComponent implements OnInit {
   ) {
     this.isDarkMode = localStorage.getItem('darkMode') === 'true';
     this.applyDarkMode();
-
     this.getScreenSize(); // Call the method without arguments
     router.events.subscribe((event) => {  // fires on every URL change
+      this.setTitle(this.getTitleFromRouter(router));
       if (router.url !== '/') {
         this.isDonationBannerShown = false;
       }
-      this.setTitle(this.getTitleFromRouter(router));
     });
   }
 
