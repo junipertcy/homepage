@@ -15,7 +15,7 @@ export class NewsComponent {
   //   console.log('onChange: ', result);
   // }
   thisYear = '2024';
-  selectSize: NzSelectSizeType = 'default';
+  selectSize: NzSelectSizeType = 'small';
 
   // URLs
   wiki_stat_inf = 'https://en.wikipedia.org/wiki/Statistical_inference';
@@ -41,6 +41,7 @@ export class NewsComponent {
   }
 
   ngAfterContentChecked() {
+    // For the years
     d3.selectAll('.ant-select-item-option-content')
       .style('font-family', 'concourse_4_caps')
       .style('font-size', '1rem');
