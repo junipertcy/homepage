@@ -1,3 +1,7 @@
+li {
+  padding-bottom: 0em;
+}
+
 #profile {
   border-radius: 4px;
   width: 80%;
@@ -121,4 +125,3 @@ ul {
   margin: 0 0 0 5px;
   list-style-type: square;
 }
-

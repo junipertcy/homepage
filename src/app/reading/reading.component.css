@@ -1,37 +1,5 @@
-a {
-  -webkit-transition: all .25s cubic-bezier(.55,.085,0,.99),outline 0s linear,outline-offset 0s linear;
-  transition: all .25s cubic-bezier(.55,.085,0,.99),outline 0s linear,outline-offset 0s linear;
-  /*color: rgba(0, 0, 0, 0.85);*/
-  color: black;
-  font-style: italic;
-  text-decoration: none;
-  background-color: transparent;
-  border-bottom: 1px solid #ededed;
-}
-
-a:hover {
-  color: #055299;
-  /*border-bottom: 1px solid #ededed;*/
-}
-
-
-a:-webkit-any-link {
-  cursor: pointer;
-}
-
-
-a.name {
-  -webkit-transition: all .25s cubic-bezier(.55,.085,0,.99),outline 0s linear,outline-offset 0s linear;
-  transition: all .25s cubic-bezier(.55,.085,0,.99),outline 0s linear,outline-offset 0s linear;
-  /*color: rgba(0, 0, 0, 0.85);*/
-  color: black;
-  font-style: normal;
-  text-decoration: none;
-  background-color: transparent;
-  border-bottom: 1px solid #ededed;
-}
-
-a.name:hover {
-  color: #055299;
-  /*border-bottom: 1px solid #ededed;*/
+li {
+  list-style-type: square;
+  margin: 0pt -12pt 0;
+  padding-bottom: 0em;
 }

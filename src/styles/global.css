@@ -173,7 +173,7 @@ li.indent {
   width: 100%;
 }
 
-
+/* General list behavior */
 ol {
   padding: 0 10px 0 20px;
 }
@@ -193,4 +193,35 @@ ol.nocount li {
 li.indent {
   margin: 0 0 0 0;
   list-style-type: square;
+}
+
+
+/* General link hover behavior */
+li a,
+p a,
+i a {
+  -webkit-transition: all .25s cubic-bezier(.55, .085, 0, .99), outline 0s linear, outline-offset 0s linear;
+  transition: all .25s cubic-bezier(.55, .085, 0, .99), outline 0s linear, outline-offset 0s linear;
+  color: rgba(0, 0, 0, 0.85);
+  /* color: black; */
+  text-decoration: underline;
+  text-decoration-color: #276190;
+  text-decoration-thickness: 0.100rem;
+  text-underline-offset: 0.125rem;
+}
+
+li a:hover,
+p a:hover,
+i a:hover {
+  color: #3077B0;
+  text-decoration-color: #3077B0;
+  text-decoration-thickness: 0.050rem;
+  text-underline-offset: 0.125rem;
+}
+
+
+li a:-webkit-any-link,
+p a:-webkit-any-link,
+i a:-webkit-any-link {
+  cursor: pointer;
 }
