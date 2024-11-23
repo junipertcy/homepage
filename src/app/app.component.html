@@ -29,7 +29,7 @@
           aria-label="Toggle dark mode"
           (click)="toggleDarkMode()"
         >
-          {{ isDarkMode ? 'brightness_7' : 'nights_stay' }}
+          {{ isDarkMode ? "brightness_7" : "nights_stay" }}
         </mat-icon>
       </div>
     </div>
@@ -53,16 +53,36 @@
           [nzInlineCollapsed]="isCollapsed"
           style="background: #e7e7e7"
         >
-          <li nz-menu-item class="menu-item" routerLinkActive="ant-menu-item-selected" routerLink="/publications">
+          <li
+            nz-menu-item
+            class="menu-item"
+            routerLinkActive="ant-menu-item-selected"
+            routerLink="/publications"
+          >
             <span id="menu">Publications</span>
           </li>
-          <li nz-menu-item class="menu-item" routerLinkActive="ant-menu-item-selected" routerLink="/talks">
+          <li
+            nz-menu-item
+            class="menu-item"
+            routerLinkActive="ant-menu-item-selected"
+            routerLink="/talks"
+          >
             <span id="menu">Talks</span>
           </li>
-          <li nz-menu-item class="menu-item" routerLinkActive="ant-menu-item-selected" routerLink="/teaching">
+          <li
+            nz-menu-item
+            class="menu-item"
+            routerLinkActive="ant-menu-item-selected"
+            routerLink="/teaching"
+          >
             <span id="menu">Teaching</span>
           </li>
-          <li nz-menu-item class="menu-item" routerLinkActive="ant-menu-item-selected" routerLink="/activities">
+          <li
+            nz-menu-item
+            class="menu-item"
+            routerLinkActive="ant-menu-item-selected"
+            routerLink="/activities"
+          >
             <span id="menu">Activities</span>
           </li>
         </ul>
@@ -132,6 +152,15 @@
             </li>
             <li>
               <a
+                href="https://bsky.app/profile/tzuchi.bsky.social"
+                target="_blank"
+                rel="noopener"
+              >
+                <fa-icon [icon]="faBluesky"></fa-icon>
+              </a>
+            </li>
+            <li>
+              <a
                 href="https://twitter.com/oneofyen"
                 target="_blank"
                 rel="noopener"
@@ -148,7 +177,6 @@
                 <i class="ai ai-google-scholar big-icon"></i>
               </a>
             </li>
-
             <li>
               <a
                 href="https://www.webofscience.com/wos/author/record/ABE-6509-2020"
@@ -163,7 +191,7 @@
       </div>
     </div>
     <nz-footer nz-col nzSpan="24" id="footer">
-      © Since 2016 Tzu-Chi Yen | Last update: Nov 16, 2024 |
+      © Since 2016 Tzu-Chi Yen | Last update: {{ lastUpdateDate }} |
       <a
         href="https://github.com/junipertcy/homepage"
         target="_blank"

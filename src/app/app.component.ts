@@ -5,9 +5,11 @@ import { HostListener } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { DOCUMENT } from '@angular/common';
 import { Inject } from '@angular/core';
-
+import { faBluesky } from '@fortawesome/free-brands-svg-icons';
 import * as DarkReader from 'darkreader';
 
+// To make the update time dynamic based on my last GitHub push
+import { GithubService } from './@services/github.service';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +30,8 @@ export class AppComponent implements OnInit {
   isLoaded = false;
   cv_file = "../../assets/pdf/Tzu-Chi_Yen_CV.pdf";
   resume_file = "../../assets/pdf/Tzu-Chi_Yen_Resume.pdf";
+  faBluesky = faBluesky;
+  lastUpdateDate: string = '';
   // screenWidth: number;
 
   createTplModal(
@@ -99,7 +103,9 @@ export class AppComponent implements OnInit {
     }
   }
 
-  constructor(private router: Router,
+  constructor(
+    private githubService: GithubService,
+    private router: Router,
     private titleService: Title,
     private officeInfoModal: NzModalService,
     @Inject(DOCUMENT) private document: Document
@@ -118,6 +124,14 @@ export class AppComponent implements OnInit {
   // A hot fix for the homepage which renders prematurely
   ngOnInit(): void {
     setTimeout(() => { this.isLoaded = true; }, 500);
+
+    this.githubService.getLastCommitDate().subscribe({
+      next: (date) => this.lastUpdateDate = date,
+      error: (error) => console.error('Error fetching last commit date:', error),
+      complete: () => console.log('Last commit date fetch completed')
+    });
+
+
   }
 
 }
