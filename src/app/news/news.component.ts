@@ -34,6 +34,9 @@ export class NewsComponent {
   isit21 = 'https://2021.ieee-isit.org/';
   networks21 = 'https://networks2021.net/';
 
+  // Files
+  resume_file_2024 = '../../assets/pdf/older/Yen_Resume_Oct_2024.pdf';
+
   constructor() {
   }
 
