@@ -13,7 +13,16 @@ import { LinkItemComponent } from 'src/app/@components/link-item/link-item.compo
   ]
 })
 export class ResourcesComponent {
-  adviceList = [
+  dummyList1 = [
+    {
+      link: "http://www.math.ucsd.edu/~fan/teach/gradpol.html",
+      title: "A few words on research for graduate students.",
+      author: "By Fan Chung.",
+      publication: ""
+    }
+  ]
+
+  dummyList2 = [
     {
       link: "https://journals.biologists.com/jcs/article/121/11/1771/30038/The-importance-of-stupidity-in-scientific-research",
       title: "The importance of stupidity in scientific research.",

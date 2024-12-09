@@ -1,10 +1,8 @@
-import { Component, TemplateRef, OnInit } from '@angular/core';
+import { Component, TemplateRef, OnInit, Inject, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { HostListener } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { DOCUMENT } from '@angular/common';
-import { Inject } from '@angular/core';
 import { faBluesky } from '@fortawesome/free-brands-svg-icons';
 import * as DarkReader from 'darkreader';
 

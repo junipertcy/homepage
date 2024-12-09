@@ -17,9 +17,9 @@ export class WorkshopComponent {
       title: "Graduate Research Workshop in Combinatorics.",
       author: "For grad students and postdocs.",
       publication: "Annually in June.",
-      desc: "The workshop has a track record of delivering a 20 percent success " + 
-            "rate in turning projects into papers, thanks to <a href='https://sites.google.com/view/grwc/details?authuser=0'>a model</a> " +
-            "that modularizes the work. They also have a good list of <a href='https://sites.google.com/view/grwc/problem-garden?authuser=0'>open problems</a>."
+      desc: "This workshop has a track record of delivering a 50 percent success " +
+        "rate in turning select projects into papers, thanks to <a href='https://sites.google.com/view/grwc/details?authuser=0'>a model</a> " +
+        "that produce a detailed and reliable plan. They also have a good list of <a href='https://sites.google.com/view/grwc/problem-garden?authuser=0'>open problems</a>."
     },
   ];
 }

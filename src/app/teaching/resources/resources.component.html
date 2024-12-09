@@ -1,22 +1,20 @@
 <div>
-  <p>Here are some resources I find useful for teaching.</p>
-  <ol class="nocount">
-    <li>
-      <a
-        href="http://www.math.ucsd.edu/~fan/teach/gradpol.html"
-        style="font-weight: 500"
-      >
-        A few words on research for graduate students
-      </a>
-      by Fan Chung.
-    </li>
-  </ol>
+  <strong>Useful resources for teaching</strong>
+  <br />
+  <app-link-item
+    *ngFor="let advice of dummyList1"
+    [link]="advice.link"
+    [title]="advice.title"
+    [author]="advice.author"
+    [publication]="advice.publication"
+  ></app-link-item>
 </div>
+<div style="height: 20pt;"></div>
 <div>
   <strong>Advice for PhD students</strong>
   <br />
   <app-link-item
-    *ngFor="let advice of adviceList"
+    *ngFor="let advice of dummyList2"
     [link]="advice.link"
     [title]="advice.title"
     [author]="advice.author"
