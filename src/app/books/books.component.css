@@ -38,6 +38,6 @@ a.name:hover {
 
 li {
   list-style-type: square;
-  margin: 0pt -12pt 0;
+  /* margin: 0pt -12pt 0; */
   padding-bottom: 0em;
 }
