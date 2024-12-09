@@ -1,0 +1,13 @@
+<div>
+    <strong>Academic</strong>
+    <br />
+    <app-link-item
+      *ngFor="let workshop of workshopList"
+      [link]="workshop.link"
+      [title]="workshop.title"
+      [author]="workshop.author"
+      [publication]="workshop.publication"
+      [desc]="workshop.desc"
+    ></app-link-item>
+  </div>
+  

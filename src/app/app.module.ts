@@ -75,6 +75,10 @@ const appRoutes: Routes = [
         loadComponent: () => import('./activities/sem/sem.component').then(m => m.SemComponent)
       },
       {
+        path: 'workshop',
+        loadComponent: () => import('./activities/workshop/workshop.component').then(m => m.WorkshopComponent)
+      },
+      {
         path: 'ref',
         loadComponent: () => import('./activities/ref/ref.component').then(m => m.RefComponent)
       },
