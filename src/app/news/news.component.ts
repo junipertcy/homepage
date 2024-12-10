@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NzSelectSizeType } from 'ng-zorro-antd/select';
+// import { NzSelectModeType } from 'ng-zorro-antd/select/select.types';
 import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
 import * as d3 from 'd3';
 
@@ -15,7 +15,7 @@ export class NewsComponent {
   // }
   faSquareUpRight = faSquareUpRight;
   thisYear = '2024';
-  selectSize: NzSelectSizeType = 'small';
+  // selectSize: NzSelectModeType = 'large';
 
   // URLs
   wiki_stat_inf = 'https://en.wikipedia.org/wiki/Statistical_inference';
