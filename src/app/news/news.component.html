@@ -52,31 +52,41 @@
       </p>
     </div>
   </div>
-  <div style="height: 15px"></div>
+  <nz-divider></nz-divider>
   <!-- News section -->
+  <div nz-row nzSpan="24">
+    <ul>
+      <li class="event-item">
+        <div class="event-date">
+          <nz-select
+            class="right-aligned-select"
+            [nzShowArrow]="false"
+            [(ngModel)]="thisYear"
+            [nzSize]="selectSize"
+            [nzOptionOverflowSize]="8"
+            nzBorderless
+            ><nz-option nzValue="2025" nzLabel="2025"></nz-option
+            ><nz-option nzValue="2024" nzLabel="2024"></nz-option
+            ><nz-option nzValue="2023" nzLabel="2023"></nz-option
+            ><nz-option nzValue="2022" nzLabel="2022"></nz-option
+            ><nz-option nzValue="2021" nzLabel="2021"></nz-option
+            ><nz-option nzValue="2020" nzLabel="2020"></nz-option
+            ><nz-option nzValue="2019" nzLabel="2019"></nz-option
+            ><nz-option nzValue="2018" nzLabel="2018"></nz-option>
+          </nz-select>
+        </div>
+        <div class="event-description">
+          <!-- <h2>News</h2> -->
+        </div>
+      </li>
+    </ul>
+  </div>
   <div nz-row nzJustify="start" style="height: 350px; text-align: left">
-    <div nz-col class="gutter-row" nzSpan="2">
+    <!-- <div nz-col class="gutter-row" nzSpan="2">
       <h2>News</h2>
-      <div class="border-container">
-        <nz-select
-          [nzShowArrow]="false"
-          [(ngModel)]="thisYear"
-          [nzSize]="selectSize"
-          [nzOptionOverflowSize]="8"
-          nzBorderless
-          ><nz-option nzValue="2025" nzLabel="2025"></nz-option
-          ><nz-option nzValue="2024" nzLabel="2024"></nz-option
-          ><nz-option nzValue="2023" nzLabel="2023"></nz-option
-          ><nz-option nzValue="2022" nzLabel="2022"></nz-option
-          ><nz-option nzValue="2021" nzLabel="2021"></nz-option
-          ><nz-option nzValue="2020" nzLabel="2020"></nz-option
-          ><nz-option nzValue="2019" nzLabel="2019"></nz-option
-          ><nz-option nzValue="2018" nzLabel="2018"></nz-option>
-        </nz-select>
-        <div class="emoji">👆</div>
-      </div>
-    </div>
-    <div nz-col nzSpan="22" style="overflow: auto; height: 100%">
+
+    </div> -->
+    <div nz-col nzSpan="24" style="overflow: auto; height: 100%">
       <ul *ngIf="thisYear === '2025'">
         <li class="event-item">
           <div class="event-date">8/18–22</div>
@@ -757,18 +767,20 @@
   </div>
   <nz-divider></nz-divider>
   <div nz-row nzJustify="start" style="min-height: 350px">
-    <div nz-col class="gutter-row" nzSpan="2">
-      <h3>Links</h3>
-    </div>
-    <div nz-col nzSpan="22">
-      <ol class="nocount">
-        <li
-          style="list-style-type: circle; margin: 0 0 0 0; cursor: pointer"
-          routerLink="/cllin"
-        >
-          A tribute to Ching-Liang Lin
-        </li>
-        <li style="list-style-type: circle; margin: 0 0 0 0">
+    <ul>
+      <li class="event-item">
+        <div class="event-date">
+          <a href="/cllin" target="_blank" class="icon-link">
+            <fa-icon [icon]="faSquareUpRight"></fa-icon>
+          </a>
+        </div>
+        <div class="event-description">A tribute to Ching-Liang Lin</div>
+      </li>
+      <li class="event-item">
+        <div class="event-date">
+          <fa-icon [icon]="faSquareUpRight"></fa-icon>
+        </div>
+        <div class="event-description">
           Did you know that 80% of US-trained professors come from just 20.4% of
           universities? Check out
           <a
@@ -777,16 +789,8 @@
             >this work</a
           >
           from my colleagues.
-        </li>
-        <!-- <li style="list-style-type: circle; margin: 0 0 0 0;"> -->
-        <!-- <a href="https://sites.dartmouth.edu/nyhan/academic-careers/" target="_blank" style="color: #000000d9">Academic -->
-        <!-- career advice (compiled by Brendan Nyhan)</a> -->
-        <!-- </li> -->
-        <!-- <li style="list-style-type: circle; margin: 0 0 0 0;"> -->
-        <!-- <a href="https://twitter.com/ItaiYanai/status/1511538866985000961?s=20" target="_blank" -->
-        <!-- style="color: #000000d9">How to science? (compiled by Itai Yanai)</a> -->
-        <!-- </li> -->
-      </ol>
-    </div>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>

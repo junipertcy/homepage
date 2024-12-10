@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NzSelectSizeType } from 'ng-zorro-antd/select';
+import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
 import * as d3 from 'd3';
 
 @Component({
@@ -12,6 +13,7 @@ export class NewsComponent {
   // onChange(result: Date): void {
   //   console.log('onChange: ', result);
   // }
+  faSquareUpRight = faSquareUpRight;
   thisYear = '2024';
   selectSize: NzSelectSizeType = 'small';
 
@@ -47,5 +49,10 @@ export class NewsComponent {
       .style('font-size', '1rem');
     // d3.selectAll("nz-option-item").on("mouseover", (event) => {console.log(event, this);})
     // d3.selectAll("nz-option-item").attr("onItemHover", );
+
+    d3.selectAll('.ant-select-selector')
+    // .style('display', 'flex !important')
+    // .style('fjustify-content', 'flex-end !important')
+    .style('margin-left', '10pt');
   }
 }
