@@ -32,27 +32,6 @@ export class AppComponent implements OnInit {
   lastUpdateDate: string = '';
   // screenWidth: number;
 
-  createTplModal(
-    tplTitle: TemplateRef<{}>,
-    tplContent: TemplateRef<{}>,
-    tplFooter: TemplateRef<{}>): void {
-    this.officeInfoModal.create({
-      // nzTitle: tplTitle,
-      nzContent: tplContent,
-      nzFooter: tplFooter,
-      nzMaskClosable: false,
-      nzClosable: false,
-      nzOnOk: () => console.log('Click ok')
-    });
-  }
-
-  logoClick = function () {
-    // this.router.navigateByUrl('/network/fish');
-    document.querySelectorAll('li.ant-menu-item-selected').forEach(function (e) {
-      e.setAttribute('class', 'ant-menu-item');
-    });
-  };
-
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
   }

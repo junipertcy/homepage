@@ -143,21 +143,21 @@ li.indent {
 /* Links inside the navigation bar */
 .text-nav a {
   padding: 10px 15px;
-  color: rgba(0, 0, 0, 0.85);
+  color: #7b7b7b;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .text-nav a:hover {
-  color: rgba(0, 0, 0, 0.85);
-  background-color: #d0d0d0;
+  color: #3077B0;
 }
 
 /* Active link styles */
 .text-nav a.active,
 .text-nav a.is-cu-active {
-  background-color: #bfbfbf;
-  color: rgba(0, 0, 0, 0.85);
+  background-color: #3077B0;
+  color: white;
+  border-radius: 10pt;
 }
 
 /* Separator between links */
