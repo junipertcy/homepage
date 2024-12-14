@@ -9,7 +9,7 @@ readonly DISTID=""
 readonly BUCKET_NAME=""
 readonly BUILD_DIR="./dist/browser"
 readonly LOG_FILE="/tmp/s3_sync_$(date +%Y%m%d_%H%M%S).log"
-readonly REQUIRED_COMMANDS=("ng" "aws" "md5sum" "parallel")
+readonly REQUIRED_COMMANDS=("ng" "aws" "md5sum" "parallel" "file")
 
 # Function to display usage
 usage() {
@@ -94,9 +94,22 @@ sync_to_s3() {
                 log "INFO" "Uploading: $file_path"
             fi
             
+            # Detect MIME type
+            local mime_type
+            mime_type=$(file -b --mime-type "${BUILD_DIR}/${file_path}")
+            
+            # Set content type based on file extension
+            local content_type
+            case "${file_path##*.}" in
+                js)  content_type="application/javascript" ;;
+                css) content_type="text/css" ;;
+                *)   content_type="$mime_type" ;;
+            esac
+            
             if ! aws s3 cp "${BUILD_DIR}/${file_path}" \
                 "s3://${BUCKET_NAME}/${file_path}" \
                 --acl public-read \
+                --content-type "$content_type" \
                 --metadata "md5checksum=${md5}" \
                 --profile default; then
                 log "ERROR" "Failed to upload: $file_path"
@@ -115,6 +128,7 @@ sync_to_s3() {
 
     log "INFO" "Sync completed successfully"
 }
+
 
 delete_s3_contents() {
     log "INFO" "Removing specified contents from S3 bucket..."
