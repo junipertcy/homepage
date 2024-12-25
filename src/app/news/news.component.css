@@ -2,13 +2,6 @@ li {
   padding-bottom: 0em;
 }
 
-#profile {
-  border-radius: 4px;
-  width: 80%;
-  background-color: white;
-  /*box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);*/
-  /* margin-bottom: 25px; */
-}
 
 nz-divider {
   width: 4px;
@@ -57,17 +50,6 @@ nz-select {
   font-family: "concourse_4", sans-serif;
 }
 
-.email {
-  width: 1em;
-  margin-right: 0.5em;
-}
-
-.pgp-key {
-  border-left: 1px solid #000;
-  margin: 0 0.5em 0 0.8em;
-  padding: 0 0 0 0.8em;
-  /*width: 1em;*/
-}
 
 #initial {
   float: left;
@@ -91,4 +73,33 @@ nz-select {
   font-family: "concourse_4_caps", sans-serif;
   font-weight: 400;
   letter-spacing: -1px;
+}
+
+
+#news-section {
+  border-radius: 10pt;
+  border-color: transparent;
+  background: white;
+  border-width: 1pt;
+  border-style: solid;
+  padding-top: 10pt;
+}
+
+.research-interests {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.research-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.research-interests p {
+  margin-bottom: 10px;
+
+  padding-left: 10px;
+  text-align: justify;
 }

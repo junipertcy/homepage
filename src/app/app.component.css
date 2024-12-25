@@ -20,36 +20,6 @@
   margin-bottom: 5px;
 }
 
-#network-icon {
-  display: inline-flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#network-icon li {
-  list-style-type: none;
-  margin-right: 10px;
-}
-
-#network-icon a i,
-#network-icon a span {
-  font-size: 1.3rem;
-  color: #37373a;
-  /* Default color */
-}
-
-#network-icon a:hover i,
-#network-icon a:hover span {
-  color: #3077B0 !important;
-  /* Color changes to this on hover */
-  transition: color .6s ease;
-  /* Smooth color transition */
-}
-
 /* General menu-item behavior */
 /* Check out also styles/default.less */
 .ant-menu {
@@ -70,6 +40,17 @@
   background-color: transparent;
   color: #276190;
 }
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.bottom-menu {
+  margin-top: 0%;
+}
+
 
 ul {
   border-right: 0;

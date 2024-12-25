@@ -57,10 +57,12 @@ import { NotesComponent } from './notes/notes.component';
 import { BooksComponent } from './books/books.component';
 import { NotionComponent } from './notion/notion.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AboutComponent } from './about/about.component';
 registerLocaleData(en);
 
 const appRoutes: Routes = [
   { path: '', component: NewsComponent },
+  { path: 'about', component: AboutComponent},
   {
     path: 'activities',
     component: ActivitiesComponent,
@@ -178,12 +180,11 @@ const appRoutes: Routes = [
     }),
     InternalUriResolverPipe,
     Str2urlPipe,
-    MatIconModule,
+    MatIconModule,  // dark mode icon
   ],
   providers: [
     Title,
     { provide: NZ_I18N, useValue: en_US },
-    { provide: NZ_ICON_DEFAULT_TWOTONE_COLOR, useValue: '#00ff00' },
     { provide: NZ_ICONS, useValue: icons },
     provideAnimationsAsync(),
     provideHttpClient(withInterceptorsFromDi()),

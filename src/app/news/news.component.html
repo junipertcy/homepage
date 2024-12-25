@@ -1,771 +1,823 @@
 <div nz-col nzOffset="0">
   <div nz-row nzJustify="start">
-    <div nz-col nzSpan="5">
-      <img
-        src="../../assets/img/profile_2023.jpg"
-        id="profile"
-        alt="profile picture"
-      />
-    </div>
-    <div nz-col nzSpan="19">
-      <p style="font-size: 100%">
-        <span id="initial">H</span>
-        <span id="small">i there!</span>
-        I am a PostDoc in Applied Math at CU Boulder, where I develop new
-        methods for multi-fidelity Bayesian optimization with
-        <a href="https://stephenbeckr.github.io/">Stephen Becker</a>. I received
-        my Ph.D. in Computer Science under the guidance of Dan Larremore and
-        Josh Grochow. My research focuses on understanding
-        <a [href]="wiki_cs">complex systems</a> in social and biological
-        domains, by devising and using tools from probabilistic generative
-        models. My work has previously been funded by
-        <a href="https://www.kavlifoundation.org/" target="_blank"
-          >The Kavli Foundation</a
-        >, via my adivsors’ grants, and through teaching.
-        <!-- Supported by
-        , I am developing an analytical approach to infer functional
-        connectivity from neurophysiological data and investigate the evolution
-        of network structure across behaviors. -->
-      </p>
-      <p style="font-size: 80%">
-        <a
-          href="mailto:tzuchi.yen@colorado.edu"
-          style="
-            font-family: 'inconsolata';
-            text-decoration: none;
-            font-weight: 500;
-          "
-          ><i nz-icon nzType="mail" nzTheme="outline" class="email"></i
-          >tzuchi.yen&#64;colorado.edu</a
-        ><a
-          href="https://keys.openpgp.org/search?q=tzuchi.yen%40colorado.edu"
-          target="_blanks"
-          style="
-            font-family: 'inconsolata';
-            text-decoration: none;
-            font-weight: 500;
-          "
-          ><i nz-icon nzType="lock" nzTheme="outline" class="pgp-key"></i
-          >49B1556E</a
-        >&nbsp;
-        <a routerLink="/privacy" style="font-size: small">(why?)</a>
-      </p>
+    <div nz-col nzSpan="24">
+      <div>
+        <p style="font-size: 100%; text-align: justify">
+          <span id="initial">H</span>
+          <span id="small">i there!</span>
+          I am a Senior Software Engineer at Global Healthcare Exchange, where I
+          create solutions to enhance supply chain efficiency by tackling
+          knowledge graphs and related ML/AI challenges. Previously, I was a
+          postdoc at CU Boulder, my alma mater, where I received a Ph.D. in
+          Computer Science under the guidance of Dan Larremore and Josh Grochow.
+          My work has previously been funded by
+          <a href="https://www.kavlifoundation.org/" target="_blank"
+            >The Kavli Foundation</a
+          >, via my advisors’ grants, and through teaching.
+          <!-- Supported by
+          , I am developing an analytical approach to infer functional
+          connectivity from neurophysiological data and investigate the evolution
+          of network structure across behaviors. -->
+        </p>
+      </div>
     </div>
   </div>
-  <!-- <nz-divider></nz-divider> -->
+  <nz-divider style="border: transparent"></nz-divider>
+  <h3>Research</h3>
+  <div class="research-interests">
+    <div nz-row nzGutter="[16, 24]" nzAlign="middle">
+      <div nz-col nzXs="24" nzSm="4" nzMd="3">
+        <img
+          src="https://placehold.jp/300x200.png"
+          alt="Statistical modeling"
+          class="research-image"
+        />
+      </div>
+      <div nz-col nzXs="24" nzSm="20" nzMd="21">
+        <p>
+          Statistical modeling in graphs offers powerful tools for analyzing
+          complex network structures. By leveraging techniques such as
+          stochastic block models (SBMs), researchers can uncover hidden
+          patterns and dependencies in social, biological, and technological
+          networks.
+        </p>
+      </div>
+    </div>
+
+    <div nz-row nzGutter="[16, 24]" nzAlign="middle">
+      <div nz-col nzXs="24" nzSm="4" nzMd="3">
+        <img
+          src="https://placehold.jp/300x200.png"
+          alt="Randomized methods"
+          class="research-image"
+        />
+      </div>
+      <div nz-col nzXs="24" nzSm="20" nzMd="21">
+        <p>
+          Randomized methods, diffusion models, and deep learning offer powerful
+          approaches for tackling complex computational challenges. By
+          leveraging techniques such as Monte Carlo sampling, stochastic
+          differential equations, and neural networks, researchers can model
+          intricate phenomena, generate realistic data, and learn hierarchical
+          representations across diverse domains.
+        </p>
+      </div>
+    </div>
+
+    <div nz-row nzGutter="[16, 24]" nzAlign="middle">
+      <div nz-col nzXs="24" nzSm="4" nzMd="3">
+        <img
+          src="https://placehold.jp/300x200.png"
+          alt="Optimization methods"
+          class="research-image"
+        />
+      </div>
+      <div nz-col nzXs="24" nzSm="20" nzMd="21">
+        <p>
+          Optimization and first-order methods provide powerful techniques for
+          solving complex mathematical problems efficiently. By utilizing
+          approaches such as gradient descent and stochastic optimization
+          algorithms, researchers can find optimal solutions in high-dimensional
+          spaces across various domains, including machine learning, signal
+          processing, and operations research.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <nz-divider style="border: transparent"></nz-divider>
   <!-- News section -->
-  <div nz-row nzSpan="24" style="height: 25pt;">
-    <ul>
-      <li class="event-item">
-        <div class="event-date">
-          <nz-select
-            [nzShowArrow]="false"
-            [(ngModel)]="thisYear"
-            [nzSize]="'default'"
-            [nzOptionOverflowSize]="8"
-            nzBorderless
-            style="margin-left: 11pt;"
-            ><nz-option nzValue="2025" nzLabel="2025"></nz-option
-            ><nz-option nzValue="2024" nzLabel="2024"></nz-option
-            ><nz-option nzValue="2023" nzLabel="2023"></nz-option
-            ><nz-option nzValue="2022" nzLabel="2022"></nz-option
-            ><nz-option nzValue="2021" nzLabel="2021"></nz-option
-            ><nz-option nzValue="2020" nzLabel="2020"></nz-option
-            ><nz-option nzValue="2019" nzLabel="2019"></nz-option
-            ><nz-option nzValue="2018" nzLabel="2018"></nz-option>
-          </nz-select>
-        </div>
-        <div class="event-description">
-          <!-- <h2>News</h2> -->
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div nz-row nzJustify="start" style="height: 350px; text-align: left">
-    <!-- <div nz-col class="gutter-row" nzSpan="2">
-      <h2>News</h2>
-
-    </div> -->
-    <div nz-col nzSpan="24" style="overflow: auto; height: 100%">
-      <ul *ngIf="thisYear === '2025'">
+  <div id="news-section">
+    <div nz-row nzSpan="24" style="height: 35pt">
+      <ul>
         <li class="event-item">
-          <div class="event-date">8/18–22</div>
-          <div class="event-description">
-            I <i>may</i> attend the
-            <a
-              href="https://www.imsi.institute/activities/the-geometric-realization-of-aatrn-applied-algebraic-topology-research-network/"
-              target="_blank"
-              >Geometric Realization of AATRN</a
-            >
-            at the
-            <a href="https://www.imsi.institute/" target="_blank">IMSI</a>,
-            Chicago, IL.
+          <div class="event-date">
+            <nz-select
+              [nzShowArrow]="false"
+              [(ngModel)]="thisYear"
+              [nzSize]="'default'"
+              [nzOptionOverflowSize]="8"
+              nzBorderless
+              style="margin-left: 11pt"
+              ><nz-option nzValue="2025" nzLabel="2025"></nz-option
+              ><nz-option nzValue="2024" nzLabel="2024"></nz-option
+              ><nz-option nzValue="2023" nzLabel="2023"></nz-option
+              ><nz-option nzValue="2022" nzLabel="2022"></nz-option
+              ><nz-option nzValue="2021" nzLabel="2021"></nz-option
+              ><nz-option nzValue="2020" nzLabel="2020"></nz-option
+              ><nz-option nzValue="2019" nzLabel="2019"></nz-option
+              ><nz-option nzValue="2018" nzLabel="2018"></nz-option>
+            </nz-select>
           </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">5/17–19</div>
           <div class="event-description">
-            I <i>may</i> attend the
-            <a
-              href="https://alleninstitute.org/events/2025-cell-types-workshop-describe-your-neurons-like-the-allen-institute/"
-              target="_blank"
-              >Cell Types Workshop</a
-            >
-            at the Allen Institute, Seattle, WA.
-          </div>
-        </li>
-      </ul>
-      <ul *ngIf="thisYear === '2024'">
-        <li class="event-item">
-          <div class="event-date">12/3</div>
-          <div class="event-description">
-            I snagged a senior software engineer gig at a local company. I’ll be
-            tackling knowledge graphs and related ML/AI challenges.
-            <ul class="sub-items">
-              <li>
-                <a href="{{ resume_file_2024 }}" target="_blank">Resume</a> I
-                used.
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">7/21</div>
-          <div class="event-description">
-            I started Inferweave LLC, a ML/AI/data consultancy.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">7/21–27</div>
-          <div class="event-description">
-            Attending
-            <a href="https://icml.cc/Conferences/2024" target="_blank">ICML</a>
-            virtually.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">Spring</div>
-          <div class="event-description">
-            I am teaching CSCI 5352: Network Analysis and Modeling.
-            <ul class="sub-items">
-              <li>
-                Check out the
-                <a
-                  href="../../assets/pdf/teaching/5352/csci5352_s24_syllabus.pdf"
-                  >syllabus</a
-                >
-                and the <a href="./teaching/5352">class website</a>.
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-      <ul *ngIf="thisYear === '2023'">
-        <li class="event-item">
-          <div class="event-date">8/23</div>
-          <div class="event-description">
-            CSCI 5352 in the Fall is canceled due to my pending work
-            authorization. I am sorry! Update, Oct 5: This class is scheduled to
-            offer in Spring 2024.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">7/17–20</div>
-          <div class="event-description">
-            I will attend the International Conference for Computational Social
-            Science (<a href="https://www.ic2s2.org/" target="_blank">IC2S2</a>)
-            in Copenhagen, Denmark.
-            <ul class="sub-items">
-              <li>
-                Talk (19th, 12p): Aspiration of prestige in the selection of
-                peer institutions. (<a
-                  href="../../assets/pdf/abstract/IC2S2_2023_abstract.pdf"
-                  target="_blank"
-                  >abstract</a
-                >;
-                <a
-                  href="../../assets/pdf/slides/Research_talk-IC2S2-20Jul23.pdf"
-                  target="_blank"
-                  >slides</a
-                >)
-              </li>
-              <li>
-                Program schedule can be found
-                <a
-                  href="https://www.ic2s2.org/program.html#session_3f"
-                  target="_blank"
-                  >here</a
-                >.
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">6/29</div>
-          <div class="event-description">
-            I defended my dissertation titled
-            <i>“Structure, Inference, and Optimization in Complex Networks.”</i>
-            (<a
-              href="../../assets/pdf/abstract/thesis_abstract_Yen.pdf"
-              target="_blank"
-              >abstract</a
-            >;
-            <a
-              href="../../assets/pdf/slides/Dissertation_defense-29Jun23.pdf"
-              target="_blank"
-              >slides</a
-            >;
-            <a
-              href="https://www.proquest.com/docview/2860429899/"
-              target="_blank"
-              >full text</a
-            >;
-            <a
-              href="https://www.mathgenealogy.org/id.php?id=301918"
-              target="_blank"
-              >math genealogy</a
-            >;
-            <a
-              href="https://mathscinet.ams.org/mathscinet/freetools/collab-dist?source=1410624&target=189017"
-              target="_blank"
-              >Erdős number</a
-            >)
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">Spring</div>
-          <div class="event-description">
-            I am teaching (as a graduate assistant) CSCI 5822 again this
-            semester.
-            <ul class="sub-items">
-              <li>
-                Check out the course
-                <a
-                  href="https://github.com/rebeccaem/probabilistic-models-class"
-                  target="_blank"
-                  >GitHub repo</a
-                >.
-              </li>
-              <li>
-                4/28: We are happy to welcome Prof. Nuttida
-                Rungratsameetaweemana for a guest lecture titled
-                <i>
-                  “Probabilistic learning in humans and recurrent neural
-                  networks.”
-                </i>
-                (<a
-                  href="../../assets/pdf/Nuttida_R_5822_guest_lecture.pdf"
-                  target="_blank"
-                  >flyer</a
-                >)
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-      <ul *ngIf="thisYear === '2022'">
-        <li class="event-item">
-          <div class="event-date">10/3–5</div>
-          <div class="event-description">
-            Attending the
-            <a
-              href="https://alleninstitute.org/what-we-do/brain-science/events-training/2022-neurodatarehack-hackathon/"
-              target="_blank"
-              >NeuroDataReHack event</a
-            >
-            at the Allen Institute, Seattle, WA.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">9/13–15</div>
-          <div class="event-description">
-            Attending the virtual
-            <a href="http://dyn.phys.northwestern.edu/ns22.html" target="_blank"
-              >SIAM Workshop on Network Science</a
-            >.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">8/16–19</div>
-          <div class="event-description">
-            Attending the
-            <a href="https://nasit-2022.seas.ucla.edu/" target="_blank"
-              >North American School of Information Theory</a
-            >
-            at UCLA, Los Angeles, CA.
-            <ul class="sub-items">
-              <li>
-                Talk: Active learning strategies in community reconstruction.
-                (<a
-                  href="https://nasit-2022.seas.ucla.edu/wednesday-oral-symposium/entry/25/"
-                  target="_blank"
-                  >abstract</a
-                >)
-              </li>
-            </ul>
-          </div>
-        </li>
-
-        <li class="event-item">
-          <div class="event-date">8/10–12</div>
-          <div class="event-description">
-            Attending the workshop,
-            <a href="https://www.colorado.edu/amath/caccss2022" target="_blank"
-              >Contagion on Complex Social Systems</a
-            >
-            at CU Boulder, CO.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">7/23</div>
-          <div class="event-description">
-            Giving a talk about simpliciality testing online at the
-            <a
-              href="https://projecttyra.blogspot.com/2022/06/07-23-tzuchiyen.html"
-              target="_blank"
-              >project Tyra</a
-            >.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">5/30 – 6/3</div>
-          <div class="event-description">
-            Attending the
-            <a
-              href="https://sites.google.com/view/2022-student-symposium-comb/home?authuser=0"
-              target="_blank"
-              >Student Symposium in Combinatorics</a
-            >
-            online, with student organizers mostly based in Australia.
-            <ul class="sub-items">
-              <li>
-                Giving a talk similar to the one given at the Aspen Center for
-                Physics and highlight the combinatorial aspects. (<a
-                  [href]="'SSC22_absYen' | str2url"
-                  target="_blank"
-                  >abstract</a
-                >) (<a
-                  [href]="'Research-talk-220602-ssc' | str2url"
-                  target="_blank"
-                  >slides [pptx]</a
-                >) (<a [href]="'SSC22_video' | str2url" target="_blank">Video</a
-                >)
-              </li>
-            </ul>
-          </div>
-        </li>
-
-        <li class="event-item">
-          <div class="event-date">4/11</div>
-          <div class="event-description">
-            I was recognized as an
-            <a [href]="'22_OTA_cert' | str2url">Outstanding TA</a> for AY
-            2021-22. Thanks for selecting me.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">3/27 – 4/1</div>
-          <div class="event-description">
-            Attending the
-            <a href="https://shaevitzlab.princeton.edu/socialinteractions2022"
-              >Winter Conference on the Dynamics of Social Interactions</a
-            >
-            at the Aspen Center for Physics, Aspen, CO.
-
-            <ul class="sub-items">
-              <li>
-                Talk: Simpliciality testing and related topics. (<a
-                  href="{{ 'Research-talk-220331-acp' | str2url }}"
-                  target="_blank"
-                  >slides</a
-                >) (<a
-                  href="https://twitter.com/oneofyen/status/1508606464956387330"
-                  target="_blank"
-                  >other presence</a
-                >)
-              </li>
-              <li>
-                I am grateful to the NSF,
-                <a
-                  href="https://www.colorado.edu/gpsg/grants-awards/travel-grants"
-                  target="_blank"
-                  style="color: black"
-                  >the GPSG</a
-                >, and my advisors for financial support.
-              </li>
-            </ul>
-          </div>
-        </li>
-
-        <li class="event-item">
-          <div class="event-date">2/24</div>
-          <div class="event-description">
-            On Ukraine: I stand in solidarity with all citizens of Ukraine. My
-            view aligns with the
-            <a
-              href="https://www.aps.org/about/governance/letters/ukraine.cfm"
-              target="_blank"
-              >APS Statement on Ukraine</a
-            >.
-          </div>
-        </li>
-      </ul>
-      <ul *ngIf="thisYear === '2021'">
-        <i>/* all events are virtual */</i>
-        <li class="event-item">
-          <div class="event-date">7/19–21</div>
-          <div class="event-description">
-            Attending the SIAM
-            <a [href]="acda21" target="_blank"
-              >Conference on Applied and Computational Discrete Algorithms</a
-            >.
-            <ul class="sub-items">
-              <li>
-                I made
-                <a [href]="acda21_intro_blitz" target="_blank"
-                  >this one-page slide</a
-                >
-                for the ACDA Intro Blitz.
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">7/12–20</div>
-          <div class="event-description">
-            Attending the IEEE
-            <a [href]="isit21" target="_blank"
-              >International Symposium on Information Theory</a
-            >.
-            <ul class="sub-items">
-              <li>
-                Check out the annual
-                <a
-                  href="http://conferences.ece.ubc.ca/nasit2021/index.html"
-                  target="_blank"
-                  >North American School of Information Theory.</a
-                >
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">6/21 – 7/10</div>
-          <div class="event-description">
-            Attending <a [href]="networks21">Networks 2021</a>.
-            <ul class="sub-items">
-              <li>
-                The Society of Young Network Scientists has a pre-conference
-                event, themed
-                <i>“Alternative forms of science communication”.</i>
-                Check out this
-                <a
-                  href="https://twitter.com/official_SYNS/status/1406013557808959493"
-                  target="_blank"
-                  >tweet</a
-                >.
-              </li>
-              <li>
-                Highlight these satellites:
-                <a href="https://sinm.network/" target="_blank">SINM</a>,
-                <a href="https://hons-web.github.io/online/" target="_blank"
-                  >HONS</a
-                >,
-                <a
-                  href="https://sites.google.com/view/toponets2021/home-page"
-                  target="_blank"
-                  >TopoNets</a
-                >, and
-                <a
-                  href="https://sites.google.com/view/netscied-2021/home-page"
-                  target="_blank"
-                  >NetSciEd</a
-                >; for a full list, see
-                <a href="https://networks2021.net/satellites" target="_blank"
-                  >this page</a
-                >.
-              </li>
-              <li>
-                I am also participating a Wikipedia Edit-a-thon, organized by
-                <a href="https://github.com/FranciscaOrtizRuiz" target="_blank"
-                  >Francisca Ortiz</a
-                >
-                and
-                <a
-                  href="https://scholar.google.com/citations?user=xSZwPHAAAAAJ&hl=en"
-                  target="_blank"
-                  >Ana Jaramillo</a
-                >
-                in the society of
-                <a
-                  href="https://www.networkscienceinstitute.org/wins/about"
-                  target="_blank"
-                  >Women in Network Science (WiNS)</a
-                >.
-              </li>
-            </ul>
-          </div>
-        </li>
-
-        <li class="event-item">
-          <div class="event-date">3/31 – 4/2</div>
-          <div class="event-description">
-            Attending the
-            <a href="https://nerccs2021.github.io/"
-              >Northeast Regional Conference on Complex Systems</a
-            >.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">1/6–9</div>
-          <div class="event-description">
-            Attending the
-            <a
-              href="https://www.jointmathematicsmeetings.org/meetings/national/jmm2021/2247_intro"
-              >Joint Math Meetings</a
-            >.
-          </div>
-        </li>
-      </ul>
-      <ul *ngIf="thisYear === '2020'">
-        <i>/* all events after March are virtual */</i>
-        <!-- <li style="color: #DDDDDD;"> -->
-        <!-- <div class="event-date">6/8–12</div> -->
-        <!-- – [Canceled in response to COVID-19 pandemic] I will attend the <a href="https://tgda.osu.edu/atmcs2020/" -->
-        <!-- style="color: #DDDDDD; text-decoration: underline">ATMCS</a> -->
-        <!-- (Algebraic Topology: Methods, Computation, and Science) at Ohio State University. -->
-        <!-- </li> -->
-        <li class="event-item">
-          <div class="event-date">9/21–25</div>
-          <div class="event-description">
-            I am attending the
-            <a href="https://simons.berkeley.edu/workshops/schedule/14243"
-              >Computational Phase Transitions</a
-            >
-            workshop at the Simons Institute.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">9/17–25</div>
-          <div class="event-description">
-            I will attend the
-            <a href="https://netsci2020.netscisociety.net/">NetSci2020</a>
-            conference; thank you to the organizers and the Network Science
-            Society for the registration waiver.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">7/9–10</div>
-          <div class="event-description">
-            I will attend the
-            <a href="https://ns20.cs.cornell.edu/"
-              >SIAM Workshop on Network Science 2020 (NS20)</a
-            >.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">6/15–18</div>
-          <div class="event-description">
-            I will attend the
-            <a href="http://www.fields.utoronto.ca/activities/19-20/toric-TDA"
-              >Workshop on Topological Data Analysis</a
-            >, featuring two Clay Lectures by Gunnar Carlsson and Shmuel
-            Weinberger.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">6/10</div>
-          <div class="event-description">
-            With colleagues on this
-            <a href="https://www.shutdownstem.com/"
-              >#ShutDownAcademia #ShutDownSTEM day</a
-            >, we educate ourselves about anti-Black racism in academia and
-            reflect on how our systems treat people differently.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">5/5</div>
-          <div class="event-description">
-            I will attend the
-            <a href="https://twitter.com/masonporter/status/1251594612549906432"
-              >online mini-symposium</a
-            >
-            <i
-              >“Topological Data Analysis and Data-Driven Modeling in Complex
-              Systems”</i
-            >
-            from the SIAM Conference on Mathematics of Data Science. See titles
-            & abstracts:
-            <a
-              href="https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=67931"
-              >Part I</a
-            >
-            &
-            <a
-              href="https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=67932"
-              >Part II</a
-            >.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">4/25</div>
-          <div class="event-description">
-            I am attending the
-            <i>“Graduate Online Anything Topology Series”</i> (<a
-              href="https://dzackgarza.com/GOATS_2020/"
-              >GOATS 2020</a
-            >), organized by
-            <a href="https://dzackgarza.com/">D. Zack Garza</a>,
-            <a href="https://seblackwell.wordpress.com/">Sarah Blackwell</a>,
-            and
-            <a href="https://sites.google.com/view/terrinwarren/home"
-              >Terrin Warren</a
-            >.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">April</div>
-          <div class="event-description">
-            I will attend the
-            <a href="https://sites.google.com/umd.edu/net-covid/home"
-              >Network Epidemiology Online Workshop Series</a
-            >
-            organized by the Univ. of Maryland’s
-            <a href="http://www.combine.umd.edu/" target="_blank">COMBINE</a>
-            program and Vermont’s
-            <a href="https://vermontcomplexsystems.org/" target="_blank"
-              >Complex Systems Center</a
-            >.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">1/15–18</div>
-          <div class="event-description">
-            I am attending the
-            <a
-              href="http://jointmathematicsmeetings.org/meetings/national/jmm2020/2245_intro"
-              >Joint Math Meetings</a
-            >
-            in Denver, CO.
-          </div>
-        </li>
-        <li class="event-item" style="color: #aaaaaa">
-          <div class="event-date">6/14 – 7/10</div>
-          <div class="event-description">
-            [Canceled in response to COVID-19 pandemic] I will attend the
-            <a
-              href="https://www.santafe.edu/engage/learn/schools/sfi-complex-systems-summer-school"
-              style="color: #aaaaaa; text-decoration: underline"
-              >Complex Systems Summer School</a
-            >
-            in Santa Fe, NM.
-          </div>
-        </li>
-      </ul>
-      <ul *ngIf="thisYear === '2019'">
-        <li class="event-item">
-          <div class="event-date">7/8–14</div>
-          <div class="event-description">
-            I will attend the
-            <a href="https://www.scipy2019.scipy.org">SciPy2019</a> in Austin,
-            Texas.
-            <ul class="sub-items">
-              <li>
-                Warm thanks to the SciPy sponsors for the Financial Aid
-                Scholarship, which will cover most of my expenses for the
-                conference.
-              </li>
-            </ul>
-          </div>
-        </li>
-
-        <li class="event-item">
-          <div class="event-date">6/4–5</div>
-          <div class="event-description">
-            Giving a guest lecture at
-            <a
-              href="http://web.ncku.edu.tw/bin/home.php?Lang=en"
-              target="_blank"
-              >NCKU</a
-            >, Taiwan.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">5/27–31</div>
-          <div class="event-description">
-            I will attend the
-            <a href="http://vermontcomplexsystems.org/events/netsci/"
-              >NetSci2019</a
-            >
-            in Burlington, VT.
-            <ul class="sub-items">
-              <li>
-                Many thanks to the Society of Young Network Scientists that
-                supported my travel, conference registration, and lodging! The
-                Society is awesome. Follow them on Twitter (<a
-                  href="https://twitter.com/NetSciPhDs"
-                  >&#64;NetSciPhDs</a
-                >).
-              </li>
-              <li>
-                I have no submission this year. In addition to the main
-                conference, I will attend satellites
-                <a href="http://danlarremore.com/sinm2019/">SINM</a>,
-                <a
-                  href="https://sites.google.com/a/binghamton.edu/netscied2019/"
-                  >NetSciEd</a
-                >, and <a href="https://uzhdag.github.io/hons_web/">HONS</a>.
-              </li>
-              <li>
-                I will attend the
-                <a href="https://www.networkscienceinstitute.org/syns"
-                  >pre-conference SYNS event</a
-                >. Organized by
-                <a href="https://twitter.com/jkbren">Brennan</a>,
-                <a href="https://twitter.com/CarolinaMttssn">Carolina</a>,
-                <a href="https://twitter.com/dinacmistry">Dina</a>, and
-                <a href="https://twitter.com/Shugars">Sarah</a>.
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">March</div>
-          <div class="event-description">
-            I am in the Program Committee for
-            <a href="https://www.scipy2019.scipy.org/" target="_blank"
-              >SciPy 2019</a
-            >
-            (Austin, Texas 7/8–14). I review talk/poster and tutorial
-            submissions.
-          </div>
-        </li>
-      </ul>
-      <ul *ngIf="thisYear === '2018'">
-        <li class="event-item">
-          <div class="event-date">8/13–17</div>
-          <div class="event-description">
-            Attending CU’s
-            <a
-              href="https://compsocialscience.github.io/summer-institute/2018/boulder/"
-              >Summer Institute in Computational Social Science</a
-            >. Organized by
-            <a href="https://allisonmorgan.github.io/">Allie Morgan</a> and
-            <a href="http://www.brianckeegan.com/">Brian Keegan</a>.
-          </div>
-        </li>
-        <li class="event-item">
-          <div class="event-date">7/5</div>
-          <div class="event-description">
-            I was selected to be the recipient of the Strauch Family Graduate
-            Fellowship in the College of Engineering and Applied Science at CU
-            Boulder!
+            <!-- <h2>News</h2> -->
           </div>
         </li>
       </ul>
     </div>
+    <div nz-row nzJustify="start" style="height: 350px; text-align: left">
+      <!-- <div nz-col class="gutter-row" nzSpan="2">
+        <h2>News</h2>
+  
+      </div> -->
+      <div nz-col nzSpan="24" style="overflow: auto; height: 100%">
+        <ul *ngIf="thisYear === '2025'">
+          <li class="event-item">
+            <div class="event-date">8/18–22</div>
+            <div class="event-description">
+              I <i>may</i> attend the
+              <a
+                href="https://www.imsi.institute/activities/the-geometric-realization-of-aatrn-applied-algebraic-topology-research-network/"
+                target="_blank"
+                >Geometric Realization of AATRN</a
+              >
+              at the
+              <a href="https://www.imsi.institute/" target="_blank">IMSI</a>,
+              Chicago, IL.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">5/17–19</div>
+            <div class="event-description">
+              I <i>may</i> attend the
+              <a
+                href="https://alleninstitute.org/events/2025-cell-types-workshop-describe-your-neurons-like-the-allen-institute/"
+                target="_blank"
+                >Cell Types Workshop</a
+              >
+              at the Allen Institute, Seattle, WA.
+            </div>
+          </li>
+        </ul>
+        <ul *ngIf="thisYear === '2024'">
+          <li class="event-item">
+            <div class="event-date">12/15</div>
+            <div class="event-description">
+              My postdoc role with
+              <a href="https://stephenbeckr.github.io/">Stephen Becker</a>
+              (Applied Math) concluded. We developed new methods for
+              multi-fidelity Bayesian optimization. <i>Work in progress.</i>
+              <ul class="sub-items">
+                <li>
+                  I started a new role at GHX. Old resume
+                  <a href="{{ resume_file_2024 }}" target="_blank">here</a>.
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">7/21</div>
+            <div class="event-description">
+              I started Inferweave LLC, a ML/AI/data consultancy.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">7/21–27</div>
+            <div class="event-description">
+              Attending
+              <a href="https://icml.cc/Conferences/2024" target="_blank"
+                >ICML</a
+              >
+              virtually.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">Spring</div>
+            <div class="event-description">
+              I am teaching CSCI 5352: Network Analysis and Modeling.
+              <ul class="sub-items">
+                <li>
+                  Check out the
+                  <a
+                    href="../../assets/pdf/teaching/5352/csci5352_s24_syllabus.pdf"
+                    >syllabus</a
+                  >
+                  and the <a href="./teaching/5352">class website</a>.
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        <ul *ngIf="thisYear === '2023'">
+          <li class="event-item">
+            <div class="event-date">8/23</div>
+            <div class="event-description">
+              CSCI 5352 in the Fall is canceled due to my pending work
+              authorization. I am sorry! Update, Oct 5: This class is scheduled
+              to offer in Spring 2024.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">7/17–20</div>
+            <div class="event-description">
+              I will attend the International Conference for Computational
+              Social Science (<a href="https://www.ic2s2.org/" target="_blank"
+                >IC2S2</a
+              >) in Copenhagen, Denmark.
+              <ul class="sub-items">
+                <li>
+                  Talk (19th, 12p): Aspiration of prestige in the selection of
+                  peer institutions. (<a
+                    href="../../assets/pdf/abstract/IC2S2_2023_abstract.pdf"
+                    target="_blank"
+                    >abstract</a
+                  >;
+                  <a
+                    href="../../assets/pdf/slides/Research_talk-IC2S2-20Jul23.pdf"
+                    target="_blank"
+                    >slides</a
+                  >)
+                </li>
+                <li>
+                  Program schedule can be found
+                  <a
+                    href="https://www.ic2s2.org/program.html#session_3f"
+                    target="_blank"
+                    >here</a
+                  >.
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">6/29</div>
+            <div class="event-description">
+              I defended my dissertation titled
+              <i
+                >“Structure, Inference, and Optimization in Complex
+                Networks.”</i
+              >
+              (<a
+                href="../../assets/pdf/abstract/thesis_abstract_Yen.pdf"
+                target="_blank"
+                >abstract</a
+              >;
+              <a
+                href="../../assets/pdf/slides/Dissertation_defense-29Jun23.pdf"
+                target="_blank"
+                >slides</a
+              >;
+              <a
+                href="https://www.proquest.com/docview/2860429899/"
+                target="_blank"
+                >full text</a
+              >;
+              <a
+                href="https://www.mathgenealogy.org/id.php?id=301918"
+                target="_blank"
+                >math genealogy</a
+              >;
+              <a
+                href="https://mathscinet.ams.org/mathscinet/freetools/collab-dist?source=1410624&target=189017"
+                target="_blank"
+                >Erdős number</a
+              >)
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">Spring</div>
+            <div class="event-description">
+              I am teaching (as a graduate assistant) CSCI 5822 again this
+              semester.
+              <ul class="sub-items">
+                <li>
+                  Check out the course
+                  <a
+                    href="https://github.com/rebeccaem/probabilistic-models-class"
+                    target="_blank"
+                    >GitHub repo</a
+                  >.
+                </li>
+                <li>
+                  4/28: We are happy to welcome Prof. Nuttida
+                  Rungratsameetaweemana for a guest lecture titled
+                  <i>
+                    “Probabilistic learning in humans and recurrent neural
+                    networks.”
+                  </i>
+                  (<a
+                    href="../../assets/pdf/Nuttida_R_5822_guest_lecture.pdf"
+                    target="_blank"
+                    >flyer</a
+                  >)
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        <ul *ngIf="thisYear === '2022'">
+          <li class="event-item">
+            <div class="event-date">10/3–5</div>
+            <div class="event-description">
+              Attending the
+              <a
+                href="https://alleninstitute.org/what-we-do/brain-science/events-training/2022-neurodatarehack-hackathon/"
+                target="_blank"
+                >NeuroDataReHack event</a
+              >
+              at the Allen Institute, Seattle, WA.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">9/13–15</div>
+            <div class="event-description">
+              Attending the virtual
+              <a
+                href="http://dyn.phys.northwestern.edu/ns22.html"
+                target="_blank"
+                >SIAM Workshop on Network Science</a
+              >.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">8/16–19</div>
+            <div class="event-description">
+              Attending the
+              <a href="https://nasit-2022.seas.ucla.edu/" target="_blank"
+                >North American School of Information Theory</a
+              >
+              at UCLA, Los Angeles, CA.
+              <ul class="sub-items">
+                <li>
+                  Talk: Active learning strategies in community reconstruction.
+                  (<a
+                    href="https://nasit-2022.seas.ucla.edu/wednesday-oral-symposium/entry/25/"
+                    target="_blank"
+                    >abstract</a
+                  >)
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="event-item">
+            <div class="event-date">8/10–12</div>
+            <div class="event-description">
+              Attending the workshop,
+              <a
+                href="https://www.colorado.edu/amath/caccss2022"
+                target="_blank"
+                >Contagion on Complex Social Systems</a
+              >
+              at CU Boulder, CO.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">7/23</div>
+            <div class="event-description">
+              Giving a talk about simpliciality testing online at the
+              <a
+                href="https://projecttyra.blogspot.com/2022/06/07-23-tzuchiyen.html"
+                target="_blank"
+                >project Tyra</a
+              >.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">5/30 – 6/3</div>
+            <div class="event-description">
+              Attending the
+              <a
+                href="https://sites.google.com/view/2022-student-symposium-comb/home?authuser=0"
+                target="_blank"
+                >Student Symposium in Combinatorics</a
+              >
+              online, with student organizers mostly based in Australia.
+              <ul class="sub-items">
+                <li>
+                  Giving a talk similar to the one given at the Aspen Center for
+                  Physics and highlight the combinatorial aspects. (<a
+                    [href]="'SSC22_absYen' | str2url"
+                    target="_blank"
+                    >abstract</a
+                  >) (<a
+                    [href]="'Research-talk-220602-ssc' | str2url"
+                    target="_blank"
+                    >slides [pptx]</a
+                  >) (<a [href]="'SSC22_video' | str2url" target="_blank"
+                    >Video</a
+                  >)
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="event-item">
+            <div class="event-date">4/11</div>
+            <div class="event-description">
+              I was recognized as an
+              <a [href]="'22_OTA_cert' | str2url">Outstanding TA</a> for AY
+              2021-22. Thanks for selecting me.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">3/27 – 4/1</div>
+            <div class="event-description">
+              Attending the
+              <a href="https://shaevitzlab.princeton.edu/socialinteractions2022"
+                >Winter Conference on the Dynamics of Social Interactions</a
+              >
+              at the Aspen Center for Physics, Aspen, CO.
+
+              <ul class="sub-items">
+                <li>
+                  Talk: Simpliciality testing and related topics. (<a
+                    href="{{ 'Research-talk-220331-acp' | str2url }}"
+                    target="_blank"
+                    >slides</a
+                  >) (<a
+                    href="https://twitter.com/oneofyen/status/1508606464956387330"
+                    target="_blank"
+                    >other presence</a
+                  >)
+                </li>
+                <li>
+                  I am grateful to the NSF,
+                  <a
+                    href="https://www.colorado.edu/gpsg/grants-awards/travel-grants"
+                    target="_blank"
+                    style="color: black"
+                    >the GPSG</a
+                  >, and my advisors for financial support.
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="event-item">
+            <div class="event-date">2/24</div>
+            <div class="event-description">
+              On Ukraine: I stand in solidarity with all citizens of Ukraine. My
+              view aligns with the
+              <a
+                href="https://www.aps.org/about/governance/letters/ukraine.cfm"
+                target="_blank"
+                >APS Statement on Ukraine</a
+              >.
+            </div>
+          </li>
+        </ul>
+        <ul *ngIf="thisYear === '2021'">
+          <i>/* all events are virtual */</i>
+          <li class="event-item">
+            <div class="event-date">7/19–21</div>
+            <div class="event-description">
+              Attending the SIAM
+              <a [href]="acda21" target="_blank"
+                >Conference on Applied and Computational Discrete Algorithms</a
+              >.
+              <ul class="sub-items">
+                <li>
+                  I made
+                  <a [href]="acda21_intro_blitz" target="_blank"
+                    >this one-page slide</a
+                  >
+                  for the ACDA Intro Blitz.
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">7/12–20</div>
+            <div class="event-description">
+              Attending the IEEE
+              <a [href]="isit21" target="_blank"
+                >International Symposium on Information Theory</a
+              >.
+              <ul class="sub-items">
+                <li>
+                  Check out the annual
+                  <a
+                    href="http://conferences.ece.ubc.ca/nasit2021/index.html"
+                    target="_blank"
+                    >North American School of Information Theory.</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">6/21 – 7/10</div>
+            <div class="event-description">
+              Attending <a [href]="networks21">Networks 2021</a>.
+              <ul class="sub-items">
+                <li>
+                  The Society of Young Network Scientists has a pre-conference
+                  event, themed
+                  <i>“Alternative forms of science communication”.</i>
+                  Check out this
+                  <a
+                    href="https://twitter.com/official_SYNS/status/1406013557808959493"
+                    target="_blank"
+                    >tweet</a
+                  >.
+                </li>
+                <li>
+                  Highlight these satellites:
+                  <a href="https://sinm.network/" target="_blank">SINM</a>,
+                  <a href="https://hons-web.github.io/online/" target="_blank"
+                    >HONS</a
+                  >,
+                  <a
+                    href="https://sites.google.com/view/toponets2021/home-page"
+                    target="_blank"
+                    >TopoNets</a
+                  >, and
+                  <a
+                    href="https://sites.google.com/view/netscied-2021/home-page"
+                    target="_blank"
+                    >NetSciEd</a
+                  >; for a full list, see
+                  <a href="https://networks2021.net/satellites" target="_blank"
+                    >this page</a
+                  >.
+                </li>
+                <li>
+                  I am also participating a Wikipedia Edit-a-thon, organized by
+                  <a
+                    href="https://github.com/FranciscaOrtizRuiz"
+                    target="_blank"
+                    >Francisca Ortiz</a
+                  >
+                  and
+                  <a
+                    href="https://scholar.google.com/citations?user=xSZwPHAAAAAJ&hl=en"
+                    target="_blank"
+                    >Ana Jaramillo</a
+                  >
+                  in the society of
+                  <a
+                    href="https://www.networkscienceinstitute.org/wins/about"
+                    target="_blank"
+                    >Women in Network Science (WiNS)</a
+                  >.
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="event-item">
+            <div class="event-date">3/31 – 4/2</div>
+            <div class="event-description">
+              Attending the
+              <a href="https://nerccs2021.github.io/"
+                >Northeast Regional Conference on Complex Systems</a
+              >.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">1/6–9</div>
+            <div class="event-description">
+              Attending the
+              <a
+                href="https://www.jointmathematicsmeetings.org/meetings/national/jmm2021/2247_intro"
+                >Joint Math Meetings</a
+              >.
+            </div>
+          </li>
+        </ul>
+        <ul *ngIf="thisYear === '2020'">
+          <i>/* all events after March are virtual */</i>
+          <!-- <li style="color: #DDDDDD;"> -->
+          <!-- <div class="event-date">6/8–12</div> -->
+          <!-- – [Canceled in response to COVID-19 pandemic] I will attend the <a href="https://tgda.osu.edu/atmcs2020/" -->
+          <!-- style="color: #DDDDDD; text-decoration: underline">ATMCS</a> -->
+          <!-- (Algebraic Topology: Methods, Computation, and Science) at Ohio State University. -->
+          <!-- </li> -->
+          <li class="event-item">
+            <div class="event-date">9/21–25</div>
+            <div class="event-description">
+              I am attending the
+              <a href="https://simons.berkeley.edu/workshops/schedule/14243"
+                >Computational Phase Transitions</a
+              >
+              workshop at the Simons Institute.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">9/17–25</div>
+            <div class="event-description">
+              I will attend the
+              <a href="https://netsci2020.netscisociety.net/">NetSci2020</a>
+              conference; thank you to the organizers and the Network Science
+              Society for the registration waiver.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">7/9–10</div>
+            <div class="event-description">
+              I will attend the
+              <a href="https://ns20.cs.cornell.edu/"
+                >SIAM Workshop on Network Science 2020 (NS20)</a
+              >.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">6/15–18</div>
+            <div class="event-description">
+              I will attend the
+              <a href="http://www.fields.utoronto.ca/activities/19-20/toric-TDA"
+                >Workshop on Topological Data Analysis</a
+              >, featuring two Clay Lectures by Gunnar Carlsson and Shmuel
+              Weinberger.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">6/10</div>
+            <div class="event-description">
+              With colleagues on this
+              <a href="https://www.shutdownstem.com/"
+                >#ShutDownAcademia #ShutDownSTEM day</a
+              >, we educate ourselves about anti-Black racism in academia and
+              reflect on how our systems treat people differently.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">5/5</div>
+            <div class="event-description">
+              I will attend the
+              <a
+                href="https://twitter.com/masonporter/status/1251594612549906432"
+                >online mini-symposium</a
+              >
+              <i
+                >“Topological Data Analysis and Data-Driven Modeling in Complex
+                Systems”</i
+              >
+              from the SIAM Conference on Mathematics of Data Science. See
+              titles & abstracts:
+              <a
+                href="https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=67931"
+                >Part I</a
+              >
+              &
+              <a
+                href="https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=67932"
+                >Part II</a
+              >.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">4/25</div>
+            <div class="event-description">
+              I am attending the
+              <i>“Graduate Online Anything Topology Series”</i> (<a
+                href="https://dzackgarza.com/GOATS_2020/"
+                >GOATS 2020</a
+              >), organized by
+              <a href="https://dzackgarza.com/">D. Zack Garza</a>,
+              <a href="https://seblackwell.wordpress.com/">Sarah Blackwell</a>,
+              and
+              <a href="https://sites.google.com/view/terrinwarren/home"
+                >Terrin Warren</a
+              >.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">April</div>
+            <div class="event-description">
+              I will attend the
+              <a href="https://sites.google.com/umd.edu/net-covid/home"
+                >Network Epidemiology Online Workshop Series</a
+              >
+              organized by the Univ. of Maryland’s
+              <a href="http://www.combine.umd.edu/" target="_blank">COMBINE</a>
+              program and Vermont’s
+              <a href="https://vermontcomplexsystems.org/" target="_blank"
+                >Complex Systems Center</a
+              >.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">1/15–18</div>
+            <div class="event-description">
+              I am attending the
+              <a
+                href="http://jointmathematicsmeetings.org/meetings/national/jmm2020/2245_intro"
+                >Joint Math Meetings</a
+              >
+              in Denver, CO.
+            </div>
+          </li>
+          <li class="event-item" style="color: #aaaaaa">
+            <div class="event-date">6/14 – 7/10</div>
+            <div class="event-description">
+              [Canceled in response to COVID-19 pandemic] I will attend the
+              <a
+                href="https://www.santafe.edu/engage/learn/schools/sfi-complex-systems-summer-school"
+                style="color: #aaaaaa; text-decoration: underline"
+                >Complex Systems Summer School</a
+              >
+              in Santa Fe, NM.
+            </div>
+          </li>
+        </ul>
+        <ul *ngIf="thisYear === '2019'">
+          <li class="event-item">
+            <div class="event-date">7/8–14</div>
+            <div class="event-description">
+              I will attend the
+              <a href="https://www.scipy2019.scipy.org">SciPy2019</a> in Austin,
+              Texas.
+              <ul class="sub-items">
+                <li>
+                  Warm thanks to the SciPy sponsors for the Financial Aid
+                  Scholarship, which will cover most of my expenses for the
+                  conference.
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="event-item">
+            <div class="event-date">6/4–5</div>
+            <div class="event-description">
+              Giving a guest lecture at
+              <a
+                href="http://web.ncku.edu.tw/bin/home.php?Lang=en"
+                target="_blank"
+                >NCKU</a
+              >, Taiwan.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">5/27–31</div>
+            <div class="event-description">
+              I will attend the
+              <a href="http://vermontcomplexsystems.org/events/netsci/"
+                >NetSci2019</a
+              >
+              in Burlington, VT.
+              <ul class="sub-items">
+                <li>
+                  Many thanks to the Society of Young Network Scientists that
+                  supported my travel, conference registration, and lodging! The
+                  Society is awesome. Follow them on Twitter (<a
+                    href="https://twitter.com/NetSciPhDs"
+                    >&#64;NetSciPhDs</a
+                  >).
+                </li>
+                <li>
+                  I have no submission this year. In addition to the main
+                  conference, I will attend satellites
+                  <a href="http://danlarremore.com/sinm2019/">SINM</a>,
+                  <a
+                    href="https://sites.google.com/a/binghamton.edu/netscied2019/"
+                    >NetSciEd</a
+                  >, and <a href="https://uzhdag.github.io/hons_web/">HONS</a>.
+                </li>
+                <li>
+                  I will attend the
+                  <a href="https://www.networkscienceinstitute.org/syns"
+                    >pre-conference SYNS event</a
+                  >. Organized by
+                  <a href="https://twitter.com/jkbren">Brennan</a>,
+                  <a href="https://twitter.com/CarolinaMttssn">Carolina</a>,
+                  <a href="https://twitter.com/dinacmistry">Dina</a>, and
+                  <a href="https://twitter.com/Shugars">Sarah</a>.
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">March</div>
+            <div class="event-description">
+              I am in the Program Committee for
+              <a href="https://www.scipy2019.scipy.org/" target="_blank"
+                >SciPy 2019</a
+              >
+              (Austin, Texas 7/8–14). I review talk/poster and tutorial
+              submissions.
+            </div>
+          </li>
+        </ul>
+        <ul *ngIf="thisYear === '2018'">
+          <li class="event-item">
+            <div class="event-date">8/13–17</div>
+            <div class="event-description">
+              Attending CU’s
+              <a
+                href="https://compsocialscience.github.io/summer-institute/2018/boulder/"
+                >Summer Institute in Computational Social Science</a
+              >. Organized by
+              <a href="https://allisonmorgan.github.io/">Allie Morgan</a> and
+              <a href="http://www.brianckeegan.com/">Brian Keegan</a>.
+            </div>
+          </li>
+          <li class="event-item">
+            <div class="event-date">7/5</div>
+            <div class="event-description">
+              I was selected to be the recipient of the Strauch Family Graduate
+              Fellowship in the College of Engineering and Applied Science at CU
+              Boulder!
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <nz-divider></nz-divider>
+
+  <nz-divider style="border-color: transparent"></nz-divider>
   <div nz-row nzJustify="start" style="min-height: 350px">
     <ul>
       <li class="event-item">

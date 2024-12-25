@@ -1,9 +1,8 @@
-import { Component, TemplateRef, OnInit, Inject, HostListener } from '@angular/core';
+import { Component, OnInit, Inject, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { DOCUMENT } from '@angular/common';
-import { faBluesky } from '@fortawesome/free-brands-svg-icons';
 import * as DarkReader from 'darkreader';
 
 // To make the update time dynamic based on my last GitHub push
@@ -14,7 +13,6 @@ import { GithubService } from './@services/github.service';
   templateUrl: './app.component.html',
   styleUrls: [
     '../styles/font-face.css',
-    '../../node_modules/academicons/css/academicons.min.css',
     './app.component.css',
   ]
 })
@@ -24,11 +22,10 @@ export class AppComponent implements OnInit {
   title = 'app';
   isCollapsed = false;
   screenHeight: number = 0;
-  isDonationBannerShown = true;
+  // isDonationBannerShown = true;
   isLoaded = false;
   cv_file = "../../assets/pdf/Tzu-Chi_Yen_CV.pdf";
   resume_file = "../../assets/pdf/Tzu-Chi_Yen_Resume.pdf";
-  faBluesky = faBluesky;
   lastUpdateDate: string = '';
   // screenWidth: number;
 
@@ -93,7 +90,8 @@ export class AppComponent implements OnInit {
     router.events.subscribe((event) => {  // fires on every URL change
       this.setTitle(this.getTitleFromRouter(router));
       if (router.url !== '/') {
-        this.isDonationBannerShown = false;
+        // this.isDonationBannerShown = false;
+        
       }
     });
   }
