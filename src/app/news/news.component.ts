@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 // import { NzSelectModeType } from 'ng-zorro-antd/select/select.types';
 import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
+import { faRefresh } from '@fortawesome/free-solid-svg-icons';
+import { ReloadService } from '../@services/reload.service';
 import * as d3 from 'd3';
 
 @Component({
   selector: 'app-news',
+  standalone: false,  // don't make it standalone or the typesetting will be awry
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css'],
 })
@@ -14,6 +17,7 @@ export class NewsComponent {
   //   console.log('onChange: ', result);
   // }
   faSquareUpRight = faSquareUpRight;
+  faRefresh = faRefresh;
   thisYear = '2024';
   // selectSize: NzSelectModeType = 'large';
 
@@ -39,8 +43,16 @@ export class NewsComponent {
   // Files
   resume_file_2024 = '../../assets/pdf/older/Yen_Resume_Oct_2024.pdf';
 
-  constructor() {
+  // research interests
+  misc_1 = 'https://arxiv.org/abs/2402.08871';
+
+  constructor(private reloadService: ReloadService) { }
+  reloadPattern() {
+    this.reloadService.triggerReload('gpr');
+    this.reloadService.triggerReload('pixel');
+    this.reloadService.triggerReload('simplex');
   }
+
 
   ngAfterContentChecked() {
     // For the years
@@ -51,8 +63,11 @@ export class NewsComponent {
     // d3.selectAll("nz-option-item").attr("onItemHover", );
 
     d3.selectAll('.ant-select-selector')
-    // .style('display', 'flex !important')
-    // .style('fjustify-content', 'flex-end !important')
-    .style('margin-left', '10pt');
+      // .style('display', 'flex !important')
+      // .style('fjustify-content', 'flex-end !important')
+      .style('margin-left', '10pt');
   }
+
+
+
 }

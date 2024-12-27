@@ -6,11 +6,11 @@
           <span id="initial">H</span>
           <span id="small">i there!</span>
           I am a Senior Software Engineer at Global Healthcare Exchange, where I
-          create solutions to enhance supply chain efficiency by tackling
-          knowledge graphs and related ML/AI challenges. Previously, I was a
-          postdoc at CU Boulder, my alma mater, where I received a Ph.D. in
-          Computer Science under the guidance of Dan Larremore and Josh Grochow.
-          My work has previously been funded by
+          help enhance supply chain efficiency by tackling knowledge graphs and
+          related ML/AI challenges. Previously, I was a postdoc at CU Boulder,
+          my alma mater, where I received a Ph.D. in Computer Science under the
+          guidance of Dan Larremore and Josh Grochow. My work has previously
+          been funded by
           <a href="https://www.kavlifoundation.org/" target="_blank"
             >The Kavli Foundation</a
           >, via my advisors’ grants, and through teaching.
@@ -22,64 +22,70 @@
       </div>
     </div>
   </div>
-  <nz-divider style="border: transparent"></nz-divider>
-  <h3>Research</h3>
+  <!-- <nz-divider style="border: transparent"></nz-divider> -->
   <div class="research-interests">
+    <div
+      nz-row
+      nzGutter="[16, 24]"
+      nzAlign="middle"
+      style="padding-bottom: 1em"
+    >
+      <div nz-col nzXs="24" nzSm="20" nzMd="21">
+        My work presently focuses on two application areas, with added interest in systems research:
+      </div>
+      <div nz-col nzXs="24" nzSm="4" nzMd="3" style="text-align: right">
+        <a (click)="reloadPattern()">
+          <fa-icon [icon]="faRefresh"></fa-icon>
+        </a>
+      </div>
+    </div>
     <div nz-row nzGutter="[16, 24]" nzAlign="middle">
       <div nz-col nzXs="24" nzSm="4" nzMd="3">
-        <img
-          src="https://placehold.jp/300x200.png"
-          alt="Statistical modeling"
-          class="research-image"
-        />
+        <app-simplex class="research-image"></app-simplex>
+        <!-- <img src="https://placehold.jp/300x200.png" alt="Statistical modeling" class="research-image" /> -->
       </div>
       <div nz-col nzXs="24" nzSm="20" nzMd="21">
         <p>
-          Statistical modeling in graphs offers powerful tools for analyzing
-          complex network structures. By leveraging techniques such as
-          stochastic block models (SBMs), researchers can uncover hidden
-          patterns and dependencies in social, biological, and technological
-          networks.
+          <i>Graph and higher-order structures</i>
+          in social and biological systems present an analytical challenge due
+          to their combinatorial nature. I use and/or create generative
+          modeling, applied topology, and approximation schemes to uncover
+          hidden patterns (e.g., clusters, orderings, or backbones), and improve
+          their computational efficiency.
         </p>
       </div>
     </div>
-
     <div nz-row nzGutter="[16, 24]" nzAlign="middle">
       <div nz-col nzXs="24" nzSm="4" nzMd="3">
-        <img
-          src="https://placehold.jp/300x200.png"
-          alt="Randomized methods"
-          class="research-image"
-        />
-      </div>
-      <div nz-col nzXs="24" nzSm="20" nzMd="21">
-        <p>
-          Randomized methods, diffusion models, and deep learning offer powerful
-          approaches for tackling complex computational challenges. By
-          leveraging techniques such as Monte Carlo sampling, stochastic
-          differential equations, and neural networks, researchers can model
-          intricate phenomena, generate realistic data, and learn hierarchical
-          representations across diverse domains.
-        </p>
-      </div>
-    </div>
-
-    <div nz-row nzGutter="[16, 24]" nzAlign="middle">
-      <div nz-col nzXs="24" nzSm="4" nzMd="3">
-        <img
+        <app-gpr></app-gpr>
+        <!-- <img
           src="https://placehold.jp/300x200.png"
           alt="Optimization methods"
           class="research-image"
-        />
+        /> -->
       </div>
       <div nz-col nzXs="24" nzSm="20" nzMd="21">
         <p>
-          Optimization and first-order methods provide powerful techniques for
-          solving complex mathematical problems efficiently. By utilizing
-          approaches such as gradient descent and stochastic optimization
-          algorithms, researchers can find optimal solutions in high-dimensional
-          spaces across various domains, including machine learning, signal
-          processing, and operations research.
+          <i>Optimization with scarce data.</i> With a priori knowledge, convex
+          regularizations can leverage structured sparsity to simplify models.
+          This approach can also extend to metadata for more interpretable
+          models. When experiments or function evaluations are costly, surrogate
+          models and Bayesian optimization can guide parameter selection and
+          uncertainty quantification.
+        </p>
+      </div>
+    </div>
+    <div nz-row nzGutter="[16, 24]" nzAlign="middle">
+      <div nz-col nzXs="24" nzSm="4" nzMd="3">
+        <app-pixel-pattern></app-pixel-pattern>
+      </div>
+      <div nz-col nzXs="24" nzSm="20" nzMd="21">
+        <p>
+          <i>Systems for deep learning.</i> I’m especially interested in deep
+          learning and their interaction with
+          <a href="{{ misc_1 }}" target="_blank">topology and geometry</a>, as
+          well as new compute or hardware paradigms that can train larger models
+          faster and more energy-efficient.
         </p>
       </div>
     </div>

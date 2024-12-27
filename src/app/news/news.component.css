@@ -92,8 +92,8 @@ nz-select {
 
 .research-image {
   width: 100%;
-  max-width: 300px;
-  height: auto;
+  /* max-width: 300px; */
+  /* height: auto; */
   border-radius: 4px;
 }
 

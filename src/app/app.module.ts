@@ -9,6 +9,10 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { SimplexComponent } from './@components/simplex/simplex.component';
+import { GprComponent } from './@components/gpr/gpr.component';
+import { PixelPatternComponent } from './@components/pixel-pattern/pixel-pattern.component';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /** Material **/
@@ -179,6 +183,9 @@ const appRoutes: Routes = [
       useHash: false,
     }),
     InternalUriResolverPipe,
+    SimplexComponent,
+    GprComponent,
+    PixelPatternComponent,
     Str2urlPipe,
     MatIconModule,  // dark mode icon
   ],

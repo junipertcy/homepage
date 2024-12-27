@@ -1,0 +1,13 @@
+div {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+:host {
+    --stroke-color: white;
+}
+
+[data-darkreader-mode="dynamic"] :host {
+    --stroke-color: var(--darkreader-neutral-background);
+}
