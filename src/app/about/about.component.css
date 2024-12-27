@@ -1,9 +1,12 @@
 #profile {
     border-radius: 4px;
-    width: 120px;
+    width: 100%;
     background-color: white;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
 
+
+#profile img {
+    width: 120px;
 }
 
 .email {
@@ -31,3 +34,13 @@ ul {
 li {
     list-style-type: none;
 }
+
+.equal-height {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .equal-height > section {
+    flex: 1;
+  }
+  

@@ -38,7 +38,7 @@ export class GprComponent implements OnInit, OnDestroy {
     d3.select(this.gprContainer.nativeElement)
       .selectAll('svg')
       .remove();
-    const margin = { top: 0, right: 0, bottom: 0, left: 10 };
+    const margin = { top: 0, right: 0, bottom: 10, left: 10 };
     const width = 100 - margin.left - margin.right;
     const height = 100 - margin.top - margin.bottom;
 
