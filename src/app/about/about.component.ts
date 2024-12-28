@@ -19,4 +19,11 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 })
 export class AboutComponent {
   faBluesky = faBluesky;
+
+  url_li = 'https://www.linkedin.com/in/tzuchiy/';
+  url_gh = 'https://github.com/junipertcy';
+  url_bsky = 'https://bsky.app/profile/tcyen.bsky.social';
+  url_x = 'https://twitter.com/oneofyen';
+  url_gs = 'https://scholar.google.com/citations?user=ZUxl-r0AAAAJ&hl=en&sortby=pubdate';
+  url_wos = 'https://www.webofscience.com/wos/author/record/ABE-6509-2020';
 }
