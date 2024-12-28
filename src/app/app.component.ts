@@ -1,15 +1,19 @@
 import { Component, OnInit, Inject, HostListener } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { DOCUMENT } from '@angular/common';
 import * as DarkReader from 'darkreader';
 
+
 // To make the update time dynamic based on my last GitHub push
 import { GithubService } from './@services/github.service';
 
 @Component({
   selector: 'app-root',
+  standalone: false,
+  providers: [NzModalService, Title],
   templateUrl: './app.component.html',
   styleUrls: [
     '../styles/font-face.css',
@@ -91,7 +95,7 @@ export class AppComponent implements OnInit {
       this.setTitle(this.getTitleFromRouter(router));
       if (router.url !== '/') {
         // this.isDonationBannerShown = false;
-        
+
       }
     });
   }

@@ -1,150 +1,162 @@
-<div nz-row nzJustify="center" nzAlign="middle">
-  <div nz-col nzXs="24" nzSm="20" nzMd="16" nzLg="12" nzXl="10">
-    <!-- Profile Section -->
-    <section id="profile">
-      <img src="../../assets/img/profile_2023.jpg" alt="Profile picture" />
-      <p style="text-align: justify; margin-bottom: 20px">
-        My research focuses on understanding complex systems in social and
-        biological domains, utilizing tools from statistical inference,
-        computational topology, and convex optimization. With a background in
-        software engineering, I bring a unique perspective to my academic work.
-      </p>
-    </section>
-
-    <!-- Contact Information -->
-    <section id="contact">
-      <div nz-row nzJustify="center">
-        <div nz-col>
-          <p
-            style="font-size: 80%; font-family: 'inconsolata'; font-weight: 500"
-          >
+<div class="page-container">
+  <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+    <div nz-col class="gutter-row" [nzSpan]="6" id="profile">
+      <img src="../../assets/img/profile_2024.jpg" alt="Profile picture" />
+    </div>
+    <div nz-col class="gutter-row" [nzSpan]="18" style="text-align: justify;">
+      Born in Yuenlin, Taiwan, I graduated from National Taiwan University in
+      Taipei with a BSc in Biology. After which I relocated to Beijing, China
+      and worked in startup and NGO scenes. In 2018, I moved to Boulder, CO for
+      the PhD. My work blends tools from computer science and applied math to
+      understand complex systems in various domains.
+      <div nz-col style="margin-left: -15px; margin-top: 10px">
+        <h5>Find me at</h5>
+        <ul>
+          <li>
             <a
-              href="mailto:tzuchi.yen@colorado.edu"
-              style="text-decoration: none"
-            >
-              <i nz-icon nzType="mail" nzTheme="outline" class="email"></i>
-              tzuchi.yen&#64;colorado.edu
-            </a>
-            <a
-              href="https://keys.openpgp.org/search?q=tzuchi.yen%40colorado.edu"
+              href="https://www.linkedin.com/in/tzuchiy/"
               target="_blank"
-              style="text-decoration: none"
+              rel="noopener"
+              ><span
+                nz-icon
+                nzType="linkedin"
+                nzTheme="outline"
+                style="font-size: 20px"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/junipertcy"
+              target="_blank"
+              rel="noopener"
+              ><span
+                nz-icon
+                nzType="github"
+                nzTheme="outline"
+                style="font-size: 20px"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://bsky.app/profile/tcyen.bsky.social"
+              target="_blank"
+              rel="noopener"
+              ><fa-icon [icon]="faBluesky" style="font-size: 20px"></fa-icon
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://twitter.com/oneofyen"
+              target="_blank"
+              rel="noopener"
+              ><span
+                nz-icon
+                nzType="twitter"
+                nzTheme="outline"
+                style="font-size: 20px"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://scholar.google.com/citations?user=ZUxl-r0AAAAJ&hl=en&sortby=pubdate"
+              target="_blank"
+              rel="noopener"
+              ><i
+                class="ai ai-google-scholar big-icon"
+                style="font-size: 20px"
+              ></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://www.webofscience.com/wos/author/record/ABE-6509-2020"
+              target="_blank"
+              rel="noopener"
+              ><i class="ai ai-clarivate big-icon" style="font-size: 20px"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+    <div nz-col class="gutter-row" [nzSpan]="6"></div>
+
+    <div
+      class="bottom-content"
+      nz-row
+      [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }"
+    >
+      <div nz-col class="gutter-row" [nzSpan]="6"></div>
+    </div>
+
+    <!-- <div nz-col class="gutter-row" [nzSpan]="12">
+      <section id="contact">
+        <div nz-row nzJustify="center">
+          <div nz-col>
+            <p
+              style="
+                font-size: 80%;
+                font-family: 'inconsolata';
+                font-weight: 500;
+              "
             >
-              <i nz-icon nzType="lock" nzTheme="outline" class="pgp-key"></i>
-              49B1556E
-            </a>
-            <a routerLink="/privacy" style="font-size: small">(why?)</a>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Additional Information -->
-    <div nz-row nzAlign="top" nzGutter="[16, 24]">
-      <!-- Supporting Organizations -->
-      <div nz-col nzXs="24" nzSm="24" nzMd="12" class="equal-height">
-        <section>
-          <h5>Proud supporter of</h5>
-          <div nz-row nzAlign="middle" nzJustify="space-around">
-            <div nz-col>
               <a
-                href="https://my.fsf.org/join?referrer=2272401"
-                target="_blank"
-                rel="noopener"
+                href="mailto:tzuchi.yen@colorado.edu"
+                style="text-decoration: none"
               >
-                <img
-                  src="https://static.fsf.org/nosvn/associate/crm/2272401.png"
-                  alt="FSF"
-                  style="max-height: 40px; width: auto"
-                />
+                <i nz-icon nzType="mail" nzTheme="outline" class="email"></i>
+                tzuchi.yen&#64;colorado.edu
               </a>
-            </div>
-            <div nz-col>
-              <a href="https://www.eff.org/" target="_blank" rel="noopener">
-                <img
-                  src="https://www.eff.org/files/2019/11/20/2020-membership-badge-2.png"
-                  alt="EFF"
-                  style="max-height: 40px; width: auto"
-                />
+              <a
+                href="https://keys.openpgp.org/search?q=tzuchi.yen%40colorado.edu"
+                target="_blank"
+                style="text-decoration: none"
+              >
+                <i nz-icon nzType="lock" nzTheme="outline" class="pgp-key"></i>
+                49B1556E
               </a>
-            </div>
+              <a routerLink="/privacy" style="font-size: small">(why?)</a>
+            </p>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+    </div> -->
+  </div>
 
-      <!-- Social Media Links -->
-      <div nz-col nzXs="24" nzSm="24" nzMd="12" class="equal-height">
-        <section>
-          <h5>Find me at</h5>
-          <ul>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/tzuchiy/"
-                target="_blank"
-                rel="noopener"
-                ><span
-                  nz-icon
-                  nzType="linkedin"
-                  nzTheme="outline"
-                  style="font-size: 20px"
-                ></span
-              ></a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/junipertcy"
-                target="_blank"
-                rel="noopener"
-                ><span
-                  nz-icon
-                  nzType="github"
-                  nzTheme="outline"
-                  style="font-size: 20px"
-                ></span
-              ></a>
-            </li>
-            <li>
-              <a
-                href="https://bsky.app/profile/tcyen.bsky.social"
-                target="_blank"
-                rel="noopener"
-                ><fa-icon [icon]="faBluesky" style="font-size: 20px"></fa-icon
-              ></a>
-            </li>
-            <li>
-              <a
-                href="https://twitter.com/oneofyen"
-                target="_blank"
-                rel="noopener"
-                ><span
-                  nz-icon
-                  nzType="twitter"
-                  nzTheme="outline"
-                  style="font-size: 20px"
-                ></span
-              ></a>
-            </li>
-            <li>
-              <a
-                href="https://scholar.google.com/citations?user=ZUxl-r0AAAAJ&hl=en&sortby=pubdate"
-                target="_blank"
-                rel="noopener"
-                ><i
-                  class="ai ai-google-scholar big-icon"
-                  style="font-size: 20px"
-                ></i
-              ></a>
-            </li>
-            <li>
-              <a
-                href="https://www.webofscience.com/wos/author/record/ABE-6509-2020"
-                target="_blank"
-                rel="noopener"
-                ><i class="ai ai-clarivate big-icon" style="font-size: 20px"></i
-              ></a>
-            </li>
-          </ul>
-        </section>
+  <div
+    class="bottom-content"
+    nz-row
+    [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }"
+  >
+    <div nz-col class="gutter-row" [nzSpan]="8">
+      <h5>Proud supporter of</h5>
+      <div nz-row style="margin-top: -5px">
+        <div nz-col>
+          <a
+            href="https://my.fsf.org/join?referrer=2272401"
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              src="https://static.fsf.org/nosvn/associate/crm/2272401.png"
+              alt="FSF"
+              style="max-height: 40px; width: auto"
+            />
+          </a>
+        </div>
+        <div nz-col style="margin-left: 10px">
+          <a href="https://www.eff.org/" target="_blank" rel="noopener">
+            <img
+              src="https://www.eff.org/files/2019/11/20/2020-membership-badge-2.png"
+              alt="EFF"
+              style="max-height: 40px; width: auto"
+            />
+          </a>
+        </div>
       </div>
     </div>
   </div>

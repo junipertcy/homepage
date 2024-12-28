@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { CommonModule } from '@angular/common';
+
 import { Article, ArXiv } from './paper';
 
 @Component({
   selector: 'app-publications',
+  standalone: true,
+  imports: [NzTagModule, CommonModule],
   templateUrl: './publications.component.html',
-  styleUrls: ['./publications.component.css', ]
+  styleUrls: ['./publications.component.css',]
 })
 
 export class PublicationsComponent implements OnInit {

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NzImageModule } from 'ng-zorro-antd/image';
 
 @Component({
   selector: 'app-cllin',
+  standalone: true,
+  imports: [NzImageModule],
   templateUrl: './cllin.component.html',
   styleUrls: ['./cllin.component.css']
 })

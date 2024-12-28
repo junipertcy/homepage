@@ -1,12 +1,25 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* This ensures the container takes up at least the full viewport height */
+  }
+  
+  .bottom-content {
+    margin-top: auto; /* This pushes the content to the bottom */
+    padding-top: 20px; /* Add some space above the bottom content */
+  }
+  
+
 #profile {
-    border-radius: 4px;
+    
     width: 100%;
     background-color: white;
 }
 
 
 #profile img {
-    width: 120px;
+    border-radius: 4px;
+    width: 100%;
 }
 
 .email {
@@ -34,13 +47,3 @@ ul {
 li {
     list-style-type: none;
 }
-
-.equal-height {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .equal-height > section {
-    flex: 1;
-  }
-  

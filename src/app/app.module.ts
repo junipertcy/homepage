@@ -1,26 +1,27 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, ApplicationRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { AppComponent } from './app.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimplexComponent } from './@components/simplex/simplex.component';
 import { GprComponent } from './@components/gpr/gpr.component';
 import { PixelPatternComponent } from './@components/pixel-pattern/pixel-pattern.component';
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 /** Material **/
 // import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 /** icons **/
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+import { MatIconModule } from '@angular/material/icon';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { NZ_ICON_DEFAULT_TWOTONE_COLOR, NZ_ICONS } from 'ng-zorro-antd/icon';
 import {
   ShareAltOutline,
@@ -51,7 +52,6 @@ const icons: IconDefinition[] = [
 /** angular i18n **/
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CllinComponent } from './cllin/cllin.component';
 import { PrivacyComponent } from './privacy/privacy.component';
@@ -66,7 +66,7 @@ registerLocaleData(en);
 
 const appRoutes: Routes = [
   { path: '', component: NewsComponent },
-  { path: 'about', component: AboutComponent},
+  { path: 'about', component: AboutComponent },
   {
     path: 'activities',
     component: ActivitiesComponent,
@@ -154,27 +154,27 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    BooksComponent,
-    CllinComponent,
-    NewsComponent,
-    NotesComponent,
-    PrivacyComponent,
-    PublicationsComponent,
-    ReadingComponent,
-    TextbooksComponent,
-    TalksComponent,
-  ],
+  declarations: [AppComponent, NewsComponent],
   exports: [
     RouterModule
   ],
   bootstrap: [AppComponent],
   imports: [
-    BrowserAnimationsModule,
-    BrowserModule,
+    SimplexComponent,
+    GprComponent,
+    PixelPatternComponent,
     FontAwesomeModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    CllinComponent,
+    BooksComponent,
     FormsModule,
+    NotesComponent,
+    TalksComponent,
+    ReadingComponent,
+    PrivacyComponent,
+    PublicationsComponent,
+    TextbooksComponent,
     NotionComponent,
     NgbModule,
     NgZorroAntdModule,
@@ -183,11 +183,7 @@ const appRoutes: Routes = [
       useHash: false,
     }),
     InternalUriResolverPipe,
-    SimplexComponent,
-    GprComponent,
-    PixelPatternComponent,
     Str2urlPipe,
-    MatIconModule,  // dark mode icon
   ],
   providers: [
     Title,
@@ -197,4 +193,5 @@ const appRoutes: Routes = [
     provideHttpClient(withInterceptorsFromDi()),
   ],
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-// import { NzSelectModeType } from 'ng-zorro-antd/select/select.types';
 import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
 import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 import { ReloadService } from '../@services/reload.service';
+
 import * as d3 from 'd3';
 
 @Component({
   selector: 'app-news',
-  standalone: false,  // don't make it standalone or the typesetting will be awry
+  standalone: false,
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css'],
 })

@@ -15,12 +15,12 @@ import * as d3 from 'd3';
 export class SimplexComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
-  @ViewChild('simplexContainer', { static: true }) container!: ElementRef;
+  @ViewChild('simplexContainer', { static: true }) simplexContainer!: ElementRef;
 
   constructor(private reloadService: ReloadService) {
     this.subscription = this.reloadService.reloadTrigger$.subscribe(componentId => {
       if (componentId === 'simplex') {
-        this.createPattern();
+        this.drawSimplicialComplex();
       }
     });
   }
@@ -64,38 +64,32 @@ export class SimplexComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.createPattern();
+    this.drawSimplicialComplex();
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  private createPattern() {
-    // Clear existing SVG content first
-    d3.select(this.container.nativeElement)
-      .selectAll('svg')
-      .remove();
-    this.drawSimplicialComplex();
-
-  }
-
   // ngAfterViewInit() {
   //   this.drawSimplicialComplex();
   // }
 
-  drawSimplicialComplex() {
+  private drawSimplicialComplex() {
+    // Clear existing SVG content first
+    d3.select(this.simplexContainer.nativeElement)
+      .selectAll('svg')
+      .remove();
     const simplices = this.generateRandomSimplices();
-    const width = this.container.nativeElement.clientWidth;
-    const height = this.container.nativeElement.clientHeight;
+    const width = this.simplexContainer.nativeElement.clientWidth;
+    const height = 100;
 
     const margin = 5; // Margin to keep nodes away from the edges
     const boundingBoxWidth = width - 2 * margin;
     const boundingBoxHeight = height - 2 * margin;
+    console.log("height", height);
 
-
-
-    const svg = d3.select(this.container.nativeElement)
+    const svg = d3.select(this.simplexContainer.nativeElement)
       .append('svg')
       .attr('width', width)
       .attr('height', height)
