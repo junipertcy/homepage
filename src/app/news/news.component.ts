@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
-import { faRefresh } from '@fortawesome/free-solid-svg-icons';
+import { faRefresh, faArrowDown91 } from '@fortawesome/free-solid-svg-icons';
 import { ReloadService } from '../@services/reload.service';
 
 import * as d3 from 'd3';
@@ -18,6 +18,7 @@ export class NewsComponent {
   // }
   faSquareUpRight = faSquareUpRight;
   faRefresh = faRefresh;
+  faArrowDown91 = faArrowDown91;
   thisYear = '2025';
   // selectSize: NzSelectModeType = 'large';
 
@@ -53,7 +54,6 @@ export class NewsComponent {
     this.reloadService.triggerReload('simplex');
   }
 
-
   ngAfterContentChecked() {
     // For the years
     d3.selectAll('.ant-select-item-option-content')
@@ -67,7 +67,5 @@ export class NewsComponent {
       // .style('fjustify-content', 'flex-end !important')
       .style('margin-left', '10pt');
   }
-
-
 
 }

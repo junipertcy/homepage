@@ -99,13 +99,18 @@
       <ul>
         <li class="event-item">
           <div class="event-date">
+            <h3>News</h3>
+          </div>
+          <div
+            class="event-description"
+            style="margin-left: -20pt; margin-top: -3px"
+          >
             <nz-select
               [nzShowArrow]="false"
               [(ngModel)]="thisYear"
               [nzSize]="'default'"
               [nzOptionOverflowSize]="8"
               nzBorderless
-              style="margin-left: 11pt"
               ><nz-option nzValue="2025" nzLabel="2025"></nz-option
               ><nz-option nzValue="2024" nzLabel="2024"></nz-option
               ><nz-option nzValue="2023" nzLabel="2023"></nz-option
@@ -115,9 +120,15 @@
               ><nz-option nzValue="2019" nzLabel="2019"></nz-option
               ><nz-option nzValue="2018" nzLabel="2018"></nz-option>
             </nz-select>
-          </div>
-          <div class="event-description">
-            <!-- <h2>News</h2> -->
+            <fa-icon
+              [icon]="faArrowDown91"
+              style="
+                margin-left: -7pt;
+                margin-top: 3pt;
+                position: absolute;
+                color: rgb(178, 178, 178);
+              "
+            ></fa-icon>
           </div>
         </li>
       </ul>
@@ -162,8 +173,8 @@
             <div class="event-description">
               My postdoc role with
               <a href="https://stephenbeckr.github.io/">Stephen Becker</a>
-              (Applied Math) concluded. We started a project for
-              multi-fidelity Bayesian optimization. <i>Work in progress.</i>
+              (Applied Math) concluded. We started a project for multi-fidelity
+              Bayesian optimization. <i>Work in progress.</i>
               <ul class="sub-items">
                 <li>
                   I began a new role at GHX. Old resume
