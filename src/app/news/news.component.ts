@@ -23,6 +23,8 @@ export class NewsComponent {
   // selectSize: NzSelectModeType = 'large';
 
   // URLs
+  dan = 'https://larremorelab.github.io/dan/';
+  josh = 'https://home.cs.colorado.edu/~jgrochow/index.html';
   wiki_stat_inf = 'https://en.wikipedia.org/wiki/Statistical_inference';
   wiki_tda = 'https://en.wikipedia.org/wiki/Topological_data_analysis';
   wiki_cs = 'https://en.wikipedia.org/wiki/Complex_system';
