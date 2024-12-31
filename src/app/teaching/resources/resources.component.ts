@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NzDividerComponent } from 'ng-zorro-antd/divider';
 
 import { LinkItemComponent } from 'src/app/@components/link-item/link-item.component';
 
 @Component({
   selector: 'app-resources',
   standalone: true,
-  imports: [CommonModule, LinkItemComponent],
+  imports: [CommonModule, LinkItemComponent, NzDividerComponent],
   templateUrl: './resources.component.html',
   styleUrls: [
     './resources.component.css',
@@ -14,15 +15,16 @@ import { LinkItemComponent } from 'src/app/@components/link-item/link-item.compo
 })
 export class ResourcesComponent {
   dummyList1 = [
+
+  ]
+
+  dummyList2 = [
     {
       link: "http://www.math.ucsd.edu/~fan/teach/gradpol.html",
       title: "A few words on research for graduate students.",
       author: "By Fan Chung.",
       publication: ""
-    }
-  ]
-
-  dummyList2 = [
+    },
     {
       link: "https://journals.biologists.com/jcs/article/121/11/1771/30038/The-importance-of-stupidity-in-scientific-research",
       title: "The importance of stupidity in scientific research.",
@@ -31,7 +33,7 @@ export class ResourcesComponent {
     },
     {
       link: "https://www.cell.com/molecular-cell/fulltext/S1097-2765(09)00641-8",
-      title: "How To Choose a Good Scientific Problem.",
+      title: "How to choose a good scientific problem.",
       author: "By Uri Alon.",
       publication: "Molecular Cell (2009)."
     },
@@ -41,5 +43,13 @@ export class ResourcesComponent {
       author: "By E. J. Molloy & C. F. Bearer.",
       publication: "Pediatric Research (2023)."
     }
+  ];
+  dummyList3 = [
+    {
+      link: "https://da-data.blogspot.com/2015/03/reflecting-on-cs-graduate-admissions.html",
+      title: "Reflecting on CS graduate admissions.",
+      author: "By David Andersen.",
+      publication: "(2015)."
+    },
   ];
 }
