@@ -1,20 +1,20 @@
 <div>
-  <strong>Useful resources for teaching</strong>
+  <h3>Advice for PhD Students</h3>
   <br />
   <app-link-item
-    *ngFor="let advice of dummyList1"
+    *ngFor="let advice of dummyList2"
     [link]="advice.link"
     [title]="advice.title"
     [author]="advice.author"
     [publication]="advice.publication"
   ></app-link-item>
 </div>
-<div style="height: 20pt;"></div>
+<nz-divider style="border: transparent"></nz-divider>
 <div>
-  <strong>Advice for PhD students</strong>
+  <h3>Advice for Prospective PhD Students</h3>
   <br />
   <app-link-item
-    *ngFor="let advice of dummyList2"
+    *ngFor="let advice of dummyList3"
     [link]="advice.link"
     [title]="advice.title"
     [author]="advice.author"
