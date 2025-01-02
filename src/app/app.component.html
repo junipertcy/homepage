@@ -1,6 +1,8 @@
 <!--<mat-progress-bar mode="determinate" value="40"></mat-progress-bar>-->
 <ng-template #zeroTrigger>
-  <i nz-icon nzType="menu-fold" nzTheme="outline"></i>
+  <div>
+    <i nz-icon nzType="menu-fold" nzTheme="outline"></i>
+  </div>
 </ng-template>
 <nz-layout class="layout" nz-row nzJustify="center" *ngIf="isLoaded">
   <nz-header>
@@ -42,7 +44,7 @@
         nzSpan="4"
         nzTheme="light"
         [(nzCollapsed)]="isCollapsed"
-        [nzBreakpoint]="'lg'"
+        [nzBreakpoint]="'md'"
         [nzCollapsedWidth]="0"
         [nzZeroTrigger]="zeroTrigger"
         [nzWidth]="150"

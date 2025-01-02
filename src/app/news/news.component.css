@@ -84,22 +84,3 @@ nz-select {
   border-style: solid;
   padding-top: 10pt;
 }
-
-.research-interests {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.research-image {
-  width: 100%;
-  /* max-width: 300px; */
-  /* height: auto; */
-  border-radius: 4px;
-}
-
-.research-interests p {
-  margin-bottom: 10px;
-
-  padding-left: 10px;
-  text-align: justify;
-}

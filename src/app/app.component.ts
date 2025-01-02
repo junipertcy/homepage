@@ -24,15 +24,14 @@ import { GithubService } from './@services/github.service';
 export class AppComponent implements OnInit {
 
   title = 'app';
-  isCollapsed = false;
   screenHeight: number = 0;
   // isDonationBannerShown = true;
   isLoaded = false;
+  isCollapsed = false;
   cv_file = "../../assets/pdf/Tzu-Chi_Yen_CV.pdf";
   resume_file = "../../assets/pdf/Tzu-Chi_Yen_Resume.pdf";
-  lastUpdateDate: string = '';
   // screenWidth: number;
-
+  lastUpdateDate!: string;
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
   }
