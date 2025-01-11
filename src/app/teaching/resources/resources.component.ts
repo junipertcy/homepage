@@ -31,18 +31,18 @@ export class ResourcesComponent {
       author: "By Martin Schwartz.",
       publication: "J Cell Sci (2008)."
     },
-    {
-      link: "https://www.cell.com/molecular-cell/fulltext/S1097-2765(09)00641-8",
-      title: "How to choose a good scientific problem.",
-      author: "By Uri Alon.",
-      publication: "Molecular Cell (2009)."
-    },
-    {
-      link: "https://www.nature.com/articles/s41390-022-01950-y.pdf",
-      title: "Doing a PhD: ten golden rules.",
-      author: "By E. J. Molloy & C. F. Bearer.",
-      publication: "Pediatric Research (2023)."
-    }
+    // {
+    //   link: "https://www.cell.com/molecular-cell/fulltext/S1097-2765(09)00641-8",
+    //   title: "How to choose a good scientific problem.",
+    //   author: "By Uri Alon.",
+    //   publication: "Molecular Cell (2009)."
+    // },
+    // {
+    //   link: "https://www.nature.com/articles/s41390-022-01950-y.pdf",
+    //   title: "Doing a PhD: ten golden rules.",
+    //   author: "By E. J. Molloy & C. F. Bearer.",
+    //   publication: "Pediatric Research (2023)."
+    // }
   ];
   dummyList3 = [
     {
