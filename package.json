@@ -37,7 +37,7 @@
     "darkreader": "^4.9.105",
     "glob": "^11.0.1",
     "karma-coverage": "^2.2.1",
-    "ng-zorro-antd": "19.0.0",
+    "ng-zorro-antd": "19.1.0",
     "node-gyp": "^11.1.0",
     "npm": "^11.1.0",
     "rimraf": "^6.0.1",
@@ -73,7 +73,8 @@
       "@parcel/watcher",
       "core-js",
       "esbuild",
-      "lmdb"
+      "lmdb",
+      "msgpackr-extract"
     ]
   }
 }
