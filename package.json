@@ -32,16 +32,16 @@
     "academicons": "github:jpswalsh/academicons",
     "ajv": "^8.17.1",
     "classlist.js": "^1.1.20150312",
-    "core-js": "^3.40.0",
+    "core-js": "^3.41.0",
     "d3": "^7.9.0",
-    "darkreader": "^4.9.96",
+    "darkreader": "^4.9.105",
     "glob": "^11.0.1",
     "karma-coverage": "^2.2.1",
     "ng-zorro-antd": "19.0.0",
-    "node-gyp": "^11.0.0",
-    "npm": "^11.0.0",
+    "node-gyp": "^11.1.0",
+    "npm": "^11.1.0",
     "rimraf": "^6.0.1",
-    "rxjs": "^7.8.1",
+    "rxjs": "^7.8.2",
     "tar": "^7.4.3",
     "tslib": "^2.8.1",
     "zone.js": "0.15.0"
@@ -55,9 +55,9 @@
     "@angular/language-service": "19.0.5",
     "@popperjs/core": "^2.11.8",
     "@types/d3": "^7.4.3",
-    "@types/jasmine": "~5.1.5",
+    "@types/jasmine": "~5.1.7",
     "@types/jasminewd2": "^2.0.13",
-    "@types/node": "^22.10.5",
+    "@types/node": "^22.13.8",
     "jasmine-core": "~5.5.0",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.4.4",
@@ -67,5 +67,13 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "typescript": "5.5.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "core-js",
+      "esbuild",
+      "lmdb"
+    ]
   }
 }
