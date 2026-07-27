@@ -19,7 +19,7 @@ export class NewsComponent {
   faSquareUpRight = faSquareUpRight;
   faRefresh = faRefresh;
   faArrowDown91 = faArrowDown91;
-  thisYear = '2025';
+  thisYear = '2026';
   // selectSize: NzSelectModeType = 'large';
 
   // URLs

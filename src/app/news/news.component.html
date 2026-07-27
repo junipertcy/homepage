@@ -90,7 +90,7 @@
           <div class="event-description"
                style="margin-left: -20pt;
                       margin-top: -3px">
-            <nz-select [nzShowArrow]="false" [(ngModel)]="thisYear" [nzSize]="'default'" [nzOptionOverflowSize]="8" nzBorderless><nz-option nzValue="2025" nzLabel="2025"></nz-option><nz-option nzValue="2024" nzLabel="2024"></nz-option><nz-option nzValue="2023" nzLabel="2023"></nz-option><nz-option nzValue="2022" nzLabel="2022"></nz-option><nz-option nzValue="2021" nzLabel="2021"></nz-option><nz-option nzValue="2020" nzLabel="2020"></nz-option><nz-option nzValue="2019" nzLabel="2019"></nz-option><nz-option nzValue="2018" nzLabel="2018"></nz-option>
+            <nz-select [nzShowArrow]="false" [(ngModel)]="thisYear" [nzSize]="'default'" [nzOptionOverflowSize]="8" nzBorderless><nz-option nzValue="2026" nzLabel="2026"></nz-option><nz-option nzValue="2025" nzLabel="2025"></nz-option><nz-option nzValue="2024" nzLabel="2024"></nz-option><nz-option nzValue="2023" nzLabel="2023"></nz-option><nz-option nzValue="2022" nzLabel="2022"></nz-option><nz-option nzValue="2021" nzLabel="2021"></nz-option><nz-option nzValue="2020" nzLabel="2020"></nz-option><nz-option nzValue="2019" nzLabel="2019"></nz-option><nz-option nzValue="2018" nzLabel="2018"></nz-option>
             </nz-select>
             <fa-icon [icon]="faArrowDown91" style=" margin-left: -7pt; margin-top: 3pt; position: absolute; color: rgb(178, 178, 178); "></fa-icon>
           </div>
@@ -103,6 +103,14 @@
   
       </div> -->
       <div nz-col nzSpan="24" style="overflow: auto; height: 100%">
+        <ul *ngIf="thisYear === '2026'">
+          <li class="event-item">
+            <div class="event-date">1/1</div>
+            <div class="event-description">
+              This past year has been a bit of a transition. I’ve found myself doing more engineering than research. I’ll share what I am up when I can!
+            </div>
+          </li>
+        </ul>
         <ul *ngIf="thisYear === '2025'">
           <li class="event-item">
             <div class="event-date">10/7</div>
