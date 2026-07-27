@@ -179,7 +179,7 @@ const appRoutes: Routes = [
     NgbModule,
     NgZorroAntdModule,
     RouterModule.forRoot(appRoutes, {
-      enableTracing: true,
+      enableTracing: false,
       useHash: false,
     }),
     InternalUriResolverPipe,

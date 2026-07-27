@@ -1,0 +1,41 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # LFS objects (PDFs, images) are copied as assets, never compiled, so the
+          # pointer files are enough to produce a bundle.
+          lfs: false
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # The Equity and Concourse fonts are commercially licensed and deliberately
+      # gitignored, but src/styles/font-face.css has 32 url() references to them and
+      # Angular's css-resource plugin fails the build on any it cannot resolve. Stub
+      # them so the build can run. This gate checks that the app COMPILES — it says
+      # nothing about how text renders, and the stubs never leave the runner.
+      - name: Stub licensed fonts
+        run: |
+          mkdir -p src/styles/fonts
+          grep -ohE "url\('fonts/[^']+\.woff2'\)" src/styles/font-face.css \
+            | sed -E "s|url\('fonts/||; s|'\)||" \
+            | sort -u \
+            | while read -r font; do : > "src/styles/fonts/$font"; done
+
+      - run: pnpm build
