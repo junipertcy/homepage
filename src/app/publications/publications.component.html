@@ -5,136 +5,236 @@
     <div nz-col nzSpan="24">
       <div nz-row nzJustify="space-between">
         <div nz-col nzSpan="8">
-          <h2 *ngIf="preprints.length > 0">Preprints</h2>
+          @if (preprints.length > 0) {
+            <h2>Preprints</h2>
+          }
         </div>
-        <div nz-col nzSpan="12" *ngIf="preprints.length > 0">
-          <p style="text-align: right; margin-bottom: 0">
-            Favorite: <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>;
-            Short summary: <i nz-icon nzType="edit" nzTheme="fill"></i>
-          </p>
-        </div>
+        @if (preprints.length > 0) {
+          <div nz-col nzSpan="12">
+            <p style="text-align: right; margin-bottom: 0">
+              Favorite: <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>;
+              Short summary: <i nz-icon nzType="edit" nzTheme="fill"></i>
+            </p>
+          </div>
+        }
         <ol>
-          <li *ngFor="let article of preprints; let i = index;" [attr.value]="preprints.length - i">
-            <h4>{{article.title}}
-              <i *ngIf="article.favorite" nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
-              <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
-                <i nz-icon nzType="edit" nzTheme="fill"></i>
-              </nz-tag>
-            </h4>
-            <span>{{article.authors}}<br></span>
-            <span *ngIf="article.venue" [innerHTML]="article.venue"></span>
-            <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
-            <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
-            <nz-tag *ngIf="article.preprint_pdf"><a href="{{article.preprint_pdf}}">Preprint PDF</a></nz-tag>
-            <nz-tag *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
-            <nz-tag *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
-            <nz-tag *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
-            <div class='abstract' *ngIf="article.toggle == true">{{article.summary}}
-            </div>
-          </li>
+          @for (article of preprints; track article; let i = $index) {
+            <li [attr.value]="preprints.length - i">
+              <h4>{{article.title}}
+                @if (article.favorite) {
+                  <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
+                }
+                <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
+                  <i nz-icon nzType="edit" nzTheme="fill"></i>
+                </nz-tag>
+              </h4>
+              <span>{{article.authors}}<br></span>
+              @if (article.venue) {
+                <span [innerHTML]="article.venue"></span>
+              }
+              @if (article.arXiv) {
+                <span>arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
+              }
+              @if (article.highlight) {
+                <span [innerHTML]="article.highlight"></span>
+              }
+              @if (article.preprint_pdf) {
+                <nz-tag><a href="{{article.preprint_pdf}}">Preprint PDF</a></nz-tag>
+              }
+              @if (article.code) {
+                <nz-tag><a href="{{article.code}}">Code</a></nz-tag>
+              }
+              @if (article.docs) {
+                <nz-tag><a href="{{article.docs}}">Docs</a></nz-tag>
+              }
+              @if (article.tweets) {
+                <nz-tag><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+              }
+              @if (article.toggle == true) {
+                <div class='abstract'>{{article.summary}}
+                </div>
+              }
+            </li>
+          }
         </ol>
       </div>
     </div>
-<!--    <div nz-col nzSpan="24" style="height: 20px;"></div>-->
-    <div nz-col nzSpan="24" *ngIf="preprints.length == 0">
-      <p style="text-align: right; margin-bottom: -25pt; font-family: 'concourse_4';">
-        Favorite: <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>;
-        Short summary: <i nz-icon nzType="edit" nzTheme="fill"></i>
-      </p>
-    </div>
+    <!--    <div nz-col nzSpan="24" style="height: 20px;"></div>-->
+    @if (preprints.length == 0) {
+      <div nz-col nzSpan="24">
+        <p style="text-align: right; margin-bottom: -25pt; font-family: 'concourse_4';">
+          Favorite: <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>;
+          Short summary: <i nz-icon nzType="edit" nzTheme="fill"></i>
+        </p>
+      </div>
+    }
     <div nz-col nzSpan="24">
       <h2>Journal Articles</h2>
     </div>
     <ol>
-      <li *ngFor="let article of articles; let i = index;" [attr.value]="articles.length - i">
-        <h4>{{article.title}}
-          <i *ngIf="article.favorite" nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
-            <i nz-icon nzType="edit" nzTheme="fill"></i>
-          </nz-tag>
-        </h4>
-        <span>{{article.authors}}<br></span>
-        <span [innerHTML]="article.venue"></span>
-        <span>DOI: <a href="{{article.doi}}">{{article.doi_str}}</a><br></span>
-        <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
-        <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
-        <nz-tag class="tag" *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
-        <nz-tag class="tag" *ngIf="article.sm_pdf"><a href="{{article.sm_pdf}}">Suppl. Mat.</a></nz-tag>
-        <nz-tag class="tag" *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
-        <nz-tag class="tag" *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
-        <nz-tag class="tag" *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
-        <div class='abstract' *ngIf="article.toggle == true">{{article.summary}}
-        </div>
-      </li>
+      @for (article of articles; track article; let i = $index) {
+        <li [attr.value]="articles.length - i">
+          <h4>{{article.title}}
+            @if (article.favorite) {
+              <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
+            }
+            <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
+              <i nz-icon nzType="edit" nzTheme="fill"></i>
+            </nz-tag>
+          </h4>
+          <span>{{article.authors}}<br></span>
+          <span [innerHTML]="article.venue"></span>
+          <span>DOI: <a href="{{article.doi}}">{{article.doi_str}}</a><br></span>
+          @if (article.arXiv) {
+            <span>arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
+          }
+          @if (article.highlight) {
+            <span [innerHTML]="article.highlight"></span>
+          }
+          @if (article.paper_pdf) {
+            <nz-tag class="tag"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
+          }
+          @if (article.sm_pdf) {
+            <nz-tag class="tag"><a href="{{article.sm_pdf}}">Suppl. Mat.</a></nz-tag>
+          }
+          @if (article.code) {
+            <nz-tag class="tag"><a href="{{article.code}}">Code</a></nz-tag>
+          }
+          @if (article.docs) {
+            <nz-tag class="tag"><a href="{{article.docs}}">Docs</a></nz-tag>
+          }
+          @if (article.tweets) {
+            <nz-tag class="tag"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+          }
+          @if (article.toggle == true) {
+            <div class='abstract'>{{article.summary}}
+            </div>
+          }
+        </li>
+      }
     </ol>
     <div nz-col nzSpan="24" style="height: 20px;"></div>
     <div nz-col nzSpan="24">
       <h2>Conference Proceedings</h2>
     </div>
     <ol>
-      <li *ngFor="let article of proceedings; let i = index;" [attr.value]="proceedings.length - i">
-        <h4>{{article.title}}
-          <i *ngIf="article.favorite" nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
-            <i nz-icon nzType="edit" nzTheme="fill"></i>
-          </nz-tag>
-        </h4>
-        <span>{{article.authors}}<br></span>
-        <span [innerHTML]="article.venue"></span>
-        <span>DOI: <a href="{{article.doi}}">{{article.doi_str}}</a><br></span>
-        <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
-        <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
-        <nz-tag class="tag" *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
-        <nz-tag class="tag" *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
-        <nz-tag class="tag" *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
-        <nz-tag class="tag" *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
-        <div class='abstract' *ngIf="article.toggle == true">{{article.summary}}
-        </div>
-      </li>
+      @for (article of proceedings; track article; let i = $index) {
+        <li [attr.value]="proceedings.length - i">
+          <h4>{{article.title}}
+            @if (article.favorite) {
+              <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
+            }
+            <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
+              <i nz-icon nzType="edit" nzTheme="fill"></i>
+            </nz-tag>
+          </h4>
+          <span>{{article.authors}}<br></span>
+          <span [innerHTML]="article.venue"></span>
+          <span>DOI: <a href="{{article.doi}}">{{article.doi_str}}</a><br></span>
+          @if (article.arXiv) {
+            <span>arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
+          }
+          @if (article.highlight) {
+            <span [innerHTML]="article.highlight"></span>
+          }
+          @if (article.paper_pdf) {
+            <nz-tag class="tag"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
+          }
+          @if (article.code) {
+            <nz-tag class="tag"><a href="{{article.code}}">Code</a></nz-tag>
+          }
+          @if (article.docs) {
+            <nz-tag class="tag"><a href="{{article.docs}}">Docs</a></nz-tag>
+          }
+          @if (article.tweets) {
+            <nz-tag class="tag"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+          }
+          @if (article.toggle == true) {
+            <div class='abstract'>{{article.summary}}
+            </div>
+          }
+        </li>
+      }
     </ol>
     <div nz-col nzSpan="24" style="height: 20px;"></div>
     <div nz-col nzSpan="24">
       <h2>Other Articles</h2>
     </div>
     <ol class="nocount">
-      <li *ngFor="let article of other_articles;">
-        <h4>{{article.title}}
-          <i *ngIf="article.favorite" nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
-          <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
-            <i nz-icon nzType="edit" nzTheme="fill"></i>
-          </nz-tag>
-        </h4>
-        <span>{{article.authors}}<br></span>
-        <span [innerHTML]="article.venue"></span>
-        <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
-        <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
-        <nz-tag class="tag" *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
-        <nz-tag class="tag" *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
-        <nz-tag class="tag" *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
-        <nz-tag class="tag" *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
-        <div class='abstract' *ngIf="article.toggle == true">{{article.summary}}
-        </div>
-      </li>
+      @for (article of other_articles; track article) {
+        <li>
+          <h4>{{article.title}}
+            @if (article.favorite) {
+              <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
+            }
+            <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
+              <i nz-icon nzType="edit" nzTheme="fill"></i>
+            </nz-tag>
+          </h4>
+          <span>{{article.authors}}<br></span>
+          <span [innerHTML]="article.venue"></span>
+          @if (article.arXiv) {
+            <span>arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
+          }
+          @if (article.highlight) {
+            <span [innerHTML]="article.highlight"></span>
+          }
+          @if (article.paper_pdf) {
+            <nz-tag class="tag"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
+          }
+          @if (article.code) {
+            <nz-tag class="tag"><a href="{{article.code}}">Code</a></nz-tag>
+          }
+          @if (article.docs) {
+            <nz-tag class="tag"><a href="{{article.docs}}">Docs</a></nz-tag>
+          }
+          @if (article.tweets) {
+            <nz-tag class="tag"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+          }
+          @if (article.toggle == true) {
+            <div class='abstract'>{{article.summary}}
+            </div>
+          }
+        </li>
+      }
     </ol>
     <div nz-col nzSpan="24" style="height: 20px;"></div>
     <div nz-col nzSpan="24">
       <h2>Translations</h2>
     </div>
     <ol class="nocount">
-      <li *ngFor="let article of translations;">
-        <h4>{{article.title}}</h4>
-        <span>{{article.authors}}<br></span>
-        <span [innerHTML]="article.venue"></span>
-        <span *ngIf="article.arXiv">arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
-        <span *ngIf="article.highlight" [innerHTML]="article.highlight"></span>
-        <nz-tag class="tag" *ngIf="article.paper_pdf"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
-        <nz-tag class="tag" *ngIf="article.code"><a href="{{article.code}}">Code</a></nz-tag>
-        <nz-tag class="tag" *ngIf="article.docs"><a href="{{article.docs}}">Docs</a></nz-tag>
-        <nz-tag class="tag" *ngIf="article.tweets"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
-        <nz-tag class="tag" *ngFor="let link of article.links"><a href="{{link.url}}">{{link.title}}</a></nz-tag>
-        <div class='abstract' *ngIf="article.toggle == true">{{article.summary}}
-        </div>
-      </li>
+      @for (article of translations; track article) {
+        <li>
+          <h4>{{article.title}}</h4>
+          <span>{{article.authors}}<br></span>
+          <span [innerHTML]="article.venue"></span>
+          @if (article.arXiv) {
+            <span>arXiv: <a href="{{article.arXiv}}">{{article.arXiv_id}}</a> {{article.arXiv_cat}}<br></span>
+          }
+          @if (article.highlight) {
+            <span [innerHTML]="article.highlight"></span>
+          }
+          @if (article.paper_pdf) {
+            <nz-tag class="tag"><a href="{{article.paper_pdf}}">Paper PDF</a></nz-tag>
+          }
+          @if (article.code) {
+            <nz-tag class="tag"><a href="{{article.code}}">Code</a></nz-tag>
+          }
+          @if (article.docs) {
+            <nz-tag class="tag"><a href="{{article.docs}}">Docs</a></nz-tag>
+          }
+          @if (article.tweets) {
+            <nz-tag class="tag"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+          }
+          @for (link of article.links; track link) {
+            <nz-tag class="tag"><a href="{{link.url}}">{{link.title}}</a></nz-tag>
+          }
+          @if (article.toggle == true) {
+            <div class='abstract'>{{article.summary}}
+            </div>
+          }
+        </li>
+      }
     </ol>
   </div>
   <div nz-col nzSpan="24" style="height: 40px;"></div>

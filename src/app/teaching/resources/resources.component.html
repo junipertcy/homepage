@@ -1,23 +1,25 @@
 <div>
   <h3>Advice for PhD Students</h3>
   <br />
-  <app-link-item
-    *ngFor="let advice of dummyList2"
-    [link]="advice.link"
-    [title]="advice.title"
-    [author]="advice.author"
-    [publication]="advice.publication"
-  ></app-link-item>
+  @for (advice of dummyList2; track advice) {
+    <app-link-item
+      [link]="advice.link"
+      [title]="advice.title"
+      [author]="advice.author"
+      [publication]="advice.publication"
+    ></app-link-item>
+  }
 </div>
 <nz-divider style="border: transparent"></nz-divider>
 <div>
   <h3>Advice for Prospective PhD Students</h3>
   <br />
-  <app-link-item
-    *ngFor="let advice of dummyList3"
-    [link]="advice.link"
-    [title]="advice.title"
-    [author]="advice.author"
-    [publication]="advice.publication"
-  ></app-link-item>
+  @for (advice of dummyList3; track advice) {
+    <app-link-item
+      [link]="advice.link"
+      [title]="advice.title"
+      [author]="advice.author"
+      [publication]="advice.publication"
+    ></app-link-item>
+  }
 </div>

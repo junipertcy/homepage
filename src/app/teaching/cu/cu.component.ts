@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 
@@ -7,10 +7,9 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
   selector: 'app-cu',
   standalone: true,
   imports: [
-    CommonModule,
     RouterModule,
     NzDividerModule
-  ],
+],
   templateUrl: './cu.component.html',
   styleUrls: [
     './cu.component.css',

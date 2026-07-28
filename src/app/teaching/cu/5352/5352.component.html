@@ -23,7 +23,7 @@
       <a
         href="https://catalog.colorado.edu/search/?search=CSCI+5352"
         target="_blank"
-      >
+        >
         CSCI 5352
       </a>
       .
@@ -36,7 +36,7 @@
     <a
       href="https://www.amazon.com/Networks-Mark-Newman-dp-0198805098/dp/0198805098"
       target="_blank"
-    >
+      >
       Networks
     </a>
     by M.E.J. Newman, Second edition, Oxford University Press, 2018.
@@ -49,25 +49,25 @@
       </nz-col>
       <nz-col nzSpan="12" style="text-align: right">
         <!-- <nz-switch
-          nzSize="small"
-          [(ngModel)]="allExpanded"
-          [nzControl]="allExpanded"
-          (click)="toggleAllPanels()"
-        ></nz-switch> -->
-      </nz-col>
-    </nz-row>
-    <p style="text-align: justify">
-      Click
-      <span nz-icon nzType="book"></span>
-      for the lecture scribbles. Notably, Week 14 in higher-order networks is
-      new. Other parts we had followed existing lecture notes. I am adding
-      relevant papers in the expanded section (work in progress) in case I had a
-      chance to teach the course in the future. Use the external class website
-      to see the papers that we had referenced in this installment.
-    </p>
-    <div style="height: 20pt"></div>
-    <nz-collapse [nzExpandIconPosition]="expandIconPosition" nzGhost>
-      @for (week of weeks; track week;) {
+        nzSize="small"
+        [(ngModel)]="allExpanded"
+        [nzControl]="allExpanded"
+        (click)="toggleAllPanels()"
+      ></nz-switch> -->
+    </nz-col>
+  </nz-row>
+  <p style="text-align: justify">
+    Click
+    <span nz-icon nzType="book"></span>
+    for the lecture scribbles. Notably, Week 14 in higher-order networks is
+    new. Other parts we had followed existing lecture notes. I am adding
+    relevant papers in the expanded section (work in progress) in case I had a
+    chance to teach the course in the future. Use the external class website
+    to see the papers that we had referenced in this installment.
+  </p>
+  <div style="height: 20pt"></div>
+  <nz-collapse [nzExpandIconPosition]="expandIconPosition" nzGhost>
+    @for (week of weeks; track week;) {
       <nz-collapse-panel
         [nzHeader]="week.name"
         [nzActive]="week.active"
@@ -75,81 +75,83 @@
         [nzDisabled]="week.disabled"
         [ngStyle]="customStyle"
         nzExpandedIcon="right-square"
-      >
+        >
         <div [innerHTML]="week.content"></div>
       </nz-collapse-panel>
       <ng-template #extraTpl>
-        <a *ngIf="week.pdfUrl">
-          <span
-            nz-icon
-            nzType="book"
-            (click)="openPDFInNewTab($event, week.pdfUrl)"
-          ></span>
-        </a>
+        @if (week.pdfUrl) {
+          <a>
+            <span
+              nz-icon
+              nzType="book"
+              (click)="openPDFInNewTab($event, week.pdfUrl)"
+            ></span>
+          </a>
+        }
       </ng-template>
-      }
-    </nz-collapse>
-  </div>
+    }
+  </nz-collapse>
+</div>
 
-  <!-- <h4>Lecture: modern web technology</h4>
-    <ul>
-        <li>
-            <a href="https://www.convex.dev/" target="_blank">Convex</a>: a reactive backend-as-a-service for web
-            developers.
-            Spotted from <a target="_blank"
-                href="https://twitter.com/jamesacowling/status/1591221339549216769">here</a>.
-        </li>
-    </ul> -->
-  <!-- <h4>Lecture: modern alternatives for the classic Linux commands</h4>
-    <ul>
-        <li>
-            A <a href="https://github.com/ibraheemdev/modern-unix" target="_blank">Modern Unix</a> collection
-        </li>
-        <li>
-            A <a href="https://jvns.ca/blog/2022/04/12/a-list-of-new-ish--command-line-tools/">list</a> of new(ish)
-            command line tools.
-        </li>
-    </ul> -->
-  <!-- <h4>Case study: all things open-source software</h4>
-    <ul>
-        <li>
-            GNU GPL: <a href="https://twitter.com/tonroosendaal/status/1135229214607773696" target="_blank">Blender</a>
-        </li>
-        <li>
-            For research software outputs, see the FAIR principles: <a
-                href="https://www.nature.com/articles/s41597-022-01710-x" target="_blank">paper</a> & <a
-                href="https://researchdata.springernature.com/posts/introducing-the-fair-principles-for-research-software"
-                target="_blank">blog post</a>.
-        </li>
-        <li>
-            For humanities outputs, see <a href="https://endings.uvic.ca/principles.html" target="_blank">the Endings
-                Principles</a> for Digital Longevity.
-        </li>
-    </ul> -->
-  <!-- <nz-divider></nz-divider>
-    <h3>Supplemental Readings</h3>
-    <p>
-        TBD.
-    </p>
+<!-- <h4>Lecture: modern web technology</h4>
+<ul>
+  <li>
+    <a href="https://www.convex.dev/" target="_blank">Convex</a>: a reactive backend-as-a-service for web
+    developers.
+    Spotted from <a target="_blank"
+  href="https://twitter.com/jamesacowling/status/1591221339549216769">here</a>.
+</li>
+</ul> -->
+<!-- <h4>Lecture: modern alternatives for the classic Linux commands</h4>
+<ul>
+  <li>
+    A <a href="https://github.com/ibraheemdev/modern-unix" target="_blank">Modern Unix</a> collection
+  </li>
+  <li>
+    A <a href="https://jvns.ca/blog/2022/04/12/a-list-of-new-ish--command-line-tools/">list</a> of new(ish)
+    command line tools.
+  </li>
+</ul> -->
+<!-- <h4>Case study: all things open-source software</h4>
+<ul>
+  <li>
+    GNU GPL: <a href="https://twitter.com/tonroosendaal/status/1135229214607773696" target="_blank">Blender</a>
+  </li>
+  <li>
+    For research software outputs, see the FAIR principles: <a
+  href="https://www.nature.com/articles/s41597-022-01710-x" target="_blank">paper</a> & <a
+  href="https://researchdata.springernature.com/posts/introducing-the-fair-principles-for-research-software"
+target="_blank">blog post</a>.
+</li>
+<li>
+  For humanities outputs, see <a href="https://endings.uvic.ca/principles.html" target="_blank">the Endings
+Principles</a> for Digital Longevity.
+</li>
+</ul> -->
+<!-- <nz-divider></nz-divider>
+<h3>Supplemental Readings</h3>
+<p>
+  TBD.
+</p>
 
-    <span>
-        Weeks 5, 6:
-    </span>
-    <ul>
-        <li>
-            V. Thibeault, A. Allard, and P. Desrosiers, <a href="https://doi.org/10.1038/s41567-023-02303-0"
-                target="_blank">The Low-Rank Hypothesis of Complex Systems</a>, <i>Nature Physics</i> 1–9 (2024).
-        </li>
+<span>
+  Weeks 5, 6:
+</span>
+<ul>
+  <li>
+    V. Thibeault, A. Allard, and P. Desrosiers, <a href="https://doi.org/10.1038/s41567-023-02303-0"
+    target="_blank">The Low-Rank Hypothesis of Complex Systems</a>, <i>Nature Physics</i> 1–9 (2024).
+  </li>
 
-    </ul> -->
+</ul> -->
 
-  <nz-divider></nz-divider>
-  <h3>References</h3>
-  <p>
-    External class website: Prof. Aaron Clauset’s
-    <a href="https://aaronclauset.github.io/courses/5352/" target="_blank">
-      webpage
-    </a>
-    .
-  </p>
+<nz-divider></nz-divider>
+<h3>References</h3>
+<p>
+  External class website: Prof. Aaron Clauset’s
+  <a href="https://aaronclauset.github.io/courses/5352/" target="_blank">
+    webpage
+  </a>
+  .
+</p>
 </div>

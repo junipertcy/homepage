@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-textbooks',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './textbooks.component.html',
   styleUrls: ['./textbooks.component.css'],
 })

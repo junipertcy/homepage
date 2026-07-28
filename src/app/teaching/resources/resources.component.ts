@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { NzDividerComponent } from 'ng-zorro-antd/divider';
 
 import { LinkItemComponent } from 'src/app/@components/link-item/link-item.component';
@@ -7,7 +7,7 @@ import { LinkItemComponent } from 'src/app/@components/link-item/link-item.compo
 @Component({
   selector: 'app-resources',
   standalone: true,
-  imports: [CommonModule, LinkItemComponent, NzDividerComponent],
+  imports: [LinkItemComponent, NzDividerComponent],
   templateUrl: './resources.component.html',
   styleUrls: [
     './resources.component.css',

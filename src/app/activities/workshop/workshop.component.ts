@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { LinkItemComponent } from 'src/app/@components/link-item/link-item.component';
 
 
 @Component({
   selector: 'app-workshop',
   standalone: true,
-  imports: [CommonModule, LinkItemComponent],
+  imports: [LinkItemComponent],
   templateUrl: './workshop.component.html',
   styleUrl: './workshop.component.css'
 })

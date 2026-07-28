@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
   };
 
   // https://stackoverflow.com/questions/39888768
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   getScreenSize() {
     // 64px: header height; 70px: footer height; 40px: banner row;
     this.screenHeight = window.innerHeight - 64 - 70 - 40;

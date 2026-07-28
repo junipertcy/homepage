@@ -5,17 +5,21 @@
   <div style="padding-left: 10pt">
     <h3>High-dimensional probability</h3>
     <ul>
-      <li *ngFor="let book of hdp">
-        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
-        ({{ getLastNames(book.authors) }}, {{ book.year }})
-      </li>
+      @for (book of hdp; track book) {
+        <li>
+          <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+          ({{ getLastNames(book.authors) }}, {{ book.year }})
+        </li>
+      }
     </ul>
     <h3>Statistical inference</h3>
     <ul>
-      <li *ngFor="let book of si">
-        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
-        ({{ getLastNames(book.authors) }}, {{ book.year }})
-      </li>
+      @for (book of si; track book) {
+        <li>
+          <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+          ({{ getLastNames(book.authors) }}, {{ book.year }})
+        </li>
+      }
     </ul>
   </div>
   <div style="height: 15px"></div>
@@ -23,38 +27,48 @@
   <div style="padding-left: 10pt">
     <h3>Deep learning</h3>
     <ul>
-      <li *ngFor="let book of deep_learning">
-        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
-        ({{ getLastNames(book.authors) }}, {{ book.year }})
-      </li>
+      @for (book of deep_learning; track book) {
+        <li>
+          <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+          ({{ getLastNames(book.authors) }}, {{ book.year }})
+        </li>
+      }
     </ul>
     <h3>Optimization</h3>
     <ul>
-      <li *ngFor="let book of optimization">
-        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
-        ({{ getLastNames(book.authors) }}, {{ book.year }})
-      </li>
+      @for (book of optimization; track book) {
+        <li>
+          <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+          ({{ getLastNames(book.authors) }}, {{ book.year }})
+        </li>
+      }
     </ul>
     <h3>Applied topology</h3>
     <ul>
-      <li *ngFor="let book of cat">
-        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
-        ({{ getLastNames(book.authors) }}, {{ book.year }})
-      </li>
+      @for (book of cat; track book) {
+        <li>
+          <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+          ({{ getLastNames(book.authors) }}, {{ book.year }})
+        </li>
+      }
     </ul>
     <h3>Metric embeddings</h3>
     <ul>
-      <li *ngFor="let book of embeddings">
-        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
-        ({{ getLastNames(book.authors) }}, {{ book.year }})
-      </li>
+      @for (book of embeddings; track book) {
+        <li>
+          <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+          ({{ getLastNames(book.authors) }}, {{ book.year }})
+        </li>
+      }
     </ul>
     <h3>Theory</h3>
     <ul>
-      <li *ngFor="let book of toc">
-        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
-        ({{ getLastNames(book.authors) }}, {{ book.year }})
-      </li>
+      @for (book of toc; track book) {
+        <li>
+          <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+          ({{ getLastNames(book.authors) }}, {{ book.year }})
+        </li>
+      }
     </ul>
   </div>
   <div style="height: 15px"></div>
@@ -62,10 +76,12 @@
   <div style="padding-left: 10pt">
     <h3>Statistical mechanics</h3>
     <ul>
-      <li *ngFor="let book of statistical_mechanics">
-        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
-        ({{ getLastNames(book.authors) }}, {{ book.year }})
-      </li>
+      @for (book of statistical_mechanics; track book) {
+        <li>
+          <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+          ({{ getLastNames(book.authors) }}, {{ book.year }})
+        </li>
+      }
     </ul>
   </div>
   <div style="height: 15px"></div>
@@ -73,17 +89,21 @@
   <div style="padding-left: 10pt">
     <h3>Algebraic topology</h3>
     <ul>
-      <li *ngFor="let book of at">
-        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
-        ({{ getLastNames(book.authors) }}, {{ book.year }})
-      </li>
+      @for (book of at; track book) {
+        <li>
+          <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+          ({{ getLastNames(book.authors) }}, {{ book.year }})
+        </li>
+      }
     </ul>
     <h3>Homological algebra</h3>
     <ul>
-      <li *ngFor="let book of homological_algebra">
-        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
-        ({{ getLastNames(book.authors) }}, {{ book.year }})
-      </li>
+      @for (book of homological_algebra; track book) {
+        <li>
+          <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+          ({{ getLastNames(book.authors) }}, {{ book.year }})
+        </li>
+      }
     </ul>
     <p>
       Thanks to Lee Lady’s
@@ -95,17 +115,21 @@
     </p>
     <h3>Category theory</h3>
     <ul>
-      <li *ngFor="let book of category_theory">
-        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
-        ({{ getLastNames(book.authors) }}, {{ book.year }})
-      </li>
+      @for (book of category_theory; track book) {
+        <li>
+          <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+          ({{ getLastNames(book.authors) }}, {{ book.year }})
+        </li>
+      }
     </ul>
     <h3>Differential geometry</h3>
     <ul>
-      <li *ngFor="let book of differential_geometry">
-        <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
-        ({{ getLastNames(book.authors) }}, {{ book.year }})
-      </li>
+      @for (book of differential_geometry; track book) {
+        <li>
+          <a href="{{ book.title_url }}" target="_blank">{{ book.title }}</a>
+          ({{ getLastNames(book.authors) }}, {{ book.year }})
+        </li>
+      }
     </ul>
   </div>
   <div style="height: 15px"></div>

@@ -4,13 +4,14 @@
     <i nz-icon nzType="menu-fold" nzTheme="outline"></i>
   </div>
 </ng-template>
-<nz-layout class="layout" nz-row nzJustify="center" *ngIf="isLoaded">
-  <nz-header>
-    <a href="/">
-      <h1 id="logo-title">Tzu-Chi Yen</h1>
-    </a>
-    <div nz-row nzJustify="end">
-      <!-- <div nz-col nzSpan="2">
+@if (isLoaded) {
+  <nz-layout class="layout" nz-row nzJustify="center">
+    <nz-header>
+      <a href="/">
+        <h1 id="logo-title">Tzu-Chi Yen</h1>
+      </a>
+      <div nz-row nzJustify="end">
+        <!-- <div nz-col nzSpan="2">
         <nz-tag class="tag" id="resume" [nzColor]="'purple'">
           <a href="{{ resume_file }}" target="_blank" style="color: #a107dd">
             One-Page Resume
@@ -30,7 +31,7 @@
           role="button"
           aria-label="Toggle dark mode"
           (click)="toggleDarkMode()"
-        >
+          >
           {{ isDarkMode ? "brightness_7" : "nights_stay" }}
         </mat-icon>
       </div>
@@ -48,7 +49,7 @@
         [nzCollapsedWidth]="0"
         [nzZeroTrigger]="zeroTrigger"
         [nzWidth]="150"
-      >
+        >
         <div class="menu-container">
           <ul nz-menu nzMode="inline" [nzInlineCollapsed]="isCollapsed">
             <li
@@ -56,7 +57,7 @@
               class="menu-item"
               routerLinkActive="ant-menu-item-selected"
               routerLink="/publications"
-            >
+              >
               <span id="menu">Publications</span>
             </li>
             <li
@@ -64,7 +65,7 @@
               class="menu-item"
               routerLinkActive="ant-menu-item-selected"
               routerLink="/talks"
-            >
+              >
               <span id="menu">Talks</span>
             </li>
             <li
@@ -72,22 +73,21 @@
               class="menu-item"
               routerLinkActive="ant-menu-item-selected"
               routerLink="/teaching"
-            >
+              >
               <span id="menu">Teaching</span>
             </li>
-
             <ul
               nz-menu
               nzMode="inline"
               [nzInlineCollapsed]="isCollapsed"
               class="bottom-menu"
-            >
+              >
               <li
                 nz-menu-item
                 class="menu-item"
                 routerLinkActive="ant-menu-item-selected"
                 routerLink="/activities"
-              >
+                >
                 <span id="menu">Activities</span>
               </li>
               <li
@@ -95,7 +95,7 @@
                 class="menu-item"
                 routerLinkActive="ant-menu-item-selected"
                 routerLink="/about"
-              >
+                >
                 <span id="menu">About</span>
               </li>
             </ul>
@@ -107,7 +107,6 @@
       <router-outlet></router-outlet>
     </div>
   </div>
-
   <div nz-col nzSpan="24">
     <nz-footer nz-col nzSpan="24" id="footer">
       © Since 2016 Tzu-Chi Yen | Last update: {{ lastUpdateDate }} |
@@ -115,7 +114,7 @@
         href="https://github.com/junipertcy/homepage"
         target="_blank"
         style="color: rgba(0, 0, 0, 0.65)"
-      >
+        >
         <i nz-icon nzType="code" nzTheme="outline"></i>
       </a>
       | Powered by
@@ -123,7 +122,7 @@
         href="https://angular.io/"
         target="_blank"
         style="color: rgba(0, 0, 0, 0.65)"
-      >
+        >
         Angular
       </a>
       and
@@ -131,7 +130,7 @@
         href="https://ng.ant.design/"
         target="_blank"
         style="color: rgba(0, 0, 0, 0.65)"
-      >
+        >
         NG-ZORRO
       </a>
       &nbsp;
@@ -147,3 +146,4 @@
     </nz-footer>
   </div>
 </nz-layout>
+}
