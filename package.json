@@ -27,7 +27,7 @@
     "academicons": "github:jpswalsh/academicons",
     "d3": "^7.9.0",
     "darkreader": "^4.9.118",
-    "ng-zorro-antd": "20.1.2",
+    "ng-zorro-antd": "21.3.3",
     "rxjs": "^7.8.2",
     "tslib": "^2.8.1",
     "zone.js": "0.15.1"

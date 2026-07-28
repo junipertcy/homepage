@@ -28,7 +28,7 @@ import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 // import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 // import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 // import { NzDrawerModule } from 'ng-zorro-antd/drawer';
-import { NzContextMenuService, NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzContextMenuService, NzDropdownModule } from 'ng-zorro-antd/dropdown';
 // import { NzEmptyModule } from 'ng-zorro-antd/empty';
 // import { NzFormModule } from 'ng-zorro-antd/form';
 // import { NzI18nModule } from 'ng-zorro-antd/i18n';
@@ -87,7 +87,7 @@ import { NzTreeViewModule } from 'ng-zorro-antd/tree-view';
     // NzPageHeaderModule,
     // NzBreadCrumbModule
     NzButtonModule,
-    NzDropDownModule,
+    NzDropdownModule,
     NzListModule,
     NzCollapseModule,
     NzTreeViewModule
