@@ -24,7 +24,6 @@
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-brands-svg-icons": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
-    "@ng-bootstrap/ng-bootstrap": "^19.0.1",
     "academicons": "github:jpswalsh/academicons",
     "d3": "^7.9.0",
     "darkreader": "^4.9.118",
@@ -40,7 +39,6 @@
     "@angular/compiler-cli": "20.3.26",
     "@angular/core": "20.3.26",
     "@angular/language-service": "20.3.26",
-    "@popperjs/core": "^2.11.8",
     "@types/d3": "^7.4.3",
     "@types/node": "^24.10.4",
     "typescript": "5.9.2"

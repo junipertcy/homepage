@@ -9,7 +9,6 @@ import {
 } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimplexComponent } from './@components/simplex/simplex.component';
 import { GprComponent } from './@components/gpr/gpr.component';
 import { PixelPatternComponent } from './@components/pixel-pattern/pixel-pattern.component';
@@ -176,7 +175,6 @@ const appRoutes: Routes = [
     PublicationsComponent,
     TextbooksComponent,
     NotionComponent,
-    NgbModule,
     NgZorroAntdModule,
     RouterModule.forRoot(appRoutes, {
       enableTracing: false,
