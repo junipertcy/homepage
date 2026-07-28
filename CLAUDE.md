@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-The source for <https://junipertcy.info>, a personal academic/professional site (Angular 20, static, hosted on S3 + CloudFront). It is authored content, not a product: prose, publication lists, talks, and teaching materials are typed by hand into component templates. Treat page text as **the author's writing**, and code as the vehicle for it.
+The source for <https://junipertcy.info>, a personal academic/professional site (Angular 22, static, hosted on S3 + CloudFront). It is authored content, not a product: prose, publication lists, talks, and teaching materials are typed by hand into component templates. Treat page text as **the author's writing**, and code as the vehicle for it.
 
 ## Working agreement
 
@@ -31,7 +31,7 @@ pnpm up -i                          # interactive dependency update
 ./deploy.sh -d                      # additionally purge old js/css/font objects from S3 first
 ```
 
-**Verified working:** production build (~4s, 2.48 MB initial / 449 kB transfer). These four are the only scripts in `package.json` — `test`, `lint`, and `e2e` were removed in July 2026 because none of them had a working target.
+**Verified working:** production build (~6s, 2.59 MB initial / 447 kB transfer). These four are the only scripts in `package.json` — `test`, `lint`, and `e2e` were removed in July 2026 because none of them had a working target.
 
 **There are no tests and no linter.** This is deliberate, not an oversight: the 40 `*.spec.ts` files were untouched CLI boilerplate (`should create`, plus one spec asserting an `<h1>` reading `'Welcome to app!'` that has said `'Tzu-Chi Yen'` for years), and the Karma harness had been broken since the zone.js 0.15 upgrade. All of it was deleted rather than left to imply coverage that never existed. Do not add a test framework or `ng add angular-eslint` on your own initiative — both are decisions for the owner. **The production build is the only gate**, locally and in CI.
 
@@ -55,7 +55,7 @@ Almost every request is a content edit. Go straight to the file:
 
 ### The News timeline has a manual year switch
 
-`news.component.html` renders one `<ul *ngIf="thisYear === 'YYYY'">` block per year, and `news.component.ts` holds `thisYear = '<current year>'` as the default. **Adding a new year takes three coordinated edits:** a new `<nz-option nzValue="YYYY">` in the `nz-select`, a new `<ul *ngIf>` block, and bumping `thisYear`. Newest entries go at the top of their year's list; date format is `M/D`.
+`news.component.html` renders one `@if (thisYear === 'YYYY') { <ul>…</ul> }` block per year, and `news.component.ts` holds `thisYear = '<current year>'` as the default. **Adding a new year takes three coordinated edits:** a new `<nz-option nzValue="YYYY">` in the `nz-select`, a new `@if` block, and bumping `thisYear`. Newest entries go at the top of their year's list; date format is `M/D`.
 
 ### Publications are objects, not a data file
 
@@ -64,6 +64,8 @@ Almost every request is a content edit. Go straight to the file:
 ## Architecture
 
 **Hybrid NgModule + standalone.** `src/main.ts` bootstraps `AppModule` via `platformBrowserDynamic()` (not `bootstrapApplication`). `AppComponent` and `NewsComponent` are explicitly `standalone: false` and declared in `AppModule`; every other feature component is standalone and listed in `AppModule.imports`. Shared ng-zorro modules are re-exported from `src/app/ng-zorro-antd.module.ts` (most imports are commented out — uncomment rather than adding a new import path).
+
+**Templates use block control flow.** `@if` / `@for` throughout — the `*ngIf` / `*ngFor` structural directives were migrated out by the Angular 21 schematic. Write new markup in block syntax.
 
 **Routing** is a single inline `Routes` array in `src/app/app.module.ts:67-154`. Top-level routes use eager `component:`; the `activities` and `teaching` sections use lazy `loadComponent:` children with a `redirectTo` default. `**` falls through to `ErrorComponent`.
 
@@ -82,11 +84,18 @@ Almost every request is a content edit. Go straight to the file:
 - **`deploy.sh`** is gitignored and contains the real CloudFront distribution id. `deploy.sh.template` is the tracked, redacted version. Never commit `deploy.sh`, never paste its `DISTID` into a tracked file, and never "restore" it by copying the template over it. The two have **diverged**: `deploy.sh` now carries MIME-type coverage, `Cache-Control` headers, and scoped CloudFront invalidation that the template lacks. Porting those improvements back into `deploy.sh.template` (minus the id) is a reasonable follow-up, but it is a separate, explicit task.
 - **`src/styles/fonts/*.woff2`** are commercially licensed (Equity and Concourse, by Matthew Butterick) and gitignored on purpose. Never `git add -f` a font, never inline one as base64, never copy them elsewhere in the repo.
 - **Git LFS** tracks `*.pdf *.png *.jpg *.jpeg *.m4v`. Add binaries normally (the filter handles it) but do not convert an LFS pointer file into anything else, and do not assume a pointer file is corrupt.
-- **`dist/`, `.angular/`, `node_modules/`** are build artifacts. Note that `angular.json` says `outputPath: "dist"` while the Angular 20 application builder actually emits to `dist/browser/` — `deploy.sh` detects both.
+- **`dist/`, `.angular/`, `node_modules/`** are build artifacts. Note that `angular.json` says `outputPath: "dist"` while the application builder actually emits to `dist/browser/` — `deploy.sh` detects both.
 
 ## Dependency pins are exact on purpose
 
-Every `@angular/*` version is pinned without a `^`. This is deliberate: `@angular/core` declares `@angular/compiler` as an **exact** peer, so a floating range on one and a pin on the other silently drifts them apart (which is exactly what happened before July 2026 — core sat at 20.2.1 while the compiler floated to 20.3.15). Framework packages are on **20.3.26**, CLI/devkit on **20.3.32**, and `@angular/material`/`cdk` on **20.2.14** — Material never shipped a 20.3.x, and its `^20.0.0` peer range makes that combination supported. Bump these as a set, never individually.
+Every `@angular/*` version is pinned without a `^`. This is deliberate: `@angular/core` declares `@angular/compiler` as an **exact** peer, so a floating range on one and a pin on the other silently drifts them apart (which is exactly what happened before July 2026 — core sat at 20.2.1 while the compiler floated to 20.3.15). Framework, CLI, and `@angular/build` are all on **22.0.8**; `@angular/material`/`cdk` and `ng-zorro-antd` on **22.x**. `typescript` is pinned to **6.0.3** because Angular 22's `compiler-cli` peer is `>=6.0 <6.1` — **TypeScript 7 is published but rejected**, so do not follow pnpm's "7.0.2 is available" hint. Bump these as a set, never individually.
+
+**Upgrading a major takes more than `ng update @angular/core@N`.** Learned going 20 → 22 in July 2026:
+
+- `ng update` steps **one major at a time** and refuses to run on a dirty tree. Commit each verified step; do not `git stash` across an `ng update`, which purges `node_modules` and can leave the stash unpoppable.
+- If the local CLI is older than the target, `ng update` fetches a temporary CLI that **itself dirties `pnpm-lock.yaml`** and then trips its own clean-tree check. Install the target `@angular/cli` locally first.
+- Peer-blocking libraries must be bumped by hand *before* the framework, or the migration aborts: `@ant-design/icons-angular`, `@fortawesome/angular-fontawesome`, and `typescript`. Prefer this over `--force`.
+- The Angular 21 schematic rewrites every template to `@if`/`@for`. That is a large diff through hand-authored prose — **verify visible text is unchanged** (strip tags and diff the words) rather than eyeballing it.
 
 ## CI
 
@@ -95,7 +104,9 @@ Every `@angular/*` version is pinned without a `^`. This is deliberate: `@angula
 ## Known drift (report, don't silently fix)
 
 - `.ruff_cache/` (a Python linter cache) is a stray directory. It writes its own `.gitignore`, so it self-ignores and is clutter rather than a commit risk.
-- No `engines` field or `.nvmrc`. Local development is on Node 26, which Angular 20 does not officially support (20/22/24); CI pins Node 22. It works, but nothing enforces it.
+- No `engines` field or `.nvmrc`. Angular 22 requires `^22.22.3 || ^24.15.0 || >=26.0.0`, so local Node 26 is now officially supported and CI's `node-version: 22` resolves to a 22.x new enough to satisfy it. Nothing enforces either.
+- `tsconfig.json` carries `ignoreDeprecations: "6.0"` to silence a TS6 error on `baseUrl`, which is load-bearing — three files import via `'src/app/…'`. Rewriting those to relative paths would let both go.
+- `tsconfig.app.json` suppresses the `nullishCoalescingNotNullable` and `optionalChainNotNullable` extended diagnostics. The Angular 22 migration added this to preserve pre-22 behavior; removing the suppression may surface real template warnings.
 - `deploy.sh` uses `--acl public-read`, which only works because the bucket has ACLs enabled; modern S3 defaults reject it.
 
 ## Reference
