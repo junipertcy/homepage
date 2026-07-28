@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, HostListener } from '@angular/core';
+import { Component, OnInit, Inject, HostListener, ChangeDetectionStrategy } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -15,6 +15,7 @@ import { GithubService } from './@services/github.service';
   standalone: false,
   providers: [NzModalService, Title],
   templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: [
     '../styles/font-face.css',
     './app.component.css',

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { NzDividerComponent } from 'ng-zorro-antd/divider';
 
@@ -9,6 +9,7 @@ import { LinkItemComponent } from 'src/app/@components/link-item/link-item.compo
   standalone: true,
   imports: [LinkItemComponent, NzDividerComponent],
   templateUrl: './resources.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: [
     './resources.component.css',
   ]

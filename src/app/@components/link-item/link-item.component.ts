@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +9,7 @@ import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
   standalone: true,
   imports: [FontAwesomeModule],
   templateUrl: './link-item.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './link-item.component.css',
 })
 export class LinkItemComponent {

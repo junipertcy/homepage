@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -35,6 +35,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
     NzDividerModule
   ],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./teaching.component.css',]
 })
 export class TeachingComponent implements OnInit {

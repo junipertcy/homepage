@@ -72,7 +72,7 @@
         [nzHeader]="week.name"
         [nzActive]="week.active"
         [nzExtra]="extraTpl"
-        [nzDisabled]="week.disabled"
+        [nzCollapsible]="week.disabled ? 'disabled' : undefined"
         [ngStyle]="customStyle"
         nzExpandedIcon="right-square"
         >

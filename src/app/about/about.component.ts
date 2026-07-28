@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { faBluesky } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
@@ -12,6 +12,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
   standalone: true,
   imports: [FontAwesomeModule, NzIconModule, NzSpaceModule, NzGridModule, NzDividerModule],
   templateUrl: './about.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: [
     './about.component.css',
     '../../../node_modules/academicons/css/academicons.min.css',

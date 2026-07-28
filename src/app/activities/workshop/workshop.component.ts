@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { LinkItemComponent } from 'src/app/@components/link-item/link-item.component';
 
@@ -8,6 +8,7 @@ import { LinkItemComponent } from 'src/app/@components/link-item/link-item.compo
   standalone: true,
   imports: [LinkItemComponent],
   templateUrl: './workshop.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './workshop.component.css'
 })
 export class WorkshopComponent {

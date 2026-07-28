@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -9,6 +9,7 @@ import { Article, ArXiv } from './paper';
   standalone: true,
   imports: [NzTagModule, NzIconModule],
   templateUrl: './publications.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./publications.component.css',]
 })
 

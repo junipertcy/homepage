@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
 import { faRefresh, faArrowDown91 } from '@fortawesome/free-solid-svg-icons';
 import { ReloadService } from '../@services/reload.service';
@@ -9,6 +9,7 @@ import * as d3 from 'd3';
   selector: 'app-news',
   standalone: false,
   templateUrl: './news.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./news.component.css'],
 })
 export class NewsComponent {

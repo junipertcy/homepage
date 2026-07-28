@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ReloadService } from '../../@services/reload.service';
 
@@ -8,6 +8,7 @@ import * as d3 from 'd3';
   selector: 'app-gpr',
   standalone: true,
   templateUrl: './gpr.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./gpr.component.css'],
 })
 export class GprComponent implements OnInit, OnDestroy {

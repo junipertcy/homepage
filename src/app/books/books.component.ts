@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-books',
   standalone: true,
   templateUrl: './books.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent {

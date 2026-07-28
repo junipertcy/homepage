@@ -2,6 +2,7 @@ import {
   Component,
   OnInit,
   TrackByFunction,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InternalUriResolverPipe } from 'src/app/@pipes/internal-uri-resolver.pipe';
@@ -50,6 +51,7 @@ export interface Week {
     InternalUriResolverPipe
   ],
   templateUrl: './5352.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./5352.component.css'],
 })
 export class TeachingComponent5352 implements OnInit {

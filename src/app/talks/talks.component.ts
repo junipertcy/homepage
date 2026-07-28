@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { Str2urlPipe } from '../@pipes/str2url.pipe';
 
@@ -8,6 +8,7 @@ import { Str2urlPipe } from '../@pipes/str2url.pipe';
   standalone: true,
   imports: [NzTagModule, Str2urlPipe],
   templateUrl: './talks.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: [
     './talks.component.css',
   ]

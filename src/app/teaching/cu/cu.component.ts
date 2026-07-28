@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { RouterModule } from '@angular/router';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -11,6 +11,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
     NzDividerModule
 ],
   templateUrl: './cu.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: [
     './cu.component.css',
   ]

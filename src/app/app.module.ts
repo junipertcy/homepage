@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import {
   provideHttpClient,
   withInterceptorsFromDi,
+  withXhr
 } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
@@ -61,6 +62,8 @@ import { BooksComponent } from './books/books.component';
 import { NotionComponent } from './notion/notion.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AboutComponent } from './about/about.component';
+import { provideNzDateFnsAdapter } from 'ng-zorro-antd/core/time';
+
 registerLocaleData(en);
 
 const appRoutes: Routes = [
@@ -188,7 +191,7 @@ const appRoutes: Routes = [
     { provide: NZ_I18N, useValue: en_US },
     { provide: NZ_ICONS, useValue: icons },
     provideAnimationsAsync(),
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withXhr(), withInterceptorsFromDi()), provideNzDateFnsAdapter(),
   ],
 })
 export class AppModule {
