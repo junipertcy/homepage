@@ -1,7 +1,7 @@
 // This component is based on Iacopini's Python snippet
 // and then translated by AI
 // SEE: https://github.com/iaciac/py-draw-simplicial-complex
-import { Component, OnInit, ElementRef, ViewChild, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnDestroy, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ReloadService } from '../../@services/reload.service';
 import * as d3 from 'd3';
@@ -13,7 +13,7 @@ import * as d3 from 'd3';
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./simplex.component.css'],
 })
-export class SimplexComponent implements OnInit, OnDestroy {
+export class SimplexComponent implements OnDestroy {
   private subscription: Subscription;
 
   @ViewChild('simplexContainer', { static: true }) simplexContainer!: ElementRef;
@@ -24,6 +24,10 @@ export class SimplexComponent implements OnInit, OnDestroy {
         this.drawSimplicialComplex();
       }
     });
+    // Draw after the browser has laid the container out: this is the only one of
+    // the three visualizations that measures its own width, and in ngOnInit that
+    // measurement is still 0, which produced a zero-width svg.
+    afterNextRender(() => this.drawSimplicialComplex());
   }
 
   generateRandomSimplices(): number[][] {
@@ -64,10 +68,6 @@ export class SimplexComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnInit() {
-    this.drawSimplicialComplex();
-  }
-
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
@@ -82,7 +82,8 @@ export class SimplexComponent implements OnInit, OnDestroy {
       .selectAll('svg')
       .remove();
     const simplices = this.generateRandomSimplices();
-    const width = this.simplexContainer.nativeElement.clientWidth;
+    const el = this.simplexContainer.nativeElement;
+    const width = el.clientWidth || Math.round(el.getBoundingClientRect().width) || 100;
     const height = 100;
 
     const margin = 5; // Margin to keep nodes away from the edges
