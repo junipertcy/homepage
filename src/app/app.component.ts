@@ -17,7 +17,6 @@ import { GithubService } from './@services/github.service';
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: [
-    '../styles/font-face.css',
     './app.component.css',
   ]
 })
@@ -27,7 +26,7 @@ export class AppComponent implements OnInit {
   title = 'app';
   screenHeight: number = 0;
   // isDonationBannerShown = true;
-  isLoaded = false;
+  isLoaded = true;
   isCollapsed = false;
   cv_file = "../../assets/pdf/Tzu-Chi_Yen_CV.pdf";
   resume_file = "../../assets/pdf/Tzu-Chi_Yen_Resume.pdf";
@@ -100,10 +99,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  // A hot fix for the homepage which renders prematurely
   ngOnInit(): void {
-    setTimeout(() => { this.isLoaded = true; }, 500);
-
     this.githubService.getLastCommitDate().subscribe({
       next: (date) => this.lastUpdateDate = date,
       error: (error) => console.error('Error fetching last commit date:', error),
