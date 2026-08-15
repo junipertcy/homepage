@@ -45,6 +45,8 @@ testem.log
 /typings
 yarn-error.log
 deploy.sh
+local_files_checksum.txt
+s3_files_metadata.txt
 
 # e2e
 /e2e/*.js
