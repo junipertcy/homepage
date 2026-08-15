@@ -1,6 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
@@ -38,20 +39,26 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./teaching.component.css',]
 })
-export class TeachingComponent implements OnInit {
+export class TeachingComponent implements OnInit, OnDestroy {
 
   isCUActive = false; // Boolean to track if CU should be highlighted
+
+  private routerEventsSub?: Subscription;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     // Subscribe to router events to detect route changes
-    this.router.events.subscribe(() => {
+    this.routerEventsSub = this.router.events.subscribe(() => {
       this.checkIfCuIsActive();
     });
 
     // Initial check when component loads
     this.checkIfCuIsActive();
+  }
+
+  ngOnDestroy(): void {
+    this.routerEventsSub?.unsubscribe();
   }
 
   checkIfCuIsActive(): void {
