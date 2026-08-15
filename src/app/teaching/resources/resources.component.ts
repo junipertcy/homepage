@@ -21,7 +21,7 @@ export class ResourcesComponent {
 
   dummyList2 = [
     {
-      link: "http://www.math.ucsd.edu/~fan/teach/gradpol.html",
+      link: "https://www.math.ucsd.edu/~fan/teach/gradpol.html",
       title: "A few words on research for graduate students.",
       author: "By Fan Chung.",
       publication: ""

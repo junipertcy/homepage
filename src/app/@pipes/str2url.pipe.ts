@@ -84,9 +84,9 @@ export class Str2urlPipe implements PipeTransform {
       case 'Mikko Kivelä':
         return 'http://www.mkivela.com/';
       case 'Benjamin F. Maier':
-        return 'http://benmaier.org/';
+        return 'https://benmaier.org/';
       case 'Brendan D. McKay':
-        return 'http://users.cecs.anu.edu.au/~bdm/index.html';
+        return 'https://users.cecs.anu.edu.au/~bdm/index.html';
       case 'Navid Dianati':
         return 'https://scholar.google.com/citations?hl=en&user=guPKE8QAAAAJ';
       case 'Martin Rosvall':
@@ -94,13 +94,13 @@ export class Str2urlPipe implements PipeTransform {
       case 'Ingo Scholtes':
         return 'https://www.ifi.uzh.ch/en/dag/people/scholtes.html';
       case 'Andy Wuensche':
-        return 'http://www.ddlab.org/AW.html';
+        return 'https://www.ddlab.org/AW.html';
       case 'Daniel Larremore':
         return 'https://larremorelab.github.io/';
       case 'Joshua Grochow':
         return 'https://home.cs.colorado.edu/~jgrochow/index.html';
       case 'Vincent Traag':
-        return 'http://www.traag.net/';
+        return 'https://www.traag.net/';
       case 'Joseph Rotman':
         return 'https://math.illinois.edu/resources/department-history/faculty-memoriam/joseph-rotman';
       case 'Charles Weibel':
@@ -135,15 +135,15 @@ export class Str2urlPipe implements PipeTransform {
       case 'Graph-tool':
         return 'https://graph-tool.skewed.de/';
       case 'NetSciDraw':
-        return 'http://coco.binghamton.edu/netscidraw/';
+        return 'https://coco.binghamton.edu/netscidraw/';
       case 'Gephi':
         return 'https://gephi.org/';
       case 'webweb':
-        return 'http://danlarremore.com/webweb/';
+        return 'https://danlarremore.com/webweb/';
       case 'igraph':
-        return 'http://igraph.org/';
+        return 'https://igraph.org/';
       case 'MuxViz':
-        return 'http://muxviz.net/';
+        return 'https://muxviz.net/';
       case 'Pymnet':
         return 'http://www.mkivela.com/pymnet/';
       case 'NetworkX':
@@ -161,13 +161,13 @@ export class Str2urlPipe implements PipeTransform {
       case 'GraphPruning':
         return 'https://github.com/naviddianati/GraphPruning';
       case 'Infomap':
-        return 'http://www.mapequation.org/index.html';
+        return 'https://www.mapequation.org/index.html';
       case 'pathpy':
-        return 'http://www.pathpy.net/';
+        return 'https://www.pathpy.net/';
       case 'tikz-network':
         return 'https://github.com/hackl/tikz-network';
       case 'DDLab':
-        return 'http://www.ddlab.org/';
+        return 'https://www.ddlab.org/';
       case 'leidenalg':
         return 'https://github.com/vtraag/leidenalg';
       default:

@@ -25,13 +25,13 @@ export class TextbooksComponent implements OnInit {
   }
 
   lee_lady_blurbs =
-    'http://www.math.hawaii.edu/~lee/homolog/books-homolog.html';
+    'https://www.math.hawaii.edu/~lee/homolog/books-homolog.html';
 
   statistical_mechanics = [
     {
       authors: 'David MacKay',
       title: 'Information Theory, Inference, and Learning Algorithms',
-      title_url: 'http://www.inference.org.uk/itprnn/book.html',
+      title_url: 'https://www.inference.org.uk/itprnn/book.html',
       year: '2003',
     },
   ];
@@ -109,7 +109,7 @@ export class TextbooksComponent implements OnInit {
     {
       authors: 'Cris Moore and Stephan Mertens',
       title: 'The Nature Of Computation',
-      title_url: 'http://nature-of-computation.org/',
+      title_url: 'https://nature-of-computation.org/',
       year: '2011',
     },
   ];
@@ -201,7 +201,7 @@ export class TextbooksComponent implements OnInit {
     {
       authors: 'Chris Bishop and Hugh Bishop',
       title: 'Deep Learning: Foundations and Concepts',
-      title_url: 'http://www.bishopbook.com/',
+      title_url: 'https://www.bishopbook.com/',
       year: '2024',
     },
     {
