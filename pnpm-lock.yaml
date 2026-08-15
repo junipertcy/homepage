@@ -51,7 +51,7 @@ importers:
         specifier: ^7.3.1
         version: 7.3.1
       academicons:
-        specifier: github:jpswalsh/academicons
+        specifier: github:jpswalsh/academicons#0c4484041d3b89d9eca95073d3a34c56cb11f46a
         version: https://codeload.github.com/jpswalsh/academicons/tar.gz/0c4484041d3b89d9eca95073d3a34c56cb11f46a
       d3:
         specifier: ^7.9.0
