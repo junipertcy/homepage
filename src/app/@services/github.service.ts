@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, timeout, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,17 +13,19 @@ export class GithubService {
 
   getLastCommitDate(): Observable<string> {
     return this.http.get<any[]>(this.apiUrl).pipe(
+      timeout(5000),
       map(commits => {
-        if (commits.length > 0) {
-          const lastCommitDate = new Date(commits[0].commit.author.date);
-          return lastCommitDate.toLocaleDateString('en-US', {
+        const date = Array.isArray(commits) ? commits[0]?.commit?.author?.date : undefined;
+        if (date) {
+          return new Date(date).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'short',
             day: 'numeric'
           });
         }
         return 'Unknown';
-      })
+      }),
+      catchError(() => of('Unknown'))
     );
   }
 }
