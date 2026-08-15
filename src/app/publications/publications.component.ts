@@ -86,7 +86,7 @@ export class PublicationsComponent implements OnInit {
     this.c2.title = 'What Makes New York So Noisy? Reasoning Noise Pollution by Mining Multimodal Geo-Social Big Data';
     this.c2.authors = 'Hsun-Ping Hsieh, Tzu-Chi Yen, and Cheng-Te Li';
     this.c2.venue = '<i>ACM International Conference on Multimedia</i>, Brisbane, Australia, Oct. 2015.<br>';
-    this.c2.highlight = 'IBM Grand Challenge (<a href="http://d.junipertcy.info/images/a/ae/ACMMM15-Grand_Challenge-Proposal.pdf" download="ACMMM15-Grand_Challenge-Proposal.pdf">New York City 360 ̊ </a>) finalist.<br>';
+    this.c2.highlight = 'IBM Grand Challenge (<a href="/assets/pdf/abstract/ACMMM15-Grand_Challenge-Proposal.pdf" download="ACMMM15-Grand_Challenge-Proposal.pdf">New York City 360 ̊ </a>) finalist.<br>';
     this.c2.code = 'https://github.com/junipertcy/uwalk';
     this.c2.slides = 'https://d.junipertcy.info/images/c/c7/Research-talk-151028-acmmm.pptx';
     this.c2.paper_pdf = 'https://filen.io/d/07a4be0f-6e04-4428-a6c5-9cf2466bfdff#!3MQrl67WJ18DaoVopowo6oUuhzyqbqzV';
@@ -103,7 +103,7 @@ export class PublicationsComponent implements OnInit {
     this.o1.authors = 'Tzu-Chi Yen, Tzu-Yun Lin, Ching-Yuan Yeh, Hsun-Ping Hsieh, and Cheng-Te Li';
     this.o1.venue = '<i>ACM SIGKDD International Workshop on Urban Computing</i>, Sydney, Australia, Aug. 2015.<br>';
     this.o1.paper_pdf = 'https://filen.io/d/fc0bf12d-6744-4c0d-998a-0c67d309a1c9#!Azd5YRDAL1CsD9DW1rdJ9O4Yz80fgrCb';
-    this.o1.slides = 'http://d.junipertcy.info/images/d/d1/Research-talk-150810-urbcomp.pdf';
+    this.o1.slides = '/assets/pdf/slides/Research-talk-150810-urbcomp.pdf';
     this.o1.code = 'https://github.com/junipertcy/uConstruction';
     this.o1.highlight = '';
     this.o1.favorite = true;
