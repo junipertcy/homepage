@@ -101,8 +101,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.githubService.getLastCommitDate().subscribe({
-      next: (date) => this.lastUpdateDate = date,
-      error: (error) => console.error('Error fetching last commit date:', error)
+      next: (date) => this.lastUpdateDate = date
     });
 
 

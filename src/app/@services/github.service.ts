@@ -25,7 +25,10 @@ export class GithubService {
         }
         return 'Unknown';
       }),
-      catchError(() => of('Unknown'))
+      catchError((error) => {
+        console.error('Error fetching last commit date:', error);
+        return of('Unknown');
+      })
     );
   }
 }
