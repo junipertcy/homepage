@@ -67,7 +67,7 @@ Almost every request is a content edit. Go straight to the file:
 
 **Templates use block control flow.** `@if` / `@for` throughout — the `*ngIf` / `*ngFor` structural directives were migrated out by the Angular 21 schematic. Write new markup in block syntax.
 
-**Routing** is a single inline `Routes` array in `src/app/app.module.ts:67-154`. Top-level routes use eager `component:`; the `activities` and `teaching` sections use lazy `loadComponent:` children with a `redirectTo` default. `**` falls through to `ErrorComponent`.
+**Routing** is a single inline `Routes` array in `src/app/app.module.ts:67-154`. Top-level routes use eager `component:`; the `activities` and `teaching` sections use lazy `loadComponent:` children with a `redirectTo` default. `**` falls through to `ErrorComponent`. `src/sitemap.xml` is a hand-maintained mirror of this route table (one `<url>` per content route; `/notes` deliberately omitted) — adding or removing a route means editing it too, and nothing checks the two agree.
 
 **Page titles are derived from the URL**, not from route `data`. `AppComponent.getTitleFromRouter()` subscribes to `router.events` and builds `'TCY | ' + path` (or `'Tzu-Chi Yen'` for `/`). Adding a route gets a title automatically; overriding one means adding `data: { title: ... }`.
 
@@ -99,7 +99,7 @@ Every `@angular/*` version is pinned without a `^`. This is deliberate: `@angula
 
 ## CI
 
-`.github/workflows/build.yml` runs the production build on push and PR to `main`. It has to stub the licensed fonts first: `src/styles/font-face.css` has 32 `url()` references to gitignored `.woff2` files, and Angular's `angular-css-resource` plugin **fails the build** on any it cannot resolve — so a bare checkout cannot compile. The workflow writes zero-byte placeholders at those paths. That makes the gate a check that the app *compiles*; it says nothing about how text renders. Keep the stub step in sync if font filenames change.
+`.github/workflows/build.yml` runs the production build on push and PR to `main`. It has to stub the licensed fonts first: `src/styles/font-face.css` has 32 `url()` references to gitignored `.woff2` files, and Angular's `angular-css-resource` plugin **fails the build** on any it cannot resolve — so a bare checkout cannot compile. The workflow writes zero-byte placeholders at those paths. That makes the gate a check that the app *compiles*; it says nothing about how text renders. Keep the stub step in sync if font filenames change. `package.json` declares `engines.node` (Angular 22's own supported range) and CI builds on Node 26, matching local dev; nothing enforces either.
 
 ## Known drift (report, don't silently fix)
 
