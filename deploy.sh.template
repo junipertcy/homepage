@@ -22,6 +22,14 @@ if ! command -v ng &>/dev/null || ! command -v aws &>/dev/null; then
     exit 1
 fi
 
+# Preflight: fail fast if AWS credentials are absent or expired, instead of
+# letting a failed S3 listing masquerade as "every file changed".
+if ! aws sts get-caller-identity --profile default >/dev/null 2>&1; then
+    echo "Error: AWS credentials are missing or expired (sts get-caller-identity failed)."
+    echo "Refresh the session (e.g. 'aws sso login --profile default') and retry."
+    exit 1
+fi
+
 # Default action is to show usage if no arguments are passed
 if [ $# -eq 0 ]; then
     usage
@@ -31,10 +39,16 @@ fi
 # Function to determine content type based on file extension
 get_mime_type() {
     local filename="$1"
+    local build_dir="${2:-./dist/browser}"  # Accept build_dir as parameter with default
     local extension="${filename##*.}"  # Get everything after the last dot
+
+    # Convert extension to lowercase for consistent matching (compatible with older bash)
+    extension=$(echo "$extension" | tr '[:upper:]' '[:lower:]')
+
     case "$extension" in
-        js)
-            echo "application/javascript"
+        js|mjs)
+            # Use text/javascript for ES modules (the standard MIME type)
+            echo "text/javascript"
             ;;
         css)
             echo "text/css"
@@ -47,14 +61,70 @@ get_mime_type() {
             ;;
         wasm)
             # If your Angular app uses WebAssembly, set application/wasm
-            echo "application/wasm"  # [2]
+            echo "application/wasm"
             ;;
         map)
             echo "application/json"
             ;;
+        svg)
+            echo "image/svg+xml"
+            ;;
+        png)
+            echo "image/png"
+            ;;
+        jpg|jpeg)
+            echo "image/jpeg"
+            ;;
+        gif)
+            echo "image/gif"
+            ;;
+        ico)
+            echo "image/x-icon"
+            ;;
+        pdf)
+            echo "application/pdf"
+            ;;
+        woff)
+            echo "font/woff"
+            ;;
+        woff2)
+            echo "font/woff2"
+            ;;
+        ttf)
+            echo "font/ttf"
+            ;;
+        eot)
+            echo "application/vnd.ms-fontobject"
+            ;;
         *)
             # Fallback to auto-detection via the 'file' command
-            file --mime-type -b "./dist/$filename"
+            if [ -f "$build_dir/$filename" ]; then
+                file --mime-type -b "$build_dir/$filename"
+            else
+                echo "application/octet-stream"
+            fi
+            ;;
+    esac
+}
+
+# Function to determine Cache-Control based on whether the filename is content-hashed.
+# Hashed build outputs (main-VFR5KSAR.js, styles-6YDRY5JP.css, chunk-*.js) can never change
+# under the same name, so they are safe to cache forever. Everything else is served from a
+# stable path and must be revalidated.
+get_cache_control() {
+    local filename="$1"
+
+    case "$filename" in
+        index.html)
+            # The entry point: must always be revalidated so a new build is picked up.
+            echo "no-cache"
+            ;;
+        *-[A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9].js|*-[A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9].css)
+            echo "public, max-age=31536000, immutable"
+            ;;
+        *)
+            # assets/, favicon.ico, media/ — stable paths whose contents can be replaced.
+            echo "public, max-age=3600"
             ;;
     esac
 }
@@ -68,27 +138,50 @@ sync_to_s3() {
     }
 
     echo "Checking for changed files..."
-    local local_files_checksum="./local_files_checksum.txt"
-    local s3_files_metadata="./s3_files_metadata.txt"
+    local tmp_dir
+    tmp_dir=$(mktemp -d) || { echo "mktemp failed"; exit 1; }
+    trap 'rm -rf "$tmp_dir"' EXIT INT TERM
+    local local_files_checksum="$tmp_dir/local_files_checksum.txt"
+    local s3_files_metadata="$tmp_dir/s3_files_metadata.txt"
+    local build_dir="./dist/browser"
 
-    # Generate list of local files and their checksums
-    find ./dist -type f -exec md5sum {} + | sed 's|./dist/||' | sort >"$local_files_checksum"
+    # Check if browser subdirectory exists (Angular v17+ application builder)
+    if [ ! -d "$build_dir" ]; then
+        build_dir="./dist"
+    fi
+
+    echo "Using build directory: $build_dir"
+
+    # Generate list of local files and their checksums (strip build_dir prefix for S3 key matching)
+    find "$build_dir" -type f -exec md5sum {} + | sed "s|$build_dir/||" | sort >"$local_files_checksum"
 
     # Get list of existing files in S3 and their checksums
-    aws s3api list-objects \
+    # Capture and check the listing explicitly: a pipeline discards the aws exit
+    # code, and an empty listing makes every local file look changed (full re-upload).
+    local s3_listing
+    if ! s3_listing=$(aws s3api list-objects \
         --bucket junipertcy.info \
         --query "Contents[].{Key: Key, ETag: ETag}" \
         --output text \
-        | awk '{print $1 "  " $2}' \
-        | sed 's/"//g' \
-        | sort > "$s3_files_metadata"
+        --profile default); then
+        echo "Error: failed to list s3://junipertcy.info. Aborting before any upload."
+        exit 1
+    fi
+    printf '%s\n' "$s3_listing" | awk '{print $1 "  " $2}' | sed 's/"//g' | sort > "$s3_files_metadata"
+
+    # Paths that need a CloudFront invalidation: only files served from a stable path.
+    # Content-hashed files get a brand-new URL each build, so the edge cache can never
+    # hold a stale copy of them and invalidating them would just waste the free quota.
+    local invalidation_paths=()
 
     # Sync files that differ by MD5 or don’t exist in S3
     while IFS= read -r line; do
         local md5=$(echo "$line" | awk '{print $1}')
         local file_path=$(echo "$line" | awk '{print $2}')
-        local s3_md5=$(grep "$file_path" "$s3_files_metadata" | awk '{print $1}')
-        
+        # Anchor the match to the whole key, otherwise a key that is a substring of
+        # another (e.g. "main.js" inside "vendor-main.js") picks up the wrong ETag.
+        local s3_md5=$(awk -v key="$file_path" '$2 == key {print $1}' "$s3_files_metadata")
+
         if [[ "$md5" != "$s3_md5" ]]; then
             echo "MD5 mismatch or new file - Syncing file: $file_path: local=$md5 vs s3=$s3_md5"
             metadata=$(aws s3api head-object \
@@ -99,30 +192,49 @@ sync_to_s3() {
                 --profile default 2>/dev/null)
 
             if [[ "$md5" != "$metadata" ]]; then
-                mime_type=$(get_mime_type "$file_path")
-                aws s3 cp "./dist/$file_path" "s3://junipertcy.info/$file_path" \
+                mime_type=$(get_mime_type "$file_path" "$build_dir")
+                cache_control=$(get_cache_control "$file_path")
+                echo "Uploading $file_path with Content-Type: $mime_type; Cache-Control: $cache_control"
+                if aws s3 cp "$build_dir/$file_path" "s3://junipertcy.info/$file_path" \
                     --acl public-read \
                     --metadata md5checksum=$md5 \
                     --content-type "$mime_type" \
-                    --profile default \
-                    || echo "Failed to sync $file_path"
+                    --cache-control "$cache_control" \
+                    --profile default; then
+                    # Only stable paths can go stale at the edge.
+                    if [[ "$cache_control" != "public, max-age=31536000, immutable" ]]; then
+                        invalidation_paths+=("/$file_path")
+                    fi
+                else
+                    echo "Failed to sync $file_path"
+                fi
             else
                 echo "Yet, metadata match - No need to sync: $file_path"
             fi
         fi
     done <"$local_files_checksum"
 
-    # Invalidate CloudFront cache
-    echo "Invalidating CloudFront distribution..."
-    aws cloudfront create-invalidation \
-        --distribution-id $DISTID \
-        --paths "/*" \
-        --profile default \
-        || echo "Failed to invalidate CloudFront distribution"
+    # Invalidate CloudFront cache for the changed stable paths only
+    if [ ${#invalidation_paths[@]} -eq 0 ]; then
+        echo "No stable paths changed - skipping CloudFront invalidation."
+    elif [ ${#invalidation_paths[@]} -gt 100 ]; then
+        # A wildcard counts as one path against the 1000/month free quota, and beyond
+        # ~100 individual paths it is both cheaper and faster than listing them.
+        echo "Invalidating CloudFront distribution (${#invalidation_paths[@]} paths changed - using wildcard)..."
+        aws cloudfront create-invalidation \
+            --distribution-id $DISTID \
+            --paths "/*" \
+            --profile default \
+            || echo "Failed to invalidate CloudFront distribution"
+    else
+        echo "Invalidating CloudFront distribution (${#invalidation_paths[@]} path(s))..."
+        aws cloudfront create-invalidation \
+            --distribution-id $DISTID \
+            --paths "${invalidation_paths[@]}" \
+            --profile default \
+            || echo "Failed to invalidate CloudFront distribution"
+    fi
 
-    # Cleanup
-    echo "Cleaning up temporary files..."
-    rm -f "$local_files_checksum" "$s3_files_metadata"
     echo "Sync completed."
 }
 
@@ -135,6 +247,7 @@ while getopts ":hds" option; do
         ;;
     d)
         # Remove specific contents before syncing
+        echo "Removing old build artifacts from S3..."
         aws s3 rm s3://junipertcy.info --recursive \
             --exclude "*" \
             --include "*.js" \
@@ -143,6 +256,8 @@ while getopts ":hds" option; do
             --include "*.woff" \
             --include "*.woff2" \
             --profile default
+        # Also remove the browser/ subdirectory if it exists
+        aws s3 rm s3://junipertcy.info/browser/ --recursive --profile default 2>/dev/null || true
         sync_to_s3
         exit 0
         ;;
