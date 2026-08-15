@@ -15,6 +15,7 @@ import * as d3 from 'd3';
 })
 export class SimplexComponent implements OnDestroy {
   private subscription: Subscription;
+  private simulation: d3.Simulation<any, undefined> | null = null;
 
   @ViewChild('simplexContainer', { static: true }) simplexContainer!: ElementRef;
 
@@ -69,6 +70,7 @@ export class SimplexComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
+    this.simulation?.stop();
     this.subscription.unsubscribe();
   }
 
@@ -78,6 +80,7 @@ export class SimplexComponent implements OnDestroy {
 
   private drawSimplicialComplex() {
     // Clear existing SVG content first
+    this.simulation?.stop();
     d3.select(this.simplexContainer.nativeElement)
       .selectAll('svg')
       .remove();
@@ -127,6 +130,7 @@ export class SimplexComponent implements OnDestroy {
       .force('center', d3.forceCenter(0, 0))
       .force('gravity', d3.forceRadial(0, 0, 0).strength(0.1)) // Added radial force for gravity
       .on('tick', ticked);
+    this.simulation = simulation;
 
 
     const triangle = svg.selectAll('.triangle')
