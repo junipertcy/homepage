@@ -80,11 +80,16 @@
       </nz-collapse-panel>
       <ng-template #extraTpl>
         @if (week.pdfUrl) {
-          <a>
+          <a
+            (click)="openPDFInNewTab($event, week.pdfUrl)"
+            (keydown.enter)="openPDFInNewTab($event, week.pdfUrl)"
+            role="button"
+            tabindex="0"
+            aria-label="Open lecture notes"
+          >
             <span
               nz-icon
               nzType="book"
-              (click)="openPDFInNewTab($event, week.pdfUrl)"
             ></span>
           </a>
         }

@@ -24,7 +24,7 @@
                 @if (article.favorite) {
                   <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
                 }
-                <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
+                <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;" aria-label="Toggle summary">
                   <i nz-icon nzType="edit" nzTheme="fill"></i>
                 </nz-tag>
               </h4>
@@ -48,7 +48,7 @@
                 <nz-tag><a href="{{article.docs}}">Docs</a></nz-tag>
               }
               @if (article.tweets) {
-                <nz-tag><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+                <nz-tag><a href="{{article.tweets}}" aria-label="Related tweet"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
               }
               @if (article.toggle == true) {
                 <div class='abstract'>{{article.summary}}
@@ -78,7 +78,7 @@
             @if (article.favorite) {
               <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
             }
-            <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
+            <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;" aria-label="Toggle summary">
               <i nz-icon nzType="edit" nzTheme="fill"></i>
             </nz-tag>
           </h4>
@@ -104,7 +104,7 @@
             <nz-tag class="tag"><a href="{{article.docs}}">Docs</a></nz-tag>
           }
           @if (article.tweets) {
-            <nz-tag class="tag"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+            <nz-tag class="tag"><a href="{{article.tweets}}" aria-label="Related tweet"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
           }
           @if (article.toggle == true) {
             <div class='abstract'>{{article.summary}}
@@ -124,7 +124,7 @@
             @if (article.favorite) {
               <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
             }
-            <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
+            <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;" aria-label="Toggle summary">
               <i nz-icon nzType="edit" nzTheme="fill"></i>
             </nz-tag>
           </h4>
@@ -147,7 +147,7 @@
             <nz-tag class="tag"><a href="{{article.docs}}">Docs</a></nz-tag>
           }
           @if (article.tweets) {
-            <nz-tag class="tag"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+            <nz-tag class="tag"><a href="{{article.tweets}}" aria-label="Related tweet"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
           }
           @if (article.toggle == true) {
             <div class='abstract'>{{article.summary}}
@@ -167,7 +167,7 @@
             @if (article.favorite) {
               <i nz-icon nzType="gift" nzTheme="fill" style="color: palevioletred"></i>
             }
-            <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;">
+            <nz-tag nzMode="checkable" [nzChecked]="false" (nzCheckedChange)="article.toggle = !article.toggle" style="cursor: pointer;" aria-label="Toggle summary">
               <i nz-icon nzType="edit" nzTheme="fill"></i>
             </nz-tag>
           </h4>
@@ -189,7 +189,7 @@
             <nz-tag class="tag"><a href="{{article.docs}}">Docs</a></nz-tag>
           }
           @if (article.tweets) {
-            <nz-tag class="tag"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+            <nz-tag class="tag"><a href="{{article.tweets}}" aria-label="Related tweet"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
           }
           @if (article.toggle == true) {
             <div class='abstract'>{{article.summary}}
@@ -224,7 +224,7 @@
             <nz-tag class="tag"><a href="{{article.docs}}">Docs</a></nz-tag>
           }
           @if (article.tweets) {
-            <nz-tag class="tag"><a href="{{article.tweets}}"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
+            <nz-tag class="tag"><a href="{{article.tweets}}" aria-label="Related tweet"><i nz-icon nzType="twitter" nzTheme="outline"></i></a></nz-tag>
           }
           @for (link of article.links; track link) {
             <nz-tag class="tag"><a href="{{link.url}}">{{link.title}}</a></nz-tag>

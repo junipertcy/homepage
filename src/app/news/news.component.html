@@ -28,7 +28,7 @@
         interest in systems research:
       </div>
       <div nz-col nzXs="24" nzSm="4" nzMd="3" style="text-align: right">
-        <a (click)="reloadPattern()">
+        <a (click)="reloadPattern()" (keydown.enter)="reloadPattern()" role="button" tabindex="0" aria-label="Regenerate the visualizations">
           <fa-icon [icon]="faRefresh"></fa-icon>
         </a>
       </div>
@@ -625,7 +625,7 @@
   <ul>
     <li class="event-item">
       <div class="event-date">
-        <a href="/cllin" target="_blank" class="icon-link">
+        <a href="/cllin" target="_blank" class="icon-link" aria-label="Tribute page">
           <fa-icon [icon]="faSquareUpRight"></fa-icon>
         </a>
       </div>
