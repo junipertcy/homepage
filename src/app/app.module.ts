@@ -57,7 +57,6 @@ import { CllinComponent } from './cllin/cllin.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { TextbooksComponent } from './textbooks/textbooks.component';
 import { ReadingComponent } from './reading/reading.component';
-import { NotesComponent } from './notes/notes.component';
 import { BooksComponent } from './books/books.component';
 import { NotionComponent } from './notion/notion.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -107,7 +106,6 @@ const appRoutes: Routes = [
   { path: 'books', component: BooksComponent },
   { path: 'cllin', component: CllinComponent },
   { path: 'notion', component: NotionComponent },
-  { path: 'notes', component: NotesComponent },
   { path: 'privacy', component: PrivacyComponent },
   { path: 'publications', component: PublicationsComponent },
   { path: 'reading', component: ReadingComponent },
@@ -171,7 +169,6 @@ const appRoutes: Routes = [
     CllinComponent,
     BooksComponent,
     FormsModule,
-    NotesComponent,
     TalksComponent,
     ReadingComponent,
     PrivacyComponent,
