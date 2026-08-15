@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { DOCUMENT } from '@angular/common';
-import * as DarkReader from 'darkreader';
 
 
 // To make the update time dynamic based on my last GitHub push
@@ -68,15 +67,20 @@ export class AppComponent implements OnInit {
     this.applyDarkMode();
   }
 
-  private applyDarkMode(): void {
+  // DarkReader is loaded on demand so it stays out of the initial bundle for
+  // visitors who never turn dark mode on.
+  private darkReader?: Promise<typeof import('darkreader')>;
+
+  private async applyDarkMode(): Promise<void> {
     if (this.isDarkMode) {
-      DarkReader.enable({
+      this.darkReader ??= import('darkreader');
+      (await this.darkReader).enable({
         brightness: 100,
         contrast: 90,
         sepia: 10
       });
-    } else {
-      DarkReader.disable();
+    } else if (this.darkReader) {
+      (await this.darkReader).disable();
     }
   }
 
