@@ -201,7 +201,6 @@ sync_to_s3() {
                 cache_control=$(get_cache_control "$file_path")
                 echo "Uploading $file_path with Content-Type: $mime_type; Cache-Control: $cache_control"
                 if aws s3 cp "$build_dir/$file_path" "s3://junipertcy.info/$file_path" \
-                    --acl public-read \
                     --metadata md5checksum=$md5 \
                     --content-type "$mime_type" \
                     --cache-control "$cache_control" \

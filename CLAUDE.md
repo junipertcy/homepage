@@ -106,12 +106,11 @@ Every `@angular/*` version is pinned without a `^`. This is deliberate: `@angula
 - `.ruff_cache/` (a Python linter cache) is a stray directory. It writes its own `.gitignore`, so it self-ignores and is clutter rather than a commit risk.
 - `tsconfig.json` carries `ignoreDeprecations: "6.0"` to silence a TS6 error on `baseUrl`, which is load-bearing — three files import via `'src/app/…'`. Rewriting those to relative paths would let both go.
 - `tsconfig.app.json` suppresses the `nullishCoalescingNotNullable` and `optionalChainNotNullable` extended diagnostics. The Angular 22 migration added this to preserve pre-22 behavior; removing the suppression may surface real template warnings.
-- `deploy.sh` uses `--acl public-read`, which only works because the bucket has ACLs enabled; modern S3 defaults reject it.
 
 ## Reference
 
 - Author: Tzu-Chi Yen (顏子祺), Boulder, CO — <tzuchi.yen@colorado.edu>
 - Repo: `github.com/junipertcy/homepage` · Live: <https://junipertcy.info>
-- S3 bucket `junipertcy.info`; access control (e.g. denying certain static files) is via S3 Bucket Policy
+- S3 bucket `junipertcy.info` (ap-northeast-1) is **private**: Block Public Access on, ACLs disabled (`BucketOwnerEnforced`), and a bucket policy that grants `s3:GetObject` only to the CloudFront distribution via an Origin Access Control (since Aug 2026). Access control (e.g. denying certain static files) is via that Bucket Policy. Do not add `--acl` flags to `deploy.sh` — uploads with ACLs are rejected.
 - [Angular Update Guide](https://update.angular.io/) for framework upgrades
 - Font licenses: [Equity](https://typographyforlawyers.com/equity.html), [Concourse](https://typographyforlawyers.com/concourse.html), [terms](https://mbtype.com/license/)
