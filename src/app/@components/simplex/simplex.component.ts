@@ -92,7 +92,6 @@ export class SimplexComponent implements OnDestroy {
     const margin = 5; // Margin to keep nodes away from the edges
     const boundingBoxWidth = width - 2 * margin;
     const boundingBoxHeight = height - 2 * margin;
-    console.log("height", height);
 
     const svg = d3.select(this.simplexContainer.nativeElement)
       .append('svg')
