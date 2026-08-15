@@ -104,7 +104,6 @@ Every `@angular/*` version is pinned without a `^`. This is deliberate: `@angula
 ## Known drift (report, don't silently fix)
 
 - `.ruff_cache/` (a Python linter cache) is a stray directory. It writes its own `.gitignore`, so it self-ignores and is clutter rather than a commit risk.
-- CI now builds on Node 26, matching local dev.
 - `tsconfig.json` carries `ignoreDeprecations: "6.0"` to silence a TS6 error on `baseUrl`, which is load-bearing — three files import via `'src/app/…'`. Rewriting those to relative paths would let both go.
 - `tsconfig.app.json` suppresses the `nullishCoalescingNotNullable` and `optionalChainNotNullable` extended diagnostics. The Angular 22 migration added this to preserve pre-22 behavior; removing the suppression may surface real template warnings.
 - `deploy.sh` uses `--acl public-read`, which only works because the bucket has ACLs enabled; modern S3 defaults reject it.
