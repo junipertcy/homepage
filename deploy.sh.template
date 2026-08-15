@@ -22,13 +22,15 @@ if ! command -v ng &>/dev/null || ! command -v aws &>/dev/null; then
     exit 1
 fi
 
-# Preflight: fail fast if AWS credentials are absent or expired, instead of
-# letting a failed S3 listing masquerade as "every file changed".
-if ! aws sts get-caller-identity --profile default >/dev/null 2>&1; then
-    echo "Error: AWS credentials are missing or expired (sts get-caller-identity failed)."
-    echo "Refresh the session (e.g. 'aws sso login --profile default') and retry."
-    exit 1
-fi
+# Fail fast if AWS credentials are absent or expired, instead of letting a
+# failed S3 listing masquerade as "every file changed".
+require_aws_credentials() {
+    if ! aws sts get-caller-identity --profile default >/dev/null 2>&1; then
+        echo "Error: AWS credentials are missing or expired (sts get-caller-identity failed)."
+        echo "Refresh the session (e.g. 'aws sso login --profile default') and retry."
+        exit 1
+    fi
+}
 
 # Default action is to show usage if no arguments are passed
 if [ $# -eq 0 ]; then
@@ -138,7 +140,7 @@ sync_to_s3() {
     }
 
     echo "Checking for changed files..."
-    local tmp_dir
+    # Not 'local': the EXIT trap fires after this function returns, when a local is out of scope.
     tmp_dir=$(mktemp -d) || { echo "mktemp failed"; exit 1; }
     trap 'rm -rf "$tmp_dir"' EXIT INT TERM
     local local_files_checksum="$tmp_dir/local_files_checksum.txt"
@@ -246,6 +248,7 @@ while getopts ":hds" option; do
         exit 0
         ;;
     d)
+        require_aws_credentials
         # Remove specific contents before syncing
         echo "Removing old build artifacts from S3..."
         aws s3 rm s3://junipertcy.info --recursive \
@@ -262,6 +265,7 @@ while getopts ":hds" option; do
         exit 0
         ;;
     s)
+        require_aws_credentials
         sync_to_s3
         exit 0
         ;;
