@@ -16,6 +16,9 @@ Industry_poster-2016-NetSci.pdf
 /tmp
 /out-tsc
 
+# local planning notes
+/docs
+
 # dependencies
 /node_modules
 
