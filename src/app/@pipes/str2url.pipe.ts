@@ -149,9 +149,9 @@ export class Str2urlPipe implements PipeTransform {
       case 'NetworkX':
         return 'https://networkx.github.io/';
       case 'PNet':
-        return 'http://www.melnet.org.au/pnet/';
+        return 'https://web.archive.org/web/20260111164813/http://www.melnet.org.au/pnet';
       case 'statnet':
-        return 'http://statnet.csde.washington.edu/index.shtml';
+        return 'https://web.archive.org/web/20190313060846/http://statnet.csde.washington.edu:80/index.shtml';
       case 'netwulf':
         return 'https://github.com/benmaier/netwulf';
       case 'GrasPy':
