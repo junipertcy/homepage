@@ -31,7 +31,7 @@ pnpm up -i                          # interactive dependency update
 ./deploy.sh -d                      # additionally purge old js/css/font objects from S3 first
 ```
 
-**Verified working:** production build (~6s, 2.59 MB initial / 447 kB transfer). These four are the only scripts in `package.json` — `test`, `lint`, and `e2e` were removed in July 2026 because none of them had a working target.
+**Verified working:** production build (a few seconds). These four are the only scripts in `package.json` — `test`, `lint`, and `e2e` were removed in July 2026 because none of them had a working target.
 
 **There are no tests and no linter.** This is deliberate, not an oversight: the 40 `*.spec.ts` files were untouched CLI boilerplate (`should create`, plus one spec asserting an `<h1>` reading `'Welcome to app!'` that has said `'Tzu-Chi Yen'` for years), and the Karma harness had been broken since the zone.js 0.15 upgrade. All of it was deleted rather than left to imply coverage that never existed. Do not add a test framework or `ng add angular-eslint` on your own initiative — both are decisions for the owner. **The production build is the only gate**, locally and in CI.
 
@@ -81,14 +81,14 @@ Almost every request is a content edit. Go straight to the file:
 
 ## Do not touch / do not commit
 
-- **`deploy.sh`** is gitignored and contains the real CloudFront distribution id. `deploy.sh.template` is the tracked, redacted version. Never commit `deploy.sh`, never paste its `DISTID` into a tracked file, and never "restore" it by copying the template over it. The two have **diverged**: `deploy.sh` now carries MIME-type coverage, `Cache-Control` headers, and scoped CloudFront invalidation that the template lacks. Porting those improvements back into `deploy.sh.template` (minus the id) is a reasonable follow-up, but it is a separate, explicit task.
+- **`deploy.sh`** is gitignored and contains the real CloudFront distribution id. `deploy.sh.template` is the tracked, redacted version. Never commit `deploy.sh`, never paste its `DISTID` into a tracked file, and never "restore" it by copying the template over it. `deploy.sh.template` is regenerated from `deploy.sh` by blanking the `DISTID` line (`sed 's/^DISTID=.*/DISTID=""/' deploy.sh > deploy.sh.template`); re-run that after any deploy.sh change so the two never diverge again.
 - **`src/styles/fonts/*.woff2`** are commercially licensed (Equity and Concourse, by Matthew Butterick) and gitignored on purpose. Never `git add -f` a font, never inline one as base64, never copy them elsewhere in the repo.
-- **Git LFS** tracks `*.pdf *.png *.jpg *.jpeg *.m4v`. Add binaries normally (the filter handles it) but do not convert an LFS pointer file into anything else, and do not assume a pointer file is corrupt.
+- **Git LFS** is declared in `.gitattributes` for `*.pdf *.png *.jpg *.jpeg *.m4v`, but nothing is stored in LFS today — every existing binary predates the config and lives as a plain git blob (hence the ~320 MiB pack; the largest historical blob is a 129 MB poster PDF that is gitignored at HEAD but permanent in history). Newly added or re-staged binaries WILL become LFS pointers; that mixed state is expected. Do not convert a pointer file into anything else, and do not rewrite history to migrate old blobs.
 - **`dist/`, `.angular/`, `node_modules/`** are build artifacts. Note that `angular.json` says `outputPath: "dist"` while the application builder actually emits to `dist/browser/` — `deploy.sh` detects both.
 
 ## Dependency pins are exact on purpose
 
-Every `@angular/*` version is pinned without a `^`. This is deliberate: `@angular/core` declares `@angular/compiler` as an **exact** peer, so a floating range on one and a pin on the other silently drifts them apart (which is exactly what happened before July 2026 — core sat at 20.2.1 while the compiler floated to 20.3.15). Framework, CLI, and `@angular/build` are all on **22.0.8**; `@angular/material`/`cdk` and `ng-zorro-antd` on **22.x**. `typescript` is pinned to **6.0.3** because Angular 22's `compiler-cli` peer is `>=6.0 <6.1` — **TypeScript 7 is published but rejected**, so do not follow pnpm's "7.0.2 is available" hint. Bump these as a set, never individually.
+Every `@angular/*` version is pinned without a `^`. This is deliberate: `@angular/core` declares `@angular/compiler` as an **exact** peer, so a floating range on one and a pin on the other silently drifts them apart (which is exactly what happened before July 2026 — core sat at 20.2.1 while the compiler floated to 20.3.15). Framework packages move in lock-step on one exact 22.1.x patch; the CLI and `@angular/build` may sit a patch ahead; `@angular/material`/`cdk` and `ng-zorro-antd` stay on **22.x**. `package.json` is the source of truth for exact numbers. `typescript` is pinned to **6.0.3** because Angular 22's `compiler-cli` peer is `>=6.0 <6.1` — **TypeScript 7 is published but rejected**, so do not follow pnpm's "7.0.2 is available" hint. Bump these as a set, never individually.
 
 **Upgrading a major takes more than `ng update @angular/core@N`.** Learned going 20 → 22 in July 2026:
 
@@ -104,7 +104,7 @@ Every `@angular/*` version is pinned without a `^`. This is deliberate: `@angula
 ## Known drift (report, don't silently fix)
 
 - `.ruff_cache/` (a Python linter cache) is a stray directory. It writes its own `.gitignore`, so it self-ignores and is clutter rather than a commit risk.
-- No `engines` field or `.nvmrc`. Angular 22 requires `^22.22.3 || ^24.15.0 || >=26.0.0`, so local Node 26 is now officially supported and CI's `node-version: 22` resolves to a 22.x new enough to satisfy it. Nothing enforces either.
+- CI now builds on Node 26, matching local dev.
 - `tsconfig.json` carries `ignoreDeprecations: "6.0"` to silence a TS6 error on `baseUrl`, which is load-bearing — three files import via `'src/app/…'`. Rewriting those to relative paths would let both go.
 - `tsconfig.app.json` suppresses the `nullishCoalescingNotNullable` and `optionalChainNotNullable` extended diagnostics. The Angular 22 migration added this to preserve pre-22 behavior; removing the suppression may surface real template warnings.
 - `deploy.sh` uses `--acl public-read`, which only works because the bucket has ACLs enabled; modern S3 defaults reject it.
