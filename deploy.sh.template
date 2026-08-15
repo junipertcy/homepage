@@ -142,7 +142,10 @@ sync_to_s3() {
     echo "Checking for changed files..."
     # Not 'local': the EXIT trap fires after this function returns, when a local is out of scope.
     tmp_dir=$(mktemp -d) || { echo "mktemp failed"; exit 1; }
-    trap 'rm -rf "$tmp_dir"' EXIT INT TERM
+    trap 'rm -rf "$tmp_dir"' EXIT
+    # A signal handler that does not exit lets bash RESUME the script with the temp files
+    # already deleted — the upload loop would then re-upload everything and exit 0.
+    trap 'echo "Interrupted."; exit 130' INT TERM
     local local_files_checksum="$tmp_dir/local_files_checksum.txt"
     local s3_files_metadata="$tmp_dir/s3_files_metadata.txt"
     local build_dir="./dist/browser"
@@ -224,14 +227,14 @@ sync_to_s3() {
         # ~100 individual paths it is both cheaper and faster than listing them.
         echo "Invalidating CloudFront distribution (${#invalidation_paths[@]} paths changed - using wildcard)..."
         aws cloudfront create-invalidation \
-            --distribution-id $DISTID \
+            --distribution-id "$DISTID" \
             --paths "/*" \
             --profile default \
             || echo "Failed to invalidate CloudFront distribution"
     else
         echo "Invalidating CloudFront distribution (${#invalidation_paths[@]} path(s))..."
         aws cloudfront create-invalidation \
-            --distribution-id $DISTID \
+            --distribution-id "$DISTID" \
             --paths "${invalidation_paths[@]}" \
             --profile default \
             || echo "Failed to invalidate CloudFront distribution"
