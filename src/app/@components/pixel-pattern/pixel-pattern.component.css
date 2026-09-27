@@ -1,5 +1,6 @@
 div {
     width: 100%;
+    max-width: 80px;
     margin-top: 5px;
     margin-left: 10px;
 }

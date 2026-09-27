@@ -28,7 +28,7 @@ ng build --configuration production # production build → dist/browser
 pnpm build                          # same as above (production is defaultConfiguration)
 pnpm up -i                          # interactive dependency update
 ./deploy.sh -s                      # build + MD5-diff sync to S3 + CloudFront invalidation (ASK FIRST)
-./deploy.sh -d                      # additionally purge old js/css/font objects from S3 first
+./deploy.sh -d                      # same, then delete old bundles the new build no longer uses
 ```
 
 **Verified working:** production build (a few seconds). These four are the only scripts in `package.json` — `test`, `lint`, and `e2e` were removed in July 2026 because none of them had a working target.
@@ -112,5 +112,6 @@ Every `@angular/*` version is pinned without a `^`. This is deliberate: `@angula
 - Author: Tzu-Chi Yen (顏子祺), Boulder, CO — <tzuchi.yen@colorado.edu>
 - Repo: `github.com/junipertcy/homepage` · Live: <https://junipertcy.info>
 - S3 bucket `junipertcy.info` (ap-northeast-1) is **private**: Block Public Access on, ACLs disabled (`BucketOwnerEnforced`), and a bucket policy that grants `s3:GetObject` only to the CloudFront distribution via an Origin Access Control (since Aug 2026). Access control (e.g. denying certain static files) is via that Bucket Policy. Do not add `--acl` flags to `deploy.sh` — uploads with ACLs are rejected.
+- Deploys authenticate as role `junipertcy-info-deploy` through the `junipertcy-info-deploy` profile (its source key lives in the macOS Keychain, item `aws-junipertcy-info-deploy`) and can touch only this bucket and distribution. AWS admin changes (IAM, bucket settings) need `aws login` as root.
 - [Angular Update Guide](https://update.angular.io/) for framework upgrades
 - Font licenses: [Equity](https://typographyforlawyers.com/equity.html), [Concourse](https://typographyforlawyers.com/concourse.html), [terms](https://mbtype.com/license/)

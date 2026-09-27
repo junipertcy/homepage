@@ -1,0 +1,15 @@
+.memorial-intro {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+img[nz-image] {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 575px) {
+  .memorial-intro {
+    text-align: left;
+  }
+}

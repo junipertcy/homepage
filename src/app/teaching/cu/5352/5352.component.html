@@ -44,10 +44,10 @@
   <nz-divider></nz-divider>
   <div>
     <nz-row>
-      <nz-col nzSpan="12">
+      <nz-col nzSpan="12" nzXs="24" nzSm="12">
         <h3>What we did in Spring 2024</h3>
       </nz-col>
-      <nz-col nzSpan="12" style="text-align: right">
+      <nz-col nzSpan="12" nzXs="24" nzSm="12" style="text-align: right">
         <!-- <nz-switch
         nzSize="small"
         [(ngModel)]="allExpanded"
@@ -56,7 +56,7 @@
       ></nz-switch> -->
     </nz-col>
   </nz-row>
-  <p style="text-align: justify">
+  <p class="course-intro">
     Click
     <span nz-icon nzType="book"></span>
     for the lecture scribbles. Notably, Week 14 in higher-order networks is
@@ -80,18 +80,17 @@
       </nz-collapse-panel>
       <ng-template #extraTpl>
         @if (week.pdfUrl) {
-          <a
+          <button
+            type="button"
+            class="lecture-notes-button"
             (click)="openPDFInNewTab($event, week.pdfUrl)"
-            (keydown.enter)="openPDFInNewTab($event, week.pdfUrl)"
-            role="button"
-            tabindex="0"
             aria-label="Open lecture notes"
           >
             <span
               nz-icon
               nzType="book"
             ></span>
-          </a>
+          </button>
         }
       </ng-template>
     }

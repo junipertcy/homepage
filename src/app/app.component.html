@@ -1,114 +1,52 @@
 <!--<mat-progress-bar mode="determinate" value="40"></mat-progress-bar>-->
-<ng-template #zeroTrigger>
-  <div>
-    <i nz-icon nzType="menu-fold" nzTheme="outline"></i>
-  </div>
-</ng-template>
 @if (isLoaded) {
-  <nz-layout class="layout" nz-row nzJustify="center">
+  <nz-layout class="layout">
     <nz-header>
-      <a href="/">
+      <a routerLink="/">
         <h1 id="logo-title">Tzu-Chi Yen</h1>
       </a>
-      <div nz-row nzJustify="end">
-        <!-- <div nz-col nzSpan="2">
-        <nz-tag class="tag" id="resume" [nzColor]="'purple'">
-          <a href="{{ resume_file }}" target="_blank" style="color: #a107dd">
-            One-Page Resume
-          </a>
-        </nz-tag>
-      </div> -->
-      <div nz-col nzSpan="2">
-        <nz-tag class="tag" id="vitae" [nzColor]="'volcano'">
-          <a href="{{ cv_file }}" target="_blank" style="color: #fa541c">
-            Full CV
-          </a>
-        </nz-tag>
-      </div>
-      <div nz-col nzSpan="2">
-        <mat-icon
-          class="tag"
-          role="button"
-          aria-label="Toggle dark mode"
-          (click)="toggleDarkMode()"
-          >
-          {{ isDarkMode ? "brightness_7" : "nights_stay" }}
-        </mat-icon>
-      </div>
-    </div>
-  </nz-header>
-  <div nz-row>
-    <div nz-col nzSpan="4">
-      <nz-sider
-        nzCollapsible
-        nz-col
-        nzSpan="4"
-        nzTheme="light"
-        [(nzCollapsed)]="isCollapsed"
-        [nzBreakpoint]="'md'"
-        [nzCollapsedWidth]="0"
-        [nzZeroTrigger]="zeroTrigger"
-        [nzWidth]="150"
-        >
-        <div class="menu-container">
-          <ul nz-menu nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-            <li
-              nz-menu-item
-              class="menu-item"
-              routerLinkActive="ant-menu-item-selected"
-              routerLink="/publications"
-              >
-              <span id="menu">Publications</span>
-            </li>
-            <li
-              nz-menu-item
-              class="menu-item"
-              routerLinkActive="ant-menu-item-selected"
-              routerLink="/talks"
-              >
-              <span id="menu">Talks</span>
-            </li>
-            <li
-              nz-menu-item
-              class="menu-item"
-              routerLinkActive="ant-menu-item-selected"
-              routerLink="/teaching"
-              >
-              <span id="menu">Teaching</span>
-            </li>
-            <ul
-              nz-menu
-              nzMode="inline"
-              [nzInlineCollapsed]="isCollapsed"
-              class="bottom-menu"
-              >
-              <li
-                nz-menu-item
-                class="menu-item"
-                routerLinkActive="ant-menu-item-selected"
-                routerLink="/activities"
-                >
-                <span id="menu">Activities</span>
-              </li>
-              <li
-                nz-menu-item
-                class="menu-item"
-                routerLinkActive="ant-menu-item-selected"
-                routerLink="/about"
-                >
-                <span id="menu">About</span>
-              </li>
-            </ul>
-          </ul>
-        </div>
-      </nz-sider>
-    </div>
-    <div nz-col nzSpan="18" [style.min-height.px]="screenHeight">
+      @if (isCompact) {
+        <button type="button" class="menu-trigger" aria-controls="primary-navigation" [attr.aria-expanded]="menuOpen" (click)="menuOpen = !menuOpen" (keydown.escape)="closeMenu($event)">Menu <span aria-hidden="true">{{ menuOpen ? '▴' : '▾' }}</span></button>
+      } @else {
+        <div class="header-actions"><ng-container [ngTemplateOutlet]="utilities"></ng-container></div>
+      }
+      <ng-template #utilities>
+        <a class="cv-link" href="{{ cv_file }}" target="_blank" style="color: #fa541c">
+          <nz-tag class="tag" id="vitae" [nzColor]="'volcano'">Full CV</nz-tag>
+        </a>
+        <button type="button" class="dark-mode-button" [attr.aria-label]="isCompact ? null : 'Toggle dark mode'" [attr.aria-pressed]="isDarkMode" (click)="toggleDarkMode()">
+          <mat-icon aria-hidden="true">{{ isDarkMode ? "brightness_7" : "nights_stay" }}</mat-icon>
+          @if (isCompact) { <span>Dark mode: {{ isDarkMode ? 'On' : 'Off' }}</span> }
+        </button>
+      </ng-template>
+    </nz-header>
+  <div class="layout-body">
+    <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation" [hidden]="isCompact && !menuOpen" (keydown.escape)="closeMenu($event)">
+      <a class="menu-item" routerLink="/publications" routerLinkActive="ant-menu-item-selected" ariaCurrentWhenActive="page" (click)="selectPrimary($event, '/publications')">
+        <span class="menu-label">Publications</span>
+      </a>
+      <a class="menu-item" routerLink="/talks" routerLinkActive="ant-menu-item-selected" ariaCurrentWhenActive="page" (click)="selectPrimary($event, '/talks')">
+        <span class="menu-label">Talks</span>
+      </a>
+      <a class="menu-item" routerLink="/teaching" routerLinkActive="ant-menu-item-selected" [attr.aria-current]="router.url.startsWith('/teaching') ? 'location' : null" (click)="selectPrimary($event, '/teaching')">
+        <span class="menu-label">Teaching</span>
+      </a>
+      <a class="menu-item" routerLink="/activities" routerLinkActive="ant-menu-item-selected" [attr.aria-current]="router.url.startsWith('/activities') ? 'location' : null" (click)="selectPrimary($event, '/activities')">
+        <span class="menu-label">Activities</span>
+      </a>
+      <a class="menu-item" routerLink="/about" routerLinkActive="ant-menu-item-selected" ariaCurrentWhenActive="page" (click)="selectPrimary($event, '/about')">
+        <span class="menu-label">About</span>
+      </a>
+    </nav>
+    @if (isCompact && menuOpen) {
+      <div class="compact-utilities" (keydown.escape)="closeMenu($event)"><ng-container [ngTemplateOutlet]="utilities"></ng-container></div>
+    }
+    <main #contentStart class="layout-content" tabindex="-1">
       <router-outlet></router-outlet>
-    </div>
+    </main>
   </div>
-  <div nz-col nzSpan="24">
-    <nz-footer nz-col nzSpan="24" id="footer">
+  <div>
+    <nz-footer id="footer">
       © Since 2016 Tzu-Chi Yen | Last update: {{ lastUpdateDate }} |
       <a
         href="https://github.com/junipertcy/homepage"

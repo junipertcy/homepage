@@ -8,13 +8,17 @@ Uploads the Angular site to AWS S3.
 
 Options:
   -h, --help            Show this message and exit.
-  -d, --delete-first    Remove specific contents in the target bucket before syncing.
+  -d, --delete-stale    Sync, then delete old build files the new build no longer uses.
   -s, --sync            Sync the local directory to the S3 bucket.
 EOF
 }
 
 # AWS CloudFront Distribution ID
 DISTID=""
+
+# AWS profile for deploys: role junipertcy-info-deploy, scoped to this bucket and
+# distribution, assumed with an access key kept in the macOS Keychain.
+PROFILE="junipertcy-info-deploy"
 
 # Check for necessary commands
 if ! command -v ng &>/dev/null || ! command -v aws &>/dev/null; then
@@ -25,9 +29,12 @@ fi
 # Fail fast if AWS credentials are absent or expired, instead of letting a
 # failed S3 listing masquerade as "every file changed".
 require_aws_credentials() {
-    if ! aws sts get-caller-identity --profile default >/dev/null 2>&1; then
-        echo "Error: AWS credentials are missing or expired (sts get-caller-identity failed)."
-        echo "Refresh the session (e.g. 'aws sso login --profile default') and retry."
+    local sts_error
+    if ! sts_error=$(aws sts get-caller-identity --profile "$PROFILE" 2>&1 >/dev/null); then
+        echo "Error: no working AWS credentials for profile '$PROFILE':"
+        echo "$sts_error" | sed 's/^/  /'
+        echo "Check that '$PROFILE' is set up in ~/.aws/config and that the Keychain item"
+        echo "'aws-junipertcy-info-deploy' holds the deploy user's access key."
         exit 1
     fi
 }
@@ -109,29 +116,45 @@ get_mime_type() {
     esac
 }
 
-# Function to determine Cache-Control based on whether the filename is content-hashed.
-# Hashed build outputs (main-VFR5KSAR.js, styles-6YDRY5JP.css, chunk-*.js) can never change
-# under the same name, so they are safe to cache forever. Everything else is served from a
-# stable path and must be revalidated.
+# Content-hashed build output can never change under the same name, so it is safe to cache
+# forever and never needs invalidating: the root-level bundles (main-2HHGA7ZG.js,
+# chunk-BBk_kAyy.js, styles-I6FAHMI4.css) and everything the builder writes to media/
+# (fonts, icon sets). assets/ is copied verbatim, so a name like photo-20260101.jpg there
+# is not a hash.
+is_hashed_build_output() {
+    local key="$1"
+    local hashed_bundle='-[A-Za-z0-9_-]{8}\.(js|css)$'
+
+    case "$key" in
+        media/*) return 0 ;;
+        */*) return 1 ;;
+    esac
+    [[ "$key" =~ $hashed_bundle ]]
+}
+
+# Function to determine Cache-Control for a key.
 get_cache_control() {
     local filename="$1"
 
-    case "$filename" in
-        index.html)
-            # The entry point: must always be revalidated so a new build is picked up.
-            echo "no-cache"
-            ;;
-        *-[A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9].js|*-[A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9].css)
-            echo "public, max-age=31536000, immutable"
-            ;;
-        *)
-            # assets/, favicon.ico, media/ — stable paths whose contents can be replaced.
-            echo "public, max-age=3600"
-            ;;
-    esac
+    if [ "$filename" = "index.html" ]; then
+        # The entry point: must always be revalidated so a new build is picked up.
+        echo "no-cache"
+    elif is_hashed_build_output "$filename"; then
+        echo "public, max-age=31536000, immutable"
+    else
+        # assets/, favicon.ico, sitemap.xml — stable paths whose contents can be replaced.
+        echo "public, max-age=3600"
+    fi
 }
 
-# Function to perform sync
+# Print the checksum list with index.html moved to the end. It is uploaded last, so the
+# live page never references a bundle that has not been uploaded yet.
+order_for_upload() {
+    grep -v '  index\.html$' "$1"
+    grep '  index\.html$' "$1"
+}
+
+# Function to perform sync. Returns non-zero if any upload or the invalidation failed.
 sync_to_s3() {
     echo "Building Angular project..."
     ng build --configuration production || {
@@ -148,7 +171,9 @@ sync_to_s3() {
     trap 'echo "Interrupted."; exit 130' INT TERM
     local local_files_checksum="$tmp_dir/local_files_checksum.txt"
     local s3_files_metadata="$tmp_dir/s3_files_metadata.txt"
-    local build_dir="./dist/browser"
+    local upload_list="$tmp_dir/upload_list.txt"
+    # Not 'local': prune_stale_build_output reads it after this function returns.
+    build_dir="./dist/browser"
 
     # Check if browser subdirectory exists (Angular v17+ application builder)
     if [ ! -d "$build_dir" ]; then
@@ -159,6 +184,12 @@ sync_to_s3() {
 
     # Generate list of local files and their checksums (strip build_dir prefix for S3 key matching)
     find "$build_dir" -type f -exec md5sum {} + | sed "s|$build_dir/||" | sort >"$local_files_checksum"
+    # The pipeline hides md5sum failures. A short list would upload nothing, report success,
+    # and let -d delete the bundles the live index.html still references.
+    if (( $(wc -l <"$local_files_checksum") != $(find "$build_dir" -type f | wc -l) )); then
+        echo "Error: could not checksum every file in $build_dir. Aborting before any upload."
+        exit 1
+    fi
 
     # Get list of existing files in S3 and their checksums
     # Capture and check the listing explicitly: a pipeline discards the aws exit
@@ -168,7 +199,7 @@ sync_to_s3() {
         --bucket junipertcy.info \
         --query "Contents[].{Key: Key, ETag: ETag}" \
         --output text \
-        --profile default); then
+        --profile "$PROFILE"); then
         echo "Error: failed to list s3://junipertcy.info. Aborting before any upload."
         exit 1
     fi
@@ -178,6 +209,12 @@ sync_to_s3() {
     # Content-hashed files get a brand-new URL each build, so the edge cache can never
     # hold a stale copy of them and invalidating them would just waste the free quota.
     local invalidation_paths=()
+    local failed_uploads=()
+    local uploaded_count=0
+    local index_skipped=0
+    local invalidation_failed=0
+
+    order_for_upload "$local_files_checksum" >"$upload_list"
 
     # Sync files that differ by MD5 or don’t exist in S3
     while IFS= read -r line; do
@@ -194,9 +231,15 @@ sync_to_s3() {
                 --key "$file_path" \
                 --query Metadata.md5checksum \
                 --output text \
-                --profile default 2>/dev/null)
+                --profile "$PROFILE" 2>/dev/null)
 
             if [[ "$md5" != "$metadata" ]]; then
+                if [ "$file_path" = "index.html" ] && [ ${#failed_uploads[@]} -gt 0 ]; then
+                    # Publishing index.html now would point the live site at missing bundles.
+                    echo "Skipping index.html: ${#failed_uploads[@]} earlier upload(s) failed."
+                    index_skipped=1
+                    continue
+                fi
                 mime_type=$(get_mime_type "$file_path" "$build_dir")
                 cache_control=$(get_cache_control "$file_path")
                 echo "Uploading $file_path with Content-Type: $mime_type; Cache-Control: $cache_control"
@@ -204,23 +247,27 @@ sync_to_s3() {
                     --metadata md5checksum=$md5 \
                     --content-type "$mime_type" \
                     --cache-control "$cache_control" \
-                    --profile default; then
+                    --profile "$PROFILE"; then
+                    uploaded_count=$((uploaded_count + 1))
                     # Only stable paths can go stale at the edge.
                     if [[ "$cache_control" != "public, max-age=31536000, immutable" ]]; then
                         invalidation_paths+=("/$file_path")
                     fi
                 else
                     echo "Failed to sync $file_path"
+                    failed_uploads+=("$file_path")
                 fi
             else
                 echo "Yet, metadata match - No need to sync: $file_path"
             fi
         fi
-    done <"$local_files_checksum"
+    done <"$upload_list"
 
     # Invalidate CloudFront cache for the changed stable paths only
+    local invalidation_summary
     if [ ${#invalidation_paths[@]} -eq 0 ]; then
         echo "No stable paths changed - skipping CloudFront invalidation."
+        invalidation_summary="0 paths invalidated"
     elif [ ${#invalidation_paths[@]} -gt 100 ]; then
         # A wildcard counts as one path against the 1000/month free quota, and beyond
         # ~100 individual paths it is both cheaper and faster than listing them.
@@ -228,18 +275,84 @@ sync_to_s3() {
         aws cloudfront create-invalidation \
             --distribution-id "$DISTID" \
             --paths "/*" \
-            --profile default \
-            || echo "Failed to invalidate CloudFront distribution"
+            --profile "$PROFILE" \
+            || { echo "Failed to invalidate CloudFront distribution"; invalidation_failed=1; }
+        invalidation_summary="all paths invalidated (wildcard)"
     else
         echo "Invalidating CloudFront distribution (${#invalidation_paths[@]} path(s))..."
         aws cloudfront create-invalidation \
             --distribution-id "$DISTID" \
             --paths "${invalidation_paths[@]}" \
-            --profile default \
-            || echo "Failed to invalidate CloudFront distribution"
+            --profile "$PROFILE" \
+            || { echo "Failed to invalidate CloudFront distribution"; invalidation_failed=1; }
+        invalidation_summary="${#invalidation_paths[@]} path(s) invalidated"
     fi
 
-    echo "Sync completed."
+    if [ ${#failed_uploads[@]} -gt 0 ] || [ "$invalidation_failed" -eq 1 ]; then
+        echo "FAILED: the deploy is incomplete."
+        local f
+        for f in "${failed_uploads[@]}"; do
+            echo "  upload failed: $f"
+        done
+        if [ "$index_skipped" -eq 1 ]; then
+            echo "  index.html was NOT uploaded, so the live site still serves the previous build."
+        fi
+        if [ "$invalidation_failed" -eq 1 ]; then
+            echo "  CloudFront invalidation failed: changed pages may be served stale until their cache expires."
+        fi
+        return 1
+    fi
+
+    echo "Deployed: $uploaded_count file(s) uploaded, $invalidation_summary."
+}
+
+# After a successful sync, delete build output that the new build no longer uses: stale
+# hashed bundles and the legacy browser/ prefix. Hand-uploaded files and assets/ are never
+# candidates. The bucket is versioned, so every deletion is recoverable for 30 days.
+prune_stale_build_output() {
+    local local_keys="$tmp_dir/local_keys.txt"
+    local s3_keys="$tmp_dir/s3_keys.txt"
+
+    find "$build_dir" -type f | sed "s|^$build_dir/||" | sort >"$local_keys"
+    if ! grep -qx 'index\.html' "$local_keys"; then
+        echo "Error: $build_dir has no index.html - refusing to delete anything."
+        return 1
+    fi
+
+    echo "Looking for stale build output in s3://junipertcy.info..."
+    local s3_listing
+    if ! s3_listing=$(aws s3api list-objects \
+        --bucket junipertcy.info \
+        --query "Contents[].[Key]" \
+        --output text \
+        --profile "$PROFILE"); then
+        echo "Error: failed to list s3://junipertcy.info. Nothing deleted."
+        return 1
+    fi
+    printf '%s\n' "$s3_listing" >"$s3_keys"
+
+    local key
+    local deleted_count=0
+    local failed_deletes=0
+    while IFS= read -r key; do
+        case "$key" in
+            browser/*) ;;
+            *) is_hashed_build_output "$key" || continue ;;
+        esac
+        grep -qxF -- "$key" "$local_keys" && continue
+        if aws s3 rm "s3://junipertcy.info/$key" --profile "$PROFILE"; then
+            deleted_count=$((deleted_count + 1))
+        else
+            echo "Failed to delete $key"
+            failed_deletes=$((failed_deletes + 1))
+        fi
+    done <"$s3_keys"
+
+    if [ "$failed_deletes" -gt 0 ]; then
+        echo "FAILED: $failed_deletes stale file(s) could not be deleted ($deleted_count deleted)."
+        return 1
+    fi
+    echo "Cleanup: $deleted_count stale file(s) deleted."
 }
 
 # Parse options
@@ -251,24 +364,14 @@ while getopts ":hds" option; do
         ;;
     d)
         require_aws_credentials
-        # Remove specific contents before syncing
-        echo "Removing old build artifacts from S3..."
-        aws s3 rm s3://junipertcy.info --recursive \
-            --exclude "*" \
-            --include "*.js" \
-            --include "*.css" \
-            --include "*.eot" \
-            --include "*.woff" \
-            --include "*.woff2" \
-            --profile default
-        # Also remove the browser/ subdirectory if it exists
-        aws s3 rm s3://junipertcy.info/browser/ --recursive --profile default 2>/dev/null || true
-        sync_to_s3
+        # Delete stale build output only once the new build is fully live.
+        sync_to_s3 || exit 1
+        prune_stale_build_output || exit 1
         exit 0
         ;;
     s)
         require_aws_credentials
-        sync_to_s3
+        sync_to_s3 || exit 1
         exit 0
         ;;
     *)

@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject, HostListener, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, ChangeDetectionStrategy, ElementRef, ViewChild, NgZone } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { Router, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { DOCUMENT } from '@angular/common';
@@ -20,16 +20,38 @@ import { GithubService } from './@services/github.service';
   ]
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+
+  @ViewChild('contentStart') contentStart?: ElementRef<HTMLElement>;
+  isCompact: boolean;
+  menuOpen = false;
+  private viewport: MediaQueryList;
+  private pendingPrimary?: string;
+  private readonly onViewportChange = (event: MediaQueryListEvent) => this.zone.run(() => {
+    const focused = this.document.activeElement as HTMLElement | null;
+    const inNavigation = !!focused?.closest('.primary-nav');
+    const inTrigger = !!focused?.closest('.menu-trigger');
+    const inUtility = !!focused?.closest('.compact-utilities, .header-actions');
+    const utilityClass = focused?.closest('.cv-link') ? 'cv-link' : focused?.closest('.dark-mode-button') ? 'dark-mode-button' : null;
+    this.isCompact = !event.matches;
+    this.menuOpen = false;
+    if ((this.isCompact && (inNavigation || inUtility)) || (!this.isCompact && (inTrigger || inUtility))) {
+      setTimeout(() => {
+        const target = !this.isCompact && utilityClass
+          ? this.document.querySelector<HTMLElement>(`.header-actions .${utilityClass}`)
+          : this.isCompact
+            ? this.document.querySelector<HTMLElement>('.menu-trigger')
+            : this.document.querySelector<HTMLElement>('.primary-nav .menu-item');
+        target?.focus();
+      });
+    }
+  });
 
   title = 'app';
-  screenHeight: number = 0;
   // isDonationBannerShown = true;
   isLoaded = true;
-  isCollapsed = false;
   cv_file = "../../assets/pdf/Tzu-Chi_Yen_CV.pdf";
   resume_file = "../../assets/pdf/Tzu-Chi_Yen_Resume.pdf";
-  // screenWidth: number;
   lastUpdateDate!: string;
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
@@ -49,18 +71,26 @@ export class AppComponent implements OnInit {
     }
   };
 
-  // https://stackoverflow.com/questions/39888768
-  @HostListener('window:resize')
-  getScreenSize() {
-    // 64px: header height; 70px: footer height; 40px: banner row;
-    this.screenHeight = window.innerHeight - 64 - 70 - 40;
-    // this.screenWidth = window.innerWidth;
-    // console.log(this.screenHeight, this.screenWidth);
-  }
-
-
   isDarkMode: boolean;
   hover: boolean = false;
+
+  closeMenu(event: Event): void {
+    if (!this.menuOpen) return;
+    event.preventDefault();
+    event.stopPropagation();
+    this.menuOpen = false;
+    this.document.querySelector<HTMLElement>('.menu-trigger')?.focus();
+  }
+
+  selectPrimary(event: MouseEvent, path: string): void {
+    if (!this.isCompact || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (this.router.url === path) {
+      this.menuOpen = false;
+      setTimeout(() => this.contentStart?.nativeElement.focus());
+    } else {
+      this.pendingPrimary = path;
+    }
+  }
   toggleDarkMode(): void {
     this.isDarkMode = !this.isDarkMode;
     localStorage.setItem('darkMode', this.isDarkMode.toString());
@@ -86,21 +116,38 @@ export class AppComponent implements OnInit {
 
   constructor(
     private githubService: GithubService,
-    private router: Router,
+    public router: Router,
     private titleService: Title,
     private officeInfoModal: NzModalService,
+    private zone: NgZone,
     @Inject(DOCUMENT) private document: Document
   ) {
+    this.viewport = this.document.defaultView!.matchMedia('(min-width: 992px)');
+    this.isCompact = !this.viewport.matches;
+    this.viewport.addEventListener('change', this.onViewportChange);
     this.isDarkMode = localStorage.getItem('darkMode') === 'true';
     this.applyDarkMode();
-    this.getScreenSize(); // Call the method without arguments
     router.events.subscribe((event) => {  // fires on every URL change
       this.setTitle(this.getTitleFromRouter(router));
+      if (event instanceof NavigationEnd && this.pendingPrimary) {
+        const selected = this.pendingPrimary;
+        this.pendingPrimary = undefined;
+        if (event.urlAfterRedirects.startsWith(selected)) {
+          this.menuOpen = false;
+          setTimeout(() => this.contentStart?.nativeElement.focus());
+        }
+      } else if (event instanceof NavigationCancel || event instanceof NavigationError) {
+        this.pendingPrimary = undefined;
+      }
       if (router.url !== '/') {
         // this.isDonationBannerShown = false;
 
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.viewport.removeEventListener('change', this.onViewportChange);
   }
 
   ngOnInit(): void {

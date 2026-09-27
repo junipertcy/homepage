@@ -2,7 +2,7 @@
   <div nz-row nzJustify="start">
     <div nz-col nzSpan="24">
       <div>
-        <p style="font-size: 100%; text-align: justify">
+        <p class="home-intro" style="font-size: 100%">
           <span id="initial">H</span>
           <span id="small">i there!</span>
           I am a Senior Software Engineer at Global Healthcare Exchange, where I
@@ -18,26 +18,30 @@
     </div>
   </div>
   <!-- <nz-divider style="border: transparent"></nz-divider> -->
-  <div>
+  <div #researchStart tabindex="-1">
     <div nz-row
-      nzGutter="[16, 24]"
+      [nzGutter]="[16, 24]"
       nzAlign="middle"
       style="padding-bottom: 1em">
-      <div nz-col nzXs="24" nzSm="20" nzMd="21">
+      <div nz-col nzXs="24" [nzSm]="isCompact ? 24 : 20" [nzMd]="isCompact ? 24 : 21">
         My work presently focuses on two application areas, plus a growing
         interest in systems research:
       </div>
-      <div nz-col nzXs="24" nzSm="4" nzMd="3" style="text-align: right">
-        <a (click)="reloadPattern()" (keydown.enter)="reloadPattern()" role="button" tabindex="0" aria-label="Regenerate the visualizations">
-          <fa-icon [icon]="faRefresh"></fa-icon>
-        </a>
-      </div>
+      @if (!isCompact) {
+        <div nz-col nzXs="24" nzSm="4" nzMd="3" style="text-align: right">
+          <button type="button" class="regenerate-button" (click)="reloadPattern()" aria-label="Regenerate the visualizations">
+            <fa-icon [icon]="faRefresh"></fa-icon>
+          </button>
+        </div>
+      }
     </div>
-    <div nz-row nzGutter="[16, 24]" nzAlign="middle">
-      <div nz-col nzXs="24" nzSm="4" nzMd="3">
-        <app-simplex></app-simplex>
-      </div>
-      <div nz-col nzXs="24" nzSm="20" nzMd="21" style="text-align: justify">
+    <div nz-row [nzGutter]="[16, 24]" nzAlign="middle">
+      @if (!isCompact) {
+        <div nz-col nzXs="24" nzSm="4" nzMd="3">
+          <app-simplex></app-simplex>
+        </div>
+      }
+      <div nz-col nzXs="24" [nzSm]="isCompact ? 24 : 20" [nzMd]="isCompact ? 24 : 21" class="home-prose" style="text-align: justify">
         <p style="margin-left: 0.2em">
           <i>Graph and higher-order structures</i>
           in social and biological systems present an analytical challenge due
@@ -48,11 +52,13 @@
         </p>
       </div>
     </div>
-    <div nz-row nzGutter="[16, 24]" nzAlign="middle">
-      <div nz-col nzXs="24" nzSm="4" nzMd="3">
-        <app-gpr></app-gpr>
-      </div>
-      <div nz-col nzXs="24" nzSm="20" nzMd="21" style="text-align: justify">
+    <div nz-row [nzGutter]="[16, 24]" nzAlign="middle">
+      @if (!isCompact) {
+        <div nz-col nzXs="24" nzSm="4" nzMd="3">
+          <app-gpr></app-gpr>
+        </div>
+      }
+      <div nz-col nzXs="24" [nzSm]="isCompact ? 24 : 20" [nzMd]="isCompact ? 24 : 21" class="home-prose" style="text-align: justify">
         <p style="margin-left: 0.2em">
           <i>Optimization with scarce data.</i> With a priori knowledge, convex
           regularizations can leverage structured sparsity to simplify models. I
@@ -63,11 +69,13 @@
         </p>
       </div>
     </div>
-    <div nz-row nzGutter="[16, 24]" nzAlign="middle">
-      <div nz-col nzXs="24" nzSm="4" nzMd="3">
-        <app-pixel-pattern></app-pixel-pattern>
-      </div>
-      <div nz-col nzXs="24" nzSm="20" nzMd="21" style="text-align: justify">
+    <div nz-row [nzGutter]="[16, 24]" nzAlign="middle">
+      @if (!isCompact) {
+        <div nz-col nzXs="24" nzSm="4" nzMd="3">
+          <app-pixel-pattern></app-pixel-pattern>
+        </div>
+      }
+      <div nz-col nzXs="24" [nzSm]="isCompact ? 24 : 20" [nzMd]="isCompact ? 24 : 21" class="home-prose" style="text-align: justify">
         <p style="margin-left: 0.2em">
           <i>Systems for deep learning.</i> I’m especially interested in deep
           learning and their interaction with
@@ -81,28 +89,26 @@
   <nz-divider style="border: transparent"></nz-divider>
   <!-- News section -->
   <div id="news-section">
-    <div nz-row nzSpan="24" style="height: 35pt">
+    <div nz-row nzSpan="24" class="news-heading">
       <ul>
         <li class="event-item">
           <div class="event-date">
             <h3>News</h3>
           </div>
-          <div class="event-description"
-               style="margin-left: -20pt;
-                      margin-top: -3px">
+          <div class="event-description news-year">
             <nz-select [nzShowArrow]="false" [(ngModel)]="thisYear" [nzSize]="'default'" [nzOptionOverflowSize]="8" nzVariant="borderless"><nz-option nzValue="2026" nzLabel="2026"></nz-option><nz-option nzValue="2025" nzLabel="2025"></nz-option><nz-option nzValue="2024" nzLabel="2024"></nz-option><nz-option nzValue="2023" nzLabel="2023"></nz-option><nz-option nzValue="2022" nzLabel="2022"></nz-option><nz-option nzValue="2021" nzLabel="2021"></nz-option><nz-option nzValue="2020" nzLabel="2020"></nz-option><nz-option nzValue="2019" nzLabel="2019"></nz-option><nz-option nzValue="2018" nzLabel="2018"></nz-option>
           </nz-select>
-          <fa-icon [icon]="faArrowDown91" style=" margin-left: -7pt; margin-top: 3pt; position: absolute; color: rgb(178, 178, 178); "></fa-icon>
+          <fa-icon [icon]="faArrowDown91" class="news-year-icon"></fa-icon>
         </div>
       </li>
     </ul>
   </div>
-  <div nz-row nzJustify="start" style="height: 350px; text-align: left">
+  <div nz-row nzJustify="start" class="news-entries" style="text-align: left">
     <!-- <div nz-col class="gutter-row" nzSpan="2">
     <h2>News</h2>
 
   </div> -->
-  <div nz-col nzSpan="24" style="overflow: auto; height: 100%">
+  <div nz-col nzSpan="24" class="news-scroll">
     @if (thisYear === '2026') {
       <ul>
         <li class="event-item">

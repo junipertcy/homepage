@@ -20,6 +20,45 @@
 #profile img {
     border-radius: 4px;
     width: 100%;
+    max-width: 210px;
+    height: auto;
+}
+
+.biography {
+    text-align: justify;
+}
+
+.social-links a,
+.bottom-content a {
+    display: inline-flex;
+    min-width: 24px;
+    min-height: 24px;
+    align-items: center;
+}
+
+.bottom-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 991px) {
+    .biography {
+        text-align: left;
+    }
+
+    .page-container {
+        min-height: 0;
+    }
+
+    .bottom-content {
+        margin-top: 0;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
 }
 
 .email {

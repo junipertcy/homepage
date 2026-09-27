@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, skip } from 'rxjs';
 import { ReloadService } from '../../@services/reload.service';
 
 import * as d3 from 'd3';
@@ -13,25 +13,21 @@ import * as d3 from 'd3';
 })
 export class GprComponent implements OnInit, OnDestroy {
 
-  private subscription: Subscription;
+  private subscription?: Subscription;
 
   @ViewChild('gprContainer', { static: true })
   private gprContainer!: ElementRef;
-  constructor(private reloadService: ReloadService) {
-    this.subscription = this.reloadService.reloadTrigger$.subscribe(componentId => {
-      if (componentId === 'gpr') {
-        this.createPlot();
-      }
-    });
-  }
-
+  constructor(private reloadService: ReloadService) { }
 
   ngOnInit() {
     this.createPlot();
+    this.subscription = this.reloadService.reloadTrigger$.pipe(skip(1)).subscribe(componentId => {
+      if (componentId === 'gpr') this.createPlot();
+    });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 
   private createPlot() {
@@ -47,6 +43,9 @@ export class GprComponent implements OnInit, OnDestroy {
       .append('svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
+      .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+      .style('max-width', '100%')
+      .style('height', 'auto')
       .append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
 

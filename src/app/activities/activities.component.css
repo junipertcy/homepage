@@ -1,12 +1,75 @@
 
 
+.local-spacer {
+  height: 20pt;
+}
+
+@media (max-width: 991px) {
+  .local-trigger {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0 12px;
+    border: 1px solid #276190;
+    border-radius: 4px;
+    background: transparent;
+    color: #276190;
+    font: inherit;
+    line-height: normal;
+    cursor: pointer;
+  }
+
+  .text-nav[hidden] {
+    display: none;
+  }
+
+  .text-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .text-nav a {
+    display: flex;
+    min-height: 44px;
+    min-width: 44px;
+    align-items: center;
+    padding: 0 12px;
+  }
+
+  .text-nav .separator {
+    display: none;
+  }
+
+  .text-nav a.active {
+    border-left: 3px solid #276190;
+    font-weight: bold;
+  }
+
+  .local-spacer {
+    height: 8px;
+  }
+}
+
+:host button:focus-visible,
+:host a:focus-visible {
+  outline: 2px solid #276190;
+  outline-offset: 2px;
+}
+
 /* Misc icon button */
 .misc-icon-button {
   background: transparent;
   border: none;
   padding: 4px;
+  min-width: 32px;
+  min-height: 32px;
+  flex: none;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.misc-icon-button:focus-visible {
+  outline: 2px solid #276190;
 }
 
 .misc-icon-button:hover span {

@@ -2,7 +2,7 @@
 // and then translated by AI
 // SEE: https://github.com/iaciac/py-draw-simplicial-complex
 import { Component, ElementRef, ViewChild, OnDestroy, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, skip } from 'rxjs';
 import { ReloadService } from '../../@services/reload.service';
 import * as d3 from 'd3';
 
@@ -14,21 +14,25 @@ import * as d3 from 'd3';
   styleUrls: ['./simplex.component.css'],
 })
 export class SimplexComponent implements OnDestroy {
-  private subscription: Subscription;
+  private subscription?: Subscription;
+  private destroyed = false;
   private simulation: d3.Simulation<any, undefined> | null = null;
 
   @ViewChild('simplexContainer', { static: true }) simplexContainer!: ElementRef;
 
   constructor(private reloadService: ReloadService) {
-    this.subscription = this.reloadService.reloadTrigger$.subscribe(componentId => {
-      if (componentId === 'simplex') {
-        this.drawSimplicialComplex();
-      }
-    });
     // Draw after the browser has laid the container out: this is the only one of
     // the three visualizations that measures its own width, and in ngOnInit that
     // measurement is still 0, which produced a zero-width svg.
-    afterNextRender(() => this.drawSimplicialComplex());
+    afterNextRender(() => {
+      if (this.destroyed) return;
+      this.drawSimplicialComplex();
+      // The initial drawing already reflects the current state; do not replay
+      // a prior regeneration from the BehaviorSubject on a new view.
+      this.subscription = this.reloadService.reloadTrigger$.pipe(skip(1)).subscribe(componentId => {
+        if (componentId === 'simplex') this.drawSimplicialComplex();
+      });
+    });
   }
 
   generateRandomSimplices(): number[][] {
@@ -70,8 +74,9 @@ export class SimplexComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
+    this.destroyed = true;
     this.simulation?.stop();
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 
   // ngAfterViewInit() {
@@ -97,6 +102,9 @@ export class SimplexComponent implements OnDestroy {
       .append('svg')
       .attr('width', width)
       .attr('height', height)
+      .attr('viewBox', `0 0 ${width} ${height}`)
+      .style('max-width', '100%')
+      .style('height', 'auto')
       .append('g')
       .attr('transform', `translate(${width / 2},${height / 2})`);
 

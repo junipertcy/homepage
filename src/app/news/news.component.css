@@ -76,6 +76,92 @@ nz-select {
 }
 
 
+.home-intro {
+  text-align: justify;
+}
+
+.regenerate-button {
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: #276190;
+  cursor: pointer;
+}
+
+.regenerate-button:focus-visible {
+  outline: 2px solid #276190;
+}
+
+.news-heading {
+  min-height: 35pt;
+}
+
+.news-year {
+  margin-left: -20pt;
+  margin-top: -3px;
+}
+
+.news-year-icon {
+  margin-left: -7pt;
+  margin-top: 3pt;
+  position: absolute;
+  color: rgb(178, 178, 178);
+  pointer-events: none;
+}
+
+.news-entries {
+  height: 350px;
+}
+
+.news-scroll {
+  overflow: auto;
+  height: 100%;
+}
+
+@media (max-width: 991px) {
+  .news-entries {
+    height: auto;
+  }
+
+  .news-scroll {
+    overflow: visible;
+    height: auto;
+  }
+
+  .news-heading .event-item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .news-heading .event-date,
+  .news-heading .event-description {
+    padding: 0;
+    text-align: left;
+  }
+
+  .news-heading h3 {
+    margin: 0;
+  }
+
+  .news-year {
+    margin: 0;
+  }
+
+  .news-year-icon {
+    position: static;
+  }
+}
+
+@media (max-width: 575px) {
+  .home-intro,
+  .home-prose p {
+    text-align: left;
+  }
+}
+
 #news-section {
   border-radius: 10pt;
   border-color: transparent;

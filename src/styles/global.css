@@ -131,6 +131,7 @@ li.indent {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  min-width: 0;
 }
 
 /* Navigation bar */
@@ -140,6 +141,8 @@ li.indent {
   font-family: 'concourse_4', sans-serif;
   font-weight: normal;
   width: 100%; /* Ensure it takes up full width */
+  min-width: 0;
+  flex-wrap: wrap;
 }
 
 /* Links inside the navigation bar */
@@ -235,7 +238,7 @@ ul {
 
 .event-item {
   display: grid;
-  grid-template-columns: 90px 1fr;
+  grid-template-columns: 90px minmax(0, 1fr);
   gap: 5px;
   margin-bottom: 5px;
 }
@@ -259,4 +262,44 @@ ul {
   /* margin-top: 5px; */
   margin: 0 0 0 5px;
   list-style-type: square;
+}
+
+@media (max-width: 991px) {
+  .header-content {
+    flex-wrap: wrap;
+  }
+
+  .text-nav {
+    width: auto;
+    gap: 4px;
+  }
+
+  .text-nav a {
+    padding: 8px 10px;
+  }
+
+  .text-nav .separator {
+    display: none;
+  }
+
+  .layout-content a,
+  .layout-content p,
+  .layout-content li {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 575px) {
+  .event-item {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .event-date {
+    text-align: left;
+  }
+
+  .event-description {
+    padding-left: 0;
+  }
 }

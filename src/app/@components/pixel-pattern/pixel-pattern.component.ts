@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, skip } from 'rxjs';
 import { ReloadService } from '../../@services/reload.service';
 import * as d3 from 'd3';
 
@@ -11,25 +11,22 @@ import * as d3 from 'd3';
   styleUrls: ['./pixel-pattern.component.css'],
 })
 export class PixelPatternComponent implements OnInit, OnDestroy {
-  private subscription: Subscription;
+  private subscription?: Subscription;
 
-  constructor(private reloadService: ReloadService) {
-    this.subscription = this.reloadService.reloadTrigger$.subscribe(componentId => {
-      if (componentId === 'pixel') {
-        this.createPattern();
-      }
-    });
-  }
+  constructor(private reloadService: ReloadService) { }
 
   @ViewChild('chartContainer', { static: true })
   private chartContainer!: ElementRef;
 
   ngOnInit(): void {
     this.createPattern();
+    this.subscription = this.reloadService.reloadTrigger$.pipe(skip(1)).subscribe(componentId => {
+      if (componentId === 'pixel') this.createPattern();
+    });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 
   private generateRandomPattern(size: number): number[][] {
@@ -62,7 +59,10 @@ export class PixelPatternComponent implements OnInit, OnDestroy {
     const svg = d3.select(this.chartContainer.nativeElement)
       .append('svg')
       .attr('width', size)
-      .attr('height', size);
+      .attr('height', size)
+      .attr('viewBox', `0 0 ${size} ${size}`)
+      .style('max-width', '100%')
+      .style('height', 'auto');
 
     pattern.forEach((row, i) => {
       row.forEach((value, j) => {

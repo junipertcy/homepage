@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnDestroy, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
 import { faRefresh, faArrowDown91 } from '@fortawesome/free-solid-svg-icons';
 import { ReloadService } from '../@services/reload.service';
@@ -12,7 +12,15 @@ import * as d3 from 'd3';
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./news.component.css'],
 })
-export class NewsComponent {
+export class NewsComponent implements OnDestroy {
+  @ViewChild('researchStart') researchStart?: ElementRef<HTMLElement>;
+  isCompact: boolean;
+  private viewport: MediaQueryList;
+  private readonly onViewportChange = (event: MediaQueryListEvent) => this.zone.run(() => {
+    const regenerationFocused = !!document.activeElement?.closest('.regenerate-button');
+    this.isCompact = !event.matches;
+    if (regenerationFocused && this.isCompact) setTimeout(() => this.researchStart?.nativeElement.focus());
+  });
   // date = null;
   // onChange(result: Date): void {
   //   console.log('onChange: ', result);
@@ -50,7 +58,15 @@ export class NewsComponent {
   // research interests
   misc_1 = 'https://arxiv.org/abs/2402.08871';
 
-  constructor(private reloadService: ReloadService) { }
+  constructor(private reloadService: ReloadService, private zone: NgZone) {
+    this.viewport = window.matchMedia('(min-width: 992px)');
+    this.isCompact = !this.viewport.matches;
+    this.viewport.addEventListener('change', this.onViewportChange);
+  }
+
+  ngOnDestroy(): void {
+    this.viewport.removeEventListener('change', this.onViewportChange);
+  }
   reloadPattern() {
     this.reloadService.triggerReload('gpr');
     this.reloadService.triggerReload('pixel');
