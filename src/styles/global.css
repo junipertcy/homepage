@@ -311,3 +311,14 @@ ul {
     padding-left: 0;
   }
 }
+
+/* News year select. Its options render in a CDK overlay outside app-news, and the selector box is
+   inside NG-ZORRO's own view, so neither is reachable from news.component.css. */
+.news-year-dropdown .ant-select-item-option-content {
+  font-family: 'concourse_4_caps';
+  font-size: 1rem;
+}
+
+app-news .ant-select-selector {
+  margin-left: 10pt;
+}

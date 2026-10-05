@@ -3,8 +3,6 @@ import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
 import { faRefresh, faArrowDown91 } from '@fortawesome/free-solid-svg-icons';
 import { ReloadService } from '../@services/reload.service';
 
-import * as d3 from 'd3';
-
 @Component({
   selector: 'app-news',
   standalone: false,
@@ -71,20 +69,6 @@ export class NewsComponent implements OnDestroy {
     this.reloadService.triggerReload('gpr');
     this.reloadService.triggerReload('pixel');
     this.reloadService.triggerReload('simplex');
-  }
-
-  ngAfterContentChecked() {
-    // For the years
-    d3.selectAll('.ant-select-item-option-content')
-      .style('font-family', 'concourse_4_caps')
-      .style('font-size', '1rem');
-    // d3.selectAll("nz-option-item").on("mouseover", (event) => {console.log(event, this);})
-    // d3.selectAll("nz-option-item").attr("onItemHover", );
-
-    d3.selectAll('.ant-select-selector')
-      // .style('display', 'flex !important')
-      // .style('fjustify-content', 'flex-end !important')
-      .style('margin-left', '10pt');
   }
 
 }
