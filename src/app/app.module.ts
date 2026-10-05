@@ -160,6 +160,7 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent],
   imports: [
+    BrowserModule,
     SimplexComponent,
     GprComponent,
     PixelPatternComponent,
