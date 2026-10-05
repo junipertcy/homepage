@@ -127,6 +127,8 @@ export class AppComponent {
     } else if (this.darkReader) {
       (await this.darkReader).disable();
     }
+    // Reveal the page that the inline script in index.html hid until dark mode was applied.
+    this.document.documentElement.classList.remove('dark-pending');
   }
 
   constructor(

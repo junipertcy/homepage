@@ -82,6 +82,20 @@
 
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      // Dark-mode visitors: keep the prerendered page hidden on a dark background until DarkReader has
+      // been applied (AppComponent removes the class), with a 2-second fail-safe if that never happens.
+      try {
+        if (localStorage.getItem('darkMode') === 'true') {
+          document.documentElement.classList.add('dark-pending');
+          setTimeout(function () { document.documentElement.classList.remove('dark-pending'); }, 2000);
+        }
+      } catch (e) {}
+    </script>
+    <style>
+      html.dark-pending { background: #181a1b; }
+      html.dark-pending app-root { visibility: hidden; }
+    </style>
     <style>
       /* Without JavaScript the Menu buttons cannot open anything, so show the navigation they control.
          A media query, not <noscript>: prerendering escapes what a <noscript> contains. */
