@@ -12,10 +12,11 @@ import { Str2urlPipe } from '../@pipes/str2url.pipe';
 import { SimplexComponent } from '../@components/simplex/simplex.component';
 import { GprComponent } from '../@components/gpr/gpr.component';
 import { PixelPatternComponent } from '../@components/pixel-pattern/pixel-pattern.component';
+import { IconComponent } from '../@components/icon/icon.component';
 
 @Component({
   selector: 'app-news',
-  imports: [FormsModule, FontAwesomeModule, NzDividerModule, NzGridModule, NzSelectModule, Str2urlPipe, SimplexComponent, GprComponent, PixelPatternComponent],
+  imports: [FormsModule, FontAwesomeModule, NzDividerModule, NzGridModule, NzSelectModule, Str2urlPipe, SimplexComponent, GprComponent, PixelPatternComponent, IconComponent],
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css'],
 })

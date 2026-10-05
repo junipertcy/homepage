@@ -66,7 +66,11 @@
   color: #3077B0;
 }
 
-.dark-mode-button mat-icon {
+.dark-mode-button app-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
   font-size: 22px;
 }
 

@@ -2,12 +2,13 @@ import { Component, Input } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
+import { IconComponent } from '../icon/icon.component';
 
 
 @Component({
   selector: 'app-link-item',
   standalone: true,
-  imports: [FontAwesomeModule],
+  imports: [FontAwesomeModule, IconComponent],
   templateUrl: './link-item.component.html',
   styleUrl: './link-item.component.css',
 })

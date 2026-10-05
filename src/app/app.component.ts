@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+import { IconComponent } from './@components/icon/icon.component';
 
 
 // To make the update time dynamic based on my last GitHub push
@@ -17,7 +18,7 @@ import { ViewportService } from './@services/viewport.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterLink, RouterLinkActive, RouterOutlet, NgTemplateOutlet, NzLayoutModule, NzTagModule, NzIconModule, MatIconModule],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, NgTemplateOutlet, NzLayoutModule, NzTagModule, NzIconModule, MatIconModule, IconComponent],
   providers: [Title],
   templateUrl: './app.component.html',
   styleUrls: [

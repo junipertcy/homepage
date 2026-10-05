@@ -3,12 +3,13 @@ import { faBluesky } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { IconComponent } from '../@components/icon/icon.component';
 
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [FontAwesomeModule, NzIconModule, NzGridModule],
+  imports: [FontAwesomeModule, NzIconModule, NzGridModule, IconComponent],
   templateUrl: './about.component.html',
   styleUrls: [
     './about.component.css',
