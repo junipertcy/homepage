@@ -91,3 +91,20 @@ ul {
 li {
     list-style-type: none;
 }
+
+/* NG-ZORRO applies this page's responsive gutter, { xs: 8, sm: 16, md: 24, lg: 32 }, from script, after
+   the prerendered page has been painted. The same values here keep the page from shifting when it does. */
+[nz-row]:has(> .gutter-row) { margin-inline: -4px; }
+.gutter-row, .social-links { padding-inline: 4px; }
+@media (min-width: 576px) {
+  [nz-row]:has(> .gutter-row) { margin-inline: -8px; }
+  .gutter-row, .social-links { padding-inline: 8px; }
+}
+@media (min-width: 768px) {
+  [nz-row]:has(> .gutter-row) { margin-inline: -12px; }
+  .gutter-row, .social-links { padding-inline: 12px; }
+}
+@media (min-width: 992px) {
+  [nz-row]:has(> .gutter-row) { margin-inline: -16px; }
+  .gutter-row, .social-links { padding-inline: 16px; }
+}
