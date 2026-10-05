@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy, Inject, ChangeDetectionStrategy, ElementR
 
 import { Router, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { NzModalService } from 'ng-zorro-antd/modal';
 import { DOCUMENT } from '@angular/common';
 
 
@@ -12,7 +11,7 @@ import { GithubService } from './@services/github.service';
 @Component({
   selector: 'app-root',
   standalone: false,
-  providers: [NzModalService, Title],
+  providers: [Title],
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: [
@@ -118,7 +117,6 @@ export class AppComponent implements OnInit, OnDestroy {
     private githubService: GithubService,
     public router: Router,
     private titleService: Title,
-    private officeInfoModal: NzModalService,
     private zone: NgZone,
     @Inject(DOCUMENT) private document: Document
   ) {

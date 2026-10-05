@@ -59,7 +59,6 @@ import { ReadingComponent } from './reading/reading.component';
 import { BooksComponent } from './books/books.component';
 import { NotionComponent } from './notion/notion.component';
 import { AboutComponent } from './about/about.component';
-import { provideNzDateFnsAdapter } from 'ng-zorro-antd/core/time';
 
 registerLocaleData(en);
 
@@ -185,7 +184,7 @@ const appRoutes: Routes = [
     Title,
     { provide: NZ_I18N, useValue: en_US },
     { provide: NZ_ICONS, useValue: icons },
-    provideHttpClient(withXhr(), withInterceptorsFromDi()), provideNzDateFnsAdapter(),
+    provideHttpClient(withXhr(), withInterceptorsFromDi()),
   ],
 })
 export class AppModule {
