@@ -9,9 +9,6 @@ import {
 } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
-import { SimplexComponent } from './@components/simplex/simplex.component';
-import { GprComponent } from './@components/gpr/gpr.component';
-import { PixelPatternComponent } from './@components/pixel-pattern/pixel-pattern.component';
 /** Material **/
 // import { MatProgressBarModule } from '@angular/material/progress-bar';
 
@@ -169,16 +166,14 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, NewsComponent],
+  declarations: [AppComponent],
   exports: [
     RouterModule
   ],
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
-    SimplexComponent,
-    GprComponent,
-    PixelPatternComponent,
+    NewsComponent,
     FontAwesomeModule,
     MatIconModule,
     CllinComponent,

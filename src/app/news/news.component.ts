@@ -2,10 +2,19 @@ import { Component, ChangeDetectionStrategy, OnDestroy, ElementRef, ViewChild, N
 import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
 import { faRefresh, faArrowDown91 } from '@fortawesome/free-solid-svg-icons';
 import { ReloadService } from '../@services/reload.service';
+import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { Str2urlPipe } from '../@pipes/str2url.pipe';
+import { SimplexComponent } from '../@components/simplex/simplex.component';
+import { GprComponent } from '../@components/gpr/gpr.component';
+import { PixelPatternComponent } from '../@components/pixel-pattern/pixel-pattern.component';
 
 @Component({
   selector: 'app-news',
-  standalone: false,
+  imports: [FormsModule, FontAwesomeModule, NzDividerModule, NzGridModule, NzSelectModule, Str2urlPipe, SimplexComponent, GprComponent, PixelPatternComponent],
   templateUrl: './news.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./news.component.css'],
