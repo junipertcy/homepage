@@ -1,10 +1,10 @@
-import { Component, OnInit, Inject, ElementRef, ViewChild, DestroyRef, afterNextRender, computed, inject, signal } from '@angular/core';
+import { Component, Inject, ElementRef, ViewChild, DestroyRef, PLATFORM_ID, afterNextRender, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map } from 'rxjs';
 
 import { Router, RouterLink, RouterLinkActive, RouterOutlet, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { DOCUMENT, NgTemplateOutlet } from '@angular/common';
+import { DOCUMENT, NgTemplateOutlet, isPlatformBrowser } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
@@ -25,7 +25,7 @@ import { ViewportService } from './@services/viewport.service';
   ]
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   @ViewChild('contentStart') contentStart?: ElementRef<HTMLElement>;
   private readonly viewport = inject(ViewportService);
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
     }
   };
 
-  isDarkMode: boolean;
+  isDarkMode = false;
   hover: boolean = false;
 
   closeMenu(event: Event): void {
@@ -95,8 +95,21 @@ export class AppComponent implements OnInit {
 
   toggleDarkMode(): void {
     this.isDarkMode = !this.isDarkMode;
-    localStorage.setItem('darkMode', this.isDarkMode.toString());
+    try {
+      localStorage.setItem('darkMode', this.isDarkMode.toString());
+    } catch {
+      // Storage is blocked: the choice then lasts for this page view only.
+    }
     this.applyDarkMode();
+  }
+
+  // Storage can be unavailable (blocked cookies, some embedded browsers); treat that as light mode.
+  private readDarkModePreference(): boolean {
+    try {
+      return localStorage.getItem('darkMode') === 'true';
+    } catch {
+      return false;
+    }
   }
 
   // DarkReader is loaded on demand so it stays out of the initial bundle for
@@ -123,8 +136,17 @@ export class AppComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document
   ) {
     this.viewport.onCrossing(wide => this.onViewportCrossing(wide), inject(DestroyRef));
-    this.isDarkMode = localStorage.getItem('darkMode') === 'true';
-    this.applyDarkMode();
+    if (isPlatformBrowser(inject(PLATFORM_ID))) {
+      this.isDarkMode = this.readDarkModePreference();
+      this.applyDarkMode();
+    }
+    // Fetched in the browser only, after the first render: prerendering never calls GitHub, and the
+    // footer shows the newest commit at the time of the visit, not of the build.
+    afterNextRender(() => {
+      this.githubService.getLastCommitDate().subscribe({
+        next: (date) => this.lastUpdateDate.set(date)
+      });
+    });
     router.events.subscribe((event) => {  // fires on every URL change
       this.setTitle(this.getTitleFromRouter(router));
       if (event instanceof NavigationEnd && this.pendingPrimary) {
@@ -166,14 +188,6 @@ export class AppComponent implements OnInit {
         target?.focus();
       });
     }
-  }
-
-  ngOnInit(): void {
-    this.githubService.getLastCommitDate().subscribe({
-      next: (date) => this.lastUpdateDate.set(date)
-    });
-
-
   }
 
 }

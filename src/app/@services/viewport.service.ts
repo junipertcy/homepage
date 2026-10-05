@@ -1,5 +1,5 @@
-import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { DestroyRef, Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { DestroyRef, Injectable, afterNextRender, inject, signal } from '@angular/core';
 
 /** The compact/wide boundary: NG-ZORRO's `lg`, and `max-width: 991px` in the stylesheets. */
 export const WIDE_QUERY = '(min-width: 992px)';
@@ -13,17 +13,21 @@ export const WIDE_QUERY = '(min-width: 992px)';
 export class ViewportService {
   private readonly document = inject(DOCUMENT);
   private readonly wide = signal(false);
-  /** True at 992 CSS px and wider. Always false on the server. */
+  /** True at 992 CSS px and wider, from the first render on. Always false on the server. */
   readonly isWide = this.wide.asReadonly();
   private readonly crossingListeners = new Set<(wide: boolean) => void>();
   private blurredByLayout?: { element: Element; at: number };
 
   constructor() {
-    if (!isPlatformBrowser(inject(PLATFORM_ID))) return;
-    const query = this.document.defaultView!.matchMedia(WIDE_QUERY);
-    this.wide.set(query.matches);
-    query.addEventListener('change', event => this.cross(event.matches));
-    this.document.addEventListener('focusout', event => this.noteBlur(event));
+    // Prerendered HTML is produced without a viewport, so the first client render must match it
+    // (isWide false). The real value is read once that render has happened; CSS media queries own
+    // the visible layout until then, so nothing on screen depends on this value at first paint.
+    afterNextRender(() => {
+      const query = this.document.defaultView!.matchMedia(WIDE_QUERY);
+      this.wide.set(query.matches);
+      query.addEventListener('change', event => this.cross(event.matches));
+      this.document.addEventListener('focusout', event => this.noteBlur(event));
+    });
   }
 
   /** Calls `listener` on every 992px crossing until `destroyRef` is destroyed. */

@@ -1,9 +1,10 @@
 import {
   Component,
   OnInit,
-  TrackByFunction
+  TrackByFunction,
+  inject
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { InternalUriResolverPipe } from 'src/app/@pipes/internal-uri-resolver.pipe';
 import { RouterModule } from '@angular/router';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -36,6 +37,7 @@ export interface Week {
 })
 export class TeachingComponent5352 implements OnInit {
   private str2IntRes: InternalUriResolverPipe = new InternalUriResolverPipe();
+  private readonly document = inject(DOCUMENT);
 
   // week_2 = [
   //   {
@@ -436,7 +438,7 @@ export class TeachingComponent5352 implements OnInit {
   openPDFInNewTab(event: Event, pdfUrl: any): void {
     event.stopPropagation();
     const url = this.str2IntRes.transform(pdfUrl);
-    window.open(url, '_blank');
+    this.document.defaultView?.open(url, '_blank');
   }
 
   constructor() {}
