@@ -52,8 +52,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "770kb",
-                  "maximumError": "805kb"
+                  "maximumWarning": "657kb",
+                  "maximumError": "689kb"
                 },
                 {
                   "type": "bundle",
@@ -67,8 +67,8 @@
                 },
                 {
                   "type": "allScript",
-                  "maximumWarning": "1235kb",
-                  "maximumError": "1295kb"
+                  "maximumWarning": "1137kb",
+                  "maximumError": "1192kb"
                 }
               ],
               "fileReplacements": [
