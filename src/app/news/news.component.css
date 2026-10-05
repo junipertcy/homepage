@@ -198,3 +198,16 @@ nz-select {
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+/* Visualization columns keep their drawn size while the deferred drawing code loads. */
+.viz-slot {
+  min-height: 100px;
+}
+
+.viz-slot.pixel {
+  min-height: 92px;
+}
+
+.viz-placeholder {
+  min-height: 85px;
+}

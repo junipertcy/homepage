@@ -36,8 +36,12 @@
     </div>
     <div nz-row [nzGutter]="[16, 24]" nzAlign="middle">
       @if (!isCompact) {
-      <div nz-col nzXs="24" nzSm="4" nzMd="3">
+      <div nz-col nzXs="24" nzSm="4" nzMd="3" class="viz-slot">
+        @defer (on viewport) {
         <app-simplex></app-simplex>
+        } @placeholder {
+        <div class="viz-placeholder"></div>
+        }
       </div>
       }
       <div nz-col nzXs="24" [nzSm]="isCompact ? 24 : 20" [nzMd]="isCompact ? 24 : 21" class="home-prose"
@@ -54,8 +58,12 @@
     </div>
     <div nz-row [nzGutter]="[16, 24]" nzAlign="middle">
       @if (!isCompact) {
-      <div nz-col nzXs="24" nzSm="4" nzMd="3">
+      <div nz-col nzXs="24" nzSm="4" nzMd="3" class="viz-slot">
+        @defer (on viewport) {
         <app-gpr></app-gpr>
+        } @placeholder {
+        <div class="viz-placeholder"></div>
+        }
       </div>
       }
       <div nz-col nzXs="24" [nzSm]="isCompact ? 24 : 20" [nzMd]="isCompact ? 24 : 21" class="home-prose"
@@ -72,8 +80,12 @@
     </div>
     <div nz-row [nzGutter]="[16, 24]" nzAlign="middle">
       @if (!isCompact) {
-      <div nz-col nzXs="24" nzSm="4" nzMd="3">
+      <div nz-col nzXs="24" nzSm="4" nzMd="3" class="viz-slot pixel">
+        @defer (on viewport) {
         <app-pixel-pattern></app-pixel-pattern>
+        } @placeholder {
+        <div class="viz-placeholder"></div>
+        }
       </div>
       }
       <div nz-col nzXs="24" [nzSm]="isCompact ? 24 : 20" [nzMd]="isCompact ? 24 : 21" class="home-prose"
