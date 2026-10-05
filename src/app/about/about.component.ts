@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { faBluesky } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { IconComponent } from '../@components/icon/icon.component';
@@ -9,16 +7,13 @@ import { IconComponent } from '../@components/icon/icon.component';
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [FontAwesomeModule, NzIconModule, NzGridModule, IconComponent],
+  imports: [NzIconModule, NzGridModule, IconComponent],
   templateUrl: './about.component.html',
   styleUrls: [
     './about.component.css',
-    '../../../node_modules/academicons/css/academicons.min.css',
   ]
 })
 export class AboutComponent {
-  faBluesky = faBluesky;
-
   url_li = 'https://www.linkedin.com/in/tzuchiy/';
   url_gh = 'https://github.com/junipertcy';
   url_bsky = 'https://bsky.app/profile/tcyen.bsky.social';

@@ -5,7 +5,6 @@ import { filter, map } from 'rxjs';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { DOCUMENT, NgTemplateOutlet, isPlatformBrowser } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzTagModule } from 'ng-zorro-antd/tag';
@@ -18,7 +17,7 @@ import { ViewportService } from './@services/viewport.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterLink, RouterLinkActive, RouterOutlet, NgTemplateOutlet, NzLayoutModule, NzTagModule, NzIconModule, MatIconModule, IconComponent],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, NgTemplateOutlet, NzLayoutModule, NzTagModule, NzIconModule, IconComponent],
   providers: [Title],
   templateUrl: './app.component.html',
   styleUrls: [
