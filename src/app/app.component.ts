@@ -90,6 +90,17 @@ export class AppComponent implements OnInit, OnDestroy {
       this.pendingPrimary = path;
     }
   }
+  // A tab opened before a deploy that deleted old bundles (deploy.sh -d) can ask for a route chunk
+  // that no longer exists. Load the destination as a fresh page instead of leaving the click dead.
+  // The pathname guard stops a reload loop if the fresh page fails the same way.
+  private reloadIfChunkMissing(event: NavigationError): void {
+    const message = String((event.error as Error | undefined)?.message ?? event.error);
+    const destination = event.url.split(/[?#]/)[0];
+    if (/dynamically imported module|Importing a module script failed/.test(message) && this.document.location.pathname !== destination) {
+      this.document.location.assign(event.url);
+    }
+  }
+
   toggleDarkMode(): void {
     this.isDarkMode = !this.isDarkMode;
     localStorage.setItem('darkMode', this.isDarkMode.toString());
@@ -136,6 +147,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       } else if (event instanceof NavigationCancel || event instanceof NavigationError) {
         this.pendingPrimary = undefined;
+        if (event instanceof NavigationError) this.reloadIfChunkMissing(event);
       }
       if (router.url !== '/') {
         // this.isDonationBannerShown = false;

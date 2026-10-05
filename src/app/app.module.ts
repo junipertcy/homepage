@@ -36,11 +36,7 @@ import {
 } from '@ant-design/icons-angular/icons';
 
 import { NewsComponent } from './news/news.component';
-import { PublicationsComponent } from './publications/publications.component';
-import { TeachingComponent } from './teaching/teaching.component';
 import { ErrorComponent } from './error/error.component';
-import { TalksComponent } from './talks/talks.component';
-import { ActivitiesComponent } from './activities/activities.component';
 
 import { InternalUriResolverPipe } from './@pipes/internal-uri-resolver.pipe';
 import { Str2urlPipe } from './@pipes/str2url.pipe';
@@ -67,22 +63,14 @@ const icons: IconDefinition[] = [
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 
-import { CllinComponent } from './cllin/cllin.component';
-import { PrivacyComponent } from './privacy/privacy.component';
-import { TextbooksComponent } from './textbooks/textbooks.component';
-import { ReadingComponent } from './reading/reading.component';
-import { BooksComponent } from './books/books.component';
-import { NotionComponent } from './notion/notion.component';
-import { AboutComponent } from './about/about.component';
-
 registerLocaleData(en);
 
 const appRoutes: Routes = [
   { path: '', component: NewsComponent },
-  { path: 'about', component: AboutComponent },
+  { path: 'about', loadComponent: () => import('./about/about.component').then(m => m.AboutComponent) },
   {
     path: 'activities',
-    component: ActivitiesComponent,
+    loadComponent: () => import('./activities/activities.component').then(m => m.ActivitiesComponent),
     children: [
       {
         path: '',
@@ -115,17 +103,17 @@ const appRoutes: Routes = [
       }
     ]
   },
-  { path: 'books', component: BooksComponent },
-  { path: 'cllin', component: CllinComponent },
-  { path: 'notion', component: NotionComponent },
-  { path: 'privacy', component: PrivacyComponent },
-  { path: 'publications', component: PublicationsComponent },
-  { path: 'reading', component: ReadingComponent },
-  { path: 'textbooks', component: TextbooksComponent },
-  { path: 'talks', component: TalksComponent },
+  { path: 'books', loadComponent: () => import('./books/books.component').then(m => m.BooksComponent) },
+  { path: 'cllin', loadComponent: () => import('./cllin/cllin.component').then(m => m.CllinComponent) },
+  { path: 'notion', loadComponent: () => import('./notion/notion.component').then(m => m.NotionComponent) },
+  { path: 'privacy', loadComponent: () => import('./privacy/privacy.component').then(m => m.PrivacyComponent) },
+  { path: 'publications', loadComponent: () => import('./publications/publications.component').then(m => m.PublicationsComponent) },
+  { path: 'reading', loadComponent: () => import('./reading/reading.component').then(m => m.ReadingComponent) },
+  { path: 'textbooks', loadComponent: () => import('./textbooks/textbooks.component').then(m => m.TextbooksComponent) },
+  { path: 'talks', loadComponent: () => import('./talks/talks.component').then(m => m.TalksComponent) },
   {
     path: 'teaching',
-    component: TeachingComponent,
+    loadComponent: () => import('./teaching/teaching.component').then(m => m.TeachingComponent),
     children: [
       {
         path: '',
@@ -176,15 +164,7 @@ const appRoutes: Routes = [
     NewsComponent,
     FontAwesomeModule,
     MatIconModule,
-    CllinComponent,
-    BooksComponent,
     FormsModule,
-    TalksComponent,
-    ReadingComponent,
-    PrivacyComponent,
-    PublicationsComponent,
-    TextbooksComponent,
-    NotionComponent,
     NgZorroAntdModule,
     RouterModule.forRoot(appRoutes, {
       enableTracing: false,
