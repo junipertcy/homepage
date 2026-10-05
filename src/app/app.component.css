@@ -234,3 +234,11 @@
     justify-content: space-between;
   }
 }
+
+/* Holds the footer date's place until GitHub answers (a date and a space are 5.0 to 6.0em wide), so
+   the footer does not reflow when it arrives. It sits after the "|" because splitting the text
+   around the date would move the rest of the line by a fraction of a pixel. */
+.date-reserve {
+  display: inline-block;
+  width: 5.7em;
+}

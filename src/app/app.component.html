@@ -45,6 +45,7 @@
   <div>
     <nz-footer id="footer">
       © Since 2016 Tzu-Chi Yen | Last update: {{ lastUpdateDate() }} |
+      @if (lastUpdateDate() === undefined) {<span class="date-reserve"></span>}
       <a
         href="https://github.com/junipertcy/homepage"
         target="_blank"
