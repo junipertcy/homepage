@@ -145,9 +145,9 @@ export class AppComponent implements OnInit {
     });
   }
 
-  // Runs before the layout switches, while the control that had focus is still focused.
+  // Runs when the layout crosses 992px. CSS may already have hidden, and so blurred, the focused control.
   private onViewportCrossing(wide: boolean): void {
-    const focused = this.document.activeElement as HTMLElement | null;
+    const focused = this.viewport.focusedAtCrossing();
     const inNavigation = !!focused?.closest('.primary-nav');
     const inTrigger = !!focused?.closest('.menu-trigger');
     const inUtility = !!focused?.closest('.compact-utilities, .header-actions');

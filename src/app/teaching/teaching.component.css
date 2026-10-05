@@ -16,7 +16,7 @@
     cursor: pointer;
   }
 
-  .text-nav[hidden] {
+  .text-nav:not(.open) {
     display: none;
   }
 
@@ -46,6 +46,12 @@
 
   .local-spacer {
     height: 8px;
+  }
+}
+
+@media (min-width: 992px) {
+  .local-trigger {
+    display: none;
   }
 }
 

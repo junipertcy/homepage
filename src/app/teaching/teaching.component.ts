@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, DestroyRef, computed, inject, signal } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { Subscription, filter, map } from 'rxjs';
@@ -23,7 +23,6 @@ export class TeachingComponent implements OnInit, OnDestroy {
   readonly isCUActive = signal(false); // Boolean to track if CU should be highlighted
   @ViewChild('localStart') localStart?: ElementRef<HTMLElement>;
   private readonly viewport = inject(ViewportService);
-  private readonly injector = inject(Injector);
   readonly isCompact = computed(() => !this.viewport.isWide());
   readonly localOpen = signal(false);
   private pendingLocal?: string;
@@ -40,15 +39,16 @@ export class TeachingComponent implements OnInit, OnDestroy {
   });
 
   constructor(public router: Router, private activatedRoute: ActivatedRoute) {
-    // Runs before the layout switches, while the control that had focus is still focused.
+    // Runs when the layout crosses 992px. CSS may already have hidden, and so blurred, the focused control.
     this.viewport.onCrossing(wide => {
-      const focused = document.activeElement as HTMLElement | null;
+      const focused = this.viewport.focusedAtCrossing();
       const inLinks = !!focused?.closest('#teaching-navigation');
       const inTrigger = !!focused?.closest('.local-trigger');
       const compact = !wide;
       this.localOpen.set(false);
       if ((compact && inLinks) || (!compact && inTrigger)) {
-        afterNextRender(() => document.querySelector<HTMLElement>(compact ? 'app-teaching .local-trigger' : 'app-teaching #teaching-navigation a')?.focus(), { injector: this.injector });
+        // The targets are always in the DOM (CSS chooses what shows); no Angular render follows a crossing.
+        setTimeout(() => document.querySelector<HTMLElement>(compact ? 'app-teaching .local-trigger' : 'app-teaching #teaching-navigation a')?.focus());
       }
     }, inject(DestroyRef));
   }

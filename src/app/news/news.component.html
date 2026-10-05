@@ -21,30 +21,28 @@
   <!-- <nz-divider style="border: transparent"></nz-divider> -->
   <div #researchStart tabindex="-1">
     <div nz-row [nzGutter]="[16, 24]" nzAlign="middle" style="padding-bottom: 1em">
-      <div nz-col nzXs="24" [nzSm]="isCompact() ? 24 : 20" [nzMd]="isCompact() ? 24 : 21">
+      <div nz-col nzXs="24" nzLg="21">
         My work presently focuses on two application areas, plus a growing
         interest in systems research:
       </div>
-      @if (!isCompact()) {
-      <div nz-col nzXs="24" nzSm="4" nzMd="3" style="text-align: right">
+      <div nz-col nzXs="24" nzLg="3" class="wide-only" style="text-align: right">
         <button type="button" class="regenerate-button" (click)="reloadPattern()"
           aria-label="Regenerate the visualizations">
           <fa-icon [icon]="faRefresh"></fa-icon>
         </button>
       </div>
-      }
     </div>
     <div nz-row [nzGutter]="[16, 24]" nzAlign="middle">
-      @if (!isCompact()) {
-      <div nz-col nzXs="24" nzSm="4" nzMd="3" class="viz-slot">
+      <div nz-col nzXs="24" nzLg="3" class="wide-only viz-slot">
+        @if (isWide()) {
         @defer (on viewport) {
         <app-simplex></app-simplex>
         } @placeholder {
         <div class="viz-placeholder"></div>
         }
+        }
       </div>
-      }
-      <div nz-col nzXs="24" [nzSm]="isCompact() ? 24 : 20" [nzMd]="isCompact() ? 24 : 21" class="home-prose"
+      <div nz-col nzXs="24" nzLg="21" class="home-prose"
         style="text-align: justify">
         <p style="margin-left: 0.2em">
           <i>Graph and higher-order structures</i>
@@ -57,16 +55,16 @@
       </div>
     </div>
     <div nz-row [nzGutter]="[16, 24]" nzAlign="middle">
-      @if (!isCompact()) {
-      <div nz-col nzXs="24" nzSm="4" nzMd="3" class="viz-slot">
+      <div nz-col nzXs="24" nzLg="3" class="wide-only viz-slot">
+        @if (isWide()) {
         @defer (on viewport) {
         <app-gpr></app-gpr>
         } @placeholder {
         <div class="viz-placeholder"></div>
         }
+        }
       </div>
-      }
-      <div nz-col nzXs="24" [nzSm]="isCompact() ? 24 : 20" [nzMd]="isCompact() ? 24 : 21" class="home-prose"
+      <div nz-col nzXs="24" nzLg="21" class="home-prose"
         style="text-align: justify">
         <p style="margin-left: 0.2em">
           <i>Optimization with scarce data.</i> With a priori knowledge, convex
@@ -79,16 +77,16 @@
       </div>
     </div>
     <div nz-row [nzGutter]="[16, 24]" nzAlign="middle">
-      @if (!isCompact()) {
-      <div nz-col nzXs="24" nzSm="4" nzMd="3" class="viz-slot pixel">
+      <div nz-col nzXs="24" nzLg="3" class="wide-only viz-slot pixel">
+        @if (isWide()) {
         @defer (on viewport) {
         <app-pixel-pattern></app-pixel-pattern>
         } @placeholder {
         <div class="viz-placeholder"></div>
         }
+        }
       </div>
-      }
-      <div nz-col nzXs="24" [nzSm]="isCompact() ? 24 : 20" [nzMd]="isCompact() ? 24 : 21" class="home-prose"
+      <div nz-col nzXs="24" nzLg="21" class="home-prose"
         style="text-align: justify">
         <p style="margin-left: 0.2em">
           <i>Systems for deep learning.</i> I’m especially interested in deep

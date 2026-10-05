@@ -18,7 +18,8 @@
     cursor: pointer;
   }
 
-  .text-nav[hidden] {
+  .text-nav:not(.open),
+  .wide-only {
     display: none;
   }
 
@@ -47,6 +48,13 @@
 
   .local-spacer {
     height: 8px;
+  }
+}
+
+@media (min-width: 992px) {
+  .local-trigger,
+  .compact-only {
+    display: none;
   }
 }
 

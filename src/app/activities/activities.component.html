@@ -1,9 +1,7 @@
 <nz-page-header-extra>
   <div class="header-content">
-    @if (isCompact()) {
       <button type="button" class="local-trigger" aria-controls="activities-navigation" [attr.aria-expanded]="localOpen()" (click)="localOpen.set(!localOpen())" (keydown.escape)="closeLocal($event)">Activities: {{ currentCategory() }} <span aria-hidden="true">{{ localOpen() ? '▴' : '▾' }}</span></button>
-    }
-    <nav id="activities-navigation" class="text-nav" [hidden]="isCompact() && !localOpen()" aria-label="Activities navigation" (keydown.escape)="closeLocal($event)">
+    <nav id="activities-navigation" class="text-nav" [class.open]="localOpen()" aria-label="Activities navigation" (keydown.escape)="closeLocal($event)">
       <a routerLink="sem" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="selectLocal($event, 'sem')">Seminar</a>
       <span class="separator">|</span>
       <a routerLink="workshop" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="selectLocal($event, 'workshop')">Workshop</a>
@@ -13,22 +11,18 @@
       <a routerLink="pers" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="selectLocal($event, 'pers')">Personal</a>
       <span class="separator">|</span>
       <a routerLink="tw" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="selectLocal($event, 'tw')">台灣</a>
-      @if (isCompact()) {
-        <a routerLink="inact" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="selectLocal($event, 'inact')">More activities</a>
-      }
+        <a class="compact-only" routerLink="inact" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="selectLocal($event, 'inact')">More activities</a>
     </nav>
-    @if (!isCompact()) {
     <button 
       nz-button 
       nzNoAnimation 
       routerLink="inact" 
       routerLinkActive="active"
-      class="misc-icon-button"
+      class="misc-icon-button wide-only"
       aria-label="More activities"
     >
       <span nz-icon nzType="more" nzTheme="outline"></span>
     </button>
-    }
   </div>
 
 </nz-page-header-extra>

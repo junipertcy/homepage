@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject } from '@angular/core';
+import { Component, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, inject } from '@angular/core';
 import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
 import { faRefresh, faArrowDown91 } from '@fortawesome/free-solid-svg-icons';
 import { ReloadService } from '../@services/reload.service';
@@ -23,7 +23,7 @@ export class NewsComponent {
   @ViewChild('researchStart') researchStart?: ElementRef<HTMLElement>;
   private readonly viewport = inject(ViewportService);
   private readonly injector = inject(Injector);
-  readonly isCompact = computed(() => !this.viewport.isWide());
+  readonly isWide = this.viewport.isWide;
   // date = null;
   // onChange(result: Date): void {
   //   console.log('onChange: ', result);
@@ -62,9 +62,9 @@ export class NewsComponent {
   misc_1 = 'https://arxiv.org/abs/2402.08871';
 
   constructor(private reloadService: ReloadService) {
-    // Runs before the layout switches, while the regeneration button still has focus.
+    // Runs when the layout crosses 992px. CSS may already have hidden, and so blurred, the regeneration button.
     this.viewport.onCrossing(wide => {
-      const regenerationFocused = !!document.activeElement?.closest('.regenerate-button');
+      const regenerationFocused = !!this.viewport.focusedAtCrossing()?.closest('.regenerate-button');
       if (regenerationFocused && !wide) afterNextRender(() => this.researchStart?.nativeElement.focus(), { injector: this.injector });
     }, inject(DestroyRef));
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, DestroyRef, computed, inject, signal } from '@angular/core';
 import { RouterModule, Router, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Subscription, filter, map } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -26,7 +26,6 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 export class ActivitiesComponent implements OnInit, OnDestroy {
   @ViewChild('localStart') localStart?: ElementRef<HTMLElement>;
   private readonly viewport = inject(ViewportService);
-  private readonly injector = inject(Injector);
   readonly isCompact = computed(() => !this.viewport.isWide());
   readonly localOpen = signal(false);
   private pendingLocal?: string;
@@ -46,16 +45,17 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   });
 
   constructor(public router: Router) {
-    // Runs before the layout switches, while the control that had focus is still focused.
+    // Runs when the layout crosses 992px. CSS may already have hidden, and so blurred, the focused control.
     this.viewport.onCrossing(wide => {
-      const focused = document.activeElement as HTMLElement | null;
+      const focused = this.viewport.focusedAtCrossing();
       const inLinks = !!focused?.closest('#activities-navigation');
       const inTrigger = !!focused?.closest('.local-trigger');
       const inWideMore = !!focused?.closest('.misc-icon-button');
       const compact = !wide;
       this.localOpen.set(false);
       if ((compact && (inLinks || inWideMore)) || (!compact && inTrigger)) {
-        afterNextRender(() => document.querySelector<HTMLElement>(compact ? 'app-activities .local-trigger' : 'app-activities #activities-navigation a')?.focus(), { injector: this.injector });
+        // The targets are always in the DOM (CSS chooses what shows); no Angular render follows a crossing.
+        setTimeout(() => document.querySelector<HTMLElement>(compact ? 'app-activities .local-trigger' : 'app-activities #activities-navigation a')?.focus());
       }
     }, inject(DestroyRef));
   }

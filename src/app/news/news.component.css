@@ -211,3 +211,9 @@ nz-select {
 .viz-placeholder {
   min-height: 85px;
 }
+
+@media (max-width: 991px) {
+  .wide-only {
+    display: none;
+  }
+}
