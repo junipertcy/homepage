@@ -23,11 +23,19 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { NZ_ICON_DEFAULT_TWOTONE_COLOR, NZ_ICONS } from 'ng-zorro-antd/icon';
 import {
-  ShareAltOutline,
   BookOutline,
-  DownloadOutline,
-  ReadOutline,
-  LaptopOutline,
+  CodeOutline,
+  EditFill,
+  GiftFill,
+  GithubOutline,
+  LeftSquareFill,
+  LinkOutline,
+  LinkedinOutline,
+  LockOutline,
+  MailOutline,
+  MoreOutline,
+  RightSquareOutline,
+  TwitterOutline,
 } from '@ant-design/icons-angular/icons';
 
 import { NewsComponent } from './news/news.component';
@@ -40,12 +48,22 @@ import { ActivitiesComponent } from './activities/activities.component';
 import { InternalUriResolverPipe } from './@pipes/internal-uri-resolver.pipe';
 import { Str2urlPipe } from './@pipes/str2url.pipe';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
+// Every icon a template names, registered up front: no per-icon HTTP request at runtime, and the
+// icons are present in prerendered HTML. NG-ZORRO registers the ones its own components draw.
 const icons: IconDefinition[] = [
-  ShareAltOutline,
   BookOutline,
-  DownloadOutline,
-  ReadOutline,
-  LaptopOutline,
+  CodeOutline,
+  EditFill,
+  GiftFill,
+  GithubOutline,
+  LeftSquareFill,
+  LinkOutline,
+  LinkedinOutline,
+  LockOutline,
+  MailOutline,
+  MoreOutline,
+  RightSquareOutline,
+  TwitterOutline,
 ];
 
 /** angular i18n **/
