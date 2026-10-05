@@ -1,10 +1,7 @@
 import { Component, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, inject } from '@angular/core';
-import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
-import { faRefresh, faArrowDown91 } from '@fortawesome/free-solid-svg-icons';
 import { ReloadService } from '../@services/reload.service';
 import { ViewportService } from '../@services/viewport.service';
 import { FormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzSelectModule } from 'ng-zorro-antd/select';
@@ -16,7 +13,7 @@ import { IconComponent } from '../@components/icon/icon.component';
 
 @Component({
   selector: 'app-news',
-  imports: [FormsModule, FontAwesomeModule, NzDividerModule, NzGridModule, NzSelectModule, Str2urlPipe, SimplexComponent, GprComponent, PixelPatternComponent, IconComponent],
+  imports: [FormsModule, NzDividerModule, NzGridModule, NzSelectModule, Str2urlPipe, SimplexComponent, GprComponent, PixelPatternComponent, IconComponent],
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css'],
 })
@@ -29,9 +26,6 @@ export class NewsComponent {
   // onChange(result: Date): void {
   //   console.log('onChange: ', result);
   // }
-  faSquareUpRight = faSquareUpRight;
-  faRefresh = faRefresh;
-  faArrowDown91 = faArrowDown91;
   thisYear = '2026';
   // selectSize: NzSelectModeType = 'large';
 
