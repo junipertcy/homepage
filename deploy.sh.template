@@ -10,6 +10,7 @@ Options:
   -h, --help            Show this message and exit.
   -d, --delete-stale    Sync, then delete old build files the new build no longer uses.
   -s, --sync            Sync the local directory to the S3 bucket.
+  -r, --repair-headers  Rewrite Cache-Control/Content-Type on hashed build output and HTML already in the bucket.
 EOF
 }
 
@@ -356,8 +357,69 @@ prune_stale_build_output() {
     echo "Cleanup: $deleted_count stale file(s) deleted."
 }
 
+# Bring objects already in the bucket to the current header policy. A deploy sets Cache-Control and
+# Content-Type only when it uploads, and it skips unchanged files, so a policy change never reaches
+# files uploaded earlier (the media/ fonts kept max-age=3600 this way). Covers content-hashed build
+# output and HTML; assets/ keeps what it was uploaded with. Re-running is safe: objects that already
+# match are only read.
+repair_cache_headers() {
+    local keys_file="$tmp_dir/repair_keys.txt"
+    if ! aws s3api list-objects-v2 \
+        --bucket junipertcy.info \
+        --query "Contents[].[Key]" \
+        --output text \
+        --profile "$PROFILE" >"$keys_file"; then
+        echo "Error: failed to list s3://junipertcy.info. Nothing repaired."
+        return 1
+    fi
+
+    local key checked=0 changed=0 failed=0
+    while IFS= read -r key; do
+        is_hashed_build_output "$key" || [[ "$key" == *.html ]] || continue
+        checked=$((checked + 1))
+        local want_cc want_ct current have_cc have_ct metadata
+        want_cc=$(get_cache_control "$key")
+        want_ct=$(get_mime_type "$key")
+        if ! current=$(aws s3api head-object --bucket junipertcy.info --key "$key" \
+            --query '[CacheControl, ContentType]' --output text --profile "$PROFILE"); then
+            echo "Failed to read $key"
+            failed=$((failed + 1))
+            continue
+        fi
+        have_cc=$(printf '%s' "$current" | cut -f1)
+        have_ct=$(printf '%s' "$current" | cut -f2)
+        [[ "$have_cc" == "$want_cc" && "$have_ct" == "$want_ct" ]] && continue
+
+        # REPLACE drops user metadata unless it is restated; keep md5checksum, which sync_to_s3 compares.
+        metadata=$(aws s3api head-object --bucket junipertcy.info --key "$key" \
+            --query Metadata --output json --profile "$PROFILE") || metadata='{}'
+        [ "$metadata" = "null" ] && metadata='{}'
+        echo "Repairing $key: Cache-Control '$have_cc' -> '$want_cc'; Content-Type '$have_ct' -> '$want_ct'"
+        if aws s3api copy-object \
+            --bucket junipertcy.info \
+            --key "$key" \
+            --copy-source "junipertcy.info/$key" \
+            --metadata-directive REPLACE \
+            --metadata "$metadata" \
+            --cache-control "$want_cc" \
+            --content-type "$want_ct" \
+            --profile "$PROFILE" >/dev/null; then
+            changed=$((changed + 1))
+        else
+            echo "Failed to repair $key"
+            failed=$((failed + 1))
+        fi
+    done <"$keys_file"
+
+    if [ "$failed" -gt 0 ]; then
+        echo "FAILED: $failed object(s) could not be read or repaired ($changed repaired, $checked checked)."
+        return 1
+    fi
+    echo "Repair: $checked object(s) checked, $changed changed."
+}
+
 # Parse options
-while getopts ":hds" option; do
+while getopts ":hdsr" option; do
     case "${option}" in
     h)
         usage
@@ -373,6 +435,14 @@ while getopts ":hds" option; do
     s)
         require_aws_credentials
         sync_to_s3 || exit 1
+        exit 0
+        ;;
+    r)
+        require_aws_credentials
+        tmp_dir=$(mktemp -d) || { echo "mktemp failed"; exit 1; }
+        trap 'rm -rf "$tmp_dir"' EXIT
+        trap 'echo "Interrupted."; exit 130' INT TERM
+        repair_cache_headers || exit 1
         exit 0
         ;;
     *)
