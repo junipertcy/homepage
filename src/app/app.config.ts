@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { provideHttpClient } from '@angular/common/http';
@@ -45,7 +45,7 @@ registerLocaleData(en);
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection(),
+    provideZonelessChangeDetection(),
     provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' })),
     provideHttpClient(),
     { provide: NZ_I18N, useValue: en_US },
