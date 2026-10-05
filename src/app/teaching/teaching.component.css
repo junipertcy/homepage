@@ -2,7 +2,7 @@
   height: 20pt;
 }
 
-@media (max-width: 991px) {
+@media (width < 992px) {
   .local-trigger {
     min-height: 44px;
     min-width: 44px;

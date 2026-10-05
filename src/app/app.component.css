@@ -145,7 +145,8 @@
   }
 }
 
-@media (max-width: 991px) {
+/* width < 992px, not max-width: 991px: a zoomed viewport can be 991.5px wide, which 991 would miss. */
+@media (width < 992px) {
   .header-actions,
   .primary-nav:not(.open) {
     display: none;

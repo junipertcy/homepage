@@ -212,7 +212,7 @@ nz-select {
   min-height: 85px;
 }
 
-@media (max-width: 991px) {
+@media (width < 992px) {
   .wide-only {
     display: none;
   }
