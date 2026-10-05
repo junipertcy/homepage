@@ -51,11 +51,12 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
       const inLinks = !!focused?.closest('#activities-navigation');
       const inTrigger = !!focused?.closest('.local-trigger');
       const inWideMore = !!focused?.closest('.misc-icon-button');
+      const inCompactMore = !!focused?.closest('.compact-only');
       const compact = !wide;
       this.localOpen.set(false);
-      if ((compact && (inLinks || inWideMore)) || (!compact && inTrigger)) {
+      if ((compact && (inLinks || inWideMore)) || (!compact && (inTrigger || inCompactMore))) {
         // The targets are always in the DOM (CSS chooses what shows); no Angular render follows a crossing.
-        setTimeout(() => document.querySelector<HTMLElement>(compact ? 'app-activities .local-trigger' : 'app-activities #activities-navigation a')?.focus());
+        setTimeout(() => document.querySelector<HTMLElement>(compact ? 'app-activities .local-trigger' : inCompactMore ? 'app-activities .misc-icon-button' : 'app-activities #activities-navigation a')?.focus());
       }
     }, inject(DestroyRef));
   }
