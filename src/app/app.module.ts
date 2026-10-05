@@ -1,6 +1,5 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
@@ -59,7 +58,6 @@ import { TextbooksComponent } from './textbooks/textbooks.component';
 import { ReadingComponent } from './reading/reading.component';
 import { BooksComponent } from './books/books.component';
 import { NotionComponent } from './notion/notion.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AboutComponent } from './about/about.component';
 import { provideNzDateFnsAdapter } from 'ng-zorro-antd/core/time';
 
@@ -166,7 +164,6 @@ const appRoutes: Routes = [
     PixelPatternComponent,
     FontAwesomeModule,
     MatIconModule,
-    BrowserAnimationsModule,
     CllinComponent,
     BooksComponent,
     FormsModule,
@@ -188,7 +185,6 @@ const appRoutes: Routes = [
     Title,
     { provide: NZ_I18N, useValue: en_US },
     { provide: NZ_ICONS, useValue: icons },
-    provideAnimationsAsync(),
     provideHttpClient(withXhr(), withInterceptorsFromDi()), provideNzDateFnsAdapter(),
   ],
 })
