@@ -136,8 +136,9 @@ is_hashed_build_output() {
 get_cache_control() {
     local filename="$1"
 
-    if [ "$filename" = "index.html" ]; then
-        # The entry point: must always be revalidated so a new build is picked up.
+    if [[ "$filename" == *.html ]]; then
+        # Every page (index.html, each prerendered route's index.html, index.csr.html) names the
+        # bundles of its build, so it must be revalidated for a new build to be picked up.
         echo "no-cache"
     elif is_hashed_build_output "$filename"; then
         echo "public, max-age=31536000, immutable"
@@ -147,11 +148,11 @@ get_cache_control() {
     fi
 }
 
-# Print the checksum list with index.html moved to the end. It is uploaded last, so the
+# Print the checksum list with every HTML file moved to the end. Pages are uploaded last, so a
 # live page never references a bundle that has not been uploaded yet.
 order_for_upload() {
-    grep -v '  index\.html$' "$1"
-    grep '  index\.html$' "$1"
+    grep -v '\.html$' "$1"
+    grep '\.html$' "$1"
 }
 
 # Function to perform sync. Returns non-zero if any upload or the invalidation failed.
@@ -211,7 +212,7 @@ sync_to_s3() {
     local invalidation_paths=()
     local failed_uploads=()
     local uploaded_count=0
-    local index_skipped=0
+    local html_skipped=0
     local invalidation_failed=0
 
     order_for_upload "$local_files_checksum" >"$upload_list"
@@ -234,10 +235,10 @@ sync_to_s3() {
                 --profile "$PROFILE" 2>/dev/null)
 
             if [[ "$md5" != "$metadata" ]]; then
-                if [ "$file_path" = "index.html" ] && [ ${#failed_uploads[@]} -gt 0 ]; then
-                    # Publishing index.html now would point the live site at missing bundles.
-                    echo "Skipping index.html: ${#failed_uploads[@]} earlier upload(s) failed."
-                    index_skipped=1
+                if [[ "$file_path" == *.html ]] && [ ${#failed_uploads[@]} -gt 0 ]; then
+                    # Publishing a page now could point it at bundles that failed to upload.
+                    echo "Skipping $file_path: ${#failed_uploads[@]} earlier upload(s) failed."
+                    html_skipped=$((html_skipped + 1))
                     continue
                 fi
                 mime_type=$(get_mime_type "$file_path" "$build_dir")
@@ -294,8 +295,8 @@ sync_to_s3() {
         for f in "${failed_uploads[@]}"; do
             echo "  upload failed: $f"
         done
-        if [ "$index_skipped" -eq 1 ]; then
-            echo "  index.html was NOT uploaded, so the live site still serves the previous build."
+        if [ "$html_skipped" -gt 0 ]; then
+            echo "  $html_skipped page(s) were NOT uploaded, so the live site still serves the previous build's pages."
         fi
         if [ "$invalidation_failed" -eq 1 ]; then
             echo "  CloudFront invalidation failed: changed pages may be served stale until their cache expires."
