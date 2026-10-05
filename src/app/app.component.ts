@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject, signal } from '@angular/core';
+import { Component, OnInit, Inject, ElementRef, ViewChild, DestroyRef, afterNextRender, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map } from 'rxjs';
 
@@ -29,7 +29,6 @@ export class AppComponent implements OnInit {
 
   @ViewChild('contentStart') contentStart?: ElementRef<HTMLElement>;
   private readonly viewport = inject(ViewportService);
-  private readonly injector = inject(Injector);
   readonly isCompact = computed(() => !this.viewport.isWide());
   readonly menuOpen = signal(false);
   // The committed URL as a signal, so the aria-current bindings refresh without zone-driven checks.
@@ -156,14 +155,16 @@ export class AppComponent implements OnInit {
     const compact = !wide;
     this.menuOpen.set(false);
     if ((compact && (inNavigation || inUtility)) || (!compact && (inTrigger || inUtility))) {
-      afterNextRender(() => {
+      // The targets are always in the DOM (CSS chooses what shows), so a macrotask is enough. No Angular
+      // render follows a crossing here, because the template no longer reads the viewport.
+      setTimeout(() => {
         const target = !compact && utilityClass
           ? this.document.querySelector<HTMLElement>(`.header-actions .${utilityClass}`)
           : compact
             ? this.document.querySelector<HTMLElement>('.menu-trigger')
             : this.document.querySelector<HTMLElement>('.primary-nav .menu-item');
         target?.focus();
-      }, { injector: this.injector });
+      });
     }
   }
 

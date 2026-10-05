@@ -109,11 +109,12 @@
   color: #276190;
 }
 
-.primary-nav[hidden] {
-  display: none;
-}
-
 @media (min-width: 992px) {
+  .menu-trigger,
+  .compact-utilities {
+    display: none;
+  }
+
   .menu-item.ant-menu-item-selected::after {
     content: '';
     position: absolute;
@@ -145,6 +146,11 @@
 }
 
 @media (max-width: 991px) {
+  .header-actions,
+  .primary-nav:not(.open) {
+    display: none;
+  }
+
   .layout {
     margin: 0 16px;
   }
