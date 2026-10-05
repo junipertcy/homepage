@@ -1,8 +1,12 @@
 import { Component, OnInit, OnDestroy, Inject, ChangeDetectionStrategy, ElementRef, ViewChild, NgZone } from '@angular/core';
 
-import { Router, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgTemplateOutlet } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 
 
 // To make the update time dynamic based on my last GitHub push
@@ -10,7 +14,7 @@ import { GithubService } from './@services/github.service';
 
 @Component({
   selector: 'app-root',
-  standalone: false,
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, NgTemplateOutlet, NzLayoutModule, NzTagModule, NzIconModule, MatIconModule],
   providers: [Title],
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,

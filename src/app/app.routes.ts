@@ -1,71 +1,8 @@
-import { BrowserModule, Title } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule, ApplicationRef } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-  withXhr
-} from '@angular/common/http';
-import { AppComponent } from './app.component';
-
-/** Material **/
-// import { MatProgressBarModule } from '@angular/material/progress-bar';
-
-/** icons **/
-import { IconDefinition } from '@ant-design/icons-angular';
-import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
-import { MatIconModule } from '@angular/material/icon';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-import { NZ_ICON_DEFAULT_TWOTONE_COLOR, NZ_ICONS } from 'ng-zorro-antd/icon';
-import {
-  BookOutline,
-  CodeOutline,
-  EditFill,
-  GiftFill,
-  GithubOutline,
-  LeftSquareFill,
-  LinkOutline,
-  LinkedinOutline,
-  LockOutline,
-  MailOutline,
-  MoreOutline,
-  RightSquareOutline,
-  TwitterOutline,
-} from '@ant-design/icons-angular/icons';
-
+import { Routes } from '@angular/router';
 import { NewsComponent } from './news/news.component';
 import { ErrorComponent } from './error/error.component';
 
-import { InternalUriResolverPipe } from './@pipes/internal-uri-resolver.pipe';
-import { Str2urlPipe } from './@pipes/str2url.pipe';
-import { NgZorroAntdModule } from './ng-zorro-antd.module';
-// Every icon a template names, registered up front: no per-icon HTTP request at runtime, and the
-// icons are present in prerendered HTML. NG-ZORRO registers the ones its own components draw.
-const icons: IconDefinition[] = [
-  BookOutline,
-  CodeOutline,
-  EditFill,
-  GiftFill,
-  GithubOutline,
-  LeftSquareFill,
-  LinkOutline,
-  LinkedinOutline,
-  LockOutline,
-  MailOutline,
-  MoreOutline,
-  RightSquareOutline,
-  TwitterOutline,
-];
-
-/** angular i18n **/
-import { registerLocaleData } from '@angular/common';
-import en from '@angular/common/locales/en';
-
-registerLocaleData(en);
-
-const appRoutes: Routes = [
+export const routes: Routes = [
   { path: '', component: NewsComponent },
   { path: 'about', loadComponent: () => import('./about/about.component').then(m => m.AboutComponent) },
   {
@@ -152,33 +89,3 @@ const appRoutes: Routes = [
   },
   { path: '**', component: ErrorComponent },
 ];
-
-@NgModule({
-  declarations: [AppComponent],
-  exports: [
-    RouterModule
-  ],
-  bootstrap: [AppComponent],
-  imports: [
-    BrowserModule,
-    NewsComponent,
-    FontAwesomeModule,
-    MatIconModule,
-    FormsModule,
-    NgZorroAntdModule,
-    RouterModule.forRoot(appRoutes, {
-      enableTracing: false,
-      useHash: false,
-    }),
-    InternalUriResolverPipe,
-    Str2urlPipe,
-  ],
-  providers: [
-    Title,
-    { provide: NZ_I18N, useValue: en_US },
-    { provide: NZ_ICONS, useValue: icons },
-    provideHttpClient(withXhr(), withInterceptorsFromDi()),
-  ],
-})
-export class AppModule {
-}

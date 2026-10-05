@@ -1,18 +1,5 @@
-import { enableProdMode, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './app/app.component';
+import { appConfig } from './app/app.config';
 
-if (environment.production) {
-  enableProdMode();
-}
-
-platformBrowserDynamic().bootstrapModule(AppModule, { applicationProviders: [provideZoneChangeDetection()], }).then((ref: any) => {
-  // Ensure Angular destroys itself on hot reloads.
-  if ((window as any)['ngRef']) {
-    (window as any)['ngRef'].destroy();
-  }
-  (window as any)['ngRef'] = ref;
-
-  // Otherwise, log the boot error
-}).catch((err: any) => console.error(err));
+bootstrapApplication(AppComponent, appConfig).catch((err: any) => console.error(err));
