@@ -160,6 +160,23 @@ nz-select {
   .home-prose p {
     text-align: left;
   }
+
+  .news-pinned .event-item {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0 8px;
+  }
+}
+
+@media (min-width: 992px) {
+  .news-pinned {
+    min-height: 350px;
+  }
+}
+
+.news-pinned .icon-link {
+  display: inline-block;
+  padding: 3px;
+  margin: -3px;
 }
 
 #news-section {
@@ -169,4 +186,15 @@ nz-select {
   border-width: 1pt;
   border-style: solid;
   padding-top: 10pt;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }

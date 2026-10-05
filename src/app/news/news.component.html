@@ -98,7 +98,8 @@
             <h3>News</h3>
           </div>
           <div class="event-description news-year">
-            <nz-select [nzShowArrow]="false" [(ngModel)]="thisYear" [nzSize]="'default'" [nzOptionOverflowSize]="8"
+            <label for="news-year" class="visually-hidden">News</label>
+            <nz-select nzId="news-year" [nzShowArrow]="false" [(ngModel)]="thisYear" [nzSize]="'default'" [nzOptionOverflowSize]="8"
               nzVariant="borderless"><nz-option nzValue="2026" nzLabel="2026"></nz-option><nz-option nzValue="2025"
                 nzLabel="2025"></nz-option><nz-option nzValue="2024" nzLabel="2024"></nz-option><nz-option
                 nzValue="2023" nzLabel="2023"></nz-option><nz-option nzValue="2022"
@@ -657,7 +658,7 @@
     </div>
   </div>
   <nz-divider style="border-color: transparent"></nz-divider>
-  <div nz-row nzJustify="start" style="min-height: 350px">
+  <div nz-row nzJustify="start" class="news-pinned">
     <ul>
       <li class="event-item">
         <div class="event-date">

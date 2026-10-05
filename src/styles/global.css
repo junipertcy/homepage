@@ -236,6 +236,14 @@ ul {
   padding-left: 10px;
 }
 
+/* 24px hit area for resource-tag links; must outrank NG-ZORRO's .ant-tag>a:first-child:last-child, which default.less emits after this file */
+.layout-content .ant-tag > a:first-child:last-child {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-top: -2px;
+  margin-bottom: -2px;
+}
+
 .event-item {
   display: grid;
   grid-template-columns: 90px minmax(0, 1fr);
