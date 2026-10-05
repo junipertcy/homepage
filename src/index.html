@@ -82,15 +82,14 @@
 
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <noscript>
-      <style>
-        /* Without JavaScript the Menu buttons cannot open anything, so show the navigation they control. */
-        @media (max-width: 991px) {
-          .primary-nav, .text-nav { display: flex !important; }
-          .menu-trigger, .local-trigger { display: none !important; }
-        }
-      </style>
-    </noscript>
+    <style>
+      /* Without JavaScript the Menu buttons cannot open anything, so show the navigation they control.
+         A media query, not <noscript>: prerendering escapes what a <noscript> contains. */
+      @media (scripting: none) and (max-width: 991px) {
+        .primary-nav, .text-nav { display: flex !important; }
+        .menu-trigger, .local-trigger { display: none !important; }
+      }
+    </style>
   </head>
 
   <body>

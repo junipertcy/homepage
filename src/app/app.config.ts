@@ -3,6 +3,7 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import { provideClientHydration, withEventReplay, withIncrementalHydration } from '@angular/platform-browser';
 import { IconDefinition } from '@ant-design/icons-angular';
 import {
   BookOutline,
@@ -50,5 +51,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     { provide: NZ_I18N, useValue: en_US },
     { provide: NZ_ICONS, useValue: icons },
+    provideClientHydration(withEventReplay(), withIncrementalHydration()),
   ]
 };
