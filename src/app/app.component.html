@@ -12,7 +12,7 @@
           <nz-tag class="tag vitae" [nzColor]="'volcano'">Full CV</nz-tag>
         </a>
         <button type="button" class="dark-mode-button" [attr.aria-label]="compact ? null : 'Toggle dark mode'" [attr.aria-pressed]="isDarkMode" (click)="toggleDarkMode()">
-          <mat-icon aria-hidden="true">{{ isDarkMode ? "brightness_7" : "nights_stay" }}</mat-icon>
+          <app-icon [name]="isDarkMode ? 'brightness_7' : 'nights_stay'"></app-icon>
           @if (compact) { <span>Dark mode: {{ isDarkMode ? 'On' : 'Off' }}</span> }
         </button>
       </ng-template>
