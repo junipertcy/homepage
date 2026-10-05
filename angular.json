@@ -50,6 +50,17 @@
               "sourceMap": false,
               "budgets": [
                 {
+                  "type": "initial",
+                  "maximumWarning": "1.05mb",
+                  "maximumError": "1.1mb"
+                },
+                {
+                  "type": "bundle",
+                  "name": "styles",
+                  "maximumWarning": "185kb",
+                  "maximumError": "195kb"
+                },
+                {
                   "type": "anyComponentStyle",
                   "maximumWarning": "10kb"
                 }
