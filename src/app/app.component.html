@@ -5,7 +5,7 @@
       <a routerLink="/">
         <h1 id="logo-title">Tzu-Chi Yen</h1>
       </a>
-      @if (isCompact) {
+      @if (isCompact()) {
         <button type="button" class="menu-trigger" aria-controls="primary-navigation" [attr.aria-expanded]="menuOpen" (click)="menuOpen = !menuOpen" (keydown.escape)="closeMenu($event)">Menu <span aria-hidden="true">{{ menuOpen ? '▴' : '▾' }}</span></button>
       } @else {
         <div class="header-actions"><ng-container [ngTemplateOutlet]="utilities"></ng-container></div>
@@ -14,14 +14,14 @@
         <a class="cv-link" href="{{ cv_file }}" target="_blank" style="color: #fa541c">
           <nz-tag class="tag" id="vitae" [nzColor]="'volcano'">Full CV</nz-tag>
         </a>
-        <button type="button" class="dark-mode-button" [attr.aria-label]="isCompact ? null : 'Toggle dark mode'" [attr.aria-pressed]="isDarkMode" (click)="toggleDarkMode()">
+        <button type="button" class="dark-mode-button" [attr.aria-label]="isCompact() ? null : 'Toggle dark mode'" [attr.aria-pressed]="isDarkMode" (click)="toggleDarkMode()">
           <mat-icon aria-hidden="true">{{ isDarkMode ? "brightness_7" : "nights_stay" }}</mat-icon>
-          @if (isCompact) { <span>Dark mode: {{ isDarkMode ? 'On' : 'Off' }}</span> }
+          @if (isCompact()) { <span>Dark mode: {{ isDarkMode ? 'On' : 'Off' }}</span> }
         </button>
       </ng-template>
     </nz-header>
   <div class="layout-body">
-    <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation" [hidden]="isCompact && !menuOpen" (keydown.escape)="closeMenu($event)">
+    <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation" [hidden]="isCompact() && !menuOpen" (keydown.escape)="closeMenu($event)">
       <a class="menu-item" routerLink="/publications" routerLinkActive="ant-menu-item-selected" ariaCurrentWhenActive="page" (click)="selectPrimary($event, '/publications')">
         <span class="menu-label">Publications</span>
       </a>
@@ -38,7 +38,7 @@
         <span class="menu-label">About</span>
       </a>
     </nav>
-    @if (isCompact && menuOpen) {
+    @if (isCompact() && menuOpen) {
       <div class="compact-utilities" (keydown.escape)="closeMenu($event)"><ng-container [ngTemplateOutlet]="utilities"></ng-container></div>
     }
     <main #contentStart class="layout-content" tabindex="-1">

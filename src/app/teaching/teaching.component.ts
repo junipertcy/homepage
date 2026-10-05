@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ElementRef, ViewChild, NgZone } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ViewportService } from '../@services/viewport.service';
 import { CommonModule } from '@angular/common';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 
@@ -21,9 +22,10 @@ export class TeachingComponent implements OnInit, OnDestroy {
 
   isCUActive = false; // Boolean to track if CU should be highlighted
   @ViewChild('localStart') localStart?: ElementRef<HTMLElement>;
-  isCompact: boolean;
+  private readonly viewport = inject(ViewportService);
+  private readonly injector = inject(Injector);
+  readonly isCompact = computed(() => !this.viewport.isWide());
   localOpen = false;
-  private viewport: MediaQueryList;
   private pendingLocal?: string;
   private routerEventsSub?: Subscription;
 
@@ -33,21 +35,18 @@ export class TeachingComponent implements OnInit, OnDestroy {
     return segment === 'tw' ? '台灣' : 'Resources';
   }
 
-  private readonly onViewportChange = (event: MediaQueryListEvent) => this.zone.run(() => {
-    const focused = document.activeElement as HTMLElement | null;
-    const inLinks = !!focused?.closest('#teaching-navigation');
-    const inTrigger = !!focused?.closest('.local-trigger');
-    this.isCompact = !event.matches;
-    this.localOpen = false;
-    if ((this.isCompact && inLinks) || (!this.isCompact && inTrigger)) {
-      setTimeout(() => document.querySelector<HTMLElement>(this.isCompact ? 'app-teaching .local-trigger' : 'app-teaching #teaching-navigation a')?.focus());
-    }
-  });
-
-  constructor(public router: Router, private activatedRoute: ActivatedRoute, private zone: NgZone) {
-    this.viewport = window.matchMedia('(min-width: 992px)');
-    this.isCompact = !this.viewport.matches;
-    this.viewport.addEventListener('change', this.onViewportChange);
+  constructor(public router: Router, private activatedRoute: ActivatedRoute) {
+    // Runs before the layout switches, while the control that had focus is still focused.
+    this.viewport.onCrossing(wide => {
+      const focused = document.activeElement as HTMLElement | null;
+      const inLinks = !!focused?.closest('#teaching-navigation');
+      const inTrigger = !!focused?.closest('.local-trigger');
+      const compact = !wide;
+      this.localOpen = false;
+      if ((compact && inLinks) || (!compact && inTrigger)) {
+        afterNextRender(() => document.querySelector<HTMLElement>(compact ? 'app-teaching .local-trigger' : 'app-teaching #teaching-navigation a')?.focus(), { injector: this.injector });
+      }
+    }, inject(DestroyRef));
   }
 
   closeLocal(event: Event): void {
@@ -59,7 +58,7 @@ export class TeachingComponent implements OnInit, OnDestroy {
   }
 
   selectLocal(event: MouseEvent, segment: string): void {
-    if (!this.isCompact || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (!this.isCompact() || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const path = '/teaching/' + segment;
     if (this.router.url === path) {
       this.localOpen = false;
@@ -93,7 +92,6 @@ export class TeachingComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.routerEventsSub?.unsubscribe();
-    this.viewport.removeEventListener('change', this.onViewportChange);
   }
 
   checkIfCuIsActive(): void {

@@ -1,7 +1,8 @@
-import { Component, ChangeDetectionStrategy, OnDestroy, ElementRef, ViewChild, NgZone } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject } from '@angular/core';
 import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
 import { faRefresh, faArrowDown91 } from '@fortawesome/free-solid-svg-icons';
 import { ReloadService } from '../@services/reload.service';
+import { ViewportService } from '../@services/viewport.service';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -19,15 +20,11 @@ import { PixelPatternComponent } from '../@components/pixel-pattern/pixel-patter
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./news.component.css'],
 })
-export class NewsComponent implements OnDestroy {
+export class NewsComponent {
   @ViewChild('researchStart') researchStart?: ElementRef<HTMLElement>;
-  isCompact: boolean;
-  private viewport: MediaQueryList;
-  private readonly onViewportChange = (event: MediaQueryListEvent) => this.zone.run(() => {
-    const regenerationFocused = !!document.activeElement?.closest('.regenerate-button');
-    this.isCompact = !event.matches;
-    if (regenerationFocused && this.isCompact) setTimeout(() => this.researchStart?.nativeElement.focus());
-  });
+  private readonly viewport = inject(ViewportService);
+  private readonly injector = inject(Injector);
+  readonly isCompact = computed(() => !this.viewport.isWide());
   // date = null;
   // onChange(result: Date): void {
   //   console.log('onChange: ', result);
@@ -65,14 +62,12 @@ export class NewsComponent implements OnDestroy {
   // research interests
   misc_1 = 'https://arxiv.org/abs/2402.08871';
 
-  constructor(private reloadService: ReloadService, private zone: NgZone) {
-    this.viewport = window.matchMedia('(min-width: 992px)');
-    this.isCompact = !this.viewport.matches;
-    this.viewport.addEventListener('change', this.onViewportChange);
-  }
-
-  ngOnDestroy(): void {
-    this.viewport.removeEventListener('change', this.onViewportChange);
+  constructor(private reloadService: ReloadService) {
+    // Runs before the layout switches, while the regeneration button still has focus.
+    this.viewport.onCrossing(wide => {
+      const regenerationFocused = !!document.activeElement?.closest('.regenerate-button');
+      if (regenerationFocused && !wide) afterNextRender(() => this.researchStart?.nativeElement.focus(), { injector: this.injector });
+    }, inject(DestroyRef));
   }
   reloadPattern() {
     this.reloadService.triggerReload('gpr');

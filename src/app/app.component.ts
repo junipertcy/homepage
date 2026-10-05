@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Inject, ChangeDetectionStrategy, ElementRef, ViewChild, NgZone } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject } from '@angular/core';
 
 import { Router, RouterLink, RouterLinkActive, RouterOutlet, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -11,6 +11,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 
 // To make the update time dynamic based on my last GitHub push
 import { GithubService } from './@services/github.service';
+import { ViewportService } from './@services/viewport.service';
 
 @Component({
   selector: 'app-root',
@@ -23,32 +24,14 @@ import { GithubService } from './@services/github.service';
   ]
 })
 
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
 
   @ViewChild('contentStart') contentStart?: ElementRef<HTMLElement>;
-  isCompact: boolean;
+  private readonly viewport = inject(ViewportService);
+  private readonly injector = inject(Injector);
+  readonly isCompact = computed(() => !this.viewport.isWide());
   menuOpen = false;
-  private viewport: MediaQueryList;
   private pendingPrimary?: string;
-  private readonly onViewportChange = (event: MediaQueryListEvent) => this.zone.run(() => {
-    const focused = this.document.activeElement as HTMLElement | null;
-    const inNavigation = !!focused?.closest('.primary-nav');
-    const inTrigger = !!focused?.closest('.menu-trigger');
-    const inUtility = !!focused?.closest('.compact-utilities, .header-actions');
-    const utilityClass = focused?.closest('.cv-link') ? 'cv-link' : focused?.closest('.dark-mode-button') ? 'dark-mode-button' : null;
-    this.isCompact = !event.matches;
-    this.menuOpen = false;
-    if ((this.isCompact && (inNavigation || inUtility)) || (!this.isCompact && (inTrigger || inUtility))) {
-      setTimeout(() => {
-        const target = !this.isCompact && utilityClass
-          ? this.document.querySelector<HTMLElement>(`.header-actions .${utilityClass}`)
-          : this.isCompact
-            ? this.document.querySelector<HTMLElement>('.menu-trigger')
-            : this.document.querySelector<HTMLElement>('.primary-nav .menu-item');
-        target?.focus();
-      });
-    }
-  });
 
   title = 'app';
   // isDonationBannerShown = true;
@@ -86,7 +69,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   selectPrimary(event: MouseEvent, path: string): void {
-    if (!this.isCompact || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (!this.isCompact() || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     if (this.router.url === path) {
       this.menuOpen = false;
       setTimeout(() => this.contentStart?.nativeElement.focus());
@@ -132,12 +115,9 @@ export class AppComponent implements OnInit, OnDestroy {
     private githubService: GithubService,
     public router: Router,
     private titleService: Title,
-    private zone: NgZone,
     @Inject(DOCUMENT) private document: Document
   ) {
-    this.viewport = this.document.defaultView!.matchMedia('(min-width: 992px)');
-    this.isCompact = !this.viewport.matches;
-    this.viewport.addEventListener('change', this.onViewportChange);
+    this.viewport.onCrossing(wide => this.onViewportCrossing(wide), inject(DestroyRef));
     this.isDarkMode = localStorage.getItem('darkMode') === 'true';
     this.applyDarkMode();
     router.events.subscribe((event) => {  // fires on every URL change
@@ -160,8 +140,25 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    this.viewport.removeEventListener('change', this.onViewportChange);
+  // Runs before the layout switches, while the control that had focus is still focused.
+  private onViewportCrossing(wide: boolean): void {
+    const focused = this.document.activeElement as HTMLElement | null;
+    const inNavigation = !!focused?.closest('.primary-nav');
+    const inTrigger = !!focused?.closest('.menu-trigger');
+    const inUtility = !!focused?.closest('.compact-utilities, .header-actions');
+    const utilityClass = focused?.closest('.cv-link') ? 'cv-link' : focused?.closest('.dark-mode-button') ? 'dark-mode-button' : null;
+    const compact = !wide;
+    this.menuOpen = false;
+    if ((compact && (inNavigation || inUtility)) || (!compact && (inTrigger || inUtility))) {
+      afterNextRender(() => {
+        const target = !compact && utilityClass
+          ? this.document.querySelector<HTMLElement>(`.header-actions .${utilityClass}`)
+          : compact
+            ? this.document.querySelector<HTMLElement>('.menu-trigger')
+            : this.document.querySelector<HTMLElement>('.primary-nav .menu-item');
+        target?.focus();
+      }, { injector: this.injector });
+    }
   }
 
   ngOnInit(): void {

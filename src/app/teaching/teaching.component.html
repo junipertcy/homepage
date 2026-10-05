@@ -1,9 +1,9 @@
 <nz-page-header-extra>
   <div class="header-content">
-    @if (isCompact) {
+    @if (isCompact()) {
       <button type="button" class="local-trigger" aria-controls="teaching-navigation" [attr.aria-expanded]="localOpen" (click)="localOpen = !localOpen" (keydown.escape)="closeLocal($event)">Teaching: {{ currentCategory }} <span aria-hidden="true">{{ localOpen ? '▴' : '▾' }}</span></button>
     }
-    <nav id="teaching-navigation" class="text-nav" [hidden]="isCompact && !localOpen" aria-label="Teaching navigation" (keydown.escape)="closeLocal($event)">
+    <nav id="teaching-navigation" class="text-nav" [hidden]="isCompact() && !localOpen" aria-label="Teaching navigation" (keydown.escape)="closeLocal($event)">
       <a routerLink="cu" [class.active]="router.url === '/teaching/cu'" [ngClass]="{ 'is-cu-active': isCUActive }" [attr.aria-current]="isCUActive ? (router.url.endsWith('/cu') ? 'page' : 'location') : null" (click)="selectLocal($event, 'cu')">CU</a>
       <span class="separator">|</span>
       <a routerLink="tw" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="selectLocal($event, 'tw')">台灣</a>
