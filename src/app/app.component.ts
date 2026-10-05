@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ChangeDetectionStrategy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject, signal } from '@angular/core';
+import { Component, OnInit, Inject, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map } from 'rxjs';
 
@@ -20,7 +20,6 @@ import { ViewportService } from './@services/viewport.service';
   imports: [RouterLink, RouterLinkActive, RouterOutlet, NgTemplateOutlet, NzLayoutModule, NzTagModule, NzIconModule, MatIconModule],
   providers: [Title],
   templateUrl: './app.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: [
     './app.component.css',
   ]

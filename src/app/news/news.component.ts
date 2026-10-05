@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject } from '@angular/core';
+import { Component, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject } from '@angular/core';
 import { faSquareUpRight } from '@fortawesome/free-solid-svg-icons';
 import { faRefresh, faArrowDown91 } from '@fortawesome/free-solid-svg-icons';
 import { ReloadService } from '../@services/reload.service';
@@ -17,7 +17,6 @@ import { PixelPatternComponent } from '../@components/pixel-pattern/pixel-patter
   selector: 'app-news',
   imports: [FormsModule, FontAwesomeModule, NzDividerModule, NzGridModule, NzSelectModule, Str2urlPipe, SimplexComponent, GprComponent, PixelPatternComponent],
   templateUrl: './news.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./news.component.css'],
 })
 export class NewsComponent {

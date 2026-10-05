@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Subscription, skip } from 'rxjs';
 import { ReloadService } from '../../@services/reload.service';
 import * as d3 from 'd3';
@@ -7,7 +7,6 @@ import * as d3 from 'd3';
   selector: 'app-pixel-pattern',
   standalone: true,
   templateUrl: './pixel-pattern.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./pixel-pattern.component.css'],
 })
 export class PixelPatternComponent implements OnInit, OnDestroy {

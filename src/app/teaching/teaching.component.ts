@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject, signal } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { Subscription, filter, map } from 'rxjs';
@@ -16,7 +16,6 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
     NzPageHeaderModule,
   ],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./teaching.component.css',]
 })
 export class TeachingComponent implements OnInit, OnDestroy {

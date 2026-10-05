@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -6,7 +6,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './textbooks.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./textbooks.component.css'],
 })
 export class TextbooksComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
@@ -6,7 +6,6 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
   standalone: true,
   imports: [NzIconModule],
   templateUrl: './tw.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './tw.component.css'
 })
 export class TwComponent {

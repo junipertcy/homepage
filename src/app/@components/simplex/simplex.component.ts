@@ -1,7 +1,7 @@
 // This component is based on Iacopini's Python snippet
 // and then translated by AI
 // SEE: https://github.com/iaciac/py-draw-simplicial-complex
-import { Component, ElementRef, ViewChild, OnDestroy, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnDestroy, afterNextRender } from '@angular/core';
 import { Subscription, skip } from 'rxjs';
 import { ReloadService } from '../../@services/reload.service';
 import * as d3 from 'd3';
@@ -10,7 +10,6 @@ import * as d3 from 'd3';
   selector: 'app-simplex',
   standalone: true,
   templateUrl: './simplex.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./simplex.component.css'],
 })
 export class SimplexComponent implements OnDestroy {

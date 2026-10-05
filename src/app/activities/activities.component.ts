@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject, signal } from '@angular/core';
 import { RouterModule, Router, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Subscription, filter, map } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -20,7 +20,6 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
     NzPageHeaderModule,
   ],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./activities.component.css']
 })
 

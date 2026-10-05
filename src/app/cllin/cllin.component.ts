@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NzImageModule } from 'ng-zorro-antd/image';
 
 @Component({
@@ -6,7 +6,6 @@ import { NzImageModule } from 'ng-zorro-antd/image';
   standalone: true,
   imports: [NzImageModule],
   templateUrl: './cllin.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./cllin.component.css']
 })
 export class CllinComponent implements OnInit {

@@ -1,11 +1,10 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-tw',
   standalone: true,
   imports: [],
   templateUrl: './tw.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: [
     './tw.component.css', 
   ]
