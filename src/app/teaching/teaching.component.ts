@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject, signal } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, filter, map } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { ViewportService } from '../@services/viewport.service';
 import { CommonModule } from '@angular/common';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
@@ -20,20 +21,24 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 })
 export class TeachingComponent implements OnInit, OnDestroy {
 
-  isCUActive = false; // Boolean to track if CU should be highlighted
+  readonly isCUActive = signal(false); // Boolean to track if CU should be highlighted
   @ViewChild('localStart') localStart?: ElementRef<HTMLElement>;
   private readonly viewport = inject(ViewportService);
   private readonly injector = inject(Injector);
   readonly isCompact = computed(() => !this.viewport.isWide());
-  localOpen = false;
+  readonly localOpen = signal(false);
   private pendingLocal?: string;
   private routerEventsSub?: Subscription;
 
-  get currentCategory(): string {
-    const segment = this.router.url.split('/')[2];
-    if (this.isCUActive || segment === 'cu' || !segment) return 'CU';
+  readonly url = toSignal(
+    inject(Router).events.pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd), map(event => event.urlAfterRedirects)),
+    { initialValue: inject(Router).url }
+  );
+  readonly currentCategory = computed(() => {
+    const segment = this.url().split('/')[2];
+    if (this.isCUActive() || segment === 'cu' || !segment) return 'CU';
     return segment === 'tw' ? '台灣' : 'Resources';
-  }
+  });
 
   constructor(public router: Router, private activatedRoute: ActivatedRoute) {
     // Runs before the layout switches, while the control that had focus is still focused.
@@ -42,7 +47,7 @@ export class TeachingComponent implements OnInit, OnDestroy {
       const inLinks = !!focused?.closest('#teaching-navigation');
       const inTrigger = !!focused?.closest('.local-trigger');
       const compact = !wide;
-      this.localOpen = false;
+      this.localOpen.set(false);
       if ((compact && inLinks) || (!compact && inTrigger)) {
         afterNextRender(() => document.querySelector<HTMLElement>(compact ? 'app-teaching .local-trigger' : 'app-teaching #teaching-navigation a')?.focus(), { injector: this.injector });
       }
@@ -50,10 +55,10 @@ export class TeachingComponent implements OnInit, OnDestroy {
   }
 
   closeLocal(event: Event): void {
-    if (!this.localOpen) return;
+    if (!this.localOpen()) return;
     event.preventDefault();
     event.stopPropagation();
-    this.localOpen = false;
+    this.localOpen.set(false);
     document.querySelector<HTMLElement>('app-teaching .local-trigger')?.focus();
   }
 
@@ -61,7 +66,7 @@ export class TeachingComponent implements OnInit, OnDestroy {
     if (!this.isCompact() || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const path = '/teaching/' + segment;
     if (this.router.url === path) {
-      this.localOpen = false;
+      this.localOpen.set(false);
       setTimeout(() => this.localStart?.nativeElement.focus());
     } else {
       this.pendingLocal = path;
@@ -77,7 +82,7 @@ export class TeachingComponent implements OnInit, OnDestroy {
           const selected = this.pendingLocal;
           this.pendingLocal = undefined;
           if (event.urlAfterRedirects === selected) {
-            this.localOpen = false;
+            this.localOpen.set(false);
             setTimeout(() => this.localStart?.nativeElement.focus());
           }
         }
@@ -101,6 +106,6 @@ export class TeachingComponent implements OnInit, OnDestroy {
     const currentRoute = this.activatedRoute.firstChild?.snapshot.url[0]?.path;
     
     // Check if it's one of CU's classes or CU itself
-    this.isCUActive = currentRoute ? cuClassRoutes.includes(currentRoute) || currentRoute === 'cu' : false;
+    this.isCUActive.set(currentRoute ? cuClassRoutes.includes(currentRoute) || currentRoute === 'cu' : false);
   }
 }

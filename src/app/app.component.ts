@@ -1,4 +1,6 @@
-import { Component, OnInit, Inject, ChangeDetectionStrategy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, computed, inject, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { filter, map } from 'rxjs';
 
 import { Router, RouterLink, RouterLinkActive, RouterOutlet, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -30,7 +32,12 @@ export class AppComponent implements OnInit {
   private readonly viewport = inject(ViewportService);
   private readonly injector = inject(Injector);
   readonly isCompact = computed(() => !this.viewport.isWide());
-  menuOpen = false;
+  readonly menuOpen = signal(false);
+  // The committed URL as a signal, so the aria-current bindings refresh without zone-driven checks.
+  readonly url = toSignal(
+    inject(Router).events.pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd), map(event => event.urlAfterRedirects)),
+    { initialValue: inject(Router).url }
+  );
   private pendingPrimary?: string;
 
   title = 'app';
@@ -38,7 +45,7 @@ export class AppComponent implements OnInit {
   isLoaded = true;
   cv_file = "../../assets/pdf/Tzu-Chi_Yen_CV.pdf";
   resume_file = "../../assets/pdf/Tzu-Chi_Yen_Resume.pdf";
-  lastUpdateDate!: string;
+  readonly lastUpdateDate = signal<string | undefined>(undefined);
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
   }
@@ -61,17 +68,17 @@ export class AppComponent implements OnInit {
   hover: boolean = false;
 
   closeMenu(event: Event): void {
-    if (!this.menuOpen) return;
+    if (!this.menuOpen()) return;
     event.preventDefault();
     event.stopPropagation();
-    this.menuOpen = false;
+    this.menuOpen.set(false);
     this.document.querySelector<HTMLElement>('.menu-trigger')?.focus();
   }
 
   selectPrimary(event: MouseEvent, path: string): void {
     if (!this.isCompact() || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     if (this.router.url === path) {
-      this.menuOpen = false;
+      this.menuOpen.set(false);
       setTimeout(() => this.contentStart?.nativeElement.focus());
     } else {
       this.pendingPrimary = path;
@@ -126,7 +133,7 @@ export class AppComponent implements OnInit {
         const selected = this.pendingPrimary;
         this.pendingPrimary = undefined;
         if (event.urlAfterRedirects.startsWith(selected)) {
-          this.menuOpen = false;
+          this.menuOpen.set(false);
           setTimeout(() => this.contentStart?.nativeElement.focus());
         }
       } else if (event instanceof NavigationCancel || event instanceof NavigationError) {
@@ -148,7 +155,7 @@ export class AppComponent implements OnInit {
     const inUtility = !!focused?.closest('.compact-utilities, .header-actions');
     const utilityClass = focused?.closest('.cv-link') ? 'cv-link' : focused?.closest('.dark-mode-button') ? 'dark-mode-button' : null;
     const compact = !wide;
-    this.menuOpen = false;
+    this.menuOpen.set(false);
     if ((compact && (inNavigation || inUtility)) || (!compact && (inTrigger || inUtility))) {
       afterNextRender(() => {
         const target = !compact && utilityClass
@@ -163,7 +170,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.githubService.getLastCommitDate().subscribe({
-      next: (date) => this.lastUpdateDate = date
+      next: (date) => this.lastUpdateDate.set(date)
     });
 
 

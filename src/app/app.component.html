@@ -6,7 +6,7 @@
         <h1 id="logo-title">Tzu-Chi Yen</h1>
       </a>
       @if (isCompact()) {
-        <button type="button" class="menu-trigger" aria-controls="primary-navigation" [attr.aria-expanded]="menuOpen" (click)="menuOpen = !menuOpen" (keydown.escape)="closeMenu($event)">Menu <span aria-hidden="true">{{ menuOpen ? '▴' : '▾' }}</span></button>
+        <button type="button" class="menu-trigger" aria-controls="primary-navigation" [attr.aria-expanded]="menuOpen()" (click)="menuOpen.set(!menuOpen())" (keydown.escape)="closeMenu($event)">Menu <span aria-hidden="true">{{ menuOpen() ? '▴' : '▾' }}</span></button>
       } @else {
         <div class="header-actions"><ng-container [ngTemplateOutlet]="utilities"></ng-container></div>
       }
@@ -21,24 +21,24 @@
       </ng-template>
     </nz-header>
   <div class="layout-body">
-    <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation" [hidden]="isCompact() && !menuOpen" (keydown.escape)="closeMenu($event)">
+    <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation" [hidden]="isCompact() && !menuOpen()" (keydown.escape)="closeMenu($event)">
       <a class="menu-item" routerLink="/publications" routerLinkActive="ant-menu-item-selected" ariaCurrentWhenActive="page" (click)="selectPrimary($event, '/publications')">
         <span class="menu-label">Publications</span>
       </a>
       <a class="menu-item" routerLink="/talks" routerLinkActive="ant-menu-item-selected" ariaCurrentWhenActive="page" (click)="selectPrimary($event, '/talks')">
         <span class="menu-label">Talks</span>
       </a>
-      <a class="menu-item" routerLink="/teaching" routerLinkActive="ant-menu-item-selected" [attr.aria-current]="router.url.startsWith('/teaching') ? 'location' : null" (click)="selectPrimary($event, '/teaching')">
+      <a class="menu-item" routerLink="/teaching" routerLinkActive="ant-menu-item-selected" [attr.aria-current]="url().startsWith('/teaching') ? 'location' : null" (click)="selectPrimary($event, '/teaching')">
         <span class="menu-label">Teaching</span>
       </a>
-      <a class="menu-item" routerLink="/activities" routerLinkActive="ant-menu-item-selected" [attr.aria-current]="router.url.startsWith('/activities') ? 'location' : null" (click)="selectPrimary($event, '/activities')">
+      <a class="menu-item" routerLink="/activities" routerLinkActive="ant-menu-item-selected" [attr.aria-current]="url().startsWith('/activities') ? 'location' : null" (click)="selectPrimary($event, '/activities')">
         <span class="menu-label">Activities</span>
       </a>
       <a class="menu-item" routerLink="/about" routerLinkActive="ant-menu-item-selected" ariaCurrentWhenActive="page" (click)="selectPrimary($event, '/about')">
         <span class="menu-label">About</span>
       </a>
     </nav>
-    @if (isCompact() && menuOpen) {
+    @if (isCompact() && menuOpen()) {
       <div class="compact-utilities" (keydown.escape)="closeMenu($event)"><ng-container [ngTemplateOutlet]="utilities"></ng-container></div>
     }
     <main #contentStart class="layout-content" tabindex="-1">
@@ -47,7 +47,7 @@
   </div>
   <div>
     <nz-footer id="footer">
-      © Since 2016 Tzu-Chi Yen | Last update: {{ lastUpdateDate }} |
+      © Since 2016 Tzu-Chi Yen | Last update: {{ lastUpdateDate() }} |
       <a
         href="https://github.com/junipertcy/homepage"
         target="_blank"
