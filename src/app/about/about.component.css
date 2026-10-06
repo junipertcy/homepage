@@ -36,7 +36,7 @@
     align-items: center;
 }
 
-/* The Google Scholar and WoS icons are font glyphs, so they would carry the link underline. */
+/* The icons are links; keep the link underline off them. */
 .social-links a {
     text-decoration: none;
 }
