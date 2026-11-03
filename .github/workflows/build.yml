@@ -46,3 +46,8 @@ jobs:
             | while read -r font; do : > "src/styles/fonts/$font"; done
 
       - run: pnpm build
+
+      # Every on-site link and file the built pages reference is in the build, and no page
+      # links to a hijacked domain. Offline, no dependencies: scripts/links/check-built.mjs.
+      - name: Check built links
+        run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/links/check-built.mjs
