@@ -1,0 +1,35 @@
+# URLs lychee skips in the monthly link check (.github/workflows/links.yml), one regular
+# expression per line. Only sites that refuse automated requests but whose pages exist go here:
+# each was seen refusing lychee, and its page confirmed through another service, on the date
+# given. Everything else that fails is reported, so a dead page is not hidden here.
+
+# DOIs. scripts/links/monthly.mjs checks that each one redirects at doi.org; the publisher
+# pages behind them often answer 403 to automated requests (ACS, Wiley, ACM; 2026-11-03).
+^https?://(dx\.)?doi\.org/
+
+# LinkedIn answers 999 to automated requests (2026-11-03).
+^https?://([a-z]+\.)?linkedin\.com/
+
+# Publishers and newspapers that answered lychee 403; each page confirmed to exist, 2026-11-03.
+^https?://journals\.biologists\.com/
+^https?://journals\.sagepub\.com/
+^https?://www\.tandfonline\.com/
+^https?://www\.economist\.com/
+^https?://www\.nytimes\.com/
+
+# Avi Wigderson's pages at IAS answered 403; both confirmed to exist, 2026-11-03.
+^https?://www\.math\.ias\.edu/
+
+# These answered lychee 403 on some runs and not others; each page confirmed to exist,
+# 2026-11-03: Emily Riehl's book page, books.com.tw, a Medium post, Diane Poole Heller's
+# book page, JMM 2021, and the Shaevitz Lab conference page.
+^https?://math\.jhu\.edu/~eriehl/
+^https?://www\.books\.com\.tw/
+^https?://[a-z0-9-]+\.medium\.com/
+^https?://traumasolutions\.com/
+^https?://www\.jointmathematicsmeetings\.org/
+^https?://shaevitzlab\.princeton\.edu/
+
+# OpenReview answers 403 to automated requests. The NeurIPS 2026 paper link was given by the
+# owner on 2026-11-02.
+^https?://openreview\.net/

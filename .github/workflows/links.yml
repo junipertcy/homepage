@@ -1,0 +1,87 @@
+# The monthly check of outgoing links (scripts/links/monthly.mjs). It never fails and never
+# blocks a build: it keeps a single open issue labeled `link-report` up to date, and closes
+# it when a run finds no problems. Sites that refuse automated requests are in .lycheeignore.
+#
+# GitHub disables scheduled workflows after 60 days without activity in the repository. To
+# turn it back on: Actions → links → "Enable workflow". It can always be run by hand there,
+# with "Run workflow".
+
+name: links
+
+on:
+  schedule:
+    - cron: '0 14 1 * *' # 14:00 UTC on the 1st of each month
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: links
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          lfs: false
+
+      - uses: ./.github/actions/build-site
+
+      - name: List outgoing links
+        run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/links/monthly.mjs urls > links.txt
+
+      - name: Check them with lychee
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: --no-progress --suggest --max-retries 2 links.txt
+          format: json
+          output: lychee.json
+          fail: false
+          failIfEmpty: false
+          jobSummary: false
+
+      - name: Write the report
+        id: report
+        run: |
+          node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/links/monthly.mjs report lychee.json > report.md
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open, update or close the link-report issue
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          PROBLEMS: ${{ steps.report.outputs.problems }}
+        with:
+          script: |
+            const fs = require('fs');
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            let body = fs.readFileSync('report.md', 'utf8');
+            if (body.length > 60000) {
+              body = body.slice(0, 60000) + '\n\n… The report is cut short here; the whole of it is in the run’s summary.\n';
+            }
+            body += `\n---\nFrom [this run](${run}).\n`;
+
+            const { data: open } = await github.rest.issues.listForRepo({
+              ...context.repo, labels: 'link-report', state: 'open', per_page: 10,
+            });
+            const issue = open.find(i => !i.pull_request);
+            const problems = Number(process.env.PROBLEMS || 0);
+
+            if (problems > 0 && issue) {
+              await github.rest.issues.update({ ...context.repo, issue_number: issue.number, body });
+              core.info(`Updated #${issue.number}.`);
+            } else if (problems > 0) {
+              const { data } = await github.rest.issues.create({
+                ...context.repo, title: 'Link report', body, labels: ['link-report'],
+              });
+              core.info(`Opened #${data.number}.`);
+            } else if (issue) {
+              await github.rest.issues.createComment({ ...context.repo, issue_number: issue.number, body });
+              await github.rest.issues.update({ ...context.repo, issue_number: issue.number, state: 'closed' });
+              core.info(`No problems; closed #${issue.number}.`);
+            } else {
+              core.info('No problems, and no open link-report issue.');
+            }
