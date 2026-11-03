@@ -97,7 +97,7 @@ export const LINKS = {
   'Graph-tool': { url: 'https://graph-tool.skewed.de/' },
   'NetSciDraw': { url: 'https://coco.binghamton.edu/netscidraw/' },
   'Gephi': { url: 'https://gephi.org/' },
-  'webweb': { url: 'https://danlarremore.com/webweb/' },
+  'webweb': { url: 'https://webwebpage.github.io/' },
   'igraph': { url: 'https://igraph.org/' },
   'MuxViz': { url: 'https://muxviz.net/' },
   'Pymnet': { url: 'http://www.mkivela.com/pymnet/' },
@@ -213,6 +213,15 @@ export const LINKS = {
       reason: 'file-lost',
       about: 'my slides (PowerPoint) for the ACM Multimedia 2015 talk',
       linkedOn: 'before 2020',
+    },
+  },
+  'sinm2019': {
+    url: 'https://danlarremore.com/sinm2019/',
+    retired: {
+      reason: 'domain-taken-over',
+      about: 'the website of SINM 2019, the NetSci 2019 satellite on Statistical Inference for Network Models',
+      linkedOn: '2019',
+      archive: 'https://web.archive.org/web/20220119095659/https://danlarremore.com/sinm2019/',
     },
   },
 } as const satisfies Record<string, LinkEntry>;
