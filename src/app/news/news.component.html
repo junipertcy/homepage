@@ -109,7 +109,7 @@
           </div>
           <div class="event-description news-year">
             <label for="news-year" class="visually-hidden">News</label>
-            <nz-select nzId="news-year" [nzShowArrow]="false" [(ngModel)]="thisYear" [nzSize]="'default'" [nzOptionOverflowSize]="8" nzDropdownClassName="news-year-dropdown"
+            <nz-select nzId="news-year" [nzShowArrow]="false" [(ngModel)]="thisYear" [nzSize]="'default'" [nzOptionOverflowSize]="8" [nzDropdownMatchSelectWidth]="false" nzDropdownClassName="news-year-dropdown"
               nzVariant="borderless"><nz-option nzValue="2026" nzLabel="2026"></nz-option><nz-option nzValue="2025"
                 nzLabel="2025"></nz-option><nz-option nzValue="2024" nzLabel="2024"></nz-option><nz-option
                 nzValue="2023" nzLabel="2023"></nz-option><nz-option nzValue="2022"
@@ -133,12 +133,13 @@
           <li class="event-item">
             <div class="event-date">12/9–13</div>
             <div class="event-description">
-              I will be in Atlanta for NeurIPS, the satellite conference and weekend workshops.
+              I will be in Atlanta for NeurIPS, for the satellite conference and weekend workshops.
               <ul class="sub-items">
                 <li>
                   Poster at the <a href="https://ai-native-academia.github.io" target="_blank">AI-Native Academia
-                    workshop</a>: “Language models quote, code checks, humans judge.”
-                  (full text will be uploaded here after Nov. 2)
+                    workshop</a>: <i>“Models Quote, Code Verifies, Humans Judge: Lessons for AI-Assisted Peer
+                    Review”</i> (<a [href]="'NeurIPS26_orYen' | str2url" target="_blank">OpenReview</a>,
+                    <a [href]="'NeurIPS26_other' | str2url" target="_blank">other papers</a>, Poster to be made)
                 </li>
               </ul>
             </div>

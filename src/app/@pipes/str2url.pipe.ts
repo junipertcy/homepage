@@ -28,6 +28,11 @@ export class Str2urlPipe implements PipeTransform {
       // Abstract
       case 'SSC22_absYen':
         return 'https://filen.io/d/847a79e2-5637-4d78-b39d-2241a801c37b#!QDnS0Pg01pLoDmDXO8MsPSWGJO2dEEmr';
+      // Papers
+      case 'NeurIPS26_orYen':
+        return 'https://openreview.net/pdf?id=k3FgymBG6u';
+      case 'NeurIPS26_other':
+        return 'https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/AI-Native_Academia';
       // Slide
       case 'Project-talk-200417-cu_boulder':
         return '/assets/pdf/slides/Project-talk-200417-cu_boulder.pdf';
