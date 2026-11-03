@@ -1,0 +1,19 @@
+@if (link(); as l) {
+  <h2>無去 <i>bô--khì</i> — this link is gone</h2>
+  <p>
+    This URL used to be <span class="original-url">{{ l.url }}</span> and had content about
+    {{ l.about }}; now it’s not accessible because {{ l.reason }}.
+  </p>
+  <p>I linked it here {{ l.linkedOn }}.</p>
+  @if (l.archive) {
+    <p>
+      Archived copy:
+      <a [href]="l.archive" [attr.data-originalurl]="l.url" [attr.data-versiondate]="l.versionDate"
+        target="_blank">Wayback Machine, captured {{ l.captured }}</a>
+    </p>
+  } @else {
+    <p>No archived copy is known.</p>
+  }
+} @else {
+  <app-error></app-error>
+}

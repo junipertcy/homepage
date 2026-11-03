@@ -58,7 +58,7 @@ export class PublicationsComponent implements OnInit {
     this.j4.code = 'https://github.com/junipertcy/bipartiteSBM';
     this.j4.paper_pdf = 'https://filen.io/d/6a055166-f5c7-4e23-a2b0-0019625ffee7#!9cDhMbprAab4UPMc0kFA3ET0xGIdSFqs';
     this.j4.docs = 'https://docs.netscied.tw/bipartiteSBM/index.html';
-    this.j4.tweets = 'https://twitter.com/DanLarremore/status/1224439980031787009';
+    this.j4.tweets = '/bokhi/larremore-tweet-2020';
     this.j4.summary = 'We solve the community detection problem for bipartite networks using a nonparametric Bayesian stochastic blockmodel which is specifically customized for bipartite networks.';
     this.j4.favorite = true;
 
@@ -87,7 +87,7 @@ export class PublicationsComponent implements OnInit {
     this.c2.venue = '<i>ACM International Conference on Multimedia</i>, Brisbane, Australia, Oct. 2015.<br>';
     this.c2.highlight = 'IBM Grand Challenge (<a href="/assets/pdf/abstract/ACMMM15-Grand_Challenge-Proposal.pdf" download="ACMMM15-Grand_Challenge-Proposal.pdf">New York City 360 ̊ </a>) finalist.<br>';
     this.c2.code = 'https://github.com/junipertcy/uwalk';
-    this.c2.slides = 'https://d.junipertcy.info/images/c/c7/Research-talk-151028-acmmm.pptx';
+    this.c2.slides = '/bokhi/acmmm15-slides';
     this.c2.paper_pdf = 'https://filen.io/d/07a4be0f-6e04-4428-a6c5-9cf2466bfdff#!3MQrl67WJ18DaoVopowo6oUuhzyqbqzV';
     this.c2.summary = 'Using NYC 311 noise complaint records as the approximation of noise pollution for validation, we develop a joint inference and visualization system that integrates multimodal features, including geographical, mobility, visual, and social, with a graph-based learning model to infer the noise compositions of regions.';
 

@@ -1,0 +1,4 @@
+/* Long addresses wrap instead of widening the page. */
+.original-url {
+  overflow-wrap: anywhere;
+}

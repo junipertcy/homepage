@@ -87,5 +87,15 @@ export const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'bokhi',
+    children: [
+      { path: '', component: ErrorComponent },
+      {
+        path: ':id',
+        loadComponent: () => import('./bokhi/bokhi.component').then(m => m.BokhiComponent)
+      }
+    ]
+  },
   { path: '**', component: ErrorComponent },
 ];
