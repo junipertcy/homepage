@@ -185,6 +185,10 @@ const finalUrl = async url => {
       return current;
     }
     current = new URL(location, current).href;
+    // Google sends rate-limited clients to its "sorry" page; that is no answer at all.
+    if (/^https:\/\/www\.google\.com\/sorry\//.test(current)) {
+      return undefined;
+    }
   }
   return current;
 };

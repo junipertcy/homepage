@@ -30,6 +30,16 @@
 ^https?://www\.jointmathematicsmeetings\.org/
 ^https?://shaevitzlab\.princeton\.edu/
 
+# Google Scholar answers 429 to GitHub's runners; the profiles load from elsewhere (2026-11-03).
+^https?://scholar\.google\.com/
+
+# These servers send an incomplete certificate chain. Browsers fetch the missing certificate
+# and load the pages; lychee on GitHub's Linux runners does not, and reports "SSL certificate
+# not trusted" (2026-11-03). The same links pass lychee on macOS.
+^https?://web\.stanford\.edu/
+^https?://home\.cs\.colorado\.edu/
+^https?://pallini\.di\.uniroma1\.it/
+
 # OpenReview answers 403 to automated requests. The NeurIPS 2026 paper link was given by the
 # owner on 2026-11-02.
 ^https?://openreview\.net/
