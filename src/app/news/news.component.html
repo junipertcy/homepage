@@ -1,134 +1,48 @@
 <div nz-col nzOffset="0">
+  <!-- Profile photo, to the right of the intro; the text wraps beside it. -->
+  <figure class="home-profile">
+    <picture>
+      <source type="image/webp" srcset="../../assets/img/profile_2026-420.webp 420w, ../../assets/img/profile_2026-630.webp 630w" sizes="(max-width: 575px) 110px, 170px" />
+      <img src="../../assets/img/profile_2026.jpg" width="1462" height="1462" fetchpriority="high" alt="Profile picture" />
+    </picture>
+    <figcaption>Mauna Kea, 2026</figcaption>
+  </figure>
   <div nz-row nzJustify="start">
     <div nz-col nzSpan="24">
       <div>
         <p class="home-intro" style="font-size: 100%">
-          <span id="initial">H</span>
-          <span id="small">i there!</span>
-          I am a Senior Software Engineer at Global Healthcare Exchange, where I
-          build and research new ways of using knowledge graphs and AI to solve
-          problems in supply chains. Previously, I was a postdoc at CU Boulder,
-          my alma mater, where I received a Ph.D. in Computer Science under the
-          guidance of <a href="{{ dan }}" target="_blank">Dan Larremore</a> and
-          <a href="{{ josh }}" target="_blank">Josh Grochow</a>. My work has
-          previously been funded by
-          <a href="https://www.kavlifoundation.org/" target="_blank">The Kavli Foundation</a>, via my advisors’ grants,
-          and through teaching.
+          Hi there! I design algorithms that make use of randomness.
+          I do this research at Inferweave Research, which I
+          founded in 2024. I received a Ph.D. in Computer Science at CU Boulder
+          under <a href="{{ dan }}" target="_blank">Dan Larremore</a> and
+          <a href="{{ josh }}" target="_blank">Josh Grochow</a>, and was then a
+          postdoc with <a href="{{ becker }}" target="_blank">Stephen Becker</a> in
+          Applied Mathematics. I am also a Senior Software Engineer at Global
+          Healthcare Exchange, where I build the company’s ontology and the AI
+          tools that let others use it.
         </p>
       </div>
     </div>
   </div>
   <!-- <nz-divider style="border: transparent"></nz-divider> -->
-  <div #researchStart tabindex="-1">
-    <div nz-row [nzGutter]="[16, 24]" nzAlign="middle" style="padding-bottom: 1em">
-      <div nz-col nzXs="24" nzLg="21">
-        My work presently focuses on two application areas, plus a growing
-        interest in systems research:
-      </div>
-      <div nz-col nzXs="24" nzLg="3" class="wide-only" style="text-align: right">
-        <button type="button" class="regenerate-button" (click)="reloadPattern()"
-          aria-label="Regenerate the visualizations">
-          <app-icon name="arrows-rotate"></app-icon>
-        </button>
-      </div>
-    </div>
-    <div nz-row [nzGutter]="[16, 24]" nzAlign="middle">
-      <div nz-col nzXs="24" nzLg="3" class="wide-only viz-slot">
-        @if (isWide()) {
-        @defer (on viewport) {
-        <app-simplex></app-simplex>
-        } @placeholder {
-        <div class="viz-placeholder"></div>
-        }
-        }
-      </div>
-      <div nz-col nzXs="24" nzLg="21" class="home-prose"
-        style="text-align: justify">
-        <p style="margin-left: 0.2em">
-          <i>Graph and higher-order structures</i>
-          in social and biological systems present an analytical challenge due
-          to their combinatorial nature. I use and create generative modeling,
-          applied topology, and approximation schemes to uncover hidden patterns
-          (e.g., clusters, preference, or backbones), and improve their
-          computational efficiency.
-        </p>
-      </div>
-    </div>
-    <div nz-row [nzGutter]="[16, 24]" nzAlign="middle">
-      <div nz-col nzXs="24" nzLg="3" class="wide-only viz-slot">
-        @if (isWide()) {
-        @defer (on viewport) {
-        <app-gpr></app-gpr>
-        } @placeholder {
-        <div class="viz-placeholder"></div>
-        }
-        }
-      </div>
-      <div nz-col nzXs="24" nzLg="21" class="home-prose"
-        style="text-align: justify">
-        <p style="margin-left: 0.2em">
-          <i>Optimization with scarce data.</i> With a priori knowledge, convex
-          regularizations can leverage structured sparsity to simplify models. I
-          extend this approach to metadata for more interpretable models. When
-          experiments or function evaluations are costly, I use surrogate models
-          and Bayesian optimization to select the parameters and quantify
-          uncertainty.
-        </p>
-      </div>
-    </div>
-    <div nz-row [nzGutter]="[16, 24]" nzAlign="middle">
-      <div nz-col nzXs="24" nzLg="3" class="wide-only viz-slot pixel">
-        @if (isWide()) {
-        @defer (on viewport) {
-        <app-pixel-pattern></app-pixel-pattern>
-        } @placeholder {
-        <div class="viz-placeholder"></div>
-        }
-        }
-      </div>
-      <div nz-col nzXs="24" nzLg="21" class="home-prose"
-        style="text-align: justify">
-        <p style="margin-left: 0.2em">
-          <i>Systems for deep learning.</i> I’m especially interested in deep
-          learning and their interaction with
-          <a href="{{ misc_1 }}" target="_blank">topology and geometry</a>, as
-          well as new compute or hardware paradigms that can train larger models
-          faster and more energy-efficient.
-        </p>
-      </div>
-    </div>
+  <div>
+    <p style="margin-bottom: 0.4em">My research themes:</p>
+    <ul class="sub-items" style="margin: 0 0 0.8em 0.2em; text-align: left">
+      <li>Sampling: randomized algorithms and probabilistic methods</li>
+      <li>Inference: graphs and their signals, higher-order structures</li>
+      <li>Optimization: structured sparsity and Bayesian optimization</li>
+    </ul>
   </div>
   <nz-divider style="border: transparent"></nz-divider>
   <!-- News section -->
   <div id="news-section">
-    <div nz-row nzSpan="24" class="news-heading">
-      <ul>
-        <li class="event-item">
-          <div class="event-date">
-            <h3>News</h3>
-          </div>
-          <div class="event-description news-year">
-            <label for="news-year" class="visually-hidden">News</label>
-            <nz-select nzId="news-year" [nzShowArrow]="false" [(ngModel)]="thisYear" [nzSize]="'default'" [nzOptionOverflowSize]="8" [nzDropdownMatchSelectWidth]="false" nzDropdownClassName="news-year-dropdown"
-              nzVariant="borderless"><nz-option nzValue="2026" nzLabel="2026"></nz-option><nz-option nzValue="2025"
-                nzLabel="2025"></nz-option><nz-option nzValue="2024" nzLabel="2024"></nz-option><nz-option
-                nzValue="2023" nzLabel="2023"></nz-option><nz-option nzValue="2022"
-                nzLabel="2022"></nz-option><nz-option nzValue="2021" nzLabel="2021"></nz-option><nz-option
-                nzValue="2020" nzLabel="2020"></nz-option><nz-option nzValue="2019"
-                nzLabel="2019"></nz-option><nz-option nzValue="2018" nzLabel="2018"></nz-option>
-            </nz-select>
-            <app-icon name="arrow-down-9-1" class="news-year-icon"></app-icon>
-          </div>
-        </li>
-      </ul>
+    <h3 class="news-title">News</h3>
+    <div class="year-row" role="group" aria-label="News by year">
+      @for (y of years; track y) {
+        <button type="button" [attr.aria-pressed]="year() === y" (click)="year.set(y)">{{ y }}</button>
+      }
     </div>
-    <div nz-row nzJustify="start" class="news-entries" style="text-align: left">
-      <!-- <div nz-col class="gutter-row" nzSpan="2">
-    <h2>News</h2>
-
-  </div> -->
-      <div nz-col nzSpan="24" class="news-scroll">
-        @if (thisYear === '2026') {
+        <div class="news-year" [hidden]="year() !== '2026'">
         <ul>
           <li class="event-item">
             <div class="event-date">12/9–13</div>
@@ -155,12 +69,12 @@
             <div class="event-date">1/1</div>
             <div class="event-description">
               This past year has been a bit of a transition. I’ve found myself doing more (AI) engineering than science.
-              I’ll share what I am up when I can!
+              I’ll share what I am up to when I can!
             </div>
           </li>
         </ul>
-        }
-        @if (thisYear === '2025') {
+        </div>
+        <div class="news-year" [hidden]="year() !== '2025'">
         <ul>
           <li class="event-item">
             <div class="event-date">10/7</div>
@@ -171,8 +85,8 @@
             </div>
           </li>
         </ul>
-        }
-        @if (thisYear === '2024') {
+        </div>
+        <div class="news-year" [hidden]="year() !== '2024'">
         <ul>
           <li class="event-item">
             <div class="event-date">12/15</div>
@@ -215,8 +129,8 @@
             </div>
           </li>
         </ul>
-        }
-        @if (thisYear === '2023') {
+        </div>
+        <div class="news-year" [hidden]="year() !== '2023'">
         <ul>
           <li class="event-item">
             <div class="event-date">8/23</div>
@@ -282,8 +196,8 @@
             </div>
           </li>
         </ul>
-        }
-        @if (thisYear === '2022') {
+        </div>
+        <div class="news-year" [hidden]="year() !== '2022'">
         <ul>
           <li class="event-item">
             <div class="event-date">10/3–5</div>
@@ -390,8 +304,8 @@
             </div>
           </li>
         </ul>
-        }
-        @if (thisYear === '2021') {
+        </div>
+        <div class="news-year" [hidden]="year() !== '2021'">
         <ul>
           <i>/* all events are virtual */</i>
           <li class="event-item">
@@ -472,8 +386,8 @@
             </div>
           </li>
         </ul>
-        }
-        @if (thisYear === '2020') {
+        </div>
+        <div class="news-year" [hidden]="year() !== '2020'">
         <ul>
           <i>/* all events after March are virtual */</i>
           <!-- <li style="color: #DDDDDD;"> -->
@@ -581,8 +495,8 @@
             </div>
           </li>
         </ul>
-        }
-        @if (thisYear === '2019') {
+        </div>
+        <div class="news-year" [hidden]="year() !== '2019'">
         <ul>
           <li class="event-item">
             <div class="event-date">7/8–14</div>
@@ -649,8 +563,8 @@
             </div>
           </li>
         </ul>
-        }
-        @if (thisYear === '2018') {
+        </div>
+        <div class="news-year" [hidden]="year() !== '2018'">
         <ul>
           <li class="event-item">
             <div class="event-date">8/13–17</div>
@@ -671,32 +585,6 @@
             </div>
           </li>
         </ul>
-        }
-      </div>
-    </div>
-  </div>
-  <nz-divider style="border-color: transparent"></nz-divider>
-  <div nz-row nzJustify="start" class="news-pinned">
-    <ul>
-      <li class="event-item">
-        <div class="event-date">
-          <a href="/cllin" target="_blank" class="icon-link" aria-label="Tribute page">
-            <app-icon name="square-up-right"></app-icon>
-          </a>
         </div>
-        <div class="event-description">A tribute to Ching-Liang Lin</div>
-      </li>
-      <li class="event-item">
-        <div class="event-date">
-          <app-icon name="square-up-right"></app-icon>
-        </div>
-        <div class="event-description">
-          Did you know that 80% of US-trained professors come from just 20.4% of
-          universities? Check out
-          <a href="https://twitter.com/hneutr/status/1572632655421919232" target="_blank">this work</a>
-          from my colleagues.
-        </div>
-      </li>
-    </ul>
   </div>
 </div>

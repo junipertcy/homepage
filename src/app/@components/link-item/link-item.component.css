@@ -13,3 +13,10 @@
     align-items: center;
     justify-content: center;
 }
+
+/* Concourse's bold is very heavy next to Concourse 3 body text; one grade up
+   (Concourse 4 regular) marks the title more gently. */
+.title {
+    font-family: 'concourse_4', sans-serif;
+    font-weight: normal;
+}

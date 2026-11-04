@@ -3,13 +3,59 @@
   text-justify: inter-word;
 }
 
-img[nz-image] {
+/* The four pictures in one row at one height; on phones the photo takes the
+   full width and the three scans share the row below it. */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.gallery figure {
+  margin: 0;
+}
+
+.gallery figcaption {
+  margin-top: 4px;
+}
+
+.gallery img {
+  display: block;
+  height: 225px;
+  width: auto;
   max-width: 100%;
-  height: auto;
+  border: 5px double gray;
+  cursor: pointer;
+}
+
+/* Shorter on tablets so all four still fit on one row. */
+@media (max-width: 991px) {
+  .gallery img {
+    height: 200px;
+  }
 }
 
 @media (max-width: 575px) {
   .memorial-intro {
     text-align: left;
+  }
+
+  .gallery {
+    gap: 12px;
+  }
+
+  .gallery .photo {
+    flex-basis: 100%;
+  }
+
+  .gallery figure:not(.photo) {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: auto;
   }
 }

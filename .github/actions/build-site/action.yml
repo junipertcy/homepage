@@ -17,7 +17,7 @@ runs:
       shell: bash
 
     # The Equity and Concourse fonts are commercially licensed and deliberately
-    # gitignored, but src/styles/font-face.css has 32 url() references to them and
+    # gitignored, but src/styles/font-face.css has 36 url() references to them and
     # Angular's css-resource plugin fails the build on any it cannot resolve. Stub
     # them so the build can run. This gate checks that the app COMPILES — it says
     # nothing about how text renders, and the stubs never leave the runner.

@@ -10,60 +10,15 @@
   }
   
 
-#profile {
-    
-    width: 100%;
-    background-color: white;
-}
-
-
-#profile img {
-    border-radius: 4px;
-    width: 100%;
-    max-width: 210px;
-    height: auto;
-}
-
-/* Positioning container for the profile photo and its caption overlay. Its
-   footprint matches the image exactly (210px max, auto height), so nothing
-   shifts when the photo swaps between its responsive variants. */
-.profile-photo {
-    position: relative;
-    width: 100%;
-    max-width: 210px;
-}
-
-/* "Mauna Kea, 2026" caption at the bottom of the photo. A soft dark gradient
-   behind the white text keeps it legible over any part of the image; the
-   corner radius matches the photo's own 4px rounding. */
-.profile-photo-caption {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 28px 10px 8px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0));
-    color: #fff;
-    font-size: 13px;
-    text-align: center;
-    border-radius: 0 0 4px 4px;
-}
-
 .biography {
-    text-align: justify;
+    text-align: left;
 }
 
-.social-links a,
 .bottom-content a {
     display: inline-flex;
     min-width: 24px;
     min-height: 24px;
     align-items: center;
-}
-
-/* The icons are links; keep the link underline off them. */
-.social-links a {
-    text-decoration: none;
 }
 
 .bottom-content img {
@@ -72,22 +27,12 @@
 }
 
 @media (max-width: 991px) {
-    .biography {
-        text-align: left;
-    }
-
     .page-container {
         min-height: 0;
     }
 
     .bottom-content {
         margin-top: 0;
-    }
-
-    ul {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
     }
 }
 
@@ -103,33 +48,19 @@
     /*width: 1em;*/
 }
 
-
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
-    gap: 0px;
-}
-
-li {
-    list-style-type: none;
-}
-
 /* NG-ZORRO applies this page's responsive gutter, { xs: 8, sm: 16, md: 24, lg: 32 }, from script, after
    the prerendered page has been painted. The same values here keep the page from shifting when it does. */
 [nz-row]:has(> .gutter-row) { margin-inline: -4px; }
-.gutter-row, .social-links { padding-inline: 4px; }
+.gutter-row { padding-inline: 4px; }
 @media (min-width: 576px) {
   [nz-row]:has(> .gutter-row) { margin-inline: -8px; }
-  .gutter-row, .social-links { padding-inline: 8px; }
+  .gutter-row { padding-inline: 8px; }
 }
 @media (min-width: 768px) {
   [nz-row]:has(> .gutter-row) { margin-inline: -12px; }
-  .gutter-row, .social-links { padding-inline: 12px; }
+  .gutter-row { padding-inline: 12px; }
 }
 @media (min-width: 992px) {
   [nz-row]:has(> .gutter-row) { margin-inline: -16px; }
-  .gutter-row, .social-links { padding-inline: 16px; }
+  .gutter-row { padding-inline: 16px; }
 }

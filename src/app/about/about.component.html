@@ -1,86 +1,31 @@
 <div class="page-container">
   <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
-    <div nz-col class="gutter-row" [nzSpan]="6" nzXs="24" nzMd="6" id="profile">
-      <div class="profile-photo">
-        <picture>
-          <source type="image/webp" srcset="../../assets/img/profile_2026-420.webp 420w, ../../assets/img/profile_2026-630.webp 630w" sizes="210px" />
-          <img src="../../assets/img/profile_2026.jpg" width="1462" height="1462" fetchpriority="high" alt="Profile picture" />
-        </picture>
-        <span class="profile-photo-caption">Mauna Kea, 2026</span>
-      </div>
-    </div>
-    <div nz-col class="gutter-row biography" [nzSpan]="18" nzXs="24" nzMd="18">
+    <div nz-col class="gutter-row biography" [nzSpan]="24">
       <p>
-        I grew up in Yunlin, Taiwan and has background in natural sciences.
-        After wonderful years in Beijing as a software engineer in a startup and
-        then a NGO, I moved to Boulder in 2018, where I now call home. My work
-        draws on computer science and applied math to understand complex
-        systems. Outside work, I love exploring Colorado’s outdoors through
-        hiking, climbing, and swimming.
+        I like stochastic things that are also moving. Which led me to a 
+        research agenda in designing algorithms that make use of that randomness.
+        I came to this through chemistry: My first papers were on quantum coherence
+        in photosynthetic light harvesting and on single molecules diffusing in membranes.
+        After three and a half years as a software engineer in Beijing, 
+        I moved to Boulder in 2018 for a Ph.D. in Computer Science at CU Boulder on networks.
+        Lately I have been working on exact sampling for stochastic processes, the mathematics
+        behind thermodynamic computing. Outside work, I love exploring
+        Colorado’s outdoors through hiking, climbing, and swimming.
       </p>
       <p>
-        You are always welcome to contact me via
+        <a routerLink="/cllin">A tribute to Ching-Liang Lin</a>
+      </p>
+      <p>
+        You can reach me at
+        @if (email(); as e) {<a href="mailto:{{ e }}">{{ e }}</a>} @else {tcy [at] inferweave [dot] com}
+        or book a time on
         <a
           href="https://cal.com/tcyen"
           target="_blank"
           rel="noopener"
-          style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"
           >Cal.com</a
-        > or email.
+        >.
       </p>
-      <div nz-col class="social-links" style="margin-top: 10px">
-        <h5>Find me at</h5>
-        <ul>
-          <li>
-            <a href="{{ url_li }}" target="_blank" rel="noopener" aria-label="LinkedIn profile"
-              ><span
-                nz-icon
-                nzType="linkedin"
-                nzTheme="outline"
-                style="font-size: 20px"
-              ></span
-            ></a>
-          </li>
-          <li>
-            <a href="{{ url_gh }}" target="_blank" rel="noopener" aria-label="GitHub profile"
-              ><span
-                nz-icon
-                nzType="github"
-                nzTheme="outline"
-                style="font-size: 20px"
-              ></span
-            ></a>
-          </li>
-          <li>
-            <a href="{{ url_bsky }}" target="_blank" rel="noopener" aria-label="Bluesky profile"
-              ><app-icon name="bluesky" style="font-size: 20px"></app-icon
-            ></a>
-          </li>
-          <li>
-            <a href="{{ url_x }}" target="_blank" rel="noopener" aria-label="Twitter profile"
-              ><span
-                nz-icon
-                nzType="twitter"
-                nzTheme="outline"
-                style="font-size: 20px"
-              ></span
-            ></a>
-          </li>
-          <li>
-            <a href="{{ url_gs }}" target="_blank" rel="noopener" aria-label="Google Scholar profile"
-              ><app-icon
-                name="google-scholar" class="big-icon"
-                style="font-size: 20px"
-              ></app-icon
-            ></a>
-          </li>
-          <li>
-            <a href="{{ url_wos }}" target="_blank" rel="noopener" aria-label="Web of Science profile"
-              ><app-icon name="clarivate" class="big-icon" style="font-size: 20px"></app-icon
-            ></a>
-          </li>
-        </ul>
-      </div>
     </div>
   </div>
   <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">

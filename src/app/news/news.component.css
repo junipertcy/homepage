@@ -7,12 +7,6 @@ nz-divider {
   width: 4px;
 }
 
-nz-select {
-  margin: 0 0px 3px 0;
-  width: 4.9rem;
-  font-family: "concourse_4_caps", sans-serif;
-}
-
 .border-container {
   position: relative;
   /* Required for absolute positioning of the emoji */
@@ -47,26 +41,9 @@ nz-select {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   background-color: #d4ecff;
   color: #111111;
-  font-family: "concourse_4", sans-serif;
+  font-family: "concourse_3", sans-serif;
 }
 
-
-#initial {
-  float: left;
-  font-feature-settings: "ss08" 1;
-  /* font-size: 3.5rem; */
-  /* height: 3.4375rem; */
-  font-size: 3.3rem;
-  height: 3.2rem;
-  line-height: 1;
-  margin: 0.0625rem 0.2rem 0 0;
-  text-transform: uppercase;
-  font-family: "equity_b_caps";
-}
-
-#small {
-  font-family: "equity_b_caps";
-}
 
 .date {
   margin-right: 0px;
@@ -77,143 +54,95 @@ nz-select {
 
 
 .home-intro {
-  text-align: justify;
+  text-align: left;
 }
 
-.regenerate-button {
-  min-width: 44px;
-  min-height: 44px;
-  border: 0;
-  background: transparent;
-  color: #276190;
-  cursor: pointer;
+/* Profile photo, floated right of the intro (moved from the About page).
+   The intro and research themes wrap beside it; the divider before News clears it. */
+.home-profile {
+  float: right;
+  width: 170px;
+  margin: 0 0 12px 24px;
 }
 
-.regenerate-button:focus-visible {
-  outline: 2px solid #276190;
+/* The intro's row is a flex box, which sits beside a float instead of wrapping
+   under it; as a plain block (its one column is full width) the text wraps. */
+.home-profile + .ant-row {
+  display: block;
 }
 
-.news-heading {
-  min-height: 35pt;
+.home-profile img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
 }
 
-.news-year {
-  margin-left: -20pt;
-  margin-top: -3px;
-}
-
-.news-year-icon {
-  margin-left: -7pt;
-  margin-top: 3pt;
-  position: absolute;
-  color: rgb(178, 178, 178);
-  pointer-events: none;
-}
-
-.news-entries {
-  height: 350px;
-}
-
-.news-scroll {
-  overflow: auto;
-  height: 100%;
-}
-
-@media (max-width: 991px) {
-  .news-entries {
-    height: auto;
-  }
-
-  .news-scroll {
-    overflow: visible;
-    height: auto;
-  }
-
-  .news-heading .event-item {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .news-heading .event-date,
-  .news-heading .event-description {
-    padding: 0;
-    text-align: left;
-  }
-
-  .news-heading h3 {
-    margin: 0;
-  }
-
-  .news-year {
-    margin: 0;
-  }
-
-  .news-year-icon {
-    position: static;
-  }
+.home-profile figcaption {
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #7b7b7b;
+  text-align: center;
 }
 
 @media (max-width: 575px) {
-  .home-intro,
-  .home-prose p {
-    text-align: left;
-  }
-
-  .news-pinned .event-item {
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 0 8px;
+  .home-profile {
+    width: 110px;
+    margin-left: 16px;
   }
 }
 
-@media (min-width: 992px) {
-  .news-pinned {
-    min-height: 350px;
-  }
+/* News shares the intro's left edge: no list indent on the year lists (nested
+   .sub-items keep theirs), and nested bullets get the research list's 0.2em. */
+#news-section > .news-year > ul {
+  padding-left: 0;
+  margin-bottom: 0;
 }
 
-.news-pinned .icon-link {
-  display: inline-block;
-  padding: 3px;
-  margin: -3px;
+#news-section .sub-items {
+  margin-left: 0.2em;
 }
 
-#news-section {
-  border-radius: 10pt;
-  border-color: transparent;
-  background: white;
-  border-width: 1pt;
-  border-style: solid;
-  padding-top: 10pt;
+.news-title {
+  font-family: "concourse_3", sans-serif;
+  font-size: 1.17em;
+  margin: 0 0 0.35em;
 }
 
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: 0;
+/* A row of year buttons; the chosen year's list shows below it. */
+.year-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 14px;
+  margin: 0 0 0.6em;
+  font-family: "concourse_4_caps", sans-serif;
+}
+
+.year-row button {
+  font: inherit;
+  font-size: 1rem;
+  line-height: 24px;
+  padding: 2px 0;
   border: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
+  background: none;
+  cursor: pointer;
+  color: #7b7b7b;
 }
 
-/* Visualization columns keep their drawn size while the deferred drawing code loads. */
-.viz-slot {
-  min-height: 100px;
+.year-row button[aria-pressed="true"] {
+  color: rgba(0, 0, 0, 0.85);
+  text-decoration: underline;
+  text-decoration-color: #276190;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 
-.viz-slot.pixel {
-  min-height: 92px;
+.year-row button:hover {
+  color: #3077B0;
 }
 
-.viz-placeholder {
-  min-height: 85px;
-}
-
-@media (width < 992px) {
-  .wide-only {
-    display: none;
-  }
+.year-row button:focus-visible {
+  outline: 2px solid #276190;
+  outline-offset: 2px;
 }

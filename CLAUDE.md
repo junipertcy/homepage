@@ -51,11 +51,11 @@ Almost every request is a content edit. Go straight to the file:
 | Bio, CV/résumé links | `src/app/about/about.component.html`, `src/app/app.component.ts` (`cv_file`, `resume_file`) |
 | Site `<head>`, SEO, JSON-LD Person schema | `src/index.html` |
 | PDFs, images, slides | `src/assets/` (see Git LFS below) |
-| Key → asset-path mapping for lecture PDFs | `src/app/@pipes/internal-uri-resolver.pipe.ts` (a `switch`; add a `case`) |
+| Keyed links: lecture PDFs (`str2IntRes`) and outgoing URLs (`str2url`) | `src/app/links/links.ts` (the `LINKS` object; add an entry, and the pipes look it up). An unknown key fails the build. Retire a dead link with `retired:` instead of deleting it; it then points to its `/bokhi/<key>` page |
 
-### The News timeline has a manual year switch
+### The News timeline is a row of year buttons
 
-`news.component.html` renders one `@if (thisYear === 'YYYY') { <ul>…</ul> }` block per year, and `news.component.ts` holds `thisYear = '<current year>'` as the default. **Adding a new year takes three coordinated edits:** a new `<nz-option nzValue="YYYY">` in the `nz-select`, a new `@if` block, and bumping `thisYear`. Newest entries go at the top of their year's list; date format is `M/D`.
+`news.component.html` shows a row of year buttons under "News" and one `<div class="news-year" [hidden]="year() !== 'YYYY'">` block per year, newest first; only the chosen year is visible. The years are listed in `years` in `news.component.ts`, and the first one is shown on load. Every year is in the prerendered HTML (the others carry `hidden`), but switching years needs JavaScript. **Adding a new year takes two edits:** put the year at the front of `years`, and add its `<div class="news-year" …>` block above the previous year's. Do both when the new year gets its first entry, so the homepage never opens on an empty year. Newest entries go at the top of their year's list; date format is `M/D`.
 
 ### Publications are objects, not a data file
 
@@ -63,11 +63,11 @@ Almost every request is a content edit. Go straight to the file:
 
 ## Architecture
 
-**Hybrid NgModule + standalone.** `src/main.ts` bootstraps `AppModule` via `platformBrowserDynamic()` (not `bootstrapApplication`). `AppComponent` and `NewsComponent` are explicitly `standalone: false` and declared in `AppModule`; every other feature component is standalone and listed in `AppModule.imports`. Shared ng-zorro modules are re-exported from `src/app/ng-zorro-antd.module.ts` (most imports are commented out — uncomment rather than adding a new import path).
+**Standalone throughout.** `src/main.ts` calls `bootstrapApplication(AppComponent, appConfig)`; there is no `AppModule`. Every component is standalone and lists what it uses in its own `imports`, ng-zorro modules included (straight from `ng-zorro-antd/<module>`). `src/app/app.config.ts` is the `ApplicationConfig`: zoneless change detection, the router with in-memory scrolling, `HttpClient`, client hydration with event replay and incremental hydration, ng-zorro's `en_US` locale, and every `nz-icon` a template names, registered up front in its `icons` list (a template that names a new one needs it added there).
 
 **Templates use block control flow.** `@if` / `@for` throughout — the `*ngIf` / `*ngFor` structural directives were migrated out by the Angular 21 schematic. Write new markup in block syntax.
 
-**Routing** is a single inline `Routes` array in `src/app/app.module.ts:67-154`. Top-level routes use eager `component:`; the `activities` and `teaching` sections use lazy `loadComponent:` children with a `redirectTo` default. `**` falls through to `ErrorComponent`. `src/sitemap.xml` is a hand-maintained mirror of this route table (one `<url>` per content route; `/notes` deliberately omitted) — adding or removing a route means editing it too, and nothing checks the two agree.
+**Routing** is the `routes` array in `src/app/app.routes.ts`, passed to `provideRouter` in `app.config.ts`. Only `/` (`NewsComponent`) is eager; every other page is lazy via `loadComponent:`, and the `activities` and `teaching` sections have children with a `redirectTo` default. `/bokhi/:id` is the explanation page for a retired link (see `src/app/links/links.ts`). `**` falls through to `ErrorComponent`. How each route is rendered is in `src/app/app.routes.server.ts`: everything is prerendered, `/bokhi/:id` once per retired link via `getPrerenderParams`, and `/bokhi` alone is client-rendered so the CDN answers 404. `src/sitemap.xml` is a hand-maintained mirror of the content routes (one `<url>` per page; the `noindex` `/bokhi/` pages are deliberately omitted) — adding or removing a route means editing it too, and nothing checks the two agree.
 
 **Page titles are derived from the URL**, not from route `data`. `AppComponent.getTitleFromRouter()` subscribes to `router.events` and builds `'TCY | ' + path` (or `'Tzu-Chi Yen'` for `/`). Adding a route gets a title automatically; overriding one means adding `data: { title: ... }`.
 
@@ -75,9 +75,7 @@ Almost every request is a content edit. Go straight to the file:
 
 **"Last updated" is live.** `GithubService` fetches `api.github.com/repos/junipertcy/homepage/commits` and shows the newest commit date. The footer date changes when you push, not when you build.
 
-**The three decorative visualizations** (`app-simplex` D3 force-directed simplicial complex, `app-gpr` graph projection, `app-pixel-pattern`) are randomized on demand. The refresh icon on the homepage calls `ReloadService.triggerReload(id)` for all three; each component subscribes to `reloadTrigger$` (a `BehaviorSubject`) and regenerates when it sees its own id. `src/app/app.config.ts` is **not** an Angular `ApplicationConfig` — it is a plain `CONFIG` object (`N`, `SPECTRUM` color ramp, Zachary karate-club edge list) feeding these visualizations.
-
-**Styling** is layered global CSS, not component-scoped design tokens: Angular Material `indigo-pink` prebuilt theme → ng-zorro CSS → `src/styles/global.css` (bare-element rules like `div { font-family: 'Equity B' }`) → `src/styles/default.less` (ng-zorro LESS variable overrides, `@primary-color: #276190`). Because global.css styles bare elements, a change there affects every page. Production budget warns at 10 kb per component stylesheet.
+**Styling** is layered global CSS, not component-scoped design tokens: Angular Material `indigo-pink` prebuilt theme → ng-zorro CSS → `src/styles/global.css` (bare-element rules like `div { font-family: 'concourse_3', sans-serif }`; the site is set in Concourse, except the name in the header, which is Equity A (`#logo-title`)) → `src/styles/default.less` (ng-zorro LESS variable overrides, `@primary-color: #276190`). Because global.css styles bare elements, a change there affects every page. Production budget warns at 10 kb per component stylesheet.
 
 ## Do not touch / do not commit
 
@@ -99,7 +97,7 @@ Every `@angular/*` version is pinned without a `^`. This is deliberate: `@angula
 
 ## CI
 
-`.github/workflows/build.yml` runs the production build on push and PR to `main`. It has to stub the licensed fonts first: `src/styles/font-face.css` has 32 `url()` references to gitignored `.woff2` files, and Angular's `angular-css-resource` plugin **fails the build** on any it cannot resolve — so a bare checkout cannot compile. The workflow writes zero-byte placeholders at those paths. That makes the gate a check that the app *compiles*; it says nothing about how text renders. Keep the stub step in sync if font filenames change. `package.json` declares `engines.node` (Angular 22's own supported range) and CI builds on Node 26, matching local dev; nothing enforces either.
+`.github/workflows/build.yml` runs the production build on push and PR to `main`. It has to stub the licensed fonts first: `src/styles/font-face.css` has 36 `url()` references to gitignored `.woff2` files, and Angular's `angular-css-resource` plugin **fails the build** on any it cannot resolve — so a bare checkout cannot compile. The workflow writes zero-byte placeholders at those paths. That makes the gate a check that the app *compiles*; it says nothing about how text renders. Keep the stub step in sync if font filenames change. `package.json` declares `engines.node` (Angular 22's own supported range) and CI builds on Node 26, matching local dev; nothing enforces either.
 
 ## Known drift (report, don't silently fix)
 

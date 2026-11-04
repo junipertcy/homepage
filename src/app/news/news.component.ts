@@ -1,37 +1,30 @@
-import { Component, ElementRef, ViewChild, DestroyRef, Injector, afterNextRender, inject } from '@angular/core';
-import { ReloadService } from '../@services/reload.service';
-import { ViewportService } from '../@services/viewport.service';
-import { FormsModule } from '@angular/forms';
+import { Component, signal } from '@angular/core';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzGridModule } from 'ng-zorro-antd/grid';
-import { NzSelectModule } from 'ng-zorro-antd/select';
 import { Str2urlPipe } from '../@pipes/str2url.pipe';
-import { SimplexComponent } from '../@components/simplex/simplex.component';
-import { GprComponent } from '../@components/gpr/gpr.component';
-import { PixelPatternComponent } from '../@components/pixel-pattern/pixel-pattern.component';
-import { IconComponent } from '../@components/icon/icon.component';
 
 @Component({
   selector: 'app-news',
-  imports: [FormsModule, NzDividerModule, NzGridModule, NzSelectModule, Str2urlPipe, SimplexComponent, GprComponent, PixelPatternComponent, IconComponent],
+  imports: [NzDividerModule, NzGridModule, Str2urlPipe],
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css'],
 })
 export class NewsComponent {
-  @ViewChild('researchStart') researchStart?: ElementRef<HTMLElement>;
-  private readonly viewport = inject(ViewportService);
-  private readonly injector = inject(Injector);
-  readonly isWide = this.viewport.isWide;
   // date = null;
   // onChange(result: Date): void {
   //   console.log('onChange: ', result);
   // }
-  thisYear = '2026';
   // selectSize: NzSelectModeType = 'large';
+
+  // News years, newest first. The first is shown on load; each needs a matching
+  // `<div class="news-year">` block in the template.
+  years = ['2026', '2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018'];
+  year = signal(this.years[0]);
 
   // URLs
   dan = 'https://larremorelab.github.io/dan/';
   josh = 'https://home.cs.colorado.edu/~jgrochow/index.html';
+  becker = 'https://stephenbeckr.github.io/';
   wiki_stat_inf = 'https://en.wikipedia.org/wiki/Statistical_inference';
   wiki_tda = 'https://en.wikipedia.org/wiki/Topological_data_analysis';
   wiki_cs = 'https://en.wikipedia.org/wiki/Complex_system';
@@ -52,21 +45,5 @@ export class NewsComponent {
 
   // Files
   resume_file_2024 = '../../assets/pdf/older/Yen_Resume_Oct_2024.pdf';
-
-  // research interests
-  misc_1 = 'https://arxiv.org/abs/2402.08871';
-
-  constructor(private reloadService: ReloadService) {
-    // Runs when the layout crosses 992px. CSS may already have hidden, and so blurred, the regeneration button.
-    this.viewport.onCrossing(wide => {
-      const regenerationFocused = !!this.viewport.focusedAtCrossing()?.closest('.regenerate-button');
-      if (regenerationFocused && !wide) afterNextRender(() => this.researchStart?.nativeElement.focus(), { injector: this.injector });
-    }, inject(DestroyRef));
-  }
-  reloadPattern() {
-    this.reloadService.triggerReload('gpr');
-    this.reloadService.triggerReload('pixel');
-    this.reloadService.triggerReload('simplex');
-  }
 
 }

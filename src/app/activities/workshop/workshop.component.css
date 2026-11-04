@@ -1,0 +1,5 @@
+/* The section label, in small caps like the site's other labels, not heavy bold. */
+strong {
+  font-family: 'concourse_4_caps', sans-serif;
+  font-weight: normal;
+}
